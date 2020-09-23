@@ -1,0 +1,28 @@
+@import 'variables';
+
+@font-face {
+  font-family: 'beacons';
+  font-style: normal;
+  font-weight: 400;
+  src: url('#{$cw-font-path}/beacons_#{$cw-rev}.eot'); /* IE9 Compat Modes */
+  src: url('#{$cw-font-path}/beacons_#{$cw-rev}.eot?#iefix') format('embedded-opentype'),
+  url('#{$cw-font-path}/beacons_#{$cw-rev}.woff2') format('woff2'),
+  url('#{$cw-font-path}/beacons_#{$cw-rev}.woff') format('woff'),
+  url('#{$cw-font-path}/beacons_#{$cw-rev}.ttf') format('truetype');
+}
+
+.beacon, .crypton {
+  font-family: 'beacons';
+  font-weight: 400;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  line-height: 1;
+}
+
+@each $name, $value in $beacons {
+  .#{$name}:before { content: esc($value); }
+}
