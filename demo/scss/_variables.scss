@@ -4,7 +4,6 @@
 $cw-font-path: "../../dist" !default;
 $cw-font-size: 16px !default;
 $cw-prefix: sym !default;
-$cw-rev: "200914" !default;
 
 // Convenience function used to set content property
 @function esc($cw-sym) {
@@ -1772,5 +1771,5 @@ $beacons: (
   cur-xrp: \f39c,
   cur-xrp-s: \e39c,
   cur-zar: \f208,
-  cur-zar-s: \e208
+  cur-zar-s: \e208,
 );
