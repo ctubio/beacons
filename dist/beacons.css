@@ -2,13 +2,13 @@
   font-family: "beacons";
   font-style: normal;
   font-weight: 400;
-  src: url("../../dist/beacons.eot");
+  src: url("beacons.eot");
   /* IE9 Compat Modes */
-  src: url("../../dist/beacons.eot?#iefix") format("embedded-opentype"),
-    url("../../dist/beacons.woff2") format("woff2"),
-    url("../../dist/beacons.woff") format("woff"),
-    url("../../dist/beacons.ttf") format("truetype");
+  src: url("beacons.eot?#iefix") format("embedded-opentype"),
+    url("beacons.woff2") format("woff2"), url("beacons.woff") format("woff"),
+    url("beacons.ttf") format("truetype");
 }
+
 .beacon {
   font-family: "beacons";
   font-weight: 400;

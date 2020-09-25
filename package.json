@@ -5,10 +5,12 @@
   "author": "cryptowat.ch",
   "homepage": "cryptowat.ch",
   "repository": "https://github.com/cryptowatch/beacons.git",
+  "license": "MIT",
   "devDependencies": {
     "esm": "^3.2.25"
   },
   "scripts": {
+    "serve": "node ./demo/app.js",
     "scss2json": "node -r esm ./scripts/scss2json.js"
   }
 }
