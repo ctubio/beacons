@@ -1,0 +1,14 @@
+{
+  "name": "beacons",
+  "description": "Crypto icons",
+  "version": "1.0.0",
+  "author": "cryptowat.ch",
+  "homepage": "cryptowat.ch",
+  "repository": "https://github.com/cryptowatch/beacons.git",
+  "devDependencies": {
+    "esm": "^3.2.25"
+  },
+  "scripts": {
+    "scss2json": "node -r esm ./scripts/scss2json.js"
+  }
+}
