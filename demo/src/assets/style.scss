@@ -1,0 +1,47 @@
+@import "variables.scss";
+
+@font-face {
+  font-family: "Iosevka Custom Web";
+  font-display: swap;
+  font-weight: 400;
+  font-stretch: expanded;
+  font-style: normal;
+  src: url("assets/iosevka-custom/woff2/iosevka-custom-extended.woff2")
+      format("woff2"),
+    url("assets/iosevka-custom/woff/iosevka-custom-extended.woff")
+      format("woff"),
+    url("assets/iosevka-custom/ttf/iosevka-custom-extended.ttf")
+      format("truetype");
+}
+
+@font-face {
+  font-family: "Iosevka Custom Web";
+  font-display: swap;
+  font-weight: 700;
+  font-stretch: expanded;
+  font-style: normal;
+  src: url("assets/iosevka-custom/woff2/iosevka-custom-extendedbold.woff2")
+      format("woff2"),
+    url("assets/iosevka-custom/woff/iosevka-custom-extendedbold.woff")
+      format("woff"),
+    url("assets/iosevka-custom/ttf/iosevka-custom-extendedbold.ttf")
+      format("truetype");
+}
+
+body {
+  font-family: "Iosevka Custom Web", monospace;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  background-color: $bg;
+  color: $text;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+}
