@@ -37,6 +37,13 @@ body {
   color: $text;
 }
 
+a {
+  color: $text;
+  &:hover {
+    color: $long;
+  }
+}
+
 h1,
 h2,
 h3,
@@ -44,4 +51,66 @@ h4,
 h5,
 h6 {
   font-weight: 700;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 16px;
+  text-align: center;
+  input[type="text"] {
+    text-align: center;
+    font-family: "Iosevka Custom Web", monospace;
+    width: 100%;
+    background-color: transparent;
+    color: $text;
+    padding: 4px 8px;
+    border: 1px solid $border;
+    font-size: 16px;
+    max-width: 250px;
+    &:focus {
+      outline: 0;
+      border-color: $text;
+    }
+    &::placeholder {
+      color: $weak;
+    }
+  }
+  .filters {
+    display: flex;
+    justify-content: center;
+    .filter {
+      padding: 8px;
+    }
+    margin-bottom: 32px;
+  }
+  .beacons-flex {
+    display: grid;
+    grid-gap: 8px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    &::after {
+      content: "";
+      flex: auto;
+    }
+    .beacon-container {
+      width: 200px;
+      display: flex;
+      align-items: center;
+      &:not(:last-child) {
+        margin-bottom: 8px;
+      }
+      .beacon {
+        margin-right: 8px;
+        font-size: 40px;
+        color: $text;
+      }
+      .text {
+        color: $weak;
+        text-align: left;
+        .main {
+          color: $text;
+        }
+      }
+    }
+  }
 }
