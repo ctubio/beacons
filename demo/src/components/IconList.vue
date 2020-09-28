@@ -26,6 +26,7 @@
       >
         <i class="beacon" :class="beacon" />
         <div class="text">
+          <div>{{ beaconNames[beacon.split("-")[1]] }}</div>
           <span class="prefix">{{ beacon.split("-")[0] }}-</span
           ><span class="main">{{ beacon.split("-")[1] }}</span
           ><span v-if="beacon.split('-').length > 2" class="postfix"
@@ -40,6 +41,7 @@
 
 <script>
 import beacons from '../../../dist/beacons.json'
+import beaconNames from '../assets/beaconNames.json'
 
 export default {
   name: 'IconList',
@@ -69,6 +71,8 @@ export default {
   created () {
     this.groups = ['Currencies', 'Exchanges', 'Symbols']
     this.beacons = beacons
+    this.beaconNames = beaconNames
+    console.log(beaconNames)
     this.filterFun = {
       Currencies: key => key.split('-')[0] === 'cur',
       Exchanges: key => key.split('-')[0] === 'exc',
