@@ -65,11 +65,9 @@ export default {
     filteredBeacons () {
       return this.filtered.filter(key => {
         const query = this.query.toLowerCase()
-        const split = key.split('-')[1]
-        return (
-          split.includes(query) ||
-          beaconNames[split].toLowerCase().includes(query)
-        )
+        const sym = key.split('-')[1]
+        const name = beaconNames[sym].toLowerCase()
+        return sym.includes(query) || name.includes(query)
       })
     }
   },
