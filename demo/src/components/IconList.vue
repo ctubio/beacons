@@ -72,7 +72,6 @@ export default {
     this.groups = ['Currencies', 'Exchanges', 'Symbols']
     this.beacons = beacons
     this.beaconNames = beaconNames
-    console.log(beaconNames)
     this.filterFun = {
       Currencies: key => key.split('-')[0] === 'cur',
       Exchanges: key => key.split('-')[0] === 'exc',
