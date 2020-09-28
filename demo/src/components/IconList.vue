@@ -63,9 +63,14 @@ export default {
       })
     },
     filteredBeacons () {
-      return this.filtered.filter(key =>
-        key.split('-')[1].includes(this.query.toLowerCase())
-      )
+      return this.filtered.filter(key => {
+        const query = this.query.toLowerCase()
+        const split = key.split('-')[1]
+        return (
+          split.includes(query) ||
+          beaconNames[split].toLowerCase().includes(query)
+        )
+      })
     }
   },
   created () {
