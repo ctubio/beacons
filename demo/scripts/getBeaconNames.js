@@ -1,5 +1,6 @@
 import axios from 'axios'
 import beacons from '../../dist/beacons.json'
+import beaconNamesHardcoded from '../src/assets/beaconNamesHardcoded.json'
 
 const fs = require('fs')
 
@@ -46,6 +47,8 @@ export function makeList (data) {
     const match = data.find(el => el.symbol === key)
     if (match) {
       out[key] = match.name
+    } else if (beaconNamesHardcoded[key]) {
+      out[key] = beaconNamesHardcoded[key]
     }
   })
 }
@@ -55,6 +58,8 @@ export function makeListPairs (data) {
     const match = data.find(el => el.quote.symbol === key)
     if (match) {
       out[key] = match.quote.name
+    } else if (beaconNamesHardcoded[key]) {
+      out[key] = beaconNamesHardcoded[key]
     }
   })
 }

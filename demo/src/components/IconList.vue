@@ -15,7 +15,15 @@
     <div class="filters">
       <div v-for="(val, filter) in filters" :key="filter.id" class="filter">
         <input type="checkbox" :id="filter" v-model="filters[filter]" />
-        <label :for="filter" v-text="filter" />
+        <label
+          :for="filter"
+          v-text="
+            filter +
+              ' (' +
+              Object.keys(beacons).filter(filterFun[filter]).length +
+              ')'
+          "
+        />
       </div>
     </div>
     <div v-if="filteredBeacons.length" class="beacons-flex">
@@ -75,7 +83,7 @@ export default {
   data () {
     return {
       query: '',
-      filters: { currencies: true, exchanges: true, symbols: true }
+      filters: { exchanges: true, symbols: true, currencies: true }
     }
   },
   computed: {
@@ -90,24 +98,22 @@ export default {
       })
     },
     filteredBeacons () {
-      return this.filtered
-        .filter(key => {
-          const query = this.query.toLowerCase()
-          const sym = this.getMiddlePart(key)
-          const name = beaconNames[sym].toLowerCase()
-          return sym.includes(query) || name.includes(query)
-        })
-        .sort()
+      return this.filtered.filter(key => {
+        const query = this.query.toLowerCase()
+        const sym = this.getMiddlePart(key)
+        const name = beaconNames[sym].toLowerCase()
+        return sym.includes(query) || name.includes(query)
+      })
     }
   },
   created () {
-    this.groups = ['currencies', 'exchanges', 'symbols']
+    this.groups = ['exchanges', 'symbols', 'currencies']
     this.beacons = beacons
     this.beaconNames = beaconNames
     this.filterFun = {
-      currencies: key => key.slice(0, 4) === 'cur-',
       exchanges: key => key.slice(0, 4) === 'exc-',
-      symbols: key => key.slice(0, 4) === 'sym-'
+      symbols: key => key.slice(0, 4) === 'sym-',
+      currencies: key => key.slice(0, 4) === 'cur-'
     }
   },
   methods: {
