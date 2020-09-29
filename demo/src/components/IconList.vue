@@ -21,21 +21,43 @@
     <div v-if="filteredBeacons.length" class="beacons-flex">
       <template v-for="(beacon, i) in filteredBeacons">
         <div
-          v-if="
-            i < filteredBeacons.length - 1 &&
-              beacon.split('-')[1] === filteredBeacons[i + 1].split('-')[1]
-          "
+          v-if="groupTest(beacon, i)"
           :key="beacon.id"
           class="beacon-container"
         >
-          <i class="beacon" :class="beacon" />
-          <div class="text">
-            <div>{{ beaconNames[beacon.split("-")[1]] }}</div>
-            <span class="prefix">{{ beacon.split("-")[0] }}-</span
-            ><span class="main">{{ beacon.split("-")[1] }}</span
-            ><span v-if="beacon.split('-').length > 2" class="postfix"
-              >-{{ beacon.split("-")[2] }}</span
-            >
+          <div
+            class="name"
+            v-text="
+              beaconNames[beacon.split('-')[1]]
+                ? beaconNames[beacon.split('-')[1]]
+                : beacon.split('-')[1]
+            "
+          />
+          <div class="icon">
+            <i class="beacon" :class="beacon" />
+            <div class="text">
+              <span class="prefix">{{ beacon.split("-")[0] }}-</span
+              ><span class="main">{{ beacon.split("-")[1] }}</span
+              ><span v-if="beacon.split('-').length > 2" class="postfix"
+                >-{{ beacon.split("-")[2] }}</span
+              >
+            </div>
+          </div>
+          <div class="icon">
+            <i class="beacon" :class="filteredBeacons[i + 1]" />
+            <div class="text">
+              <!-- <div>{{ beaconNames[filteredBeacons[i + 1].split("-")[1]] }}</div> -->
+              <span class="prefix"
+                >{{ filteredBeacons[i + 1].split("-")[0] }}-</span
+              ><span class="main">{{
+                filteredBeacons[i + 1].split("-")[1]
+              }}</span
+              ><span
+                v-if="filteredBeacons[i + 1].split('-').length > 2"
+                class="postfix"
+                >-{{ filteredBeacons[i + 1].split("-")[2] }}</span
+              >
+            </div>
           </div>
         </div>
       </template>
@@ -86,6 +108,19 @@ export default {
       currencies: key => key.split('-')[0] === 'cur',
       exchanges: key => key.split('-')[0] === 'exc',
       symbols: key => key.split('-')[0] === 'sym'
+    }
+  },
+  methods: {
+    groupTest (beacon, i) {
+      const { filteredBeacons } = this
+      if (i >= filteredBeacons.length - 1) return false
+      const next = filteredBeacons[i + 1]
+      const len = next.length
+      const start = next.slice(0, -2)
+      const end = next.slice(len - 2)
+      if (start === beacon && end === '-s') {
+        return true
+      }
     }
   }
 }

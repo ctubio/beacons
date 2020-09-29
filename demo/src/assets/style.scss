@@ -57,9 +57,7 @@ h6 {
   max-width: 960px;
   margin: 0 auto;
   padding: 16px;
-  text-align: center;
   input[type="text"] {
-    text-align: center;
     font-family: "Iosevka Custom Web", monospace;
     width: 100%;
     background-color: transparent;
@@ -67,7 +65,7 @@ h6 {
     padding: 4px 8px;
     border: 1px solid $border;
     font-size: 16px;
-    max-width: 250px;
+    max-width: 300px;
     &:focus {
       outline: 0;
       border-color: $text;
@@ -78,7 +76,7 @@ h6 {
   }
   .filters {
     display: flex;
-    justify-content: center;
+    margin: 0 -8px;
     .filter {
       padding: 8px;
       label {
@@ -96,11 +94,17 @@ h6 {
       flex: auto;
     }
     .beacon-container {
-      width: 200px;
-      display: flex;
-      align-items: center;
-      &:not(:last-child) {
-        margin-bottom: 8px;
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-gap: 8px;
+      padding: 8px;
+      background-color: $bg-light;
+      .name {
+        font-weight: 700;
+      }
+      .icon {
+        display: flex;
+        align-items: center;
       }
       .beacon {
         margin-right: 8px;
