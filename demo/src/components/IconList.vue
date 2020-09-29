@@ -19,21 +19,26 @@
       </div>
     </div>
     <div v-if="filteredBeacons.length" class="beacons-flex">
-      <div
-        v-for="beacon in filteredBeacons"
-        :key="beacon.id"
-        class="beacon-container"
-      >
-        <i class="beacon" :class="beacon" />
-        <div class="text">
-          <div>{{ beaconNames[beacon.split("-")[1]] }}</div>
-          <span class="prefix">{{ beacon.split("-")[0] }}-</span
-          ><span class="main">{{ beacon.split("-")[1] }}</span
-          ><span v-if="beacon.split('-').length > 2" class="postfix"
-            >-{{ beacon.split("-")[2] }}</span
-          >
+      <template v-for="(beacon, i) in filteredBeacons">
+        <div
+          v-if="
+            i < filteredBeacons.length - 1 &&
+              beacon.split('-')[1] === filteredBeacons[i + 1].split('-')[1]
+          "
+          :key="beacon.id"
+          class="beacon-container"
+        >
+          <i class="beacon" :class="beacon" />
+          <div class="text">
+            <div>{{ beaconNames[beacon.split("-")[1]] }}</div>
+            <span class="prefix">{{ beacon.split("-")[0] }}-</span
+            ><span class="main">{{ beacon.split("-")[1] }}</span
+            ><span v-if="beacon.split('-').length > 2" class="postfix"
+              >-{{ beacon.split("-")[2] }}</span
+            >
+          </div>
         </div>
-      </div>
+      </template>
     </div>
     <div v-else>No results</div>
   </div>
@@ -48,7 +53,7 @@ export default {
   data () {
     return {
       query: '',
-      filters: { Currencies: true, Exchanges: true, Symbols: true }
+      filters: { currencies: true, exchanges: true, symbols: true }
     }
   },
   computed: {
@@ -63,22 +68,24 @@ export default {
       })
     },
     filteredBeacons () {
-      return this.filtered.filter(key => {
-        const query = this.query.toLowerCase()
-        const sym = key.split('-')[1]
-        const name = beaconNames[sym].toLowerCase()
-        return sym.includes(query) || name.includes(query)
-      })
+      return this.filtered
+        .filter(key => {
+          const query = this.query.toLowerCase()
+          const sym = key.split('-')[1]
+          const name = beaconNames[sym].toLowerCase()
+          return sym.includes(query) || name.includes(query)
+        })
+        .sort()
     }
   },
   created () {
-    this.groups = ['Currencies', 'Exchanges', 'Symbols']
+    this.groups = ['currencies', 'exchanges', 'symbols']
     this.beacons = beacons
     this.beaconNames = beaconNames
     this.filterFun = {
-      Currencies: key => key.split('-')[0] === 'cur',
-      Exchanges: key => key.split('-')[0] === 'exc',
-      Symbols: key => key.split('-')[0] === 'sym'
+      currencies: key => key.split('-')[0] === 'cur',
+      exchanges: key => key.split('-')[0] === 'exc',
+      symbols: key => key.split('-')[0] === 'sym'
     }
   }
 }

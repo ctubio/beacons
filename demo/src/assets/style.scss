@@ -81,6 +81,9 @@ h6 {
     justify-content: center;
     .filter {
       padding: 8px;
+      label {
+        text-transform: capitalize;
+      }
     }
     margin-bottom: 32px;
   }
