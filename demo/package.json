@@ -6,7 +6,8 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "assets": "node -r esm ./scripts/assets.js"
+    "names": "node -r esm ./scripts/getBeaconNames.js",
+    "0names": "node -r esm ./scripts/getUnnamedBeacons.js"
   },
   "dependencies": {
     "core-js": "^3.6.5",
