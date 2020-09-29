@@ -109,12 +109,12 @@ h6 {
           margin-right: 8px;
           font-size: 40px;
           color: $text;
-          .text {
-            color: $weak;
-            text-align: left;
-            .main {
-              color: $text;
-            }
+        }
+        .text {
+          color: $weak;
+          text-align: left;
+          .main {
+            color: $text;
           }
         }
       }
