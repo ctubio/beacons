@@ -93,7 +93,12 @@ export default {
       return this.filtered
         .filter(key => {
           const query = this.query.toLowerCase()
-          const sym = key.split('-')[1]
+          let sym = key.slice(4)
+          const len = key.length
+          const end = key.slice(len - 2, len)
+          if (end === '-s') {
+            sym = sym.slice(0, -2)
+          }
           const name = beaconNames[sym].toLowerCase()
           return sym.includes(query) || name.includes(query)
         })
