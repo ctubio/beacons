@@ -105,9 +105,9 @@ export default {
     this.beacons = beacons
     this.beaconNames = beaconNames
     this.filterFun = {
-      currencies: key => key.split('-')[0] === 'cur',
-      exchanges: key => key.split('-')[0] === 'exc',
-      symbols: key => key.split('-')[0] === 'sym'
+      currencies: key => key.slice(0, 4) === 'cur-',
+      exchanges: key => key.slice(0, 4) === 'exc-',
+      symbols: key => key.slice(0, 4) === 'sym-'
     }
   },
   methods: {
