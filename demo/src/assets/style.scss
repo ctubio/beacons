@@ -88,7 +88,7 @@ h6 {
   .beacons-flex {
     display: grid;
     grid-gap: 8px;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     &::after {
       content: "";
       flex: auto;
@@ -105,17 +105,17 @@ h6 {
       .icon {
         display: flex;
         align-items: center;
-      }
-      .beacon {
-        margin-right: 8px;
-        font-size: 40px;
-        color: $text;
-      }
-      .text {
-        color: $weak;
-        text-align: left;
-        .main {
+        .beacon {
+          margin-right: 8px;
+          font-size: 40px;
           color: $text;
+          .text {
+            color: $weak;
+            text-align: left;
+            .main {
+              color: $text;
+            }
+          }
         }
       }
     }
