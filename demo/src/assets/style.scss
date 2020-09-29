@@ -37,6 +37,13 @@ body {
   color: $text;
 }
 
+a {
+  color: $text;
+  &:hover {
+    color: $long;
+  }
+}
+
 h1,
 h2,
 h3,
@@ -44,4 +51,73 @@ h4,
 h5,
 h6 {
   font-weight: 700;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 16px;
+  input[type="text"] {
+    font-family: "Iosevka Custom Web", monospace;
+    width: 100%;
+    background-color: transparent;
+    color: $text;
+    padding: 4px 8px;
+    border: 1px solid $border;
+    font-size: 16px;
+    max-width: 300px;
+    &:focus {
+      outline: 0;
+      border-color: $text;
+    }
+    &::placeholder {
+      color: $weak;
+    }
+  }
+  .filters {
+    display: flex;
+    margin: 0 -8px;
+    .filter {
+      padding: 8px;
+      label {
+        text-transform: capitalize;
+      }
+    }
+    margin-bottom: 32px;
+  }
+  .beacons-flex {
+    display: grid;
+    grid-gap: 8px;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    &::after {
+      content: "";
+      flex: auto;
+    }
+    .beacon-container {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-gap: 8px;
+      padding: 8px;
+      background-color: $bg-light;
+      .name {
+        font-weight: 700;
+      }
+      .icon {
+        display: flex;
+        align-items: center;
+        .beacon {
+          margin-right: 8px;
+          font-size: 40px;
+          color: $text;
+        }
+        .text {
+          color: $weak;
+          text-align: left;
+          .main {
+            color: $text;
+          }
+        }
+      }
+    }
+  }
 }
