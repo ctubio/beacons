@@ -25,37 +25,37 @@
           :key="beacon.id"
           class="beacon-container"
         >
-          <div
-            class="name"
-            v-text="
-              beaconNames[beacon.split('-')[1]]
-                ? beaconNames[beacon.split('-')[1]]
-                : beacon.split('-')[1]
-            "
-          />
+          <div class="name" v-text="getName(beacon)" />
           <div class="icon">
             <i class="beacon" :class="beacon" />
             <div class="text">
-              <span class="prefix">{{ beacon.split("-")[0] }}-</span
-              ><span class="main">{{ beacon.split("-")[1] }}</span
-              ><span v-if="beacon.split('-').length > 2" class="postfix"
-                >-{{ beacon.split("-")[2] }}</span
+              <span class="prefix">{{ beacon.slice(0, 4) }}</span
+              ><span class="main">{{ getMiddlePart(beacon) }}</span
+              ><span
+                v-if="beacon.slice(beacon.length - 2, beacon.length) === '-s'"
+                class="postfix"
+                >-s</span
               >
             </div>
           </div>
           <div class="icon">
             <i class="beacon" :class="filteredBeacons[i + 1]" />
             <div class="text">
-              <!-- <div>{{ beaconNames[filteredBeacons[i + 1].split("-")[1]] }}</div> -->
-              <span class="prefix"
-                >{{ filteredBeacons[i + 1].split("-")[0] }}-</span
+              <span class="prefix">{{
+                filteredBeacons[i + 1].slice(0, 4)
+              }}</span
               ><span class="main">{{
-                filteredBeacons[i + 1].split("-")[1]
+                getMiddlePart(filteredBeacons[i + 1])
               }}</span
               ><span
-                v-if="filteredBeacons[i + 1].split('-').length > 2"
+                v-if="
+                  filteredBeacons[i + 1].slice(
+                    filteredBeacons[i + 1].length - 2,
+                    filteredBeacons[i + 1].length
+                  ) === '-s'
+                "
                 class="postfix"
-                >-{{ filteredBeacons[i + 1].split("-")[2] }}</span
+                >-s</span
               >
             </div>
           </div>
@@ -93,12 +93,7 @@ export default {
       return this.filtered
         .filter(key => {
           const query = this.query.toLowerCase()
-          let sym = key.slice(4)
-          const len = key.length
-          const end = key.slice(len - 2, len)
-          if (end === '-s') {
-            sym = sym.slice(0, -2)
-          }
+          const sym = this.getMiddlePart(key)
           const name = beaconNames[sym].toLowerCase()
           return sym.includes(query) || name.includes(query)
         })
@@ -116,6 +111,19 @@ export default {
     }
   },
   methods: {
+    getMiddlePart (beacon) {
+      let middle = beacon.slice(4)
+      const len = beacon.length
+      const end = beacon.slice(len - 2, len)
+      if (end === '-s') {
+        middle = middle.slice(0, -2)
+      }
+      return middle
+    },
+    getName (beacon) {
+      const sym = this.getMiddlePart(beacon)
+      return beaconNames[sym] ? beaconNames[sym] : sym
+    },
     groupTest (beacon, i) {
       const { filteredBeacons } = this
       if (i >= filteredBeacons.length - 1) return false
