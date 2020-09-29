@@ -12,7 +12,12 @@ let n = 0
 export function populate () {
   const out = {}
   Object.keys(beacons).forEach(key => {
-    const id = key.split('-')[1]
+    let id = key.slice(4)
+    const len = key.length
+    const end = key.slice(len - 2, len)
+    if (end === '-s') {
+      id = id.slice(0, -2)
+    }
     Object.assign(out, { [id]: '' })
   })
   return out
