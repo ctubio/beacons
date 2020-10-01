@@ -1,7 +1,7 @@
 // Variables
 // --------------------------
 
-$cw-font-path: "../../dist" !default;
+$cw-font-path: "." !default;
 $cw-font-size: 16px !default;
 $cw-prefix: sym !default;
 
@@ -1366,6 +1366,8 @@ $beacons: (
   sym-uip-s: \e499,
   sym-ukg: \f0b2,
   sym-ukg-s: \e0b2,
+  sym-uni: \f4f7,
+  sym-uni-s: \e4f7,
   sym-up: \f0a2,
   sym-up-s: \e0a2,
   sym-upp: \f3db,
