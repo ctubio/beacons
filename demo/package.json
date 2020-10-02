@@ -6,9 +6,12 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
+    "2json": "node -r esm ./scripts/scss2json.js",
     "names": "node -r esm ./scripts/getBeaconNames.js",
     "0names": "node -r esm ./scripts/getUnnamedBeacons.js",
-    "clear": "node -r esm ./scripts/clear.js"
+    "clear": "node -r esm ./scripts/clear.js",
+    "step1": "node -r esm ./scripts/scss2json.js && node -r esm ./scripts/getBeaconNames.js && node -r esm ./scripts/getUnnamedBeacons.js",
+    "step2": "node -r esm ./scripts/getBeaconNames.js && vue-cli-service build"
   },
   "dependencies": {
     "core-js": "^3.6.5",
@@ -27,6 +30,7 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.0",
     "eslint-plugin-vue": "^6.2.2",
+    "esm": "^3.2.25",
     "sass": "^1.26.5",
     "sass-loader": "^8.0.2",
     "vue-template-compiler": "^2.6.11"

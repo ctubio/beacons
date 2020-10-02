@@ -2,7 +2,7 @@
   <div class="container">
     <h1>Beacons</h1>
     <p>
-      Crypto icon pack by
+      Crypto icon font by
       <a href="https://cryptowat.ch" target="_blank" rel="noopener noreferrer"
         >Cryptowatch</a
       >
@@ -75,7 +75,7 @@
 </template>
 
 <script>
-import beacons from '../../../dist/beacons.json'
+import beacons from '../assets/beacons.json'
 import beaconNames from '../assets/beaconNames.json'
 
 export default {
@@ -107,7 +107,6 @@ export default {
     }
   },
   created () {
-    this.groups = ['exchanges', 'symbols', 'currencies']
     this.beacons = beacons
     this.beaconNames = beaconNames
     this.filterFun = {

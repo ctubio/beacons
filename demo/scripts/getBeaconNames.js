@@ -1,5 +1,5 @@
 import axios from 'axios'
-import beacons from '../../dist/beacons.json'
+import beacons from '../src/assets/beacons.json'
 import beaconNamesHardcoded from '../src/assets/beaconNamesHardcoded.json'
 
 const fs = require('fs')
@@ -39,7 +39,16 @@ export function getData (endpoint) {
       }
       if (n === 3) write()
     })
-    .catch(err => console.log(err))
+    .catch(err => {
+      console.log(err)
+      n++
+      if (endpoint === 'pairs') {
+        makeListPairs([])
+      } else {
+        makeList([])
+      }
+      if (n === 3) write()
+    })
 }
 
 export function makeList (data) {
