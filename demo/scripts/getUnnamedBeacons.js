@@ -19,7 +19,7 @@ Object.keys(beaconNames).forEach(beacon => {
 write()
 
 console.log(
-  'You can now define missing names in demo/src/assets/beaconNamesHardcoded with hardcoded ones.'
+  "Go to the 'demo/src/assets' folder. Define missing names in 'beaconNamesHardcoded.json' and save the file. Then run 'yarn step2'."
 )
 
 export function write () {
