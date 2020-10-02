@@ -2,7 +2,7 @@
   <div class="container">
     <h1>Beacons</h1>
     <p>
-      Crypto icon pack by
+      Crypto icon font by
       <a href="https://cryptowat.ch" target="_blank" rel="noopener noreferrer"
         >Cryptowatch</a
       >
