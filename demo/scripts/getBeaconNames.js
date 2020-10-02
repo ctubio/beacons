@@ -41,13 +41,6 @@ export function getData (endpoint) {
     })
     .catch(err => {
       console.log(err)
-      n++
-      if (endpoint === 'pairs') {
-        makeListPairs([])
-      } else {
-        makeList([])
-      }
-      if (n === 3) write()
     })
 }
 
