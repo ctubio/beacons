@@ -75,7 +75,7 @@
 </template>
 
 <script>
-import beacons from '../../../dist/beacons.json'
+import beacons from '../assets/beacons.json'
 import beaconNames from '../assets/beaconNames.json'
 
 export default {
@@ -107,7 +107,6 @@ export default {
     }
   },
   created () {
-    this.groups = ['exchanges', 'symbols', 'currencies']
     this.beacons = beacons
     this.beaconNames = beaconNames
     this.filterFun = {

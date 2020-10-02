@@ -2,7 +2,7 @@
 
 const fs = require("fs");
 
-const file = fs.readFileSync("./dist/_variables.scss").toString();
+const file = fs.readFileSync("../dist/_variables.scss").toString();
 
 const out = {};
 
@@ -19,6 +19,6 @@ file
     Object.assign(out, { [key]: val });
   });
 
-fs.writeFile("./dist/beacons.json", JSON.stringify(out, null, 2), (err) => {
+fs.writeFile("./src/assets/beacons.json", JSON.stringify(out, null, 2), (err) => {
   if (err) throw err;
 });
