@@ -1,6 +1,6 @@
 # License
 
-Copyright 2015-2016, Cryptowatch (https://cryptowat.ch/).
+Copyright 2020, Cryptowatch (https://cryptowat.ch/).
 
 This Font Software is licensed under the SIL Open Font License, Version 1.1.
 
