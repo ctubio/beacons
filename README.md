@@ -4,7 +4,9 @@ Cryptowatch Beacons is a crypto icon font that contains over 1700 icons of crypt
 
 <img src="https://raw.githubusercontent.com/cryptowatch/beacons/master/img/beacons.png">
 
-Demo: https://cryptowatch.github.io/beacons
+## Live Demo
+
+https://cryptowatch.github.io/beacons
 
 ## Usage
 
