@@ -2,19 +2,24 @@
 
 This font contains over 1700 icons of cryptocurrencies, crypto exchanges and fiat currencies.
 
+<img src="https://github.com/cryptowatch/beacons/img/beacons.png">
+
 Demo: https://cryptowatch.github.io/beacons
 
 ## Usage
 
-Import the files in the `/dist` folder into your project and link to `beacons.css`.
+Import the files in the `/dist` folder into your project and link to `beacons.css`:
 
-Now you can start to use the font by using the class `.beacon` followed by the class for the specific icon:
+`<link rel="stylesheet" href="beacons.css">`
+
+You may need to adapt the href value to your projects folder structure. Now you can start to use the font by using the class `.beacon` followed by the class for the specific icon:
 
 `<i class="beacon sym-btc" />`
 
 All icons have 2 versions: By default they are surrounded by a circle. Simply add the `-s` postfix to get the icon without the surrounding circle:
 
 `<i class="beacon sym-btc-s" />`
+
 
 ### Groups
 
