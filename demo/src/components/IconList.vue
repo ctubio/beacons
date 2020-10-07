@@ -18,27 +18,20 @@
         <label
           :for="filter"
           v-text="
-            filter +
-              ' (' +
-              Object.keys(beacons).filter(filterFun[filter]).length +
-              ')'
+            filter + ' (' + beaconKeys.filter(filterFun[filter]).length + ')'
           "
         />
       </div>
     </div>
     <div v-if="filteredBeacons.length" class="beacons-flex">
-      <template v-for="(beacon, i) in filteredBeacons">
-        <div
-          v-if="groupTest(beacon, i)"
-          :key="beacon.id"
-          class="beacon-container"
-        >
-          <div class="name" v-text="getName(beacon)" />
+      <template v-for="(beacon, i) in filteredBeacons" :key="beacon.id">
+        <div v-if="groups[beacon]" class="beacon-container">
+          <div class="name" v-text="names[beacon]" />
           <div class="icon">
             <i class="beacon" :class="beacon" />
             <div class="text">
               <span class="prefix">{{ beacon.slice(0, 4) }}</span
-              ><span class="main">{{ getMiddlePart(beacon) }}</span
+              ><span class="main">{{ syms[beacon] }}</span
               ><span
                 v-if="beacon.slice(beacon.length - 2, beacon.length) === '-s'"
                 class="postfix"
@@ -52,9 +45,7 @@
               <span class="prefix">{{
                 filteredBeacons[i + 1].slice(0, 4)
               }}</span
-              ><span class="main">{{
-                getMiddlePart(filteredBeacons[i + 1])
-              }}</span
+              ><span class="main">{{ syms[filteredBeacons[i + 1]] }}</span
               ><span
                 v-if="
                   filteredBeacons[i + 1].slice(
@@ -93,11 +84,13 @@ export default {
       currencies: key => key.slice(0, 4) === 'cur-'
     }
 
+    const beaconKeys = Object.keys(beacons)
+
     const filtered = computed(() => {
       const filterKeys = Object.keys(filterFun).filter(
         key => state.filters[key]
       )
-      return Object.keys(beacons).filter(item => {
+      return beaconKeys.filter(item => {
         return filterKeys.some(key => {
           return filterFun[key](item)
         })
@@ -107,7 +100,7 @@ export default {
     const filteredBeacons = computed(() => {
       return filtered.value.filter(key => {
         const query = state.query.toLowerCase()
-        const sym = getMiddlePart(key)
+        const sym = syms[key]
         const name = beaconNames[sym].toLowerCase()
         return sym.includes(query) || name.includes(query)
       })
@@ -123,31 +116,38 @@ export default {
       return middle
     }
 
-    const getName = beacon => {
-      const sym = getMiddlePart(beacon)
-      return beaconNames[sym] ? beaconNames[sym] : sym
-    }
-
-    const groupTest = (beacon, i) => {
-      if (i >= filteredBeacons.value.length - 1) return false
-      const next = filteredBeacons.value[i + 1]
+    const groupTest = beacon => {
+      const i = beaconKeys.indexOf(beacon)
+      if (i >= beaconKeys.length - 1) return false
+      const next = beaconKeys[i + 1]
       const len = next.length
       const start = next.slice(0, -2)
       const end = next.slice(len - 2)
-      if (start === beacon && end === '-s') {
-        return true
-      }
+      const isGroup = start === beacon && end === '-s'
+      return !!isGroup
     }
+
+    const syms = {}
+    const names = {}
+    const groups = {}
+    beaconKeys.forEach(beacon => {
+      const sym = getMiddlePart(beacon)
+      const name = beaconNames[sym] ? beaconNames[sym] : sym
+      const group = groupTest(beacon)
+      Object.assign(syms, { [beacon]: sym })
+      Object.assign(names, { [beacon]: name })
+      Object.assign(groups, { [beacon]: group })
+    })
 
     return {
       ...toRefs(state),
       filtered,
       filteredBeacons,
       filterFun,
-      beacons,
-      getMiddlePart,
-      getName,
-      groupTest
+      beaconKeys,
+      syms,
+      names,
+      groups
     }
   }
 }
