@@ -77,46 +77,41 @@
 <script>
 import beacons from '../assets/beacons.json'
 import beaconNames from '../assets/beaconNames.json'
+import { computed, reactive, toRefs } from 'vue'
 
 export default {
   name: 'IconList',
-  data () {
-    return {
+  setup () {
+    const state = reactive({
       query: '',
       filters: { exchanges: true, symbols: true, currencies: true }
-    }
-  },
-  computed: {
-    filtered () {
-      const filterKeys = Object.keys(this.filters).filter(
-        key => this.filters[key]
-      )
-      return Object.keys(beacons).filter(item => {
-        return filterKeys.some(key => {
-          return this.filterFun[key](item)
-        })
-      })
-    },
-    filteredBeacons () {
-      return this.filtered.filter(key => {
-        const query = this.query.toLowerCase()
-        const sym = this.getMiddlePart(key)
-        const name = beaconNames[sym].toLowerCase()
-        return sym.includes(query) || name.includes(query)
-      })
-    }
-  },
-  created () {
-    this.beacons = beacons
-    this.beaconNames = beaconNames
-    this.filterFun = {
+    })
+
+    const filterFun = {
       exchanges: key => key.slice(0, 4) === 'exc-',
       symbols: key => key.slice(0, 4) === 'sym-',
       currencies: key => key.slice(0, 4) === 'cur-'
     }
-  },
-  methods: {
-    getMiddlePart (beacon) {
+
+    const filtered = computed(() => {
+      const filterKeys = Object.keys(filterFun).filter(key => filterFun[key])
+      return Object.keys(beacons).filter(item => {
+        return filterKeys.some(key => {
+          return filterFun[key](item)
+        })
+      })
+    })
+
+    const filteredBeacons = computed(() => {
+      return filtered.value.filter(key => {
+        const query = state.query.toLowerCase()
+        const sym = getMiddlePart(key)
+        const name = beaconNames[sym].toLowerCase()
+        return sym.includes(query) || name.includes(query)
+      })
+    })
+
+    const getMiddlePart = beacon => {
       let middle = beacon.slice(4)
       const len = beacon.length
       const end = beacon.slice(len - 2, len)
@@ -124,21 +119,33 @@ export default {
         middle = middle.slice(0, -2)
       }
       return middle
-    },
-    getName (beacon) {
-      const sym = this.getMiddlePart(beacon)
+    }
+
+    const getName = beacon => {
+      const sym = getMiddlePart(beacon)
       return beaconNames[sym] ? beaconNames[sym] : sym
-    },
-    groupTest (beacon, i) {
-      const { filteredBeacons } = this
-      if (i >= filteredBeacons.length - 1) return false
-      const next = filteredBeacons[i + 1]
+    }
+
+    const groupTest = (beacon, i) => {
+      if (i >= filteredBeacons.value.length - 1) return false
+      const next = filteredBeacons.value[i + 1]
       const len = next.length
       const start = next.slice(0, -2)
       const end = next.slice(len - 2)
       if (start === beacon && end === '-s') {
         return true
       }
+    }
+
+    return {
+      ...toRefs(state),
+      filtered,
+      filteredBeacons,
+      filterFun,
+      beacons,
+      getMiddlePart,
+      getName,
+      groupTest
     }
   }
 }
