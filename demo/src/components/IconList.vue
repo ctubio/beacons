@@ -6,9 +6,15 @@
       <a href="https://cryptowat.ch" target="_blank" rel="noopener noreferrer"
         >Cryptowatch</a
       >
+      (<a
+        href="https://github.com/cryptowatch/beacons"
+        target="_blank"
+        rel="noopener noreferrer"
+        >GitHub</a
+      >)
     </p>
     <input
-      v-model="query"
+      v-model.trim="query"
       type="text"
       :placeholder="'Search ' + Object.entries(filtered).length + ' icons'"
       autofocus
