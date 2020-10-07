@@ -2,7 +2,7 @@
 
 This font contains over 1700 icons of cryptocurrencies, crypto exchanges and fiat currencies.
 
-<img src="https://github.com/cryptowatch/beacons/img/beacons.png">
+<img src="https://raw.githubusercontent.com/cryptowatch/beacons/master/img/beacons.png">
 
 Demo: https://cryptowatch.github.io/beacons
 
