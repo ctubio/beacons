@@ -11,6 +11,7 @@
       v-model="query"
       type="text"
       :placeholder="'Search ' + Object.entries(filtered).length + ' icons'"
+      autofocus
     />
     <div class="filters">
       <div v-for="(val, filter) in filters" :key="filter.id" class="filter">
