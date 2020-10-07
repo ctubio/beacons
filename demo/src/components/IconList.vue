@@ -94,7 +94,9 @@ export default {
     }
 
     const filtered = computed(() => {
-      const filterKeys = Object.keys(filterFun).filter(key => filterFun[key])
+      const filterKeys = Object.keys(filterFun).filter(
+        key => state.filters[key]
+      )
       return Object.keys(beacons).filter(item => {
         return filterKeys.some(key => {
           return filterFun[key](item)
