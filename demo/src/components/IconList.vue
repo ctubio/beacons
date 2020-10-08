@@ -48,7 +48,7 @@
                 filteredBeacons[i + 1].slice(0, 4)
               }}</span
               ><span class="main">{{ syms[filteredBeacons[i + 1]] }}</span
-              ><span v-if="needsPostfix(filteredBeacons[i + 1])" class="postfix"
+              ><span v-if="hasPostfix(filteredBeacons[i + 1])" class="postfix"
                 >-s</span
               >
             </div>
@@ -118,20 +118,11 @@ const groupTest = beacon => {
   if (i >= beaconKeys.length - 1) return false
   const nextBeacon = beaconKeys[i + 1]
   const start = nextBeacon.slice(0, -2)
-  const isGroup = start === beacon && needsPostfix(nextBeacon)
+  const isGroup = start === beacon && hasPostfix(nextBeacon)
   return !!isGroup
 }
 
-export const hasPostfix = beacon => {
-  const len = beacon.length
-  return beacon.slice(len - 2, len) === '-s'
-}
-
-export const needsPostfix = nextBeacon => {
-  const len = nextBeacon.length
-  const end = nextBeacon.slice(len - 2)
-  return end === '-s'
-}
+export const hasPostfix = beacon => beacon.slice(beacon.length - 2) === '-s'
 
 export const syms = {}
 export const names = {}
