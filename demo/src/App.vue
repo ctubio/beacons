@@ -1,19 +1,12 @@
 <template>
-  <IconList/>
+  <IconList />
 </template>
 
-<script>
-import IconList from './components/IconList.vue'
-
-export default {
-  name: 'App',
-  components: {
-    IconList
-  }
-}
+<script setup>
+export { default as IconList } from "./components/IconList.vue";
 </script>
 
 <style lang="scss">
-@import '../../dist/beacons.css';
-@import './assets/style.scss';
+@import "../../dist/beacons.css";
+@import "./assets/style.scss";
 </style>
