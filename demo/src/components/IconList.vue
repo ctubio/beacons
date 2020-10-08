@@ -106,11 +106,8 @@ export const filteredBeacons = computed(() => {
 })
 
 const getMiddlePart = beacon => {
-  let middle = beacon.slice(4)
-  if (hasPostfix(beacon)) {
-    middle = middle.slice(0, -2)
-  }
-  return middle
+  const middle = beacon.slice(4)
+  return hasPostfix(beacon) ? middle.slice(0, -2) : middle
 }
 
 const groupTest = beacon => {
