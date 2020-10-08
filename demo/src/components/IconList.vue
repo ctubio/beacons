@@ -16,7 +16,7 @@
     <input
       v-model.trim="state.query"
       type="text"
-      :placeholder="'Search ' + Object.entries(filtered).length + ' icons'"
+      :placeholder="`Search ${nIcons} icons`"
       autofocus
     />
     <div class="filters">
@@ -26,12 +26,7 @@
         class="filter"
       >
         <input type="checkbox" :id="filter" v-model="state.filters[filter]" />
-        <label
-          :for="filter"
-          v-text="
-            filter + ' (' + beaconKeys.filter(filterFun[filter]).length + ')'
-          "
-        />
+        <label :for="filter" v-text="`${filter} (${iconsPerFilter[filter]})`" />
       </div>
     </div>
     <div v-if="filteredBeacons.length" class="beacons-flex">
@@ -43,11 +38,7 @@
             <div class="text">
               <span class="prefix">{{ beacon.slice(0, 4) }}</span
               ><span class="main">{{ syms[beacon] }}</span
-              ><span
-                v-if="beacon.slice(beacon.length - 2, beacon.length) === '-s'"
-                class="postfix"
-                >-s</span
-              >
+              ><span v-if="hasPostfix(beacon)" class="postfix">-s</span>
             </div>
           </div>
           <div class="icon">
@@ -57,14 +48,7 @@
                 filteredBeacons[i + 1].slice(0, 4)
               }}</span
               ><span class="main">{{ syms[filteredBeacons[i + 1]] }}</span
-              ><span
-                v-if="
-                  filteredBeacons[i + 1].slice(
-                    filteredBeacons[i + 1].length - 2,
-                    filteredBeacons[i + 1].length
-                  ) === '-s'
-                "
-                class="postfix"
+              ><span v-if="needsPostfix(filteredBeacons[i + 1])" class="postfix"
                 >-s</span
               >
             </div>
@@ -81,6 +65,8 @@ import beacons from '../assets/beacons.json'
 import beaconNames from '../assets/beaconNames.json'
 import { computed, reactive } from 'vue'
 
+export const beaconKeys = Object.keys(beacons)
+
 export const state = reactive({
   query: '',
   filters: { exchanges: true, symbols: true, currencies: true }
@@ -92,7 +78,12 @@ export const filterFun = {
   currencies: key => key.slice(0, 4) === 'cur-'
 }
 
-export const beaconKeys = Object.keys(beacons)
+export const iconsPerFilter = {}
+Object.keys(filterFun).forEach(filter => {
+  Object.assign(iconsPerFilter, {
+    [filter]: beaconKeys.filter(filterFun[filter]).length
+  })
+})
 
 export const filtered = computed(() => {
   const filterKeys = Object.keys(filterFun).filter(key => state.filters[key])
@@ -102,6 +93,8 @@ export const filtered = computed(() => {
     })
   })
 })
+
+export const nIcons = computed(() => Object.entries(filtered.value).length)
 
 export const filteredBeacons = computed(() => {
   return filtered.value.filter(key => {
@@ -114,9 +107,7 @@ export const filteredBeacons = computed(() => {
 
 const getMiddlePart = beacon => {
   let middle = beacon.slice(4)
-  const len = beacon.length
-  const end = beacon.slice(len - 2, len)
-  if (end === '-s') {
+  if (hasPostfix(beacon)) {
     middle = middle.slice(0, -2)
   }
   return middle
@@ -125,12 +116,21 @@ const getMiddlePart = beacon => {
 const groupTest = beacon => {
   const i = beaconKeys.indexOf(beacon)
   if (i >= beaconKeys.length - 1) return false
-  const next = beaconKeys[i + 1]
-  const len = next.length
-  const start = next.slice(0, -2)
-  const end = next.slice(len - 2)
-  const isGroup = start === beacon && end === '-s'
+  const nextBeacon = beaconKeys[i + 1]
+  const start = nextBeacon.slice(0, -2)
+  const isGroup = start === beacon && needsPostfix(nextBeacon)
   return !!isGroup
+}
+
+export const hasPostfix = beacon => {
+  const len = beacon.length
+  return beacon.slice(len - 2, len) === '-s'
+}
+
+export const needsPostfix = nextBeacon => {
+  const len = nextBeacon.length
+  const end = nextBeacon.slice(len - 2)
+  return end === '-s'
 }
 
 export const syms = {}
