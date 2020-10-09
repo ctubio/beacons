@@ -2,7 +2,7 @@
 
 Cryptowatch Beacons is a crypto icon font that contains over 1700 icons of cryptocurrencies, crypto exchanges and fiat currencies.
 
-<img src="https://raw.githubusercontent.com/cryptowatch/beacons/master/img/beacons.png">
+<img src="https://raw.githubusercontent.com/cryptowatch/beacons/master/img/beaconTop.png">
 
 ## Live Demo
 
@@ -21,6 +21,8 @@ You may need to adapt the href value to your project's folder structure. Now you
 All icons have 2 versions: By default they are surrounded by a circle. Simply add the `-s` postfix to get the icon without the surrounding circle:
 
 `<i class="beacon sym-btc-s" />`
+
+<img src="https://raw.githubusercontent.com/cryptowatch/beacons/master/img/iconExample.png">
 
 ### Groups
 
