@@ -52,6 +52,12 @@
 .sym-aac-s:before {
   content: "\e4bf"; }
 
+.sym-aave:before {
+  content: "\f4fa"; }
+
+.sym-aave-s:before {
+  content: "\e4fa"; }
+
 .sym-abbc:before {
   content: "\f3e1"; }
 
@@ -3861,6 +3867,12 @@
 
 .sym-tct:before {
   content: "\f46e"; }
+
+.sym-tbtc-s:before {
+  content: "\e4fb"; }
+
+.sym-tbtc:before {
+  content: "\f4fb"; }
 
 .sym-tct-s:before {
   content: "\e46e"; }
