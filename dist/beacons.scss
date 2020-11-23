@@ -25,6 +25,6 @@
 
 @each $name, $value in $beacons {
   .#{$name}:before {
-    content: esc($value);
+    content: unquote('"\\#{$value}"');
   }
 }
