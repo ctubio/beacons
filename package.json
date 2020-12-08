@@ -5,5 +5,8 @@
   "author": "cryptowat.ch",
   "homepage": "cryptowat.ch",
   "repository": "https://github.com/cryptowatch/beacons.git",
-  "license": "SIL Open Font License, Version 1.1"
+  "license": "SIL Open Font License, Version 1.1",
+  "scripts": {
+    "scss": "sass --watch dist/beacons.scss:dist/beacons.css"
+  }
 }
