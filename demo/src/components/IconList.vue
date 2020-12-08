@@ -65,7 +65,9 @@ import beacons from '../assets/beacons.json'
 import beaconNames from '../assets/beaconNames.json'
 import { computed, reactive } from 'vue'
 
-export const beaconKeys = Object.keys(beacons)
+export const beaconKeys = Object.keys(beacons).filter(
+  key => !key.includes('.s')
+)
 
 export const state = reactive({
   query: '',
