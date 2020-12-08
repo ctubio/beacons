@@ -11,6 +11,7 @@ file
   .replace(',\n);', '')
   .replace(/(\r\n|\n|\r)/gm, '') // rm line breaks
   .replace(/\s+/g, '') // rm spaces
+  .replace(/'/g, '') // rm quotes
   .split(',')
   .forEach((beacon) => {
     const split = beacon.split(':')

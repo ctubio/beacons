@@ -1902,6 +1902,22 @@
   content: "\e033";
 }
 
+.sym-eth2:before {
+  content: "\f033";
+}
+
+.sym-eth2-s:before {
+  content: "\e033";
+}
+
+.sym-eth2.s:before {
+  content: "\f033";
+}
+
+.sym-eth2.s-s:before {
+  content: "\e033";
+}
+
 .sym-etn:before {
   content: "\f3b0";
 }
@@ -4391,7 +4407,7 @@
 }
 
 .sym-rari:before {
-  content: "\fe4fe";
+  content: "\f4fe";
 }
 
 .sym-rari-s:before {

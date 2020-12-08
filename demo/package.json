@@ -12,7 +12,8 @@
     "+names": "node -r esm ./scripts/addHardcodedNames.js",
     "clear": "node -r esm ./scripts/clear.js",
     "step1": "node -r esm ./scripts/scss2json.js && node -r esm ./scripts/getBeaconNames.js && node -r esm ./scripts/getUnnamedBeacons.js",
-    "step2": "node -r esm ./scripts/addHardcodedNames.js && vue-cli-service build"
+    "step2": "node -r esm ./scripts/addHardcodedNames.js && vue-cli-service build",
+    "sym": "node -r esm ./scripts/webserverUpdate.js"
   },
   "dependencies": {
     "core-js": "^3.6.5",
