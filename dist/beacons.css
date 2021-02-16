@@ -410,6 +410,14 @@
   content: "\e0db";
 }
 
+.sym-avax:before {
+  content: "\f508";
+}
+
+.sym-avax-s:before {
+  content: "\e508";
+}
+
 .sym-avt:before {
   content: "\f014";
 }
@@ -1886,6 +1894,14 @@
   content: "\e487";
 }
 
+.sym-esd:before {
+  content: "\f502";
+}
+
+.sym-esd-s:before {
+  content: "\e502";
+}
+
 .sym-etc:before {
   content: "\f032";
 }
@@ -1907,6 +1923,14 @@
 }
 
 .sym-eth2-s:before {
+  content: "\e033";
+}
+
+.sym-eth2s:before {
+  content: "\f033";
+}
+
+.sym-eth2s-s:before {
   content: "\e033";
 }
 
@@ -2108,6 +2132,14 @@
 
 .sym-fota-s:before {
   content: "\e33a";
+}
+
+.sym-frax:before {
+  content: "\f509";
+}
+
+.sym-frax-s:before {
+  content: "\e509";
 }
 
 .sym-fsn:before {
@@ -2772,6 +2804,14 @@
 
 .sym-ind-s:before {
   content: "\e3fd";
+}
+
+.sym-inj:before {
+  content: "\f501";
+}
+
+.sym-inj-s:before {
+  content: "\e501";
 }
 
 .sym-ink:before {
@@ -3790,6 +3830,14 @@
   content: "\e353";
 }
 
+.sym-nu:before {
+  content: "\f500";
+}
+
+.sym-nu-s:before {
+  content: "\e500";
+}
+
 .sym-nuls:before {
   content: "\f0ff";
 }
@@ -4566,6 +4614,14 @@
   content: "\e067";
 }
 
+.sym-rose:before {
+  content: "\f504";
+}
+
+.sym-rose-s:before {
+  content: "\e504";
+}
+
 .sym-rox:before {
   content: "\f413";
 }
@@ -4820,6 +4876,14 @@
 
 .sym-sjcx-s:before {
   content: "\e06e";
+}
+
+.sym-skl:before {
+  content: "\f506";
+}
+
+.sym-skl-s:before {
+  content: "\e506";
 }
 
 .sym-skm:before {
@@ -5486,6 +5550,14 @@
   content: "\e0b2";
 }
 
+.sym-unfi:before {
+  content: "\f503";
+}
+
+.sym-unfi-s:before {
+  content: "\e503";
+}
+
 .sym-uni:before {
   content: "\f4f7";
 }
@@ -5548,6 +5620,14 @@
 
 .sym-usk-s:before {
   content: "\e49a";
+}
+
+.sym-ust:before {
+  content: "\f507";
+}
+
+.sym-ust-s:before {
+  content: "\e507";
 }
 
 .sym-utk:before {
@@ -5964,6 +6044,14 @@
 
 .sym-xdn-s:before {
   content: "\e0a0";
+}
+
+.sym-xos:before {
+  content: "\f505";
+}
+
+.sym-xos-s:before {
+  content: "\e505";
 }
 
 .sym-xel:before {
