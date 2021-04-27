@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @font-face {
   font-family: "beacons";
   font-style: normal;
@@ -1751,11 +1752,11 @@
 }
 
 .sym-edg:before {
-  content: "\f02b";
+  content: "\f55d";
 }
 
 .sym-edg-s:before {
-  content: "\e02b";
+  content: "\e55d";
 }
 
 .sym-edo:before {
@@ -3399,11 +3400,11 @@
 }
 
 .sym-mln:before {
-  content: "\f04e";
+  content: "\f50a";
 }
 
 .sym-mln-s:before {
-  content: "\e04e";
+  content: "\e50a";
 }
 
 .sym-mkr:before {
@@ -3559,11 +3560,11 @@
 }
 
 .sym-mxc:before {
-  content: "\f408";
+  content: "\f567";
 }
 
 .sym-mxc-s:before {
-  content: "\e408";
+  content: "\e567";
 }
 
 .sym-mxn:before {
@@ -4271,11 +4272,11 @@
 }
 
 .sym-pnt:before {
-  content: "\f3d4";
+  content: "\f524";
 }
 
 .sym-pnt-s:before {
-  content: "\e3d4";
+  content: "\e524";
 }
 
 .sym-ppc:before {
@@ -4599,11 +4600,11 @@
 }
 
 .sym-ring:before {
-  content: "\f4f0";
+  content: "\f55c";
 }
 
 .sym-ring-s:before {
-  content: "\e4f0";
+  content: "\e55c";
 }
 
 .sym-rlc:before {
@@ -5159,11 +5160,11 @@
 }
 
 .sym-stx:before {
-  content: "\f364";
+  content: "\f522";
 }
 
 .sym-stx-s:before {
-  content: "\e364";
+  content: "\e522";
 }
 
 .sym-sub:before {
@@ -5599,11 +5600,11 @@
 }
 
 .sym-usds:before {
-  content: "\f41f";
+  content: "\f551";
 }
 
 .sym-usds-s:before {
-  content: "\e41f";
+  content: "\e551";
 }
 
 .sym-usdt:before {
@@ -6538,7 +6539,7 @@
   content: "\f108";
 }
 
-.exc-bittrex-s:before {
+.Ì exc-bittrex-s:before {
   content: "\e108";
 }
 
@@ -7212,6 +7213,782 @@
 
 .cur-zar-s:before {
   content: "\e208";
+}
+
+.sym-aca:before {
+  content: "\f553";
+}
+
+.sym-aca-s:before {
+  content: "\e553";
+}
+
+.sym-ach:before {
+  content: "\f53f";
+}
+
+.sym-ach-s:before {
+  content: "\e53f";
+}
+
+.sym-alpha:before {
+  content: "\f50c";
+}
+
+.sym-alpha-s:before {
+  content: "\e50c";
+}
+
+.sym-api3:before {
+  content: "\f534";
+}
+
+.sym-api3-s:before {
+  content: "\e534";
+}
+
+.sym-auction:before {
+  content: "\f51a";
+}
+
+.sym-auction-s:before {
+  content: "\e51a";
+}
+
+.sym-audio:before {
+  content: "\f50f";
+}
+
+.sym-audio-s:before {
+  content: "\e50f";
+}
+
+.sym-ava:before {
+  content: "\f531";
+}
+
+.sym-ava-s:before {
+  content: "\e531";
+}
+
+.sym-axs:before {
+  content: "\f51b";
+}
+
+.sym-axs-s:before {
+  content: "\e51b";
+}
+
+.sym-bake:before {
+  content: "\f528";
+}
+
+.sym-bake-s:before {
+  content: "\e528";
+}
+
+.sym-bel:before {
+  content: "\f51f";
+}
+
+.sym-bel-s:before {
+  content: "\e51f";
+}
+
+.sym-bnc:before {
+  content: "\f555";
+}
+
+.sym-bnc-s:before {
+  content: "\e555";
+}
+
+.sym-bond:before {
+  content: "\f540";
+}
+
+.sym-bond-s:before {
+  content: "\e540";
+}
+
+.sym-bor:before {
+  content: "\f53e";
+}
+
+.sym-bor-s:before {
+  content: "\e53e";
+}
+
+.sym-brg:before {
+  content: "\f53c";
+}
+
+.sym-brg-s:before {
+  content: "\e53c";
+}
+
+.sym-bsk:before {
+  content: "\f554";
+}
+
+.sym-bsk-s:before {
+  content: "\e554";
+}
+
+.sym-burger:before {
+  content: "\f537";
+}
+
+.sym-burger-s:before {
+  content: "\e537";
+}
+
+.sym-cake:before {
+  content: "\f513";
+}
+
+.sym-cake-s:before {
+  content: "\e513";
+}
+
+.sym-cfg:before {
+  content: "\f556";
+}
+
+.sym-cfg-s:before {
+  content: "\e556";
+}
+
+.sym-cfx:before {
+  content: "\f543";
+}
+
+.sym-cfx-s:before {
+  content: "\e543";
+}
+
+.sym-clv:before {
+  content: "\f558";
+}
+
+.sym-clv-s:before {
+  content: "\e558";
+}
+
+.sym-cream:before {
+  content: "\f54c";
+}
+
+.sym-cream-s:before {
+  content: "\e54c";
+}
+
+.sym-cru:before {
+  content: "\f559";
+}
+
+.sym-cru-s:before {
+  content: "\e559";
+}
+
+.sym-ctk:before {
+  content: "\f527";
+}
+
+.sym-ctk-s:before {
+  content: "\e527";
+}
+
+.sym-cur:before {
+  content: "\f55a";
+}
+
+.sym-cur-s:before {
+  content: "\e55a";
+}
+
+.sym-cvp:before {
+  content: "\f54f";
+}
+
+.sym-cvp-s:before {
+  content: "\e54f";
+}
+
+.sym-cyc:before {
+  content: "\f55b";
+}
+
+.sym-cyc-s:before {
+  content: "\e55b";
+}
+
+.sym-dego:before {
+  content: "\f50e";
+}
+
+.sym-dego-s:before {
+  content: "\e50e";
+}
+
+.sym-dhx:before {
+  content: "\f56e";
+}
+
+.sym-dhx-s:before {
+  content: "\e56e";
+}
+
+.sym-dia:before {
+  content: "\f511";
+}
+
+.sym-dia-s:before {
+  content: "\e511";
+}
+
+.sym-dodo:before {
+  content: "\f51e";
+}
+
+.sym-dodo-s:before {
+  content: "\e51e";
+}
+
+.sym-easy:before {
+  content: "\f53a";
+}
+
+.sym-easy-s:before {
+  content: "\e53a";
+}
+
+.sym-eq:before {
+  content: "\f55e";
+}
+
+.sym-eq-s:before {
+  content: "\e55e";
+}
+
+.sym-ern:before {
+  content: "\f54a";
+}
+
+.sym-ern-s:before {
+  content: "\e54a";
+}
+
+.sym-ethup:before {
+  content: "\f525";
+}
+
+.sym-ethup-s:before {
+  content: "\e525";
+}
+
+.sym-exrd:before {
+  content: "\f541";
+}
+
+.sym-exrd-s:before {
+  content: "\e541";
+}
+
+.sym-fio:before {
+  content: "\f517";
+}
+
+.sym-fio-s:before {
+  content: "\e517";
+}
+
+.sym-firo:before {
+  content: "\f532";
+}
+
+.sym-firo-s:before {
+  content: "\e532";
+}
+
+.sym-fis:before {
+  content: "\f56c";
+}
+
+.sym-fis-s:before {
+  content: "\e56c";
+}
+
+.sym-front:before {
+  content: "\f51c";
+}
+
+.sym-front-s:before {
+  content: "\e51c";
+}
+
+.sym-fxs:before {
+  content: "\f52c";
+}
+
+.sym-fxs-s:before {
+  content: "\e52c";
+}
+
+.sym-ghst:before {
+  content: "\f571";
+}
+
+.sym-ghst-s:before {
+  content: "\e571";
+}
+
+.sym-glm:before {
+  content: "\f52d";
+}
+
+.sym-glm-s:before {
+  content: "\e52d";
+}
+
+.sym-glmr:before {
+  content: "\f565";
+}
+
+.sym-glmr-s:before {
+  content: "\e565";
+}
+
+.sym-hard:before {
+  content: "\f514";
+}
+
+.sym-hard-s:before {
+  content: "\e514";
+}
+
+.sym-hdx:before {
+  content: "\f55f";
+}
+
+.sym-hdx-s:before {
+  content: "\e55f";
+}
+
+.sym-hit:before {
+  content: "\f545";
+}
+
+.sym-hit-s:before {
+  content: "\e545";
+}
+
+.sym-idex:before {
+  content: "\f52f";
+}
+
+.sym-idex-s:before {
+  content: "\e52f";
+}
+
+.sym-iq:before {
+  content: "\f523";
+}
+
+.sym-iq-s:before {
+  content: "\e523";
+}
+
+.sym-juv:before {
+  content: "\f546";
+}
+
+.sym-juv-s:before {
+  content: "\e546";
+}
+
+.sym-kar:before {
+  content: "\f560";
+}
+
+.sym-kar-s:before {
+  content: "\e560";
+}
+
+.sym-kilt:before {
+  content: "\f561";
+}
+
+.sym-kilt-s:before {
+  content: "\e561";
+}
+
+.sym-ksx:before {
+  content: "\f56a";
+}
+
+.sym-ksx-s:before {
+  content: "\e56a";
+}
+
+.sym-kyl:before {
+  content: "\f562";
+}
+
+.sym-kyl-s:before {
+  content: "\e562";
+}
+
+.sym-lit:before {
+  content: "\f563";
+}
+
+.sym-lit-s:before {
+  content: "\e563";
+}
+
+.sym-ma:before {
+  content: "\f564";
+}
+
+.sym-ma-s:before {
+  content: "\e564";
+}
+
+.sym-mass:before {
+  content: "\f542";
+}
+
+.sym-mass-s:before {
+  content: "\e542";
+}
+
+.sym-mdx:before {
+  content: "\f519";
+}
+
+.sym-mdx-s:before {
+  content: "\e519";
+}
+
+.sym-mob:before {
+  content: "\f544";
+}
+
+.sym-mob-s:before {
+  content: "\e544";
+}
+
+.sym-om:before {
+  content: "\f52a";
+}
+
+.sym-om-s:before {
+  content: "\e52a";
+}
+
+.sym-pcx:before {
+  content: "\f557";
+}
+
+.sym-pcx-s:before {
+  content: "\e557";
+}
+
+.sym-pha:before {
+  content: "\f552";
+}
+
+.sym-pha-s:before {
+  content: "\e552";
+}
+
+.sym-phb:before {
+  content: "\f538";
+}
+
+.sym-phb-s:before {
+  content: "\e538";
+}
+
+.sym-plm:before {
+  content: "\f568";
+}
+
+.sym-plm-s:before {
+  content: "\e568";
+}
+
+.sym-pols:before {
+  content: "\f516";
+}
+
+.sym-pols-s:before {
+  content: "\e516";
+}
+
+.sym-pond:before {
+  content: "\f51d";
+}
+
+.sym-pond-s:before {
+  content: "\e51d";
+}
+
+.sym-rad:before {
+  content: "\f549";
+}
+
+.sym-rad-s:before {
+  content: "\e549";
+}
+
+.sym-ray:before {
+  content: "\f530";
+}
+
+.sym-ray-s:before {
+  content: "\e530";
+}
+
+.sym-reef:before {
+  content: "\f50d";
+}
+
+.sym-reef-s:before {
+  content: "\e50d";
+}
+
+.sym-river:before {
+  content: "\f566";
+}
+
+.sym-river-s:before {
+  content: "\e566";
+}
+
+.sym-sand:before {
+  content: "\f570";
+}
+
+.sym-sand-s:before {
+  content: "\e570";
+}
+
+.sym-sats:before {
+  content: "\f53b";
+}
+
+.sym-sats-s:before {
+  content: "\e53b";
+}
+
+.sym-scrt:before {
+  content: "\f548";
+}
+
+.sym-scrt-s:before {
+  content: "\e548";
+}
+
+.sym-sdn:before {
+  content: "\f56b";
+}
+
+.sym-sdn-s:before {
+  content: "\e56b";
+}
+
+.sym-sfp:before {
+  content: "\f512";
+}
+
+.sym-sfp-s:before {
+  content: "\e512";
+}
+
+.sym-smn:before {
+  content: "\f56d";
+}
+
+.sym-smn-s:before {
+  content: "\e56d";
+}
+
+.sym-sparta:before {
+  content: "\f550";
+}
+
+.sym-sparta-s:before {
+  content: "\e550";
+}
+
+.sym-strax:before {
+  content: "\f536";
+}
+
+.sym-strax-s:before {
+  content: "\e536";
+}
+
+.sym-swrv:before {
+  content: "\f54e";
+}
+
+.sym-swrv-s:before {
+  content: "\e54e";
+}
+
+.sym-torn:before {
+  content: "\f529";
+}
+
+.sym-torn-s:before {
+  content: "\e529";
+}
+
+.sym-tru:before {
+  content: "\f539";
+}
+
+.sym-tru-s:before {
+  content: "\e539";
+}
+
+.sym-tryb:before {
+  content: "\f54b";
+}
+
+.sym-tryb-s:before {
+  content: "\e54b";
+}
+
+.sym-ttt:before {
+  content: "\f50b";
+}
+
+.sym-ttt-s:before {
+  content: "\e50b";
+}
+
+.sym-twt:before {
+  content: "\f52b";
+}
+
+.sym-twt-s:before {
+  content: "\e52b";
+}
+
+.sym-uft:before {
+  content: "\f53d";
+}
+
+.sym-uft-s:before {
+  content: "\e53d";
+}
+
+.sym-uma:before {
+  content: "\f520";
+}
+
+.sym-uma-s:before {
+  content: "\e520";
+}
+
+.sym-vai:before {
+  content: "\f54d";
+}
+
+.sym-vai-s:before {
+  content: "\e54d";
+}
+
+.sym-vgx:before {
+  content: "\f526";
+}
+
+.sym-vgx-s:before {
+  content: "\e526";
+}
+
+.sym-vid:before {
+  content: "\f547";
+}
+
+.sym-vid-s:before {
+  content: "\e547";
+}
+
+.sym-vidt:before {
+  content: "\f535";
+}
+
+.sym-vidt-s:before {
+  content: "\e535";
+}
+
+.sym-vtho:before {
+  content: "\f510";
+}
+
+.sym-vtho-s:before {
+  content: "\e510";
+}
+
+.sym-wing:before {
+  content: "\f52e";
+}
+
+.sym-wing-s:before {
+  content: "\e52e";
+}
+
+.sym-woo:before {
+  content: "\f521";
+}
+
+.sym-woo-s:before {
+  content: "\e521";
+}
+
+.sym-xrt:before {
+  content: "\f569";
+}
+
+.sym-xrt-s:before {
+  content: "\e569";
+}
+
+.sym-xtzdown:before {
+  content: "\f533";
+}
+
+.sym-xtzdown-s:before {
+  content: "\e533";
+}
+
+.sym-xvs:before {
+  content: "\f515";
+}
+
+.sym-xvs-s:before {
+  content: "\e515";
+}
+
+.sym-zks:before {
+  content: "\f518";
+}
+
+.sym-zks-s:before {
+  content: "\e518";
+}
+
+.sym-zlk:before {
+  content: "\f56f";
+}
+
+.sym-zlk-s:before {
+  content: "\e56f";
 }
 
 /*# sourceMappingURL=beacons.css.map */
