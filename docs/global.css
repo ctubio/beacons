@@ -1,0 +1,63 @@
+:root {
+  --channel: rgba(17, 75, 121, 1);
+  --text: rgba(211, 211, 211, 1);
+  --alert: rgba(229, 152, 35, 1);
+  --cta: rgba(28, 44, 98, 1);
+  --long: rgba(0, 170, 64, 1);
+  --short: rgba(232, 9, 58, 1);
+  --bg: rgba(0, 0, 0, 1);
+  --border: rgba(42, 42, 42, 1);
+  --weak: rgba(135, 135, 135, 1);
+  --bg-light: rgba(13, 13, 13, 1);
+}
+
+@font-face {
+  font-family: "Iosevka Custom Web";
+  font-display: swap;
+  font-weight: 400;
+  font-stretch: expanded;
+  font-style: normal;
+  src: url("/iosevka-custom/woff2/iosevka-custom-extended.woff2")
+      format("woff2"),
+    url("/iosevka-custom/woff/iosevka-custom-extended.woff") format("woff"),
+    url("/iosevka-custom/ttf/iosevka-custom-extended.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Iosevka Custom Web";
+  font-display: swap;
+  font-weight: 700;
+  font-stretch: expanded;
+  font-style: normal;
+  src: url("/iosevka-custom/woff2/iosevka-custom-extendedbold.woff2")
+      format("woff2"),
+    url("/iosevka-custom/woff/iosevka-custom-extendedbold.woff") format("woff"),
+    url("/iosevka-custom/ttf/iosevka-custom-extendedbold.ttf")
+      format("truetype");
+}
+
+body {
+  font-family: "Iosevka Custom Web", monospace;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+a {
+  color: var(--text);
+}
+
+a:hover {
+  color: var(--long);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+}
