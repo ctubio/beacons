@@ -64,7 +64,6 @@
     Object.assign(names, { [beacon]: name });
     Object.assign(groups, { [beacon]: group });
   });
-  console.log(groups);
 </script>
 
 <div class="container">
