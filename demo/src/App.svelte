@@ -45,7 +45,6 @@
     const i = beaconKeys.indexOf(beacon);
     if (i < 1) return false;
     const prevBeacon = beaconKeys[i - 1];
-    // console.log(prevBeacon);
     const start = prevBeacon.slice(0, -2);
     const isGroup = start === beacon && hasPostfix(prevBeacon);
     return !!isGroup;
