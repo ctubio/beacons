@@ -41,11 +41,11 @@ or
 
 ### Fallback
 
-`beacon-sym-default` can be used as a fallback for non-existing icons. You could do:
+`beacon-sym-_default` and `beacon-exc-_default` can be used as a fallback for non-existing icons. You could do:
 
-`<i class="beacon-sym-default beacon-sym-NONEXISTANT" />`
+`<i class="beacon-sym-_default beacon-sym-NONEXISTANT" />`
 
-if `beacon-sym-NONEXISTANT` does not exist, `beacon-sym-default` will be used instead.
+if `beacon-sym-NONEXISTANT` does not exist, `beacon-sym-_default` will be used instead.
 
 # Build your own custom font
 
