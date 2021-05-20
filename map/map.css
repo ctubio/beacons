@@ -1,468 +1,489 @@
 .beacon-sym-d:before {
-    content: "\f152"
+    content: "\f1b1"
 }
 .beacon-sym-default:before {
-    content: "\f152"
+    content: "\f1b1"
 }
 .beacon-sym-d-s:before {
-    content: "\f151"
+    content: "\f1b0"
 }
 .beacon-exc-d:before {
-    content: "\f102"
+    content: "\f161"
 }
 .beacon-exc-d-s:before {
-    content: "\f101"
+    content: "\f160"
 }
 .beacon-exc-default:before {
-    content: "\f102"
+    content: "\f161"
 }
 .beacon-exc-default-s:before {
-    content: "\f101"
+    content: "\f160"
 }
 .beacon-cur-default:before {
-    content: "\f152"
+    content: "\f1b1"
 }
 .beacon-cur-default-s:before {
-    content: "\f151"
+    content: "\f1b0"
+}
+.beacon-eqt-default:before {
+    content: "\f1b1"
+}
+.beacon-eqt-_default:before {
+    content: "\f1b1"
+}
+.beacon-eqt-potx:before {
+    content: "\f124"
+}
+.beacon-eqt-qqq:before {
+    content: "\f124"
+}
+.beacon-eqt-spay:before {
+    content: "\f124"
+}
+.beacon-eqt-xle:before {
+    content: "\f124"
+}
+.beacon-eqt-xlf:before {
+    content: "\f124"
 }
 .beacon-cur-anct:before {
-    content: "\f18e"
+    content: "\f1ed"
 }
 .beacon-cur-anct-s:before {
-    content: "\f18d"
+    content: "\f1ec"
 }
 .beacon-cur-aud:before {
-    content: "\f1b4"
+    content: "\f213"
 }
 .beacon-cur-aud-s:before {
-    content: "\f1b3"
+    content: "\f212"
 }
 .beacon-cur-bnb:before {
-    content: "\f211"
+    content: "\f270"
 }
 .beacon-cur-bnb-s:before {
-    content: "\f210"
+    content: "\f26f"
 }
 .beacon-sym-xbt:before {
-    content: "\f233"
+    content: "\f292"
 }
 .beacon-cur-btc:before {
-    content: "\f233"
+    content: "\f292"
 }
 .beacon-sym-xbt-s:before {
-    content: "\f232"
+    content: "\f291"
 }
 .beacon-cur-btc-s:before {
-    content: "\f232"
+    content: "\f291"
 }
 .beacon-cur-busd:before {
-    content: "\f24f"
+    content: "\f2ae"
 }
 .beacon-cur-busd-s:before {
-    content: "\f24e"
-}
-.beacon-exc-bitz:before {
-    content: "\f253"
-}
-.beacon-cur-bz:before {
-    content: "\f253"
-}
-.beacon-exc-bitz-s:before {
-    content: "\f252"
-}
-.beacon-cur-bz-s:before {
-    content: "\f252"
-}
-.beacon-cur-cad:before {
-    content: "\f25b"
-}
-.beacon-cur-cad-s:before {
-    content: "\f25a"
-}
-.beacon-cur-chf:before {
-    content: "\f27b"
-}
-.beacon-cur-chf-s:before {
-    content: "\f27a"
-}
-.beacon-cur-cny:before {
-    content: "\f29d"
-}
-.beacon-cur-cny-s:before {
-    content: "\f29c"
-}
-.beacon-sym-cs:before {
     content: "\f2ad"
 }
-.beacon-sym-cs-s:before {
-    content: "\f2ac"
-}
-.beacon-cur-dai:before {
-    content: "\f2e5"
-}
-.beacon-cur-dai-s:before {
-    content: "\f2e4"
-}
-.beacon-sym-xdg:before {
-    content: "\f31f"
-}
-.beacon-sym-xdg-s:before {
-    content: "\f31e"
-}
-.beacon-cur-eos:before {
-    content: "\f35e"
-}
-.beacon-cur-eos-s:before {
-    content: "\f35d"
-}
-.beacon-sym-eth2:before {
-    content: "\f36c"
-}
-.beacon-sym-eth2s:before {
-    content: "\f36c"
-}
-.beacon-sym-eth2.s:before {
-    content: "\f36c"
-}
-.beacon-sym-weth:before {
-    content: "\f36c"
-}
-.beacon-cur-eth:before {
-    content: "\f36c"
-}
-.beacon-sym-eth2-s:before {
-    content: "\f36b"
-}
-.beacon-sym-eth2s-s:before {
-    content: "\f36b"
-}
-.beacon-sym-eth2.s-s:before {
-    content: "\f36b"
-}
-.beacon-sym-weth-s:before {
-    content: "\f36b"
-}
-.beacon-cur-eth-s:before {
-    content: "\f36b"
-}
-.beacon-cur-eur:before {
-    content: "\f374"
-}
-.beacon-cur-eur-s:before {
-    content: "\f373"
-}
-.beacon-cur-eurs:before {
-    content: "\f376"
-}
-.beacon-cur-eurs-s:before {
-    content: "\f375"
-}
-.beacon-sym-usdt:before {
-    content: "\f378"
-}
-.beacon-cur-usdt:before {
-    content: "\f378"
-}
-.beacon-sym-usdt-s:before {
-    content: "\f377"
-}
-.beacon-cur-usdt-s:before {
-    content: "\f377"
-}
-.beacon-exc-kraken:before {
-    content: "\f38c"
-}
-.beacon-exc-kraken-futures:before {
-    content: "\f38c"
-}
-.beacon-exc-kraken-s:before {
-    content: "\f38b"
-}
-.beacon-exc-kraken-futures-s:before {
-    content: "\f38b"
-}
-.beacon-cur-gbp:before {
-    content: "\f3cc"
-}
-.beacon-cur-gbp-s:before {
-    content: "\f3cb"
-}
-.beacon-exc-gemini:before {
-    content: "\f401"
-}
-.beacon-cur-gusd:before {
-    content: "\f401"
-}
-.beacon-exc-gemini-s:before {
-    content: "\f400"
-}
-.beacon-cur-gusd-s:before {
-    content: "\f400"
-}
-.beacon-cur-hkd:before {
-    content: "\f419"
-}
-.beacon-cur-hkd-s:before {
-    content: "\f418"
-}
-.beacon-sym-husd:before {
-    content: "\f42d"
-}
-.beacon-exc-huobi:before {
-    content: "\f42d"
-}
-.beacon-cur-ht:before {
-    content: "\f42d"
-}
-.beacon-sym-husd-s:before {
-    content: "\f42c"
-}
-.beacon-exc-huobi-s:before {
-    content: "\f42c"
-}
-.beacon-cur-ht-s:before {
-    content: "\f42c"
-}
-.beacon-cur-idr:before {
-    content: "\f447"
-}
-.beacon-cur-idr-s:before {
-    content: "\f446"
-}
-.beacon-sym-iota:before {
-    content: "\f467"
-}
-.beacon-sym-iota-s:before {
-    content: "\f466"
-}
-.beacon-cur-inr:before {
-    content: "\f45b"
-}
-.beacon-cur-inr-s:before {
-    content: "\f45a"
-}
-.beacon-cur-jpy:before {
-    content: "\f477"
-}
-.beacon-cur-jpy-s:before {
-    content: "\f476"
-}
-.beacon-cur-krw:before {
-    content: "\f49b"
-}
-.beacon-cur-krw-s:before {
-    content: "\f49a"
-}
-.beacon-sym-medx:before {
-    content: "\f4f7"
-}
-.beacon-sym-medx-s:before {
-    content: "\f4f6"
-}
-.beacon-cur-mxn:before {
-    content: "\f53b"
-}
-.beacon-cur-mxn-s:before {
-    content: "\f53a"
-}
-.beacon-cur-myr:before {
-    content: "\f53d"
-}
-.beacon-cur-myr-s:before {
-    content: "\f53c"
-}
-.beacon-cur-ngn:before {
-    content: "\f561"
-}
-.beacon-cur-ngn-s:before {
-    content: "\f560"
-}
-.beacon-cur-pax:before {
-    content: "\f5bf"
-}
-.beacon-cur-pax-s:before {
-    content: "\f5be"
-}
-.beacon-cur-php:before {
-    content: "\f5d1"
-}
-.beacon-cur-php-s:before {
-    content: "\f5d0"
-}
-.beacon-cur-pln:before {
-    content: "\f5e3"
-}
-.beacon-cur-pln-s:before {
-    content: "\f5e2"
-}
-.beacon-cur-qash:before {
-    content: "\f60f"
-}
-.beacon-cur-qash-s:before {
-    content: "\f60e"
-}
-.beacon-cur-rub:before {
-    content: "\f661"
-}
-.beacon-cur-rur:before {
-    content: "\f661"
-}
-.beacon-cur-rub-s:before {
-    content: "\f660"
-}
-.beacon-cur-rur-s:before {
-    content: "\f660"
-}
-.beacon-sym-steem:before {
-    content: "\f676"
-}
-.beacon-sym-steem-s:before {
-    content: "\f675"
-}
-.beacon-sym-xsc:before {
-    content: "\f678"
-}
-.beacon-sym-xsc-s:before {
-    content: "\f677"
-}
-.beacon-cur-sgd:before {
-    content: "\f690"
-}
-.beacon-cur-sgd-s:before {
-    content: "\f68f"
-}
-.beacon-sym-storj:before {
-    content: "\f69c"
-}
-.beacon-sym-storj-s:before {
-    content: "\f69b"
-}
-.beacon-sym-tel:before {
-    content: "\f702"
-}
-.beacon-cur-trx:before {
-    content: "\f73f"
-}
-.beacon-cur-trx-s:before {
-    content: "\f73e"
-}
-.beacon-cur-tusd:before {
-    content: "\f74f"
-}
-.beacon-cur-tusd-s:before {
-    content: "\f74e"
-}
-.beacon-cur-usd:before {
-    content: "\f76b"
-}
-.beacon-cur-usd-s:before {
-    content: "\f76a"
-}
-.beacon-cur-usdc:before {
-    content: "\f76d"
-}
-.beacon-cur-usdc-s:before {
-    content: "\f76c"
-}
-.beacon-sym-vet:before {
-    content: "\f785"
-}
-.beacon-sym-vet-s:before {
-    content: "\f784"
-}
-.beacon-sym-waxp:before {
-    content: "\f7b5"
-}
-.beacon-sym-waxp-s:before {
-    content: "\f7b4"
-}
-.beacon-cur-xlm:before {
-    content: "\f7eb"
-}
-.beacon-cur-xlm-s:before {
-    content: "\f7ea"
-}
-.beacon-cur-xmr:before {
-    content: "\f7ef"
-}
-.beacon-cur-xmr-s:before {
-    content: "\f7ee"
-}
-.beacon-cur-xrp:before {
-    content: "\f803"
-}
-.beacon-cur-xrp-s:before {
-    content: "\f802"
-}
-.beacon-cur-zar:before {
-    content: "\f829"
-}
-.beacon-cur-zar-s:before {
-    content: "\f828"
-}
-.beacon-exc-binance-us:before {
-    content: "\f106"
-}
-.beacon-exc-binance-us-s:before {
-    content: "\f105"
-}
-.beacon-exc-mexbt:before {
-    content: "\f11c"
-}
-.beacon-exc-mexbt-s:before {
-    content: "\f11b"
-}
-.beacon-exc-coinbase-pro:before {
-    content: "\f124"
-}
-.beacon-exc-gdax:before {
-    content: "\f124"
-}
-.beacon-exc-coinbase-pro-s:before {
-    content: "\f123"
-}
-.beacon-exc-gdax-s:before {
-    content: "\f123"
-}
-.beacon-exc-quadriga:before {
-    content: "\f144"
-}
-.beacon-exc-quadriga-s:before {
-    content: "\f143"
-}
-.beacon-cur-crc:before {
-    content: "\f2b3"
-}
-.beacon-cur-crc-s:before {
+.beacon-exc-bitz:before {
     content: "\f2b2"
 }
-.beacon-cur-lak:before {
+.beacon-cur-bz:before {
+    content: "\f2b2"
+}
+.beacon-exc-bitz-s:before {
+    content: "\f2b1"
+}
+.beacon-cur-bz-s:before {
+    content: "\f2b1"
+}
+.beacon-cur-cad:before {
+    content: "\f2ba"
+}
+.beacon-cur-cad-s:before {
+    content: "\f2b9"
+}
+.beacon-cur-chf:before {
+    content: "\f2da"
+}
+.beacon-cur-chf-s:before {
+    content: "\f2d9"
+}
+.beacon-cur-cny:before {
+    content: "\f2fc"
+}
+.beacon-cur-cny-s:before {
+    content: "\f2fb"
+}
+.beacon-sym-cs:before {
+    content: "\f30c"
+}
+.beacon-sym-cs-s:before {
+    content: "\f30b"
+}
+.beacon-cur-dai:before {
+    content: "\f344"
+}
+.beacon-cur-dai-s:before {
+    content: "\f343"
+}
+.beacon-sym-xdg:before {
+    content: "\f37e"
+}
+.beacon-sym-xdg-s:before {
+    content: "\f37d"
+}
+.beacon-cur-eos:before {
+    content: "\f3bd"
+}
+.beacon-cur-eos-s:before {
+    content: "\f3bc"
+}
+.beacon-sym-eth2:before {
+    content: "\f3cb"
+}
+.beacon-sym-eth2s:before {
+    content: "\f3cb"
+}
+.beacon-sym-eth2.s:before {
+    content: "\f3cb"
+}
+.beacon-sym-weth:before {
+    content: "\f3cb"
+}
+.beacon-cur-eth:before {
+    content: "\f3cb"
+}
+.beacon-sym-eth2-s:before {
+    content: "\f3ca"
+}
+.beacon-sym-eth2s-s:before {
+    content: "\f3ca"
+}
+.beacon-sym-eth2.s-s:before {
+    content: "\f3ca"
+}
+.beacon-sym-weth-s:before {
+    content: "\f3ca"
+}
+.beacon-cur-eth-s:before {
+    content: "\f3ca"
+}
+.beacon-cur-eur:before {
+    content: "\f3d3"
+}
+.beacon-cur-eur-s:before {
+    content: "\f3d2"
+}
+.beacon-cur-eurs:before {
+    content: "\f3d5"
+}
+.beacon-cur-eurs-s:before {
+    content: "\f3d4"
+}
+.beacon-sym-usdt:before {
+    content: "\f3d7"
+}
+.beacon-cur-usdt:before {
+    content: "\f3d7"
+}
+.beacon-sym-usdt-s:before {
+    content: "\f3d6"
+}
+.beacon-cur-usdt-s:before {
+    content: "\f3d6"
+}
+.beacon-exc-kraken:before {
+    content: "\f3eb"
+}
+.beacon-exc-kraken-futures:before {
+    content: "\f3eb"
+}
+.beacon-exc-kraken-s:before {
+    content: "\f3ea"
+}
+.beacon-exc-kraken-futures-s:before {
+    content: "\f3ea"
+}
+.beacon-cur-gbp:before {
+    content: "\f42b"
+}
+.beacon-cur-gbp-s:before {
+    content: "\f42a"
+}
+.beacon-exc-gemini:before {
+    content: "\f460"
+}
+.beacon-cur-gusd:before {
+    content: "\f460"
+}
+.beacon-exc-gemini-s:before {
+    content: "\f45f"
+}
+.beacon-cur-gusd-s:before {
+    content: "\f45f"
+}
+.beacon-cur-hkd:before {
+    content: "\f478"
+}
+.beacon-cur-hkd-s:before {
+    content: "\f477"
+}
+.beacon-sym-husd:before {
+    content: "\f48c"
+}
+.beacon-exc-huobi:before {
+    content: "\f48c"
+}
+.beacon-cur-ht:before {
+    content: "\f48c"
+}
+.beacon-sym-husd-s:before {
+    content: "\f48b"
+}
+.beacon-exc-huobi-s:before {
+    content: "\f48b"
+}
+.beacon-cur-ht-s:before {
+    content: "\f48b"
+}
+.beacon-cur-idr:before {
+    content: "\f4a6"
+}
+.beacon-cur-idr-s:before {
     content: "\f4a5"
 }
+.beacon-sym-iota:before {
+    content: "\f4c6"
+}
+.beacon-sym-iota-s:before {
+    content: "\f4c5"
+}
+.beacon-cur-inr:before {
+    content: "\f4ba"
+}
+.beacon-cur-inr-s:before {
+    content: "\f4b9"
+}
+.beacon-cur-jpy:before {
+    content: "\f4d6"
+}
+.beacon-cur-jpy-s:before {
+    content: "\f4d5"
+}
+.beacon-cur-krw:before {
+    content: "\f4fa"
+}
+.beacon-cur-krw-s:before {
+    content: "\f4f9"
+}
+.beacon-sym-medx:before {
+    content: "\f556"
+}
+.beacon-sym-medx-s:before {
+    content: "\f555"
+}
+.beacon-cur-mxn:before {
+    content: "\f59a"
+}
+.beacon-cur-mxn-s:before {
+    content: "\f599"
+}
+.beacon-cur-myr:before {
+    content: "\f59c"
+}
+.beacon-cur-myr-s:before {
+    content: "\f59b"
+}
+.beacon-cur-ngn:before {
+    content: "\f5c0"
+}
+.beacon-cur-ngn-s:before {
+    content: "\f5bf"
+}
+.beacon-cur-pax:before {
+    content: "\f61e"
+}
+.beacon-cur-pax-s:before {
+    content: "\f61d"
+}
+.beacon-cur-php:before {
+    content: "\f630"
+}
+.beacon-cur-php-s:before {
+    content: "\f62f"
+}
+.beacon-cur-pln:before {
+    content: "\f642"
+}
+.beacon-cur-pln-s:before {
+    content: "\f641"
+}
+.beacon-cur-qash:before {
+    content: "\f66e"
+}
+.beacon-cur-qash-s:before {
+    content: "\f66d"
+}
+.beacon-cur-rub:before {
+    content: "\f6c0"
+}
+.beacon-cur-rur:before {
+    content: "\f6c0"
+}
+.beacon-cur-rub-s:before {
+    content: "\f6bf"
+}
+.beacon-cur-rur-s:before {
+    content: "\f6bf"
+}
+.beacon-sym-steem:before {
+    content: "\f6d5"
+}
+.beacon-sym-steem-s:before {
+    content: "\f6d4"
+}
+.beacon-sym-xsc:before {
+    content: "\f6d7"
+}
+.beacon-sym-xsc-s:before {
+    content: "\f6d6"
+}
+.beacon-cur-sgd:before {
+    content: "\f6ef"
+}
+.beacon-cur-sgd-s:before {
+    content: "\f6ee"
+}
+.beacon-sym-storj:before {
+    content: "\f6fb"
+}
+.beacon-sym-storj-s:before {
+    content: "\f6fa"
+}
+.beacon-sym-tel:before {
+    content: "\f761"
+}
+.beacon-cur-trx:before {
+    content: "\f79e"
+}
+.beacon-cur-trx-s:before {
+    content: "\f79d"
+}
+.beacon-cur-tusd:before {
+    content: "\f7ae"
+}
+.beacon-cur-tusd-s:before {
+    content: "\f7ad"
+}
+.beacon-cur-usd:before {
+    content: "\f7ca"
+}
+.beacon-cur-usd-s:before {
+    content: "\f7c9"
+}
+.beacon-cur-usdc:before {
+    content: "\f7cc"
+}
+.beacon-cur-usdc-s:before {
+    content: "\f7cb"
+}
+.beacon-sym-vet:before {
+    content: "\f7e4"
+}
+.beacon-sym-vet-s:before {
+    content: "\f7e3"
+}
+.beacon-sym-waxp:before {
+    content: "\f814"
+}
+.beacon-sym-waxp-s:before {
+    content: "\f813"
+}
+.beacon-cur-xlm:before {
+    content: "\f84a"
+}
+.beacon-cur-xlm-s:before {
+    content: "\f849"
+}
+.beacon-cur-xmr:before {
+    content: "\f84e"
+}
+.beacon-cur-xmr-s:before {
+    content: "\f84d"
+}
+.beacon-cur-xrp:before {
+    content: "\f862"
+}
+.beacon-cur-xrp-s:before {
+    content: "\f861"
+}
+.beacon-cur-zar:before {
+    content: "\f888"
+}
+.beacon-cur-zar-s:before {
+    content: "\f887"
+}
+.beacon-exc-binance-us:before {
+    content: "\f165"
+}
+.beacon-exc-binance-us-s:before {
+    content: "\f164"
+}
+.beacon-exc-mexbt:before {
+    content: "\f17b"
+}
+.beacon-exc-mexbt-s:before {
+    content: "\f17a"
+}
+.beacon-exc-coinbase-pro:before {
+    content: "\f183"
+}
+.beacon-exc-gdax:before {
+    content: "\f183"
+}
+.beacon-exc-coinbase-pro-s:before {
+    content: "\f182"
+}
+.beacon-exc-gdax-s:before {
+    content: "\f182"
+}
+.beacon-exc-quadriga:before {
+    content: "\f1a3"
+}
+.beacon-exc-quadriga-s:before {
+    content: "\f1a2"
+}
+.beacon-cur-crc:before {
+    content: "\f312"
+}
+.beacon-cur-crc-s:before {
+    content: "\f311"
+}
+.beacon-cur-lak:before {
+    content: "\f504"
+}
 .beacon-cur-lak-s:before {
-    content: "\f4a4"
+    content: "\f503"
 }
 .beacon-cur-sek:before {
-    content: "\f684"
+    content: "\f6e3"
 }
 .beacon-cur-sek-s:before {
-    content: "\f683"
+    content: "\f6e2"
 }
 .beacon-cur-thb:before {
-    content: "\f70f"
+    content: "\f76e"
 }
 .beacon-cur-thb-s:before {
-    content: "\f70e"
+    content: "\f76d"
 }
 .beacon-cur-try:before {
-    content: "\f741"
+    content: "\f7a0"
 }
 .beacon-cur-try-s:before {
-    content: "\f740"
+    content: "\f79f"
 }
 .beacon-cur-uah:before {
-    content: "\f753"
+    content: "\f7b2"
 }
 .beacon-cur-uah-s:before {
-    content: "\f752"
+    content: "\f7b1"
 }
