@@ -1,9 +1,9 @@
 @font-face {
     font-family: "beacons";
-    src: url("./beacons.ttf?fc5670f77e107d9f17761f42e42cb8eb") format("truetype"),
-url("./beacons.woff?fc5670f77e107d9f17761f42e42cb8eb") format("woff"),
-url("./beacons.woff2?fc5670f77e107d9f17761f42e42cb8eb") format("woff2"),
-url("./beacons.eot?fc5670f77e107d9f17761f42e42cb8eb#iefix") format("embedded-opentype");
+    src: url("./beacons.ttf?6e15ce61f13a4df185152951eac8c9fb") format("truetype"),
+url("./beacons.woff?6e15ce61f13a4df185152951eac8c9fb") format("woff"),
+url("./beacons.woff2?6e15ce61f13a4df185152951eac8c9fb") format("woff2"),
+url("./beacons.eot?6e15ce61f13a4df185152951eac8c9fb#iefix") format("embedded-opentype");
 }
 
 i[class^="beacon-"]:before, i[class*=" beacon-"]:before {
@@ -17,289 +17,289 @@ i[class^="beacon-"]:before, i[class*=" beacon-"]:before {
     -moz-osx-font-smoothing: grayscale;
 }
 
-.beacon-eqt-aal:before {
+.beacon-eqt-aal-s:before {
     content: "\f101";
 }
-.beacon-eqt-aapl:before {
+.beacon-eqt-aapl-s:before {
     content: "\f102";
 }
-.beacon-eqt-abnb:before {
+.beacon-eqt-abnb-s:before {
     content: "\f103";
 }
-.beacon-eqt-acb:before {
+.beacon-eqt-acb-s:before {
     content: "\f104";
 }
-.beacon-eqt-amc:before {
+.beacon-eqt-amc-s:before {
     content: "\f105";
 }
-.beacon-eqt-amd:before {
+.beacon-eqt-amd-s:before {
     content: "\f106";
 }
-.beacon-eqt-amzn:before {
+.beacon-eqt-amzn-s:before {
     content: "\f107";
 }
-.beacon-eqt-apha:before {
+.beacon-eqt-apha-s:before {
     content: "\f108";
 }
-.beacon-eqt-arkf:before {
+.beacon-eqt-arkf-s:before {
     content: "\f109";
 }
-.beacon-eqt-arkk:before {
+.beacon-eqt-arkk-s:before {
     content: "\f10a";
 }
-.beacon-eqt-arkw:before {
+.beacon-eqt-arkw-s:before {
     content: "\f10b";
 }
-.beacon-eqt-azn:before {
+.beacon-eqt-azn-s:before {
     content: "\f10c";
 }
-.beacon-eqt-ba:before {
+.beacon-eqt-ba-s:before {
     content: "\f10d";
 }
-.beacon-eqt-baba:before {
+.beacon-eqt-baba-s:before {
     content: "\f10e";
 }
-.beacon-eqt-bb:before {
+.beacon-eqt-bb-s:before {
     content: "\f10f";
 }
-.beacon-eqt-bidu:before {
+.beacon-eqt-bidu-s:before {
     content: "\f110";
 }
-.beacon-eqt-bili:before {
+.beacon-eqt-bili-s:before {
     content: "\f111";
 }
-.beacon-eqt-blink:before {
+.beacon-eqt-blink-s:before {
     content: "\f112";
 }
-.beacon-eqt-bngo:before {
+.beacon-eqt-bngo-s:before {
     content: "\f113";
 }
-.beacon-eqt-botz:before {
+.beacon-eqt-botz-s:before {
     content: "\f114";
 }
-.beacon-eqt-bp:before {
+.beacon-eqt-bp-s:before {
     content: "\f115";
 }
-.beacon-eqt-brka:before {
+.beacon-eqt-brka-s:before {
     content: "\f116";
 }
-.beacon-eqt-bynd:before {
+.beacon-eqt-bynd-s:before {
     content: "\f117";
 }
-.beacon-eqt-cciv:before {
+.beacon-eqt-cciv-s:before {
     content: "\f118";
 }
-.beacon-eqt-ccl:before {
+.beacon-eqt-ccl-s:before {
     content: "\f119";
 }
-.beacon-eqt-cgc:before {
+.beacon-eqt-cgc-s:before {
     content: "\f11a";
 }
-.beacon-eqt-coin:before {
+.beacon-eqt-coin-s:before {
     content: "\f11b";
 }
-.beacon-eqt-cprx:before {
+.beacon-eqt-cprx-s:before {
     content: "\f11c";
 }
-.beacon-eqt-crm:before {
+.beacon-eqt-crm-s:before {
     content: "\f11d";
 }
-.beacon-eqt-cron:before {
+.beacon-eqt-cron-s:before {
     content: "\f11e";
 }
-.beacon-eqt-dal:before {
+.beacon-eqt-dal-s:before {
     content: "\f11f";
 }
-.beacon-eqt-db:before {
+.beacon-eqt-db-s:before {
     content: "\f120";
 }
-.beacon-eqt-dis:before {
+.beacon-eqt-dis-s:before {
     content: "\f121";
 }
-.beacon-eqt-dkng:before {
+.beacon-eqt-dkng-s:before {
     content: "\f122";
 }
-.beacon-eqt-et:before {
+.beacon-eqt-et-s:before {
     content: "\f123";
 }
-.beacon-eqt-etf:before {
+.beacon-eqt-etf-s:before {
     content: "\f124";
 }
-.beacon-eqt-f:before {
+.beacon-eqt-f-s:before {
     content: "\f125";
 }
-.beacon-eqt-fb:before {
+.beacon-eqt-fb-s:before {
     content: "\f126";
 }
-.beacon-eqt-fcel:before {
+.beacon-eqt-fcel-s:before {
     content: "\f127";
 }
-.beacon-eqt-fubo:before {
+.beacon-eqt-fubo-s:before {
     content: "\f128";
 }
-.beacon-eqt-ge:before {
+.beacon-eqt-ge-s:before {
     content: "\f129";
 }
-.beacon-eqt-gm:before {
+.beacon-eqt-gm-s:before {
     content: "\f12a";
 }
-.beacon-eqt-gme:before {
+.beacon-eqt-gme-s:before {
     content: "\f12b";
 }
-.beacon-eqt-googl:before {
+.beacon-eqt-googl-s:before {
     content: "\f12c";
 }
-.beacon-eqt-gpro:before {
+.beacon-eqt-gpro-s:before {
     content: "\f12d";
 }
-.beacon-eqt-gs:before {
+.beacon-eqt-gs-s:before {
     content: "\f12e";
 }
-.beacon-eqt-idex:before {
+.beacon-eqt-idex-s:before {
     content: "\f12f";
 }
-.beacon-eqt-ino:before {
+.beacon-eqt-ino-s:before {
     content: "\f130";
 }
-.beacon-eqt-intc:before {
+.beacon-eqt-intc-s:before {
     content: "\f131";
 }
-.beacon-eqt-jnj:before {
+.beacon-eqt-jnj-s:before {
     content: "\f132";
 }
-.beacon-eqt-jpm:before {
+.beacon-eqt-jpm-s:before {
     content: "\f133";
 }
-.beacon-eqt-ko:before {
+.beacon-eqt-ko-s:before {
     content: "\f134";
 }
-.beacon-eqt-mrna:before {
+.beacon-eqt-mrna-s:before {
     content: "\f135";
 }
-.beacon-eqt-mro:before {
+.beacon-eqt-mro-s:before {
     content: "\f136";
 }
-.beacon-eqt-msft:before {
+.beacon-eqt-msft-s:before {
     content: "\f137";
 }
-.beacon-eqt-mstr:before {
+.beacon-eqt-mstr-s:before {
     content: "\f138";
 }
-.beacon-eqt-nclh:before {
+.beacon-eqt-nclh-s:before {
     content: "\f139";
 }
-.beacon-eqt-nflx:before {
+.beacon-eqt-nflx-s:before {
     content: "\f13a";
 }
-.beacon-eqt-nio:before {
+.beacon-eqt-nio-s:before {
     content: "\f13b";
 }
-.beacon-eqt-nke:before {
+.beacon-eqt-nke-s:before {
     content: "\f13c";
 }
-.beacon-eqt-nkla:before {
+.beacon-eqt-nkla-s:before {
     content: "\f13d";
 }
-.beacon-eqt-nok:before {
+.beacon-eqt-nok-s:before {
     content: "\f13e";
 }
-.beacon-eqt-nrz:before {
+.beacon-eqt-nrz-s:before {
     content: "\f13f";
 }
-.beacon-eqt-nvda:before {
+.beacon-eqt-nvda-s:before {
     content: "\f140";
 }
-.beacon-eqt-ocgn:before {
+.beacon-eqt-ocgn-s:before {
     content: "\f141";
 }
-.beacon-eqt-penn:before {
+.beacon-eqt-penn-s:before {
     content: "\f142";
 }
-.beacon-eqt-pfe:before {
+.beacon-eqt-pfe-s:before {
     content: "\f143";
 }
-.beacon-eqt-pltr:before {
+.beacon-eqt-pltr-s:before {
     content: "\f144";
 }
-.beacon-eqt-plug:before {
+.beacon-eqt-plug-s:before {
     content: "\f145";
 }
-.beacon-eqt-pton:before {
+.beacon-eqt-pton-s:before {
     content: "\f146";
 }
-.beacon-eqt-pypl:before {
+.beacon-eqt-pypl-s:before {
     content: "\f147";
 }
-.beacon-eqt-qs:before {
+.beacon-eqt-qs-s:before {
     content: "\f148";
 }
-.beacon-eqt-rcl:before {
+.beacon-eqt-rcl-s:before {
     content: "\f149";
 }
-.beacon-eqt-riot:before {
+.beacon-eqt-riot-s:before {
     content: "\f14a";
 }
-.beacon-eqt-san:before {
+.beacon-eqt-san-s:before {
     content: "\f14b";
 }
-.beacon-eqt-sap:before {
+.beacon-eqt-sap-s:before {
     content: "\f14c";
 }
-.beacon-eqt-sbux:before {
+.beacon-eqt-sbux-s:before {
     content: "\f14d";
 }
-.beacon-eqt-shop:before {
+.beacon-eqt-shop-s:before {
     content: "\f14e";
 }
-.beacon-eqt-snap:before {
+.beacon-eqt-snap-s:before {
     content: "\f14f";
 }
-.beacon-eqt-spce:before {
+.beacon-eqt-spce-s:before {
     content: "\f150";
 }
-.beacon-eqt-sq:before {
+.beacon-eqt-sq-s:before {
     content: "\f151";
 }
-.beacon-eqt-tlry:before {
+.beacon-eqt-tlry-s:before {
     content: "\f152";
 }
-.beacon-eqt-tsla:before {
+.beacon-eqt-tsla-s:before {
     content: "\f153";
 }
-.beacon-eqt-tsm:before {
+.beacon-eqt-tsm-s:before {
     content: "\f154";
 }
-.beacon-eqt-twtr:before {
+.beacon-eqt-twtr-s:before {
     content: "\f155";
 }
-.beacon-eqt-ual:before {
+.beacon-eqt-ual-s:before {
     content: "\f156";
 }
-.beacon-eqt-uber:before {
+.beacon-eqt-uber-s:before {
     content: "\f157";
 }
-.beacon-eqt-ubs:before {
+.beacon-eqt-ubs-s:before {
     content: "\f158";
 }
-.beacon-eqt-ul:before {
+.beacon-eqt-ul-s:before {
     content: "\f159";
 }
-.beacon-eqt-vod:before {
+.beacon-eqt-vod-s:before {
     content: "\f15a";
 }
-.beacon-eqt-vti:before {
+.beacon-eqt-vti-s:before {
     content: "\f15b";
 }
-.beacon-eqt-wmt:before {
+.beacon-eqt-wmt-s:before {
     content: "\f15c";
 }
-.beacon-eqt-xom:before {
+.beacon-eqt-xom-s:before {
     content: "\f15d";
 }
-.beacon-eqt-xpev:before {
+.beacon-eqt-xpev-s:before {
     content: "\f15e";
 }
-.beacon-eqt-zm:before {
+.beacon-eqt-zm-s:before {
     content: "\f15f";
 }
 .beacon-exc-_default-s:before {
