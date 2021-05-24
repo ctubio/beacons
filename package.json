@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "build": "node -r esm ./scripts/build.js && node -r esm ./scripts/css.js",
+    "css": "node -r esm ./scripts/css.js",
     "hex": "node -r esm ./scripts/hex.js",
     "sym": "node -r esm ./scripts/sym.js"
   },

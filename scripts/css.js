@@ -3,9 +3,38 @@ const fs = require("fs");
 import map from "../map/map.json";
 import beacons from "../dist/beacons.json";
 
-console.log("Generating beacons.css...");
+console.log("Generating beacons.css and _variables.scss...");
 
-const def = `@font-face {
+// Keep defaults at the top so we can apply
+// that class to everything in cases
+// where no slugs match.
+const first = [
+  "exc-_default-s",
+  "exc-_default",
+  "sym-_default-s",
+  "sym-_default",
+  // map
+  "sym-d",
+  "sym-default",
+  "sym-d-s",
+  "exc-d",
+  "exc-d-s",
+  "exc-default",
+  "exc-default-s",
+  "cur-default",
+  "cur-default-s",
+];
+
+const keys = [...Object.keys(beacons), ...Object.keys(map)];
+
+const keysOrdered = [
+  ...keys.filter((b) => first.includes(b)),
+  ...keys.filter((b) => !first.includes(b)),
+];
+
+// MAKE CSS
+
+const defCss = `@font-face {
   font-family: "beacons";
   src: url("./beacons.ttf") format("truetype"),
 url("./beacons.woff") format("woff"),
@@ -38,41 +67,22 @@ i[class^="beacon-"]:before, i[class*=" beacon-"]:before {
 
 `;
 
-const first = [
-  "exc-_default-s",
-  "exc-_default",
-  "sym-_default-s",
-  "sym-_default",
-  // map
-  "sym-d",
-  "sym-default",
-  "sym-d-s",
-  "exc-d",
-  "exc-d-s",
-  "exc-default",
-  "exc-default-s",
-  "cur-default",
-  "cur-default-s",
-];
+function getHex(key) {
+  if (key in beacons) {
+    return beacons[key].toString(16);
+  } else if (key in map) {
+    return beacons[map[key]].toString(16);
+  } else {
+    return null;
+  }
+}
 
-const keys = [...Object.keys(beacons), ...Object.keys(map)];
-
-const keysOrdered = [
-  ...keys.filter((b) => first.includes(b)),
-  ...keys.filter((b) => !first.includes(b)),
-];
-
-const css = def + makeCss(keysOrdered);
+const css = defCss + makeCss(keysOrdered);
 
 function makeCss(keys) {
   return keys
     .map((key) => {
-      let hex;
-      if (key in beacons) {
-        hex = beacons[key].toString(16);
-      } else {
-        hex = beacons[map[key]].toString(16);
-      }
+      const hex = getHex(key);
       return `.${key}:before {\n    content: "\\${hex}"\n}\n.beacon-${key}:before {\n    content: "\\${hex}"\n}`;
     })
     .join("\n");
@@ -83,5 +93,44 @@ fs.writeFile("dist/beacons.css", css, (err) => {
     throw err;
   } else {
     console.log("beacons.css generated!");
+  }
+});
+
+// MAKE SCSS
+
+const defScss = `$cw-font-path: "." !default;
+$cw-font-size: 16px !default;
+$cw-prefix: sym !default;
+
+// Convenience function used to set content property
+@function esc($cw-sym) {
+  @return unquote('"#{ $cw-sym }"');
+}
+
+`;
+
+const scss =
+  defScss +
+  `$beacons: (
+${makeScss(keysOrdered)}
+);
+`;
+
+function makeScss(keys) {
+  return keys
+    .map((key) => {
+      const hex = getHex(key);
+      // stringify keys that contain ".", like "sym-eth2.s"
+      const k = key.includes(".") ? `'${key}'` : key;
+      return `  ${k}: ${hex},`;
+    })
+    .join("\n");
+}
+
+fs.writeFile("dist/_variables.scss", scss, (err) => {
+  if (err) {
+    throw err;
+  } else {
+    console.log("_variables.scss generated!");
   }
 });
