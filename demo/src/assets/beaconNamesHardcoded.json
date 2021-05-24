@@ -1,5 +1,7 @@
 {
   "_default": "",
+  "d": "",
+  "default": "",
   "bibox": "",
   "bitso": "",
   "bitsquare": "",
@@ -16,6 +18,7 @@
   "zaif": "",
   "aca": "Acala",
   "adel": "",
+  "air": "",
   "aspt": "",
   "b": "",
   "bab": "",
@@ -70,5 +73,12 @@
   "xos": "",
   "xrpx": "",
   "zlk": "Zenlink",
-  "ztg": ""
+  "ztg": "",
+  "xbt": "",
+  "xdg": "",
+  "eth2s": "",
+  "eth2.s": "",
+  "rur": "",
+  "xsc": "",
+  "gdax": ""
 }

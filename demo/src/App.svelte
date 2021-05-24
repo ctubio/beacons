@@ -42,12 +42,20 @@
   };
 
   const groupTest = (beacon) => {
-    const i = beaconKeys.indexOf(beacon);
-    if (i < 1) return false;
-    const prevBeacon = beaconKeys[i - 1];
-    const start = prevBeacon.slice(0, -2);
-    const isGroup = start === beacon && hasPostfix(prevBeacon);
-    return !!isGroup;
+    const postfix = hasPostfix(beacon);
+    let group = false;
+    if (postfix) {
+      const b = beacon.slice(beacon.length - 2);
+      if (beaconKeys.includes(b)) {
+        group = true;
+      }
+    } else {
+      const b = beacon + "-s";
+      if (beaconKeys.includes(b)) {
+        group = true;
+      }
+    }
+    return group;
   };
 
   const hasPostfix = (beacon) => beacon.slice(beacon.length - 2) === "-s";
