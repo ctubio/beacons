@@ -5615,3 +5615,471 @@ i[class^="beacon-"]:before, i[class*=" beacon-"]:before {
 .beacon-sym-ztg:before {
     content: "\f84a";
 }
+.beacon-sym-d:before {
+    content: "\f152"
+}
+.beacon-sym-default:before {
+    content: "\f152"
+}
+.beacon-sym-d-s:before {
+    content: "\f151"
+}
+.beacon-exc-d:before {
+    content: "\f102"
+}
+.beacon-exc-d-s:before {
+    content: "\f101"
+}
+.beacon-exc-default:before {
+    content: "\f102"
+}
+.beacon-exc-default-s:before {
+    content: "\f101"
+}
+.beacon-cur-default:before {
+    content: "\f152"
+}
+.beacon-cur-default-s:before {
+    content: "\f151"
+}
+.beacon-cur-anct:before {
+    content: "\f190"
+}
+.beacon-cur-anct-s:before {
+    content: "\f18f"
+}
+.beacon-cur-aud:before {
+    content: "\f1b6"
+}
+.beacon-cur-aud-s:before {
+    content: "\f1b5"
+}
+.beacon-cur-bnb:before {
+    content: "\f213"
+}
+.beacon-cur-bnb-s:before {
+    content: "\f212"
+}
+.beacon-sym-xbt:before {
+    content: "\f235"
+}
+.beacon-cur-btc:before {
+    content: "\f235"
+}
+.beacon-sym-xbt-s:before {
+    content: "\f234"
+}
+.beacon-cur-btc-s:before {
+    content: "\f234"
+}
+.beacon-cur-busd:before {
+    content: "\f251"
+}
+.beacon-cur-busd-s:before {
+    content: "\f250"
+}
+.beacon-exc-bitz:before {
+    content: "\f255"
+}
+.beacon-cur-bz:before {
+    content: "\f255"
+}
+.beacon-exc-bitz-s:before {
+    content: "\f254"
+}
+.beacon-cur-bz-s:before {
+    content: "\f254"
+}
+.beacon-cur-cad:before {
+    content: "\f25d"
+}
+.beacon-cur-cad-s:before {
+    content: "\f25c"
+}
+.beacon-cur-chf:before {
+    content: "\f27d"
+}
+.beacon-cur-chf-s:before {
+    content: "\f27c"
+}
+.beacon-cur-cny:before {
+    content: "\f29f"
+}
+.beacon-cur-cny-s:before {
+    content: "\f29e"
+}
+.beacon-sym-cs:before {
+    content: "\f2af"
+}
+.beacon-sym-cs-s:before {
+    content: "\f2ae"
+}
+.beacon-cur-dai:before {
+    content: "\f2e7"
+}
+.beacon-cur-dai-s:before {
+    content: "\f2e6"
+}
+.beacon-sym-xdg:before {
+    content: "\f321"
+}
+.beacon-sym-xdg-s:before {
+    content: "\f320"
+}
+.beacon-cur-eos:before {
+    content: "\f360"
+}
+.beacon-cur-eos-s:before {
+    content: "\f35f"
+}
+.beacon-sym-eth2:before {
+    content: "\f36e"
+}
+.beacon-sym-eth2s:before {
+    content: "\f36e"
+}
+.beacon-sym-eth2.s:before {
+    content: "\f36e"
+}
+.beacon-sym-weth:before {
+    content: "\f36e"
+}
+.beacon-cur-eth:before {
+    content: "\f36e"
+}
+.beacon-sym-eth2-s:before {
+    content: "\f36d"
+}
+.beacon-sym-eth2s-s:before {
+    content: "\f36d"
+}
+.beacon-sym-eth2.s-s:before {
+    content: "\f36d"
+}
+.beacon-sym-weth-s:before {
+    content: "\f36d"
+}
+.beacon-cur-eth-s:before {
+    content: "\f36d"
+}
+.beacon-cur-eur:before {
+    content: "\f376"
+}
+.beacon-cur-eur-s:before {
+    content: "\f375"
+}
+.beacon-cur-eurs:before {
+    content: "\f378"
+}
+.beacon-cur-eurs-s:before {
+    content: "\f377"
+}
+.beacon-sym-usdt:before {
+    content: "\f37a"
+}
+.beacon-cur-usdt:before {
+    content: "\f37a"
+}
+.beacon-sym-usdt-s:before {
+    content: "\f379"
+}
+.beacon-cur-usdt-s:before {
+    content: "\f379"
+}
+.beacon-exc-kraken:before {
+    content: "\f38e"
+}
+.beacon-exc-kraken-futures:before {
+    content: "\f38e"
+}
+.beacon-exc-kraken-s:before {
+    content: "\f38d"
+}
+.beacon-exc-kraken-futures-s:before {
+    content: "\f38d"
+}
+.beacon-cur-gbp:before {
+    content: "\f3ce"
+}
+.beacon-cur-gbp-s:before {
+    content: "\f3cd"
+}
+.beacon-exc-gemini:before {
+    content: "\f403"
+}
+.beacon-cur-gusd:before {
+    content: "\f403"
+}
+.beacon-exc-gemini-s:before {
+    content: "\f402"
+}
+.beacon-cur-gusd-s:before {
+    content: "\f402"
+}
+.beacon-cur-hkd:before {
+    content: "\f41b"
+}
+.beacon-cur-hkd-s:before {
+    content: "\f41a"
+}
+.beacon-sym-husd:before {
+    content: "\f42f"
+}
+.beacon-exc-huobi:before {
+    content: "\f42f"
+}
+.beacon-cur-ht:before {
+    content: "\f42f"
+}
+.beacon-sym-husd-s:before {
+    content: "\f42e"
+}
+.beacon-exc-huobi-s:before {
+    content: "\f42e"
+}
+.beacon-cur-ht-s:before {
+    content: "\f42e"
+}
+.beacon-cur-idr:before {
+    content: "\f449"
+}
+.beacon-cur-idr-s:before {
+    content: "\f448"
+}
+.beacon-sym-iota:before {
+    content: "\f469"
+}
+.beacon-sym-iota-s:before {
+    content: "\f468"
+}
+.beacon-cur-inr:before {
+    content: "\f45d"
+}
+.beacon-cur-inr-s:before {
+    content: "\f45c"
+}
+.beacon-cur-jpy:before {
+    content: "\f479"
+}
+.beacon-cur-jpy-s:before {
+    content: "\f478"
+}
+.beacon-cur-krw:before {
+    content: "\f49d"
+}
+.beacon-cur-krw-s:before {
+    content: "\f49c"
+}
+.beacon-sym-medx:before {
+    content: "\f4f9"
+}
+.beacon-sym-medx-s:before {
+    content: "\f4f8"
+}
+.beacon-cur-mxn:before {
+    content: "\f53d"
+}
+.beacon-cur-mxn-s:before {
+    content: "\f53c"
+}
+.beacon-cur-myr:before {
+    content: "\f53f"
+}
+.beacon-cur-myr-s:before {
+    content: "\f53e"
+}
+.beacon-cur-ngn:before {
+    content: "\f563"
+}
+.beacon-cur-ngn-s:before {
+    content: "\f562"
+}
+.beacon-cur-pax:before {
+    content: "\f5c1"
+}
+.beacon-cur-pax-s:before {
+    content: "\f5c0"
+}
+.beacon-cur-php:before {
+    content: "\f5d3"
+}
+.beacon-cur-php-s:before {
+    content: "\f5d2"
+}
+.beacon-cur-pln:before {
+    content: "\f5e5"
+}
+.beacon-cur-pln-s:before {
+    content: "\f5e4"
+}
+.beacon-cur-qash:before {
+    content: "\f611"
+}
+.beacon-cur-qash-s:before {
+    content: "\f610"
+}
+.beacon-cur-rub:before {
+    content: "\f663"
+}
+.beacon-cur-rur:before {
+    content: "\f663"
+}
+.beacon-cur-rub-s:before {
+    content: "\f662"
+}
+.beacon-cur-rur-s:before {
+    content: "\f662"
+}
+.beacon-sym-steem:before {
+    content: "\f678"
+}
+.beacon-sym-steem-s:before {
+    content: "\f677"
+}
+.beacon-sym-xsc:before {
+    content: "\f67a"
+}
+.beacon-sym-xsc-s:before {
+    content: "\f679"
+}
+.beacon-cur-sgd:before {
+    content: "\f692"
+}
+.beacon-cur-sgd-s:before {
+    content: "\f691"
+}
+.beacon-sym-storj:before {
+    content: "\f6a0"
+}
+.beacon-sym-storj-s:before {
+    content: "\f69f"
+}
+.beacon-sym-tel:before {
+    content: "\f706"
+}
+.beacon-cur-trx:before {
+    content: "\f743"
+}
+.beacon-cur-trx-s:before {
+    content: "\f742"
+}
+.beacon-cur-tusd:before {
+    content: "\f753"
+}
+.beacon-cur-tusd-s:before {
+    content: "\f752"
+}
+.beacon-cur-usd:before {
+    content: "\f76f"
+}
+.beacon-cur-usd-s:before {
+    content: "\f76e"
+}
+.beacon-cur-usdc:before {
+    content: "\f771"
+}
+.beacon-cur-usdc-s:before {
+    content: "\f770"
+}
+.beacon-sym-vet:before {
+    content: "\f789"
+}
+.beacon-sym-vet-s:before {
+    content: "\f788"
+}
+.beacon-sym-waxp:before {
+    content: "\f7b9"
+}
+.beacon-sym-waxp-s:before {
+    content: "\f7b8"
+}
+.beacon-cur-xlm:before {
+    content: "\f7ef"
+}
+.beacon-cur-xlm-s:before {
+    content: "\f7ee"
+}
+.beacon-cur-xmr:before {
+    content: "\f7f3"
+}
+.beacon-cur-xmr-s:before {
+    content: "\f7f2"
+}
+.beacon-cur-xrp:before {
+    content: "\f807"
+}
+.beacon-cur-xrp-s:before {
+    content: "\f806"
+}
+.beacon-cur-zar:before {
+    content: "\f82d"
+}
+.beacon-cur-zar-s:before {
+    content: "\f82c"
+}
+.beacon-exc-binance-us:before {
+    content: "\f106"
+}
+.beacon-exc-binance-us-s:before {
+    content: "\f105"
+}
+.beacon-exc-mexbt:before {
+    content: "\f11c"
+}
+.beacon-exc-mexbt-s:before {
+    content: "\f11b"
+}
+.beacon-exc-coinbase-pro:before {
+    content: "\f124"
+}
+.beacon-exc-gdax:before {
+    content: "\f124"
+}
+.beacon-exc-coinbase-pro-s:before {
+    content: "\f123"
+}
+.beacon-exc-gdax-s:before {
+    content: "\f123"
+}
+.beacon-exc-quadriga:before {
+    content: "\f144"
+}
+.beacon-exc-quadriga-s:before {
+    content: "\f143"
+}
+.beacon-cur-crc:before {
+    content: "\f2b5"
+}
+.beacon-cur-crc-s:before {
+    content: "\f2b4"
+}
+.beacon-cur-lak:before {
+    content: "\f4a7"
+}
+.beacon-cur-lak-s:before {
+    content: "\f4a6"
+}
+.beacon-cur-sek:before {
+    content: "\f686"
+}
+.beacon-cur-sek-s:before {
+    content: "\f685"
+}
+.beacon-cur-thb:before {
+    content: "\f713"
+}
+.beacon-cur-thb-s:before {
+    content: "\f712"
+}
+.beacon-cur-try:before {
+    content: "\f745"
+}
+.beacon-cur-try-s:before {
+    content: "\f744"
+}
+.beacon-cur-uah:before {
+    content: "\f757"
+}
+.beacon-cur-uah-s:before {
+    content: "\f756"
+}
