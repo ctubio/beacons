@@ -8,7 +8,7 @@ generateFonts({
   inputDir: "./src",
   outputDir: "./dist",
   fontTypes: ["ttf", "woff", "woff2", "eot"],
-  assetTypes: ["css", "json"],
+  assetTypes: ["json"],
   fontHeight: 0,
   descent: 0,
 }).then(() => {
