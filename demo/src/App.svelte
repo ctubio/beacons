@@ -29,7 +29,7 @@
 
   $: nIcons = Object.entries(filtered).length;
 
-  $: filteredBeacons = filtered.filter((key) => {
+  $: filteredBeacons = filtered.sort().filter((key) => {
     const q = query.toLowerCase();
     const sym = syms[key];
     const name = beaconNames[sym].toLowerCase();
@@ -113,11 +113,11 @@
             </div>
           </div>
           <div class="icon">
-            <i class={`beacon-${filteredBeacons[i - 1]}`} />
+            <i class={`beacon-${filteredBeacons[i + 1]}`} />
             <div class="text">
-              <span class="prefix">{filteredBeacons[i - 1].slice(0, 4)}</span
+              <span class="prefix">{filteredBeacons[i + 1].slice(0, 4)}</span
               ><span class="main">{syms[filteredBeacons[i - 1]]}</span
-              >{#if hasPostfix(filteredBeacons[i - 1])}<span class="postfix"
+              >{#if hasPostfix(filteredBeacons[i + 1])}<span class="postfix"
                   >-s</span
                 >{/if}
             </div>
