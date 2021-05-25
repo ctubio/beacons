@@ -3,7 +3,7 @@ const fs = require("fs");
 import map from "../map/map.json";
 import beacons from "../dist/beacons.json";
 
-console.log("Generating beacons.css and _variables.scss...");
+console.log("Generating beacons.css, _variables.scss, and beacons.json...");
 
 // Keep defaults at the top so we can apply
 // that class to everything in cases
@@ -132,5 +132,22 @@ fs.writeFile("dist/_variables.scss", scss, (err) => {
     throw err;
   } else {
     console.log("_variables.scss generated!");
+  }
+});
+
+// MAKE JSON
+
+const json = {};
+
+keysOrdered.forEach((key) => {
+  const hex = getHex(key);
+  Object.assign(json, { [key]: hex });
+});
+
+fs.writeFile("dist/beacons.json", JSON.stringify(json, null, 2), (err) => {
+  if (err) {
+    throw err;
+  } else {
+    console.log("beacons.json generated!");
   }
 });
