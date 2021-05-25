@@ -109,17 +109,15 @@
             <div class="text">
               <span class="prefix">{beacon.slice(0, 4)}</span><span class="main"
                 >{syms[beacon]}</span
-              >{#if hasPostfix(beacon)}<span class="postfix">-s</span>{/if}
+              >
             </div>
           </div>
           <div class="icon">
-            <i class={`beacon-${filteredBeacons[i + 1]}`} />
+            <i class={`beacon-${beacon}-s`} />
             <div class="text">
-              <span class="prefix">{filteredBeacons[i + 1].slice(0, 4)}</span
-              ><span class="main">{syms[filteredBeacons[i + 1]]}</span
-              >{#if hasPostfix(filteredBeacons[i + 1])}<span class="postfix"
-                  >-s</span
-                >{/if}
+              <span class="prefix">{beacon.slice(0, 4)}</span><span class="main"
+                >{syms[beacon]}</span
+              ><span class="postfix">-s</span>
             </div>
           </div>
         </div>
