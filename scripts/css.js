@@ -83,7 +83,9 @@ function makeCss(keys) {
   return keys
     .map((key) => {
       const hex = getHex(key);
-      return `.${key}:before {\n    content: "\\${hex}"\n}\n.beacon-${key}:before {\n    content: "\\${hex}"\n}`;
+      // stringify keys that contain ".", like "sym-eth2.s"
+      const k = key.replace(/[.]/g, "\\.");
+      return `.${k}:before {\n    content: "\\${hex}"\n}\n.beacon-${k}:before {\n    content: "\\${hex}"\n}`;
     })
     .join("\n");
 }

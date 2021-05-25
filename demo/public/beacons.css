@@ -11471,10 +11471,10 @@ i[class^="beacon-"]:before, i[class*=" beacon-"]:before {
 .beacon-sym-eth2s:before {
     content: "\f36e"
 }
-.sym-eth2.s:before {
+.sym-eth2\.s:before {
     content: "\f36e"
 }
-.beacon-sym-eth2.s:before {
+.beacon-sym-eth2\.s:before {
     content: "\f36e"
 }
 .sym-weth:before {
@@ -11501,10 +11501,10 @@ i[class^="beacon-"]:before, i[class*=" beacon-"]:before {
 .beacon-sym-eth2s-s:before {
     content: "\f36d"
 }
-.sym-eth2.s-s:before {
+.sym-eth2\.s-s:before {
     content: "\f36d"
 }
-.beacon-sym-eth2.s-s:before {
+.beacon-sym-eth2\.s-s:before {
     content: "\f36d"
 }
 .sym-weth-s:before {
