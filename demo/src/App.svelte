@@ -116,7 +116,7 @@
             <i class={`beacon-${filteredBeacons[i + 1]}`} />
             <div class="text">
               <span class="prefix">{filteredBeacons[i + 1].slice(0, 4)}</span
-              ><span class="main">{syms[filteredBeacons[i - 1]]}</span
+              ><span class="main">{syms[filteredBeacons[i + 1]]}</span
               >{#if hasPostfix(filteredBeacons[i + 1])}<span class="postfix"
                   >-s</span
                 >{/if}
