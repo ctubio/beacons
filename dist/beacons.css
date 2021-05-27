@@ -12161,3 +12161,15 @@ i[class^="beacon-"]:before, i[class*=" beacon-"]:before {
 .beacon-cur-uah-s:before {
     content: "\f756"
 }
+.exc-ftx:before {
+    content: "\f3b6"
+}
+.beacon-exc-ftx:before {
+    content: "\f3b6"
+}
+.exc-ftx-s:before {
+    content: "\f3b5"
+}
+.beacon-exc-ftx-s:before {
+    content: "\f3b5"
+}
