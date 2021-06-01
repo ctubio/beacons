@@ -36,10 +36,9 @@ const keysOrdered = [
 
 const defCss = `@font-face {
   font-family: "beacons";
-  src: url("./beacons.ttf") format("truetype"),
-url("./beacons.woff") format("woff"),
-url("./beacons.woff2") format("woff2"),
-url("./beacons.eot#iefix") format("embedded-opentype");
+  src: url("./beacons.eot#iefix") format("embedded-opentype"),
+    url("./beacons.woff2") format("woff2"), url("./beacons.woff") format("woff"),
+    url("./beacons.ttf") format("truetype");
 }
 
 i[class^="beacon-"]:before, i[class*=" beacon-"]:before {
