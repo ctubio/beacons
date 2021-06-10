@@ -156,5 +156,7 @@
   "cur-try": "sym-try",
   "cur-try-s": "sym-try-s",
   "cur-uah": "sym-uah",
-  "cur-uah-s": "sym-uah-s"
+  "cur-uah-s": "sym-uah-s",
+  "exc-ftx": "sym-ftt",
+  "exc-ftx-s": "sym-ftt-s"
 }

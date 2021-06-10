@@ -29,7 +29,7 @@
 
   $: nIcons = Object.entries(filtered).length;
 
-  $: filteredBeacons = filtered.filter((key) => {
+  $: filteredBeacons = filtered.sort().filter((key) => {
     const q = query.toLowerCase();
     const sym = syms[key];
     const name = beaconNames[sym].toLowerCase();
@@ -42,12 +42,20 @@
   };
 
   const groupTest = (beacon) => {
-    const i = beaconKeys.indexOf(beacon);
-    if (i < 1) return false;
-    const prevBeacon = beaconKeys[i - 1];
-    const start = prevBeacon.slice(0, -2);
-    const isGroup = start === beacon && hasPostfix(prevBeacon);
-    return !!isGroup;
+    const postfix = hasPostfix(beacon);
+    let group = false;
+    if (postfix) {
+      const b = beacon.slice(beacon.length - 2);
+      if (beaconKeys.includes(b)) {
+        group = true;
+      }
+    } else {
+      const b = beacon + "-s";
+      if (beaconKeys.includes(b)) {
+        group = true;
+      }
+    }
+    return group;
   };
 
   const hasPostfix = (beacon) => beacon.slice(beacon.length - 2) === "-s";
@@ -101,17 +109,15 @@
             <div class="text">
               <span class="prefix">{beacon.slice(0, 4)}</span><span class="main"
                 >{syms[beacon]}</span
-              >{#if hasPostfix(beacon)}<span class="postfix">-s</span>{/if}
+              >
             </div>
           </div>
           <div class="icon">
-            <i class={`beacon-${filteredBeacons[i - 1]}`} />
+            <i class={`beacon-${beacon}-s`} />
             <div class="text">
-              <span class="prefix">{filteredBeacons[i - 1].slice(0, 4)}</span
-              ><span class="main">{syms[filteredBeacons[i - 1]]}</span
-              >{#if hasPostfix(filteredBeacons[i - 1])}<span class="postfix"
-                  >-s</span
-                >{/if}
+              <span class="prefix">{beacon.slice(0, 4)}</span><span class="main"
+                >{syms[beacon]}</span
+              ><span class="postfix">-s</span>
             </div>
           </div>
         </div>

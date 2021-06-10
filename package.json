@@ -3,9 +3,8 @@
   "version": "1.1.0",
   "private": true,
   "scripts": {
-    "build": "node -r esm ./scripts/build.js",
-    "map": "node -r esm ./scripts/map.js",
-    "hex": "node -r esm ./scripts/hex.js",
+    "build": "node -r esm ./scripts/build.js && node -r esm ./scripts/css.js",
+    "css": "node -r esm ./scripts/css.js",
     "sym": "node -r esm ./scripts/sym.js"
   },
   "dependencies": {},
