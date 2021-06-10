@@ -32,6 +32,8 @@
   "cur-cny-s": "sym-cny-s",
   "sym-cs": "sym-cova",
   "sym-cs-s": "sym-cova-s",
+  "sym-crm": "sym-cru",
+  "sym-crm-s": "sym-cru-s",
   "cur-dai": "sym-dai",
   "cur-dai-s": "sym-dai-s",
   "sym-xdg": "sym-doge",
