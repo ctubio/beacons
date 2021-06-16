@@ -2,63 +2,37 @@
   import beacons from "../src/assets/beacons.json";
   import beaconNames from "../src/assets/beaconNames.json";
 
-  const beaconKeys = Object.keys(beacons);
-
-  let query = "";
-  let filters = { exchanges: true, symbols: true };
-
-  const filterFun = {
-    exchanges: (key) => key.slice(0, 4) === "exc-",
-    symbols: (key) => key.slice(0, 4) === "sym-",
-  };
-
-  const iconsPerFilter = {};
-  Object.keys(filterFun).forEach((filter) => {
-    Object.assign(iconsPerFilter, {
-      [filter]: beaconKeys.filter(filterFun[filter]).length,
-    });
-  });
-
-  $: filterKeys = Object.keys(filterFun).filter((key) => filters[key]);
-
-  $: filtered = beaconKeys.filter((item) => {
-    return filterKeys.some((key) => {
-      return filterFun[key](item);
-    });
-  });
-
-  $: nIcons = Object.entries(filtered).length;
-
-  $: filteredBeacons = filtered.sort().filter((key) => {
-    const q = query.toLowerCase();
-    const sym = syms[key];
-    const name = beaconNames[sym].toLowerCase();
-    return sym.includes(q) || name.includes(q);
-  });
+  const hasPostfix = (beacon) => beacon.slice(beacon.length - 2) === "-s";
 
   const getMiddlePart = (beacon) => {
     const middle = beacon.slice(4);
     return hasPostfix(beacon) ? middle.slice(0, -2) : middle;
   };
 
+  const exclude = ["d", "default", "_default"];
+
+  const beaconKeys = Object.keys(beacons).filter(
+    (beacon) => !exclude.includes(getMiddlePart(beacon))
+  );
+
+  let query = "";
+
+  const filtered = beaconKeys.filter((beacon) => !hasPostfix(beacon));
+
+  $: filteredBeacons = filtered.filter((key) => {
+    const q = query.toLowerCase();
+    const sym = syms[key];
+    const name = beaconNames[sym].toLowerCase();
+    return sym.includes(q) || name.includes(q);
+  });
+
   const groupTest = (beacon) => {
-    const postfix = hasPostfix(beacon);
     let group = false;
-    if (postfix) {
-      const b = beacon.slice(beacon.length - 2);
-      if (beaconKeys.includes(b)) {
-        group = true;
-      }
-    } else {
-      const b = beacon + "-s";
-      if (beaconKeys.includes(b)) {
-        group = true;
-      }
-    }
+    const postfix = hasPostfix(beacon);
+    const b = postfix ? beacon.slice(0, -2) : beacon + "-s";
+    if (beaconKeys.includes(b)) group = true;
     return group;
   };
-
-  const hasPostfix = (beacon) => beacon.slice(beacon.length - 2) === "-s";
 
   const syms = {};
   const names = {};
@@ -71,6 +45,8 @@
     Object.assign(names, { [beacon]: name });
     Object.assign(groups, { [beacon]: group });
   });
+
+  // console.log(Object.keys(groups).filter((beacon) => !groups[beacon]));
 </script>
 
 <div class="container">
@@ -89,18 +65,11 @@
   <input
     type="text"
     bind:value={query}
-    placeholder={`Search ${nIcons} icons`}
+    placeholder={`Search ${beaconKeys.length} icons`}
+    spellcheck="false"
   />
-  <div class="filters">
-    {#each Object.keys(filters) as filter}
-      <div class="filter">
-        <input type="checkbox" bind:checked={filters[filter]} id={filter} />
-        <label for={filter}>{`${filter} (${iconsPerFilter[filter]})`}</label>
-      </div>
-    {/each}
-  </div>
   <div class="beacons-flex">
-    {#each filteredBeacons as beacon, i}
+    {#each filteredBeacons as beacon}
       {#if groups[beacon]}
         <div class="beacon-container">
           <div class="name">{names[beacon]}</div>
@@ -119,6 +88,30 @@
                 >{syms[beacon]}</span
               ><span class="postfix">-s</span>
             </div>
+          </div>
+        </div>
+      {:else}
+        <div class="beacon-container">
+          <div class="name">{names[beacon]}</div>
+          <div class="icon">
+            {#if beaconKeys.includes(beacon)}
+              <i class={`beacon-${beacon}`} />
+              <div class="text">
+                <span class="prefix">{beacon.slice(0, 4)}</span><span
+                  class="main">{syms[beacon]}</span
+                >
+              </div>
+            {/if}
+          </div>
+          <div class="icon">
+            {#if beaconKeys.includes(beacon + "s")}
+              <i class={`beacon-${beacon}-s`} />
+              <div class="text">
+                <span class="prefix">{beacon.slice(0, 4)}</span><span
+                  class="main">{syms[beacon]}</span
+                ><span class="postfix">-s</span>
+              </div>
+            {/if}
           </div>
         </div>
       {/if}
@@ -142,6 +135,7 @@
       border: 1px solid var(--border);
       font-size: 16px;
       max-width: 300px;
+      margin-bottom: 16px;
       &:focus {
         outline: 0;
         border-color: var(--text);
@@ -149,17 +143,6 @@
       &::placeholder {
         color: var(--weak);
       }
-    }
-    .filters {
-      display: flex;
-      margin: 0 -8px;
-      .filter {
-        padding: 8px;
-        label {
-          text-transform: capitalize;
-        }
-      }
-      margin-bottom: 32px;
     }
     .beacons-flex {
       display: grid;
@@ -177,12 +160,18 @@
         background-color: var(--bg-light);
         .name {
           font-weight: 700;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
         }
         .icon {
           display: flex;
           align-items: center;
+          min-height: 40px;
           i {
             margin-right: 8px;
+            height: 40px;
+            width: 40px;
             font-size: 40px;
             color: var(--text);
           }

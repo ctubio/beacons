@@ -1,7 +1,8 @@
 {
   "sym-d": "sym-_default",
-  "sym-default": "sym-_default",
   "sym-d-s": "sym-_default-s",
+  "sym-default": "sym-_default",
+  "sym-default-s": "sym-_default-s",
   "exc-d": "exc-_default",
   "exc-d-s": "exc-_default-s",
   "exc-default": "exc-_default",

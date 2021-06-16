@@ -58,17 +58,17 @@ i[class^="beacon-"]:before, i[class*=" beacon-"]:before {
 .beacon-sym-d:before {
     content: "\f152"
 }
-.sym-default:before {
-    content: "\f152"
-}
-.beacon-sym-default:before {
-    content: "\f152"
-}
 .sym-d-s:before {
     content: "\f151"
 }
 .beacon-sym-d-s:before {
     content: "\f151"
+}
+.sym-default:before {
+    content: "\f152"
+}
+.beacon-sym-default:before {
+    content: "\f152"
 }
 .exc-d:before {
     content: "\f102"
@@ -11349,6 +11349,12 @@ i[class^="beacon-"]:before, i[class*=" beacon-"]:before {
 }
 .beacon-sym-ztg:before {
     content: "\f856"
+}
+.sym-default-s:before {
+    content: "\f151"
+}
+.beacon-sym-default-s:before {
+    content: "\f151"
 }
 .cur-anct:before {
     content: "\f192"
