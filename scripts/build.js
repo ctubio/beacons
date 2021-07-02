@@ -11,6 +11,7 @@ generateFonts({
   assetTypes: ["json"],
   fontHeight: 0,
   descent: 0,
+  normalize: true,
 }).then(() => {
   console.log("Beacons font generated!");
 });

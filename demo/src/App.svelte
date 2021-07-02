@@ -22,8 +22,8 @@
   $: filteredBeacons = filtered.filter((key) => {
     const q = query.toLowerCase();
     const sym = syms[key];
-    const name = beaconNames[sym].toLowerCase();
-    return sym.includes(q) || name.includes(q);
+    const name = beaconNames[sym]?.toLowerCase();
+    return sym.includes(q) || name?.includes(q);
   });
 
   const groupTest = (beacon) => {
