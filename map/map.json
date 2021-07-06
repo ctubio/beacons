@@ -159,5 +159,7 @@
   "cur-uah": "sym-uah",
   "cur-uah-s": "sym-uah-s",
   "exc-ftx": "sym-ftt",
-  "exc-ftx-s": "sym-ftt-s"
+  "exc-ftx-s": "sym-ftt-s",
+  "sym-cgld": "sym-celo",
+  "sym-cgld-s": "sym-celo-s"
 }

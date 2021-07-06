@@ -1,6 +1,6 @@
 # Cryptowatch Beacons
 
-Cryptowatch Beacons is a crypto icon font that contains over 1800 icons of cryptocurrencies, crypto exchanges and fiat currencies.
+Cryptowatch Beacons is a crypto icon font that contains over 2000 icons of cryptocurrencies, crypto exchanges, fiat currencies and equities.
 
 <img src="https://raw.githubusercontent.com/cryptowatch/beacons/master/img/beaconTop.png">
 

@@ -13354,3 +13354,15 @@ i[class^="beacon-"]:before, i[class*=" beacon-"]:before {
 .beacon-exc-ftx-s:before {
     content: "\f46f"
 }
+.sym-cgld:before {
+    content: "\f325"
+}
+.beacon-sym-cgld:before {
+    content: "\f325"
+}
+.sym-cgld-s:before {
+    content: "\f324"
+}
+.beacon-sym-cgld-s:before {
+    content: "\f324"
+}
