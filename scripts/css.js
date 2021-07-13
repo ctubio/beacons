@@ -41,29 +41,16 @@ const defCss = `@font-face {
     url("./beacons.ttf") format("truetype");
 }
 
-i[class^="beacon-"]:before, i[class*=" beacon-"]:before {
-  font-family: beacons !important;
+.beacon, *[class^="beacon-"] {
+  font-family: "beacons";
   font-style: normal;
-  font-weight: normal !important;
+  font-weight: normal;
   font-variant: normal;
   text-transform: none;
   line-height: 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
-.beacon {
-  font-family: "beacons";
-  font-weight: 400;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  display: inline-block;
-  font-style: normal;
-  font-variant: normal;
-  text-rendering: auto;
-  line-height: 1;
-}
-
 `;
 
 function getHex(key) {
@@ -84,7 +71,7 @@ function makeCss(keys) {
       const hex = getHex(key);
       // stringify keys that contain ".", like "sym-eth2.s"
       const k = key.replace(/[.]/g, "\\.");
-      return `.${k}:before {\n    content: "\\${hex}"\n}\n.beacon-${k}:before {\n    content: "\\${hex}"\n}`;
+      return `.${k}:before {\n    content: "\\${hex}"\n}`;
     })
     .join("\n");
 }
