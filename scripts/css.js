@@ -15,8 +15,9 @@ const first = [
   "sym-_default",
   // map
   "sym-d",
-  "sym-default",
   "sym-d-s",
+  "sym-default",
+  "sym-default-s",
   "exc-d",
   "exc-d-s",
   "exc-default",

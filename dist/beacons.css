@@ -36,6 +36,9 @@
 .sym-default:before {
     content: "\f206"
 }
+.sym-default-s:before {
+    content: "\f205"
+}
 .exc-d:before {
     content: "\f1b6"
 }
@@ -6221,9 +6224,6 @@
 }
 .sym-ztg:before {
     content: "\f90c"
-}
-.sym-default-s:before {
-    content: "\f205"
 }
 .cur-anct:before {
     content: "\f246"
