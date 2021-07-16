@@ -16,11 +16,11 @@ Import the files in the `/dist` folder into your project and link to `beacons.cs
 
 You may need to adapt the href value to your project's folder structure. Now you can start to use the font:
 
-`<i class="beacon-sym-btc" />`
+`<i class="beacon sym-btc" />`
 
 All icons have 2 versions: By default they are surrounded by a circle. Simply add the `-s` postfix to get the icon without the surrounding circle:
 
-`<i class="beacon-sym-btc-s" />`
+`<i class="beacon sym-btc-s" />`
 
 <img src="https://raw.githubusercontent.com/cryptowatch/beacons/master/img/iconExample.png">
 
@@ -33,19 +33,19 @@ The font consists of 2 icon groups:
 
 For example, if you want to display the icon for the Kraken exchange, you would do:
 
-`<i class="beacon-exc-kraken" />`
+`<i class="beacon exc-kraken" />`
 
 or
 
-`<i class="beacon-exc-kraken-s" />`
+`<i class="beacon exc-kraken-s" />`
 
 ### Fallback
 
-`beacon-sym-_default` and `beacon-exc-_default` can be used as a fallback for non-existing icons. You could do:
+`beacon sym-_default` and `beacon exc-_default` can be used as a fallback for non-existing icons. You could do:
 
-`<i class="beacon-sym-_default beacon-sym-NONEXISTANT" />`
+`<i class="beacon sym-_default sym-NONEXISTANT" />`
 
-if `beacon-sym-NONEXISTANT` does not exist, `beacon-sym-_default` will be used instead.
+if `sym-NONEXISTANT` does not exist, `sym-_default` will be used instead.
 
 # Build your own custom font
 
@@ -100,4 +100,4 @@ To prevent the existence and maintenance of multiple identical SVG source files 
 
 After adding new mappings to `map.json` and running `npm run build`, the icon can be accessed in the same way as icons that exist as SVG source files:
 
-`<i class="beacon-exc-ftx" />`
+`<i class="beacon exc-ftx" />`
