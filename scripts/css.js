@@ -42,7 +42,7 @@ const defCss = `@font-face {
     url("./beacons.ttf") format("truetype");
 }
 
-.beacon, *[class^="beacon-"] {
+.beacon {
   font-family: "beacons";
   font-style: normal;
   font-weight: normal;
@@ -52,6 +52,7 @@ const defCss = `@font-face {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
 `;
 
 function getHex(key) {

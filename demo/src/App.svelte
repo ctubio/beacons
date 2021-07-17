@@ -74,7 +74,7 @@
         <div class="beacon-container">
           <div class="name">{names[beacon]}</div>
           <div class="icon">
-            <i class={`beacon-${beacon}`} />
+            <i class={`beacon ${beacon}`} />
             <div class="text">
               <span class="prefix">{beacon.slice(0, 4)}</span><span class="main"
                 >{syms[beacon]}</span
@@ -82,7 +82,7 @@
             </div>
           </div>
           <div class="icon">
-            <i class={`beacon-${beacon}-s`} />
+            <i class={`beacon ${beacon}-s`} />
             <div class="text">
               <span class="prefix">{beacon.slice(0, 4)}</span><span class="main"
                 >{syms[beacon]}</span
@@ -95,7 +95,7 @@
           <div class="name">{names[beacon]}</div>
           <div class="icon">
             {#if beaconKeys.includes(beacon)}
-              <i class={`beacon-${beacon}`} />
+              <i class={`beacon ${beacon}`} />
               <div class="text">
                 <span class="prefix">{beacon.slice(0, 4)}</span><span
                   class="main">{syms[beacon]}</span
@@ -105,7 +105,7 @@
           </div>
           <div class="icon">
             {#if beaconKeys.includes(beacon + "s")}
-              <i class={`beacon-${beacon}-s`} />
+              <i class={`beacon ${beacon}-s`} />
               <div class="text">
                 <span class="prefix">{beacon.slice(0, 4)}</span><span
                   class="main">{syms[beacon]}</span
