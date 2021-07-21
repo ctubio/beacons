@@ -6697,3 +6697,9 @@
 .sym-cgld-s:before {
     content: "\f326"
 }
+.exc-uniswap-v2:before {
+    content: "\f82d"
+}
+.exc-uniswap-v2-s:before {
+    content: "\f82c"
+}
