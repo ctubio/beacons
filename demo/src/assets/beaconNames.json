@@ -18,6 +18,7 @@
   "btcchina": "",
   "btce": "",
   "cexio": "CEX.IO",
+  "cme": "CME",
   "coinbasepro": "Coinbase Pro",
   "coinone": "Coinone",
   "cryptofacilities": "",
@@ -968,5 +969,8 @@
   "mexbt": "meXBT",
   "coinbase-pro": "Coinbase Pro",
   "gdax": "",
-  "quadriga": "QuadrigaCX"
+  "quadriga": "QuadrigaCX",
+  "ftx-us": "FTX.US",
+  "cgld": "",
+  "uniswap-v2": "Uniswap V2"
 }
