@@ -6343,6 +6343,12 @@
 .exc-uniswap-v2-s:before {
     content: "\f7b4"
 }
+.exc-comex:before {
+    content: "\f124"
+}
+.exc-comex-s:before {
+    content: "\f123"
+}
 .sym-cob:before {
     content: "\f124"
 }

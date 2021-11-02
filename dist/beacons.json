@@ -2108,6 +2108,8 @@
   "sym-cgld-s": "f284",
   "exc-uniswap-v2": "f7b5",
   "exc-uniswap-v2-s": "f7b4",
+  "exc-comex": "f124",
+  "exc-comex-s": "f123",
   "sym-cob": "f124",
   "sym-cob-s": "f123",
   "sym-ehr": "f124",

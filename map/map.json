@@ -166,6 +166,8 @@
   "sym-cgld-s": "sym-celo-s",
   "exc-uniswap-v2": "sym-uni",
   "exc-uniswap-v2-s": "sym-uni-s",
+  "exc-comex": "exc-cme",
+  "exc-comex-s": "exc-cme-s",
   "sym-cob": "exc-cme",
   "sym-cob-s": "exc-cme-s",
   "sym-ehr": "exc-cme",
