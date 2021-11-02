@@ -191,5 +191,7 @@
   "sym-sgc": "exc-cme",
   "sym-sgc-s": "exc-cme-s",
   "sym-sgu": "exc-cme",
-  "sym-sgu-s": "exc-cme-s"
+  "sym-sgu-s": "exc-cme-s",
+  "sym-kshib": "sym-shib",
+  "sym-kshib-s": "sym-shib-s"
 }
