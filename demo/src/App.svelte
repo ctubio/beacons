@@ -40,8 +40,8 @@
   let showCopiedMsg = false;
 
   const getSVG = async (beacon) => {
+    clearTimeout(to);
     showCopiedMsg = false;
-    clearInterval(to);
     try {
       const res = await fetch(
         `https://raw.githubusercontent.com/cryptowatch/beacons/master/src/${beacon}.svg`
