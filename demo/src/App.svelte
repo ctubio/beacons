@@ -1,4 +1,5 @@
 <script>
+  import { onDestroy } from "svelte";
   import beacons from "../src/assets/beacons.json";
   import beaconNames from "../src/assets/beaconNames.json";
 
@@ -26,28 +27,42 @@
     return sym.includes(q) || name?.includes(q);
   });
 
-  const groupTest = (beacon) => {
-    let group = false;
-    const postfix = hasPostfix(beacon);
-    const b = postfix ? beacon.slice(0, -2) : beacon + "-s";
-    if (beaconKeys.includes(b)) group = true;
-    return group;
-  };
-
   const syms = {};
   const names = {};
-  const groups = {};
   beaconKeys.forEach((beacon) => {
     const sym = getMiddlePart(beacon);
     const name = beaconNames[sym] ? beaconNames[sym] : sym;
-    const group = groupTest(beacon);
-    Object.assign(syms, { [beacon]: sym });
-    Object.assign(names, { [beacon]: name });
-    Object.assign(groups, { [beacon]: group });
+    syms[beacon] = sym;
+    names[beacon] = name;
   });
 
-  // console.log(Object.keys(groups).filter((beacon) => !groups[beacon]));
+  let to;
+  let showCopiedMsg = false;
+
+  const getSVG = async (beacon) => {
+    showCopiedMsg = false;
+    clearInterval(to);
+    try {
+      const res = await fetch(
+        `https://raw.githubusercontent.com/cryptowatch/beacons/master/src/${beacon}.svg`
+      );
+      const text = await res.text();
+      navigator.clipboard.writeText(text);
+      showCopiedMsg = true;
+      to = setTimeout(() => {
+        showCopiedMsg = false;
+      }, 1000);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  onDestroy(() => clearTimeout(to));
 </script>
+
+{#if showCopiedMsg}
+  <div class="copy-msg">SVG markup copied to clipboard</div>
+{/if}
 
 <div class="container">
   <h1>Beacons</h1>
@@ -62,6 +77,9 @@
       rel="noopener noreferrer">GitHub</a
     >)
   </p>
+  <p class="secondary">
+    Click on an icon to copy its SVG markup to your clipboard
+  </p>
   <input
     type="text"
     bind:value={query}
@@ -70,51 +88,29 @@
   />
   <div class="beacons-flex">
     {#each filteredBeacons as beacon}
-      {#if groups[beacon]}
-        <div class="beacon-container">
-          <div class="name">{names[beacon]}</div>
-          <div class="icon">
-            <i class={`beacon ${beacon}`} />
+      <div class="beacon-container">
+        <div class="name">{names[beacon]}</div>
+        <div class="icon">
+          {#if beaconKeys.includes(beacon)}
+            <i class={`beacon ${beacon}`} on:click={getSVG(beacon)} />
             <div class="text">
               <span class="prefix">{beacon.slice(0, 4)}</span><span class="main"
                 >{syms[beacon]}</span
               >
             </div>
-          </div>
-          <div class="icon">
-            <i class={`beacon ${beacon}-s`} />
+          {/if}
+        </div>
+        <div class="icon">
+          {#if beaconKeys.includes(`${beacon}-s`)}
+            <i class={`beacon ${beacon}-s`} on:click={getSVG(`${beacon}-s`)} />
             <div class="text">
               <span class="prefix">{beacon.slice(0, 4)}</span><span class="main"
                 >{syms[beacon]}</span
               ><span class="postfix">-s</span>
             </div>
-          </div>
+          {/if}
         </div>
-      {:else}
-        <div class="beacon-container">
-          <div class="name">{names[beacon]}</div>
-          <div class="icon">
-            {#if beaconKeys.includes(beacon)}
-              <i class={`beacon ${beacon}`} />
-              <div class="text">
-                <span class="prefix">{beacon.slice(0, 4)}</span><span
-                  class="main">{syms[beacon]}</span
-                >
-              </div>
-            {/if}
-          </div>
-          <div class="icon">
-            {#if beaconKeys.includes(beacon + "s")}
-              <i class={`beacon ${beacon}-s`} />
-              <div class="text">
-                <span class="prefix">{beacon.slice(0, 4)}</span><span
-                  class="main">{syms[beacon]}</span
-                ><span class="postfix">-s</span>
-              </div>
-            {/if}
-          </div>
-        </div>
-      {/if}
+      </div>
     {:else}
       <div>No results.</div>
     {/each}
@@ -122,19 +118,27 @@
 </div>
 
 <style type="text/scss">
+  .copy-msg {
+    position: fixed;
+    top: 16px;
+    background-color: var(--alert);
+    color: var(--bg);
+    padding: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
   .container {
     max-width: 960px;
     margin: 0 auto;
     padding: 16px;
     input[type="text"] {
       font-family: "Iosevka Custom Web", monospace;
-      width: 100%;
+      width: calc(100% - 16px);
       background-color: transparent;
       color: var(--text);
       padding: 4px 8px;
       border: 1px solid var(--border);
-      font-size: 16px;
-      max-width: 300px;
+      font-size: 20px;
       margin-bottom: 16px;
       &:focus {
         outline: 0;
@@ -143,6 +147,10 @@
       &::placeholder {
         color: var(--weak);
       }
+    }
+    .secondary {
+      color: var(--weak);
+      font-size: 14px;
     }
     .beacons-flex {
       display: grid;
@@ -174,6 +182,10 @@
             width: 40px;
             font-size: 40px;
             color: var(--text);
+            cursor: pointer;
+            &:hover {
+              color: var(--alert);
+            }
           }
           .text {
             color: var(--weak);
