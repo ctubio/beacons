@@ -1,5 +1,6 @@
 <script>
   import { onDestroy } from "svelte";
+  import { fade } from "svelte/transition";
   import beacons from "../src/assets/beacons.json";
   import beaconNames from "../src/assets/beaconNames.json";
 
@@ -10,7 +11,7 @@
     return hasPostfix(beacon) ? middle.slice(0, -2) : middle;
   };
 
-  const exclude = ["d", "default", "_default"];
+  const exclude = ["b", "d", "default", "_default"];
 
   const beaconKeys = Object.keys(beacons).filter(
     (beacon) => !exclude.includes(getMiddlePart(beacon))
@@ -61,7 +62,9 @@
 </script>
 
 {#if showCopiedMsg}
-  <div class="copy-msg">SVG markup copied to clipboard</div>
+  <div class="copy-msg" transition:fade|local={{ duration: 100 }}>
+    SVG markup copied to clipboard
+  </div>
 {/if}
 
 <div class="container">
