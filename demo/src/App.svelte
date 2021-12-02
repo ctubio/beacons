@@ -3,6 +3,7 @@
   import { fade } from "svelte/transition";
   import beacons from "../src/assets/beacons.json";
   import beaconNames from "../src/assets/beaconNames.json";
+  import map from "../../map/map.json";
 
   const hasPostfix = (beacon) => beacon.slice(beacon.length - 2) === "-s";
 
@@ -39,23 +40,28 @@
 
   let to;
   let showCopiedMsg = false;
+  let copyErr = false;
 
   const getSVG = async (beacon) => {
     clearTimeout(to);
     showCopiedMsg = false;
+    copyErr = false;
+    if (beacon in map) beacon = map[beacon];
     try {
       const res = await fetch(
         `https://raw.githubusercontent.com/cryptowatch/beacons/master/src/${beacon}.svg`
       );
-      const text = await res.text();
-      navigator.clipboard.writeText(text);
-      showCopiedMsg = true;
-      to = setTimeout(() => {
-        showCopiedMsg = false;
-      }, 1000);
+      if (res.ok) {
+        const text = await res.text();
+        navigator.clipboard.writeText(text);
+      } else {
+        copyErr = true;
+      }
     } catch (e) {
-      console.log(e);
+      copyErr = true;
     }
+    showCopiedMsg = true;
+    to = setTimeout(() => (showCopiedMsg = false), 1000);
   };
 
   onDestroy(() => clearTimeout(to));
@@ -63,7 +69,11 @@
 
 {#if showCopiedMsg}
   <div class="copy-msg" transition:fade|local={{ duration: 100 }}>
-    SVG markup copied to clipboard
+    {#if copyErr}
+      Error
+    {:else}
+      SVG markup copied to clipboard
+    {/if}
   </div>
 {/if}
 
