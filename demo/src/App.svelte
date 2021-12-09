@@ -65,6 +65,8 @@
   };
 
   onDestroy(() => clearTimeout(to));
+
+  let innerHeight, clientHeight;
 </script>
 
 {#if showCopiedMsg}
@@ -77,29 +79,36 @@
   </div>
 {/if}
 
+<svelte:window bind:innerHeight />
+
 <div class="container">
-  <h1>Beacons</h1>
-  <p>
-    Crypto icon font by
-    <a href="https://cryptowat.ch" target="_blank" rel="noopener noreferrer"
-      >Cryptowatch</a
-    >
-    (<a
-      href="https://github.com/cryptowatch/beacons"
-      target="_blank"
-      rel="noopener noreferrer">GitHub</a
-    >)
-  </p>
-  <p class="secondary">
-    Click on an icon to copy its SVG markup to your clipboard
-  </p>
-  <input
-    type="text"
-    bind:value={query}
-    placeholder={`Search ${beaconKeys.length} icons`}
-    spellcheck="false"
-  />
-  <div class="beacons-flex">
+  <div bind:clientHeight>
+    <h1>Beacons</h1>
+    <p>
+      Crypto icon font by
+      <a href="https://cryptowat.ch" target="_blank" rel="noopener noreferrer"
+        >Cryptowatch</a
+      >
+      (<a
+        href="https://github.com/cryptowatch/beacons"
+        target="_blank"
+        rel="noopener noreferrer">GitHub</a
+      >)
+    </p>
+    <p class="secondary">
+      Click on an icon to copy its SVG markup to your clipboard
+    </p>
+    <input
+      type="text"
+      bind:value={query}
+      placeholder={`Search ${beaconKeys.length} icons`}
+      spellcheck="false"
+    />
+  </div>
+  <div
+    class="beacons-flex"
+    style="max-height: {innerHeight - clientHeight - 16}px;"
+  >
     {#each filteredBeacons as beacon}
       <div class="beacon-container">
         <div class="name">{names[beacon]}</div>
@@ -143,7 +152,16 @@
   .container {
     max-width: 960px;
     margin: 0 auto;
-    padding: 16px;
+    padding-top: 16px;
+    h1 {
+      font-size: 16px;
+      margin-block-start: 0;
+      margin-block-end: 8px;
+    }
+    p {
+      margin-block-start: 0;
+      margin-block-end: 8px;
+    }
     input[type="text"] {
       font-family: "Iosevka Custom Web", monospace;
       width: calc(100% - 16px);
@@ -166,6 +184,7 @@
       font-size: 14px;
     }
     .beacons-flex {
+      overflow: auto;
       display: grid;
       grid-gap: 8px;
       grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
