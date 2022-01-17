@@ -6154,41 +6154,47 @@
 .sym-zlk:before {
     content: "\f8f4"
 }
-.sym-zpr-s:before {
+.sym-zondo-s:before {
     content: "\f8f5"
 }
-.sym-zpr:before {
+.sym-zondo:before {
     content: "\f8f6"
 }
-.sym-zpt-s:before {
+.sym-zpr-s:before {
     content: "\f8f7"
 }
-.sym-zpt:before {
+.sym-zpr:before {
     content: "\f8f8"
 }
-.sym-zrc-s:before {
+.sym-zpt-s:before {
     content: "\f8f9"
 }
-.sym-zrc:before {
+.sym-zpt:before {
     content: "\f8fa"
 }
-.sym-zrx-s:before {
+.sym-zrc-s:before {
     content: "\f8fb"
 }
-.sym-zrx:before {
+.sym-zrc:before {
     content: "\f8fc"
 }
-.sym-zsc-s:before {
+.sym-zrx-s:before {
     content: "\f8fd"
 }
-.sym-zsc:before {
+.sym-zrx:before {
     content: "\f8fe"
 }
-.sym-ztg-s:before {
+.sym-zsc-s:before {
     content: "\f8ff"
 }
-.sym-ztg:before {
+.sym-zsc:before {
     content: "\f900"
+}
+.sym-ztg-s:before {
+    content: "\f901"
+}
+.sym-ztg:before {
+    content: "\f902"
 }
 .cur-anct:before {
     content: "\f1ba"
