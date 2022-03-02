@@ -3125,7 +3125,7 @@ var app = (function () {
     var anct = "Anchor";
     var ankr = "Ankr Network";
     var ant = "Aragon";
-    var ape = "JUST $APE";
+    var ape = "Bored Ape Yacht Club";
     var api3 = "API3";
     var apis = "APIS";
     var appc = "AppCoins";
@@ -3518,7 +3518,7 @@ var app = (function () {
     var iht = "IHT Real Estate Protocol";
     var ilc = "ILCoin";
     var ilv = "Illuvium";
-    var imx = "Immutable";
+    var imx = "Immutable X";
     var incnt = "Incent";
     var ind = "Indorse Token";
     var inj = "Injective Protocol";
@@ -5219,7 +5219,7 @@ var app = (function () {
     	comex: comex,
     	kshib: kshib,
     	srare: srare,
-    	"ape.2": "Bored Ape Yacht Club"
+    	"ape.2": ""
     };
 
     var map = {
