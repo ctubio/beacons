@@ -6655,9 +6655,6 @@
 .sym-eth2\.s:before {
     content: "\f3da"
 }
-.sym-weth:before {
-    content: "\f8e3"
-}
 .cur-eth:before {
     content: "\f3da"
 }
@@ -6669,9 +6666,6 @@
 }
 .sym-eth2\.s-s:before {
     content: "\f3d9"
-}
-.sym-weth-s:before {
-    content: "\f8e2"
 }
 .cur-eth-s:before {
     content: "\f3d9"
