@@ -6856,6 +6856,12 @@
 .sym-ztg:before {
     content: "\f9de"
 }
+.ustc-s:before {
+    content: "\f9df"
+}
+.ustc:before {
+    content: "\f9e0"
+}
 .cur-anct:before {
     content: "\f1d0"
 }
