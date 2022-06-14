@@ -1,1 +1,6639 @@
-var app=function(){"use strict";function s(){}const f=s=>s;function m(s){return s()}function y(){return Object.create(null)}function e(s){s.forEach(m)}function t(s){return"function"==typeof s}function c(s,f){return s!=s?f==f:s!==f||s&&"object"==typeof s||"function"==typeof s}function a(s){return null==s?"":s}const n="undefined"!=typeof window;let r=n?()=>window.performance.now():()=>Date.now(),o=n?s=>requestAnimationFrame(s):s;const i=new Set;function d(s){i.forEach((f=>{f.c(s)||(i.delete(f),f.f())})),0!==i.size&&o(d)}function l(s,f){s.appendChild(f)}function u(s){if(!s)return document;const f=s.getRootNode?s.getRootNode():s.ownerDocument;return f&&f.host?f:s.ownerDocument}function b(s){const f=h("style");return function(s,f){l(s.head||s,f)}(u(s),f),f.sheet}function x(s,f,m){s.insertBefore(f,m||null)}function p(s){s.parentNode.removeChild(s)}function h(s){return document.createElement(s)}function g(s){return document.createTextNode(s)}function k(){return g(" ")}function v(s,f,m,y){return s.addEventListener(f,m,y),()=>s.removeEventListener(f,m,y)}function w(s,f,m){null==m?s.removeAttribute(f):s.getAttribute(f)!==m&&s.setAttribute(f,m)}function C(s,f){f=""+f,s.wholeText!==f&&(s.data=f)}function S(s,f){s.value=null==f?"":f}function T(s,f,m,y){null===m?s.style.removeProperty(f):s.style.setProperty(f,m,y?"important":"")}let A;function P(){if(void 0===A){A=!1;try{"undefined"!=typeof window&&window.parent&&window.parent.document}catch(s){A=!0}}return A}const B=new Map;let N,z=0;function E(s,f,m,y,e,t,c,a=0){const n=16.666/y;let r="{\n";for(let s=0;s<=1;s+=n){const y=f+(m-f)*t(s);r+=100*s+`%{${c(y,1-y)}}\n`}const o=r+`100% {${c(m,1-m)}}\n}`,i=`__svelte_${function(s){let f=5381,m=s.length;for(;m--;)f=(f<<5)-f^s.charCodeAt(m);return f>>>0}(o)}_${a}`,d=u(s),{stylesheet:l,rules:x}=B.get(d)||function(s,f){const m={stylesheet:b(f),rules:{}};return B.set(s,m),m}(d,s);x[i]||(x[i]=!0,l.insertRule(`@keyframes ${i} ${o}`,l.cssRules.length));const p=s.style.animation||"";return s.style.animation=`${p?`${p}, `:""}${i} ${y}ms linear ${e}ms 1 both`,z+=1,i}function q(s,f){const m=(s.style.animation||"").split(", "),y=m.filter(f?s=>s.indexOf(f)<0:s=>-1===s.indexOf("__svelte")),e=m.length-y.length;e&&(s.style.animation=y.join(", "),z-=e,z||o((()=>{z||(B.forEach((s=>{const{stylesheet:f}=s;let m=f.cssRules.length;for(;m--;)f.deleteRule(m);s.rules={}})),B.clear())})))}function M(s){N=s}function D(s){(function(){if(!N)throw new Error("Function called outside component initialization");return N})().$$.on_destroy.push(s)}const F=[],O=[],R=[],I=[],L=Promise.resolve();let $=!1;function j(s){R.push(s)}const G=new Set;let H,X=0;function U(){const s=N;do{for(;X<F.length;){const s=F[X];X++,M(s),V(s.$$)}for(M(null),F.length=0,X=0;O.length;)O.pop()();for(let s=0;s<R.length;s+=1){const f=R[s];G.has(f)||(G.add(f),f())}R.length=0}while(F.length);for(;I.length;)I.pop()();$=!1,G.clear(),M(s)}function V(s){if(null!==s.fragment){s.update(),e(s.before_update);const f=s.dirty;s.dirty=[-1],s.fragment&&s.fragment.p(s.ctx,f),s.after_update.forEach(j)}}function _(s,f,m){s.dispatchEvent(function(s,f,m=!1){const y=document.createEvent("CustomEvent");return y.initCustomEvent(s,m,!1,f),y}(`${f?"intro":"outro"}${m}`))}const K=new Set;let W;function Y(s,f){s&&s.i&&(K.delete(s),s.i(f))}function Z(s,f,m,y){if(s&&s.o){if(K.has(s))return;K.add(s),W.c.push((()=>{K.delete(s),y&&(m&&s.d(1),y())})),s.o(f)}}const Q={duration:0};function J(m,y,c,a){let n=y(m,c),l=a?0:1,u=null,b=null,x=null;function p(){x&&q(m,x)}function h(s,f){const m=s.b-l;return f*=Math.abs(m),{a:l,b:s.b,d:m,duration:f,start:s.start,end:s.start+f,group:s.group}}function g(y){const{delay:t=0,duration:c=300,easing:a=f,tick:g=s,css:k}=n||Q,v={start:r()+t,b:y};y||(v.group=W,W.r+=1),u||b?b=v:(k&&(p(),x=E(m,l,y,c,t,a,k)),y&&g(0,1),u=h(v,c),j((()=>_(m,y,"start"))),function(s){let f;0===i.size&&o(d),new Promise((m=>{i.add(f={c:s,f:m})}))}((s=>{if(b&&s>b.start&&(u=h(b,c),b=null,_(m,u.b,"start"),k&&(p(),x=E(m,l,u.b,u.duration,0,a,n.css))),u)if(s>=u.end)g(l=u.b,1-l),_(m,u.b,"end"),b||(u.b?p():--u.group.r||e(u.group.c)),u=null;else if(s>=u.start){const f=s-u.start;l=u.a+u.d*a(f/u.duration),g(l,1-l)}return!(!u&&!b)})))}return{run(s){t(n)?(H||(H=Promise.resolve(),H.then((()=>{H=null}))),H).then((()=>{n=n(),g(s)})):g(s)},end(){p(),u=b=null}}}function ss(s,f){-1===s.$$.dirty[0]&&(F.push(s),$||($=!0,L.then(U)),s.$$.dirty.fill(0)),s.$$.dirty[f/31|0]|=1<<f%31}function fs(f,c,a,n,r,o,i,d=[-1]){const l=N;M(f);const u=f.$$={fragment:null,ctx:null,props:o,update:s,not_equal:r,bound:y(),on_mount:[],on_destroy:[],on_disconnect:[],before_update:[],after_update:[],context:new Map(c.context||(l?l.$$.context:[])),callbacks:y(),dirty:d,skip_bound:!1,root:c.target||l.$$.root};i&&i(u.root);let b=!1;if(u.ctx=a?a(f,c.props||{},((s,m,...y)=>{const e=y.length?y[0]:m;return u.ctx&&r(u.ctx[s],u.ctx[s]=e)&&(!u.skip_bound&&u.bound[s]&&u.bound[s](e),b&&ss(f,s)),m})):[],u.update(),b=!0,e(u.before_update),u.fragment=!!n&&n(u.ctx),c.target){if(c.hydrate){const s=function(s){return Array.from(s.childNodes)}(c.target);u.fragment&&u.fragment.l(s),s.forEach(p)}else u.fragment&&u.fragment.c();c.intro&&Y(f.$$.fragment),function(s,f,y,c){const{fragment:a,on_mount:n,on_destroy:r,after_update:o}=s.$$;a&&a.m(f,y),c||j((()=>{const f=n.map(m).filter(t);r?r.push(...f):e(f),s.$$.on_mount=[]})),o.forEach(j)}(f,c.target,c.anchor,c.customElement),U()}M(l)}function ms(s,{delay:m=0,duration:y=400,easing:e=f}={}){const t=+getComputedStyle(s).opacity;return{delay:m,duration:y,easing:e,css:s=>"opacity: "+s*t}}var ys={"exc-_default-s":"f101","exc-_default":"f102","sym-_default-s":"f165","sym-_default":"f166","sym-d":"f166","sym-d-s":"f165","sym-default":"f166","sym-default-s":"f165","exc-d":"f102","exc-d-s":"f101","exc-default":"f102","exc-default-s":"f101","cur-default":"f166","cur-default-s":"f165","exc-axieinfinity-s":"f103","exc-axieinfinity":"f104","exc-bibox-s":"f105","exc-bibox":"f106","exc-binance-s":"f107","exc-binance":"f108","exc-bisq-s":"f109","exc-bisq":"f10a","exc-bitbay-s":"f10b","exc-bitbay":"f10c","exc-bitfinex-s":"f10d","exc-bitfinex":"f10e","exc-bitflyer-s":"f10f","exc-bitflyer":"f110","exc-bithumb-s":"f111","exc-bithumb":"f112","exc-bitmex-s":"f113","exc-bitmex":"f114","exc-bitso-s":"f115","exc-bitso":"f116","exc-bitsquare-s":"f117","exc-bitsquare":"f118","exc-bitstamp-s":"f119","exc-bitstamp":"f11a","exc-bittrex-s":"f11b","exc-bittrex":"f11c","exc-bitvc-s":"f11d","exc-bitvc":"f11e","exc-btcchina-s":"f11f","exc-btcchina":"f120","exc-btce-s":"f121","exc-btce":"f122","exc-cexio-s":"f123","exc-cexio":"f124","exc-cme-s":"f125","exc-cme":"f126","exc-coinbase-s":"f127","exc-coinbase":"f128","exc-coinbasepro-s":"f129","exc-coinbasepro":"f12a","exc-coinone-s":"f12b","exc-coinone":"f12c","exc-comex-s":"f12d","exc-comex":"f12e","exc-cryptofacilities-s":"f12f","exc-cryptofacilities":"f130","exc-deribit-s":"f131","exc-deribit":"f132","exc-dex-aggregated-s":"f133","exc-dex-aggregated":"f134","exc-gateio-s":"f135","exc-gateio":"f136","exc-hitbtc-s":"f137","exc-hitbtc":"f138","exc-kucoin-s":"f139","exc-kucoin":"f13a","exc-liquid-s":"f13b","exc-liquid":"f13c","exc-luno-s":"f13d","exc-luno":"f13e","exc-mtgox-s":"f13f","exc-mtgox":"f140","exc-mxc-s":"f141","exc-mxc":"f142","exc-nbatopshop-s":"f143","exc-nbatopshop":"f144","exc-nymex-s":"f145","exc-nymex":"f146","exc-okcoin-s":"f147","exc-okcoin":"f148","exc-okx-s":"f149","exc-okx":"f14a","exc-opensea-s":"f14b","exc-opensea":"f14c","exc-poloniex-s":"f14d","exc-poloniex":"f14e","exc-qryptos-s":"f14f","exc-qryptos":"f150","exc-quadrigacx-s":"f151","exc-quadrigacx":"f152","exc-quick-s":"f153","exc-quick":"f154","exc-quoine-s":"f155","exc-quoine":"f156","exc-rarible-s":"f157","exc-rarible":"f158","exc-totle-s":"f159","exc-totle":"f15a","exc-upbit-s":"f15b","exc-upbit":"f15c","exc-vaultofsatoshi-s":"f15d","exc-vaultofsatoshi":"f15e","exc-wex-s":"f15f","exc-wex":"f160","exc-zaif-s":"f161","exc-zaif":"f162","exc-zonda-s":"f163","exc-zonda":"f164","sym-1inch-s":"f167","sym-1inch":"f168","sym-1st-s":"f169","sym-1st":"f16a","sym-6a-s":"f16b","sym-6a":"f16c","sym-6b-s":"f16d","sym-6b":"f16e","sym-6c-s":"f16f","sym-6c":"f170","sym-6e-s":"f171","sym-6e":"f172","sym-6j-s":"f173","sym-6j":"f174","sym-6l-s":"f175","sym-6l":"f176","sym-6m-s":"f177","sym-6m":"f178","sym-6n-s":"f179","sym-6n":"f17a","sym-6s-s":"f17b","sym-6s":"f17c","sym-a38-s":"f17d","sym-a38":"f17e","sym-aac-s":"f17f","sym-aac":"f180","sym-aave-s":"f181","sym-aave":"f182","sym-abbc-s":"f183","sym-abbc":"f184","sym-abt-s":"f185","sym-abt":"f186","sym-abyss-s":"f187","sym-abyss":"f188","sym-aca-s":"f189","sym-aca":"f18a","sym-acat-s":"f18b","sym-acat":"f18c","sym-ach-s":"f18d","sym-ach":"f18e","sym-act-s":"f18f","sym-act":"f190","sym-ad0-s":"f191","sym-ad0":"f192","sym-ada-s":"f193","sym-ada":"f194","sym-adel-s":"f195","sym-adel":"f196","sym-adh-s":"f197","sym-adh":"f198","sym-adm-s":"f199","sym-adm":"f19a","sym-ado-s":"f19b","sym-ado":"f19c","sym-adt-s":"f19d","sym-adt":"f19e","sym-adx-s":"f19f","sym-adx":"f1a0","sym-ae-s":"f1a1","sym-ae":"f1a2","sym-aed-s":"f1a3","sym-aed":"f1a4","sym-aeon-s":"f1a5","sym-aeon":"f1a6","sym-aep-s":"f1a7","sym-aep":"f1a8","sym-aergo-s":"f1a9","sym-aergo":"f1aa","sym-agi-s":"f1ab","sym-agi":"f1ac","sym-agld-s":"f1ad","sym-agld":"f1ae","sym-aid-s":"f1af","sym-aid":"f1b0","sym-aion-s":"f1b1","sym-aion":"f1b2","sym-air-s":"f1b3","sym-air":"f1b4","sym-akro-s":"f1b5","sym-akro":"f1b6","sym-akt-s":"f1b7","sym-akt":"f1b8","sym-alcx-s":"f1b9","sym-alcx":"f1ba","sym-aleph-s":"f1bb","sym-aleph":"f1bc","sym-algo-s":"f1bd","sym-algo":"f1be","sym-ali-s":"f1bf","sym-ali":"f1c0","sym-alice-s":"f1c1","sym-alice":"f1c2","sym-alpha-s":"f1c3","sym-alpha":"f1c4","sym-amb-s":"f1c5","sym-amb":"f1c6","sym-amlt-s":"f1c7","sym-amlt":"f1c8","sym-amp-s":"f1c9","sym-amp":"f1ca","sym-ampl-s":"f1cb","sym-ampl":"f1cc","sym-anc-s":"f1cd","sym-anc":"f1ce","sym-anct-s":"f1cf","sym-anct":"f1d0","sym-ankr-s":"f1d1","sym-ankr":"f1d2","sym-ant-s":"f1d3","sym-ant":"f1d4","sym-ape-s":"f1d5","sym-ape":"f1d6","sym-api3-s":"f1d7","sym-api3":"f1d8","sym-apis-s":"f1d9","sym-apis":"f1da","sym-appc-s":"f1db","sym-appc":"f1dc","sym-ar-s":"f1dd","sym-ar":"f1de","sym-ardr-s":"f1df","sym-ardr":"f1e0","sym-ark-s":"f1e1","sym-ark":"f1e2","sym-arn-s":"f1e3","sym-arn":"f1e4","sym-arpa-s":"f1e5","sym-arpa":"f1e6","sym-art-s":"f1e7","sym-art":"f1e8","sym-aspt-s":"f1e9","sym-aspt":"f1ea","sym-ast-s":"f1eb","sym-ast":"f1ec","sym-astr-s":"f1ed","sym-astr":"f1ee","sym-at-s":"f1ef","sym-at":"f1f0","sym-atlas-s":"f1f1","sym-atlas":"f1f2","sym-atm-s":"f1f3","sym-atm":"f1f4","sym-atom-s":"f1f5","sym-atom":"f1f6","sym-atp-s":"f1f7","sym-atp":"f1f8","sym-atri-s":"f1f9","sym-atri":"f1fa","sym-auction-s":"f1fb","sym-auction":"f1fc","sym-aud-s":"f1fd","sym-aud":"f1fe","sym-audio-s":"f1ff","sym-audio":"f200","sym-aup-s":"f201","sym-aup":"f202","sym-aury-s":"f203","sym-aury":"f204","sym-auto-s":"f205","sym-auto":"f206","sym-ava-s":"f207","sym-ava":"f208","sym-avax-s":"f209","sym-avax":"f20a","sym-avt-s":"f20b","sym-avt":"f20c","sym-axp-s":"f20d","sym-axp":"f20e","sym-axs-s":"f20f","sym-axs":"f210","sym-b":"f211","sym-b0-s":"f212","sym-b0":"f213","sym-b2g-s":"f214","sym-b2g":"f215","sym-bab-s":"f216","sym-bab":"f217","sym-badger-s":"f218","sym-badger":"f219","sym-bake-s":"f21a","sym-bake":"f21b","sym-bal-s":"f21c","sym-bal":"f21d","sym-banca-s":"f21e","sym-banca":"f21f","sym-band-s":"f220","sym-band":"f221","sym-bat-s":"f222","sym-bat":"f223","sym-bay-s":"f224","sym-bay":"f225","sym-bbc-s":"f226","sym-bbc":"f227","sym-bcc-s":"f228","sym-bcc":"f229","sym-bcd-s":"f22a","sym-bcd":"f22b","sym-bch-s":"f22c","sym-bch":"f22d","sym-bci-s":"f22e","sym-bci":"f22f","sym-bcn-s":"f230","sym-bcn":"f231","sym-bcpt-s":"f232","sym-bcpt":"f233","sym-bcu-s":"f234","sym-bcu":"f235","sym-bcv-s":"f236","sym-bcv":"f237","sym-bcy-s":"f238","sym-bcy":"f239","sym-bdg-s":"f23a","sym-bdg":"f23b","sym-beam-s":"f23c","sym-beam":"f23d","sym-beet-s":"f23e","sym-beet":"f23f","sym-bel-s":"f240","sym-bel":"f241","sym-bela-s":"f242","sym-bela":"f243","sym-berry-s":"f244","sym-berry":"f245","sym-betr-s":"f246","sym-betr":"f247","sym-bez-s":"f248","sym-bez":"f249","sym-bft-s":"f24a","sym-bft":"f24b","sym-bfx-s":"f24c","sym-bfx":"f24d","sym-bhd-s":"f24e","sym-bhd":"f24f","sym-bht-s":"f250","sym-bht":"f251","sym-bico-s":"f252","sym-bico":"f253","sym-bit-s":"f254","sym-bit":"f255","sym-bitb-s":"f256","sym-bitb":"f257","sym-bix-s":"f258","sym-bix":"f259","sym-bk-s":"f25a","sym-bk":"f25b","sym-bkx-s":"f25c","sym-bkx":"f25d","sym-blk-s":"f25e","sym-blk":"f25f","sym-block-s":"f260","sym-block":"f261","sym-blt-s":"f262","sym-blt":"f263","sym-blz-s":"f264","sym-blz":"f265","sym-bmc-s":"f266","sym-bmc":"f267","sym-bnb-s":"f268","sym-bnb":"f269","sym-bnc-s":"f26a","sym-bnc":"f26b","sym-bnk-s":"f26c","sym-bnk":"f26d","sym-bnt-s":"f26e","sym-bnt":"f26f","sym-bo-s":"f270","sym-bo":"f271","sym-bond-s":"f272","sym-bond":"f273","sym-boo-s":"f274","sym-boo":"f275","sym-bor-s":"f276","sym-bor":"f277","sym-bora-s":"f278","sym-bora":"f279","sym-bos-s":"f27a","sym-bos":"f27b","sym-box-s":"f27c","sym-box":"f27d","sym-brd-s":"f27e","sym-brd":"f27f","sym-brg-s":"f280","sym-brg":"f281","sym-brick-s":"f282","sym-brick":"f283","sym-bsd-s":"f284","sym-bsd":"f285","sym-bsv-s":"f286","sym-bsv":"f287","sym-bsx-s":"f288","sym-bsx":"f289","sym-bt1-s":"f28a","sym-bt1":"f28b","sym-bt2-s":"f28c","sym-bt2":"f28d","sym-btc-s":"f28e","sym-btc":"f28f","sym-btcd-s":"f290","sym-btcd":"f291","sym-btcfx-s":"f292","sym-btcfx":"f293","sym-btcp-s":"f294","sym-btcp":"f295","sym-btg-s":"f296","sym-btg":"f297","sym-btm-s":"f298","sym-btm":"f299","sym-btn-s":"f29a","sym-btn":"f29b","sym-bto-s":"f29c","sym-bto":"f29d","sym-btrst-s":"f29e","sym-btrst":"f29f","sym-bts-s":"f2a0","sym-bts":"f2a1","sym-btt-s":"f2a2","sym-btt":"f2a3","sym-btu-s":"f2a4","sym-btu":"f2a5","sym-btx-s":"f2a6","sym-btx":"f2a7","sym-burger-s":"f2a8","sym-burger":"f2a9","sym-burst-s":"f2aa","sym-burst":"f2ab","sym-bus-s":"f2ac","sym-bus":"f2ad","sym-busd-s":"f2ae","sym-busd":"f2af","sym-bwx-s":"f2b0","sym-bwx":"f2b1","sym-bz-s":"f2b2","sym-bz":"f2b3","sym-bzrx-s":"f2b4","sym-bzrx":"f2b5","sym-c-s":"f2b6","sym-c":"f2b7","sym-c20-s":"f2b8","sym-c20":"f2b9","sym-c98-s":"f2ba","sym-c98":"f2bb","sym-cad-s":"f2bc","sym-cad":"f2bd","sym-cake-s":"f2be","sym-cake":"f2bf","sym-cas-s":"f2c0","sym-cas":"f2c1","sym-cat-s":"f2c2","sym-cat":"f2c3","sym-cbc-s":"f2c4","sym-cbc":"f2c5","sym-cbt-s":"f2c6","sym-cbt":"f2c7","sym-cdt-s":"f2c8","sym-cdt":"f2c9","sym-cel-s":"f2ca","sym-cel":"f2cb","sym-celo-s":"f2cc","sym-celo":"f2cd","sym-celr-s":"f2ce","sym-celr":"f2cf","sym-cennz-s":"f2d0","sym-cennz":"f2d1","sym-cfg-s":"f2d2","sym-cfg":"f2d3","sym-cfi-s":"f2d4","sym-cfi":"f2d5","sym-cfx-s":"f2d6","sym-cfx":"f2d7","sym-cgt-s":"f2d8","sym-cgt":"f2d9","sym-chat-s":"f2da","sym-chat":"f2db","sym-chf-s":"f2dc","sym-chf":"f2dd","sym-chp-s":"f2de","sym-chp":"f2df","sym-chr-s":"f2e0","sym-chr":"f2e1","sym-chsb-s":"f2e2","sym-chsb":"f2e3","sym-chx-s":"f2e4","sym-chx":"f2e5","sym-chz-s":"f2e6","sym-chz":"f2e7","sym-ckb-s":"f2e8","sym-ckb":"f2e9","sym-cl-s":"f2ea","sym-cl":"f2eb","sym-clam-s":"f2ec","sym-clam":"f2ed","sym-cln-s":"f2ee","sym-cln":"f2ef","sym-clo-s":"f2f0","sym-clo":"f2f1","sym-cloak-s":"f2f2","sym-cloak":"f2f3","sym-clv-s":"f2f4","sym-clv":"f2f5","sym-cmct-s":"f2f6","sym-cmct":"f2f7","sym-cmt-s":"f2f8","sym-cmt":"f2f9","sym-cnd-s":"f2fa","sym-cnd":"f2fb","sym-cnn-s":"f2fc","sym-cnn":"f2fd","sym-cnx-s":"f2fe","sym-cnx":"f2ff","sym-cny-s":"f300","sym-cny":"f301","sym-cob-s":"f302","sym-cob":"f303","sym-cocos-s":"f304","sym-cocos":"f305","sym-comp-s":"f306","sym-comp":"f307","sym-cope-s":"f308","sym-cope":"f309","sym-cos-s":"f30a","sym-cos":"f30b","sym-cosm-s":"f30c","sym-cosm":"f30d","sym-coss-s":"f30e","sym-coss":"f30f","sym-coti-s":"f310","sym-coti":"f311","sym-cov-s":"f312","sym-cov":"f313","sym-cova-s":"f314","sym-cova":"f315","sym-cpt-s":"f316","sym-cpt":"f317","sym-cpx-s":"f318","sym-cpx":"f319","sym-cqt-s":"f31a","sym-cqt":"f31b","sym-cra-s":"f31c","sym-cra":"f31d","sym-crab-s":"f31e","sym-crab":"f31f","sym-crc-s":"f320","sym-crc":"f321","sym-cre-s":"f322","sym-cre":"f323","sym-cream-s":"f324","sym-cream":"f325","sym-cring-s":"f326","sym-cring":"f327","sym-cro-s":"f328","sym-cro":"f329","sym-crpt-s":"f32a","sym-crpt":"f32b","sym-cru-s":"f32c","sym-cru":"f32d","sym-crv-s":"f32e","sym-crv":"f32f","sym-crw-s":"f330","sym-crw":"f331","sym-csm-s":"f332","sym-csm":"f333","sym-csx-s":"f334","sym-csx":"f335","sym-ctc-s":"f336","sym-ctc":"f337","sym-ctk-s":"f338","sym-ctk":"f339","sym-ctsi-s":"f33a","sym-ctsi":"f33b","sym-ctxc-s":"f33c","sym-ctxc":"f33d","sym-cur-s":"f33e","sym-cur":"f33f","sym-cvc-s":"f340","sym-cvc":"f341","sym-cvcoin-s":"f342","sym-cvcoin":"f343","sym-cvnt-s":"f344","sym-cvnt":"f345","sym-cvp-s":"f346","sym-cvp":"f347","sym-cvt-s":"f348","sym-cvt":"f349","sym-cvx-s":"f34a","sym-cvx":"f34b","sym-cw-s":"f34c","sym-cw":"f34d","sym-cyc-s":"f34e","sym-cyc":"f34f","sym-dac-s":"f350","sym-dac":"f351","sym-dacs-s":"f352","sym-dacs":"f353","sym-dadi-s":"f354","sym-dadi":"f355","sym-dag-s":"f356","sym-dag":"f357","sym-dai-s":"f358","sym-dai":"f359","sym-dao-s":"f35a","sym-dao":"f35b","sym-dar-s":"f35c","sym-dar":"f35d","sym-dash-s":"f35e","sym-dash":"f35f","sym-dat-s":"f360","sym-dat":"f361","sym-data-s":"f362","sym-data":"f363","sym-datx-s":"f364","sym-datx":"f365","sym-dbc-s":"f366","sym-dbc":"f367","sym-dbet-s":"f368","sym-dbet":"f369","sym-dbix-s":"f36a","sym-dbix":"f36b","sym-dcn-s":"f36c","sym-dcn":"f36d","sym-dcr-s":"f36e","sym-dcr":"f36f","sym-dct-s":"f370","sym-dct":"f371","sym-ddd-s":"f372","sym-ddd":"f373","sym-dego-s":"f374","sym-dego":"f375","sym-dent-s":"f376","sym-dent":"f377","sym-dext-s":"f378","sym-dext":"f379","sym-dgb-s":"f37a","sym-dgb":"f37b","sym-dgd-s":"f37c","sym-dgd":"f37d","sym-dgtx-s":"f37e","sym-dgtx":"f37f","sym-dgx-s":"f380","sym-dgx":"f381","sym-dhx-s":"f382","sym-dhx":"f383","sym-dia-s":"f384","sym-dia":"f385","sym-dice-s":"f386","sym-dice":"f387","sym-dim-s":"f388","sym-dim":"f389","sym-dlt-s":"f38a","sym-dlt":"f38b","sym-dmd-s":"f38c","sym-dmd":"f38d","sym-dmt-s":"f38e","sym-dmt":"f38f","sym-dnt-s":"f390","sym-dnt":"f391","sym-dock-s":"f392","sym-dock":"f393","sym-dodo-s":"f394","sym-dodo":"f395","sym-doge-s":"f396","sym-doge":"f397","sym-dot-s":"f398","sym-dot":"f399","sym-dpy-s":"f39a","sym-dpy":"f39b","sym-dream-s":"f39c","sym-dream":"f39d","sym-drep-s":"f39e","sym-drep":"f39f","sym-drg-s":"f3a0","sym-drg":"f3a1","sym-drgn-s":"f3a2","sym-drgn":"f3a3","sym-drt-s":"f3a4","sym-drt":"f3a5","sym-dta-s":"f3a6","sym-dta":"f3a7","sym-dtb-s":"f3a8","sym-dtb":"f3a9","sym-dtr-s":"f3aa","sym-dtr":"f3ab","sym-dusk-s":"f3ac","sym-dusk":"f3ad","sym-dx-s":"f3ae","sym-dx":"f3af","sym-dydx-s":"f3b0","sym-dydx":"f3b1","sym-dyn-s":"f3b2","sym-dyn":"f3b3","sym-easy":"f3b4","sym-ecom-s":"f3b5","sym-ecom":"f3b6","sym-edc-s":"f3b7","sym-edc":"f3b8","sym-edg-s":"f3b9","sym-edg":"f3ba","sym-edo-s":"f3bb","sym-edo":"f3bc","sym-edp-s":"f3bd","sym-edp":"f3be","sym-edr-s":"f3bf","sym-edr":"f3c0","sym-efi-s":"f3c1","sym-efi":"f3c2","sym-egld-s":"f3c3","sym-egld":"f3c4","sym-egt-s":"f3c5","sym-egt":"f3c6","sym-ehr-s":"f3c7","sym-ehr":"f3c8","sym-eko-s":"f3c9","sym-eko":"f3ca","sym-ekt-s":"f3cb","sym-ekt":"f3cc","sym-ela-s":"f3cd","sym-ela":"f3ce","sym-elec-s":"f3cf","sym-elec":"f3d0","sym-elf-s":"f3d1","sym-elf":"f3d2","sym-em-s":"f3d3","sym-em":"f3d4","sym-emc-s":"f3d5","sym-emc":"f3d6","sym-emc2-s":"f3d7","sym-emc2":"f3d8","sym-eng-s":"f3d9","sym-eng":"f3da","sym-enj-s":"f3db","sym-enj":"f3dc","sym-ens-s":"f3dd","sym-ens":"f3de","sym-eos-s":"f3df","sym-eos":"f3e0","sym-eosdac-s":"f3e1","sym-eosdac":"f3e2","sym-eq-s":"f3e3","sym-eq":"f3e4","sym-erd-s":"f3e5","sym-erd":"f3e6","sym-ern-s":"f3e7","sym-ern":"f3e8","sym-es":"f3e9","sym-es-s":"f3ea","sym-esd-s":"f3eb","sym-esd":"f3ec","sym-etc-s":"f3ed","sym-etc":"f3ee","sym-eth-s":"f3ef","sym-eth":"f3f0","sym-ethup-s":"f3f1","sym-ethup":"f3f2","sym-etn-s":"f3f3","sym-etn":"f3f4","sym-etp-s":"f3f5","sym-etp":"f3f6","sym-eur-s":"f3f7","sym-eur":"f3f8","sym-eurs-s":"f3f9","sym-eurs":"f3fa","sym-eurt-s":"f3fb","sym-eurt":"f3fc","sym-evn-s":"f3fd","sym-evn":"f3fe","sym-evx-s":"f3ff","sym-evx":"f400","sym-ewt-s":"f401","sym-ewt":"f402","sym-exp-s":"f403","sym-exp":"f404","sym-exrd-s":"f405","sym-exrd":"f406","sym-exy-s":"f407","sym-exy":"f408","sym-ez-s":"f409","sym-ez":"f40a","sym-fair-s":"f40b","sym-fair":"f40c","sym-farm-s":"f40d","sym-farm":"f40e","sym-fct-s":"f40f","sym-fct":"f410","sym-fdz-s":"f411","sym-fdz":"f412","sym-fee-s":"f413","sym-fee":"f414","sym-fet-s":"f415","sym-fet":"f416","sym-fida-s":"f417","sym-fida":"f418","sym-fil-s":"f419","sym-fil":"f41a","sym-fio-s":"f41b","sym-fio":"f41c","sym-firo-s":"f41d","sym-firo":"f41e","sym-fis-s":"f41f","sym-fis":"f420","sym-fldc-s":"f421","sym-fldc":"f422","sym-flo-s":"f423","sym-flo":"f424","sym-floki-s":"f425","sym-floki":"f426","sym-flow-s":"f427","sym-flow":"f428","sym-flr-s":"f429","sym-flr":"f42a","sym-fluz-s":"f42b","sym-fluz":"f42c","sym-fnb-s":"f42d","sym-fnb":"f42e","sym-foam-s":"f42f","sym-foam":"f430","sym-for-s":"f431","sym-for":"f432","sym-forth-s":"f433","sym-forth":"f434","sym-fota-s":"f435","sym-fota":"f436","sym-frax-s":"f437","sym-frax":"f438","sym-front-s":"f439","sym-front":"f43a","sym-fsn-s":"f43b","sym-fsn":"f43c","sym-ftc-s":"f43d","sym-ftc":"f43e","sym-fti-s":"f43f","sym-fti":"f440","sym-ftm-s":"f441","sym-ftm":"f442","sym-ftt-s":"f443","sym-ftt":"f444","sym-ftx-s":"f445","sym-ftx":"f446","sym-fuel-s":"f447","sym-fuel":"f448","sym-fun-s":"f449","sym-fun":"f44a","sym-fx-s":"f44b","sym-fx":"f44c","sym-fxc-s":"f44d","sym-fxc":"f44e","sym-fxs-s":"f44f","sym-fxs":"f450","sym-fxt-s":"f451","sym-fxt":"f452","sym-gala-s":"f453","sym-gala":"f454","sym-game-s":"f455","sym-game":"f456","sym-gard-s":"f457","sym-gard":"f458","sym-gari-s":"f459","sym-gari":"f45a","sym-gas-s":"f45b","sym-gas":"f45c","sym-gbc-s":"f45d","sym-gbc":"f45e","sym-gbp-s":"f45f","sym-gbp":"f460","sym-gbx-s":"f461","sym-gbx":"f462","sym-gbyte-s":"f463","sym-gbyte":"f464","sym-gc-s":"f465","sym-gc":"f466","sym-gcc-s":"f467","sym-gcc":"f468","sym-ge-s":"f469","sym-ge":"f46a","sym-geist-s":"f46b","sym-geist":"f46c","sym-gen-s":"f46d","sym-gen":"f46e","sym-gens-s":"f46f","sym-gens":"f470","sym-get-s":"f471","sym-get":"f472","sym-ghst-s":"f473","sym-ghst":"f474","sym-glc-s":"f475","sym-glc":"f476","sym-gld-s":"f477","sym-gld":"f478","sym-glm-s":"f479","sym-glm":"f47a","sym-glmr-s":"f47b","sym-glmr":"f47c","sym-gmat-s":"f47d","sym-gmat":"f47e","sym-gmt-s":"f47f","sym-gmt":"f480","sym-gmt2-s":"f481","sym-gmt2":"f482","sym-gno-s":"f483","sym-gno":"f484","sym-gnt-s":"f485","sym-gnt":"f486","sym-gnx-s":"f487","sym-gnx":"f488","sym-go-s":"f489","sym-go":"f48a","sym-gods-s":"f48b","sym-gods":"f48c","sym-got-s":"f48d","sym-got":"f48e","sym-grc-s":"f48f","sym-grc":"f490","sym-grin-s":"f491","sym-grin":"f492","sym-grs-s":"f493","sym-grs":"f494","sym-grt-s":"f495","sym-grt":"f496","sym-gsc-s":"f497","sym-gsc":"f498","sym-gst-s":"f499","sym-gst":"f49a","sym-gt-s":"f49b","sym-gt":"f49c","sym-gtc-s":"f49d","sym-gtc":"f49e","sym-gtc2-s":"f49f","sym-gtc2":"f4a0","sym-gto-s":"f4a1","sym-gto":"f4a2","sym-gup-s":"f4a3","sym-gup":"f4a4","sym-gusd-s":"f4a5","sym-gusd":"f4a6","sym-gvt-s":"f4a7","sym-gvt":"f4a8","sym-gxc-s":"f4a9","sym-gxc":"f4aa","sym-gxs-s":"f4ab","sym-gxs":"f4ac","sym-hard-s":"f4ad","sym-hard":"f4ae","sym-hbar-s":"f4af","sym-hbar":"f4b0","sym-hc-s":"f4b1","sym-hc":"f4b2","sym-hdx-s":"f4b3","sym-hdx":"f4b4","sym-hedg-s":"f4b5","sym-hedg":"f4b6","sym-hegic-s":"f4b7","sym-hegic":"f4b8","sym-hex-s":"f4b9","sym-hex":"f4ba","sym-hft-s":"f4bb","sym-hft":"f4bc","sym-hg-s":"f4bd","sym-hg":"f4be","sym-hgs-s":"f4bf","sym-hgs":"f4c0","sym-hh-s":"f4c1","sym-hh":"f4c2","sym-high-s":"f4c3","sym-high":"f4c4","sym-hit-s":"f4c5","sym-hit":"f4c6","sym-hive-s":"f4c7","sym-hive":"f4c8","sym-hkd-s":"f4c9","sym-hkd":"f4ca","sym-hmq-s":"f4cb","sym-hmq":"f4cc","sym-hns-s":"f4cd","sym-hns":"f4ce","sym-ho-s":"f4cf","sym-ho":"f4d0","sym-hot-s":"f4d1","sym-hot":"f4d2","sym-hp-s":"f4d3","sym-hp":"f4d4","sym-hpb-s":"f4d5","sym-hpb":"f4d6","sym-hpc-s":"f4d7","sym-hpc":"f4d8","sym-hpt-s":"f4d9","sym-hpt":"f4da","sym-hrc-s":"f4db","sym-hrc":"f4dc","sym-hsc-s":"f4dd","sym-hsc":"f4de","sym-hsr-s":"f4df","sym-hsr":"f4e0","sym-hst-s":"f4e1","sym-hst":"f4e2","sym-ht-s":"f4e3","sym-ht":"f4e4","sym-html-s":"f4e5","sym-html":"f4e6","sym-htt-s":"f4e7","sym-htt":"f4e8","sym-huc-s":"f4e9","sym-huc":"f4ea","sym-hvn-s":"f4eb","sym-hvn":"f4ec","sym-hxro-s":"f4ed","sym-hxro":"f4ee","sym-hyc-s":"f4ef","sym-hyc":"f4f0","sym-hydra-s":"f4f1","sym-hydra":"f4f2","sym-hydro-s":"f4f3","sym-hydro":"f4f4","sym-icn-s":"f4f5","sym-icn":"f4f6","sym-icos-s":"f4f7","sym-icos":"f4f8","sym-icp-s":"f4f9","sym-icp":"f4fa","sym-icx-s":"f4fb","sym-icx":"f4fc","sym-idex-s":"f4fd","sym-idex":"f4fe","sym-idh-s":"f4ff","sym-idh":"f500","sym-idr-s":"f501","sym-idr":"f502","sym-ift-s":"f503","sym-ift":"f504","sym-ignis-s":"f505","sym-ignis":"f506","sym-ihf-s":"f507","sym-ihf":"f508","sym-iht-s":"f509","sym-iht":"f50a","sym-ilc-s":"f50b","sym-ilc":"f50c","sym-ilv-s":"f50d","sym-ilv":"f50e","sym-imx-s":"f50f","sym-imx":"f510","sym-incnt-s":"f511","sym-incnt":"f512","sym-ind-s":"f513","sym-ind":"f514","sym-indi-s":"f515","sym-indi":"f516","sym-inj-s":"f517","sym-inj":"f518","sym-ink-s":"f519","sym-ink":"f51a","sym-inr-s":"f51b","sym-inr":"f51c","sym-ins-s":"f51d","sym-ins":"f51e","sym-int-s":"f51f","sym-int":"f520","sym-intr-s":"f521","sym-intr":"f522","sym-ioc-s":"f523","sym-ioc":"f524","sym-ion-s":"f525","sym-ion":"f526","sym-iost-s":"f527","sym-iost":"f528","sym-iot-s":"f529","sym-iot":"f52a","sym-iotx-s":"f52b","sym-iotx":"f52c","sym-iq-s":"f52d","sym-iq":"f52e","sym-iris-s":"f52f","sym-iris":"f530","sym-itc-s":"f531","sym-itc":"f532","sym-ivy-s":"f533","sym-ivy":"f534","sym-ixt-s":"f535","sym-ixt":"f536","sym-jasmy-s":"f537","sym-jasmy":"f538","sym-jnt-s":"f539","sym-jnt":"f53a","sym-joe-s":"f53b","sym-joe":"f53c","sym-jpy-s":"f53d","sym-jpy":"f53e","sym-jst-s":"f53f","sym-jst":"f540","sym-juno-s":"f541","sym-juno":"f542","sym-just-s":"f543","sym-just":"f544","sym-juv-s":"f545","sym-juv":"f546","sym-kan-s":"f547","sym-kan":"f548","sym-kar-s":"f549","sym-kar":"f54a","sym-kava-s":"f54b","sym-kava":"f54c","sym-kbc-s":"f54d","sym-kbc":"f54e","sym-kcash-s":"f54f","sym-kcash":"f550","sym-kda-s":"f551","sym-kda":"f552","sym-keep-s":"f553","sym-keep":"f554","sym-key-s":"f555","sym-key":"f556","sym-kick-s":"f557","sym-kick":"f558","sym-kilt-s":"f559","sym-kilt":"f55a","sym-kin-s":"f55b","sym-kin":"f55c","sym-kint-s":"f55d","sym-kint":"f55e","sym-klay-s":"f55f","sym-klay":"f560","sym-kma-s":"f561","sym-kma":"f562","sym-kmd-s":"f563","sym-kmd":"f564","sym-knc-s":"f565","sym-knc":"f566","sym-kore-s":"f567","sym-kore":"f568","sym-kp3r-s":"f569","sym-kp3r":"f56a","sym-krm-s":"f56b","sym-krm":"f56c","sym-krw-s":"f56d","sym-krw":"f56e","sym-ksm-s":"f56f","sym-ksm":"f570","sym-ksx-s":"f571","sym-ksx":"f572","sym-kyl-s":"f573","sym-kyl":"f574","sym-la-s":"f575","sym-la":"f576","sym-lak-s":"f577","sym-lak":"f578","sym-lamb-s":"f579","sym-lamb":"f57a","sym-latx-s":"f57b","sym-latx":"f57c","sym-layr-s":"f57d","sym-layr":"f57e","sym-lba-s":"f57f","sym-lba":"f580","sym-lbc-s":"f581","sym-lbc":"f582","sym-lcc-s":"f583","sym-lcc":"f584","sym-lcx-s":"f585","sym-lcx":"f586","sym-ldo-s":"f587","sym-ldo":"f588","sym-lend-s":"f589","sym-lend":"f58a","sym-leo-s":"f58b","sym-leo":"f58c","sym-leoc-s":"f58d","sym-leoc":"f58e","sym-let-s":"f58f","sym-let":"f590","sym-life-s":"f591","sym-life":"f592","sym-lina-s":"f593","sym-lina":"f594","sym-link-s":"f595","sym-link":"f596","sym-lit-s":"f597","sym-lit":"f598","sym-lmc-s":"f599","sym-lmc":"f59a","sym-lml-s":"f59b","sym-lml":"f59c","sym-lnc-s":"f59d","sym-lnc":"f59e","sym-lnd-s":"f59f","sym-lnd":"f5a0","sym-loc-s":"f5a1","sym-loc":"f5a2","sym-looks-s":"f5a3","sym-looks":"f5a4","sym-loom-s":"f5a5","sym-loom":"f5a6","sym-lpt-s":"f5a7","sym-lpt":"f5a8","sym-lrc-s":"f5a9","sym-lrc":"f5aa","sym-lrn-s":"f5ab","sym-lrn":"f5ac","sym-lsk-s":"f5ad","sym-lsk":"f5ae","sym-ltc-s":"f5af","sym-ltc":"f5b0","sym-lto-s":"f5b1","sym-lto":"f5b2","sym-lun-s":"f5b3","sym-lun":"f5b4","sym-luna-s":"f5b5","sym-luna":"f5b6","sym-luna2-s":"f5b7","sym-luna2":"f5b8","sym-lxt-s":"f5b9","sym-lxt":"f5ba","sym-lym-s":"f5bb","sym-lym":"f5bc","sym-m2k-s":"f5bd","sym-m2k":"f5be","sym-ma-s":"f5bf","sym-ma":"f5c0","sym-maid-s":"f5c1","sym-maid":"f5c2","sym-man-s":"f5c3","sym-man":"f5c4","sym-mana-s":"f5c5","sym-mana":"f5c6","sym-mask-s":"f5c7","sym-mask":"f5c8","sym-mass-s":"f5c9","sym-mass":"f5ca","sym-math-s":"f5cb","sym-math":"f5cc","sym-matic-s":"f5cd","sym-matic":"f5ce","sym-mbl-s":"f5cf","sym-mbl":"f5d0","sym-mbt-s":"f5d1","sym-mbt":"f5d2","sym-mc-s":"f5d3","sym-mc":"f5d4","sym-mco-s":"f5d5","sym-mco":"f5d6","sym-mda-s":"f5d7","sym-mda":"f5d8","sym-mds-s":"f5d9","sym-mds":"f5da","sym-mdt-s":"f5db","sym-mdt":"f5dc","sym-mdx-s":"f5dd","sym-mdx":"f5de","sym-med-s":"f5df","sym-med":"f5e0","sym-mer-s":"f5e1","sym-mer":"f5e2","sym-mes-s":"f5e3","sym-mes":"f5e4","sym-met-s":"f5e5","sym-met":"f5e6","sym-meta-s":"f5e7","sym-meta":"f5e8","sym-mft-s":"f5e9","sym-mft":"f5ea","sym-mgc-s":"f5eb","sym-mgc":"f5ec","sym-mgo-s":"f5ed","sym-mgo":"f5ee","sym-mhc-s":"f5ef","sym-mhc":"f5f0","sym-mina-s":"f5f1","sym-mina":"f5f2","sym-mir-s":"f5f3","sym-mir":"f5f4","sym-mith-s":"f5f5","sym-mith":"f5f6","sym-mitx-s":"f5f7","sym-mitx":"f5f8","sym-mjp-s":"f5f9","sym-mjp":"f5fa","sym-mkr-s":"f5fb","sym-mkr":"f5fc","sym-mln-s":"f5fd","sym-mln":"f5fe","sym-mngo-s":"f5ff","sym-mngo":"f600","sym-mnx-s":"f601","sym-mnx":"f602","sym-moac-s":"f603","sym-moac":"f604","sym-mob-s":"f605","sym-mob":"f606","sym-mobi-s":"f607","sym-mobi":"f608","sym-moc-s":"f609","sym-moc":"f60a","sym-mod-s":"f60b","sym-mod":"f60c","sym-mona-s":"f60d","sym-mona":"f60e","sym-moon-s":"f60f","sym-moon":"f610","sym-morph-s":"f611","sym-morph":"f612","sym-movr-s":"f613","sym-movr":"f614","sym-mpl-s":"f615","sym-mpl":"f616","sym-mrk-s":"f617","sym-mrk":"f618","sym-msol-s":"f619","sym-msol":"f61a","sym-msp-s":"f61b","sym-msp":"f61c","sym-mta-s":"f61d","sym-mta":"f61e","sym-mtc-s":"f61f","sym-mtc":"f620","sym-mth-s":"f621","sym-mth":"f622","sym-mtl-s":"f623","sym-mtl":"f624","sym-mtn-s":"f625","sym-mtn":"f626","sym-mtx-s":"f627","sym-mtx":"f628","sym-mue-s":"f629","sym-mue":"f62a","sym-multi-s":"f62b","sym-multi":"f62c","sym-mv-s":"f62d","sym-mv":"f62e","sym-mx-s":"f62f","sym-mx":"f630","sym-mxc-s":"f631","sym-mxc":"f632","sym-mxm-s":"f633","sym-mxm":"f634","sym-mxn-s":"f635","sym-mxn":"f636","sym-myr-s":"f637","sym-myr":"f638","sym-n9l-s":"f639","sym-n9l":"f63a","sym-nanj-s":"f63b","sym-nanj":"f63c","sym-nano-s":"f63d","sym-nano":"f63e","sym-nas-s":"f63f","sym-nas":"f640","sym-naut-s":"f641","sym-naut":"f642","sym-nav-s":"f643","sym-nav":"f644","sym-ncash-s":"f645","sym-ncash":"f646","sym-nct-s":"f647","sym-nct":"f648","sym-near-s":"f649","sym-near":"f64a","sym-nebl-s":"f64b","sym-nebl":"f64c","sym-nec-s":"f64d","sym-nec":"f64e","sym-neo-s":"f64f","sym-neo":"f650","sym-neos-s":"f651","sym-neos":"f652","sym-nest-s":"f653","sym-nest":"f654","sym-neu-s":"f655","sym-neu":"f656","sym-new-s":"f657","sym-new":"f658","sym-nexo-s":"f659","sym-nexo":"f65a","sym-nft-s":"f65b","sym-nft":"f65c","sym-ng-s":"f65d","sym-ng":"f65e","sym-ngc-s":"f65f","sym-ngc":"f660","sym-ngn-s":"f661","sym-ngn":"f662","sym-nim-s":"f663","sym-nim":"f664","sym-niy-s":"f665","sym-niy":"f666","sym-nkd-s":"f667","sym-nkd":"f668","sym-nkn-s":"f669","sym-nkn":"f66a","sym-nlc2-s":"f66b","sym-nlc2":"f66c","sym-nlg-s":"f66d","sym-nlg":"f66e","sym-nmc-s":"f66f","sym-nmc":"f670","sym-nmr-s":"f671","sym-nmr":"f672","sym-nn-s":"f673","sym-nn":"f674","sym-noah-s":"f675","sym-noah":"f676","sym-nodl-s":"f677","sym-nodl":"f678","sym-note-s":"f679","sym-note":"f67a","sym-npg-s":"f67b","sym-npg":"f67c","sym-nplc-s":"f67d","sym-nplc":"f67e","sym-npxs-s":"f67f","sym-npxs":"f680","sym-nq-s":"f681","sym-nq":"f682","sym-nrg-s":"f683","sym-nrg":"f684","sym-ntk-s":"f685","sym-ntk":"f686","sym-nu-s":"f687","sym-nu":"f688","sym-nuls-s":"f689","sym-nuls":"f68a","sym-nvc-s":"f68b","sym-nvc":"f68c","sym-nxc-s":"f68d","sym-nxc":"f68e","sym-nxs-s":"f68f","sym-nxs":"f690","sym-nxt-s":"f691","sym-nxt":"f692","sym-nym-s":"f693","sym-nym":"f694","sym-o-s":"f695","sym-o":"f696","sym-oax-s":"f697","sym-oax":"f698","sym-ocean-s":"f699","sym-ocean":"f69a","sym-ocn-s":"f69b","sym-ocn":"f69c","sym-ode-s":"f69d","sym-ode":"f69e","sym-ogn-s":"f69f","sym-ogn":"f6a0","sym-ogo-s":"f6a1","sym-ogo":"f6a2","sym-ok-s":"f6a3","sym-ok":"f6a4","sym-okb-s":"f6a5","sym-okb":"f6a6","sym-om-s":"f6a7","sym-om":"f6a8","sym-omg-s":"f6a9","sym-omg":"f6aa","sym-omni-s":"f6ab","sym-omni":"f6ac","sym-one-s":"f6ad","sym-one":"f6ae","sym-ong-s":"f6af","sym-ong":"f6b0","sym-onot-s":"f6b1","sym-onot":"f6b2","sym-ont-s":"f6b3","sym-ont":"f6b4","sym-orbs-s":"f6b5","sym-orbs":"f6b6","sym-orca-s":"f6b7","sym-orca":"f6b8","sym-orme-s":"f6b9","sym-orme":"f6ba","sym-orn-s":"f6bb","sym-orn":"f6bc","sym-ors-s":"f6bd","sym-ors":"f6be","sym-osmo-s":"f6bf","sym-osmo":"f6c0","sym-ost-s":"f6c1","sym-ost":"f6c2","sym-otn-s":"f6c3","sym-otn":"f6c4","sym-oxt-s":"f6c5","sym-oxt":"f6c6","sym-oxy-s":"f6c7","sym-oxy":"f6c8","sym-pai-s":"f6c9","sym-pai":"f6ca","sym-pal-s":"f6cb","sym-pal":"f6cc","sym-paper-s":"f6cd","sym-paper":"f6ce","sym-para-s":"f6cf","sym-para":"f6d0","sym-part-s":"f6d1","sym-part":"f6d2","sym-pasc-s":"f6d3","sym-pasc":"f6d4","sym-pat-s":"f6d5","sym-pat":"f6d6","sym-pax-s":"f6d7","sym-pax":"f6d8","sym-paxg-s":"f6d9","sym-paxg":"f6da","sym-pay-s":"f6db","sym-pay":"f6dc","sym-pbt-s":"f6dd","sym-pbt":"f6de","sym-pcl-s":"f6df","sym-pcl":"f6e0","sym-pcx-s":"f6e1","sym-pcx":"f6e2","sym-pdex-s":"f6e3","sym-pdex":"f6e4","sym-people-s":"f6e5","sym-people":"f6e6","sym-perl-s":"f6e7","sym-perl":"f6e8","sym-perp-s":"f6e9","sym-perp":"f6ea","sym-pha-s":"f6eb","sym-pha":"f6ec","sym-phb-s":"f6ed","sym-phb":"f6ee","sym-php-s":"f6ef","sym-php":"f6f0","sym-phx-s":"f6f1","sym-phx":"f6f2","sym-pi-s":"f6f3","sym-pi":"f6f4","sym-pica-s":"f6f5","sym-pica":"f6f6","sym-pink-s":"f6f7","sym-pink":"f6f8","sym-pivx-s":"f6f9","sym-pivx":"f6fa","sym-pkt-s":"f6fb","sym-pkt":"f6fc","sym-pl-s":"f6fd","sym-pl":"f6fe","sym-pla-s":"f6ff","sym-pla":"f700","sym-plbt-s":"f701","sym-plbt":"f702","sym-plm-s":"f703","sym-plm":"f704","sym-pln-s":"f705","sym-pln":"f706","sym-plr-s":"f707","sym-plr":"f708","sym-ply-s":"f709","sym-ply":"f70a","sym-pma-s":"f70b","sym-pma":"f70c","sym-png-s":"f70d","sym-png":"f70e","sym-pnt-s":"f70f","sym-pnt":"f710","sym-poa-s":"f711","sym-poa":"f712","sym-poe-s":"f713","sym-poe":"f714","sym-polis-s":"f715","sym-polis":"f716","sym-pols-s":"f717","sym-pols":"f718","sym-poly-s":"f719","sym-poly":"f71a","sym-pond-s":"f71b","sym-pond":"f71c","sym-pot-s":"f71d","sym-pot":"f71e","sym-powr-s":"f71f","sym-powr":"f720","sym-ppc-s":"f721","sym-ppc":"f722","sym-ppt-s":"f723","sym-ppt":"f724","sym-pra-s":"f725","sym-pra":"f726","sym-pre-s":"f727","sym-pre":"f728","sym-prg-s":"f729","sym-prg":"f72a","sym-pro-s":"f72b","sym-pro":"f72c","sym-prq-s":"f72d","sym-prq":"f72e","sym-pst-s":"f72f","sym-pst":"f730","sym-pstake-s":"f731","sym-pstake":"f732","sym-pton-s":"f733","sym-pton":"f734","sym-pvt-s":"f735","sym-pvt":"f736","sym-pxg-s":"f737","sym-pxg":"f738","sym-pyr-s":"f739","sym-pyr":"f73a","sym-qash-s":"f73b","sym-qash":"f73c","sym-qau-s":"f73d","sym-qau":"f73e","sym-qc-s":"f73f","sym-qc":"f740","sym-qi-s":"f741","sym-qi":"f742","sym-qi2-s":"f743","sym-qi2":"f744","sym-qkc-s":"f745","sym-qkc":"f746","sym-qlc-s":"f747","sym-qlc":"f748","sym-qnt-s":"f749","sym-qnt":"f74a","sym-qntu-s":"f74b","sym-qntu":"f74c","sym-qo-s":"f74d","sym-qo":"f74e","sym-qrl-s":"f74f","sym-qrl":"f750","sym-qsp-s":"f751","sym-qsp":"f752","sym-qtum-s":"f753","sym-qtum":"f754","sym-quick-s":"f755","sym-quick":"f756","sym-qun-s":"f757","sym-qun":"f758","sym-r-s":"f759","sym-r":"f75a","sym-rad-s":"f75b","sym-rad":"f75c","sym-radar-s":"f75d","sym-radar":"f75e","sym-rads-s":"f75f","sym-rads":"f760","sym-rare-s":"f761","sym-rare":"f762","sym-rari-s":"f763","sym-rari":"f764","sym-rating-s":"f765","sym-rating":"f766","sym-ray-s":"f767","sym-ray":"f768","sym-rb-s":"f769","sym-rb":"f76a","sym-rbc-s":"f76b","sym-rbc":"f76c","sym-rblx-s":"f76d","sym-rblx":"f76e","sym-rbtc-s":"f76f","sym-rbtc":"f770","sym-rby-s":"f771","sym-rby":"f772","sym-rcn-s":"f773","sym-rcn":"f774","sym-rdd-s":"f775","sym-rdd":"f776","sym-rdn-s":"f777","sym-rdn":"f778","sym-real-s":"f779","sym-real":"f77a","sym-reef-s":"f77b","sym-reef":"f77c","sym-rem-s":"f77d","sym-rem":"f77e","sym-ren-s":"f77f","sym-ren":"f780","sym-rep-s":"f781","sym-rep":"f782","sym-repv2-s":"f783","sym-repv2":"f784","sym-req-s":"f785","sym-req":"f786","sym-rev-s":"f787","sym-rev":"f788","sym-rfox-s":"f789","sym-rfox":"f78a","sym-rfr-s":"f78b","sym-rfr":"f78c","sym-ric-s":"f78d","sym-ric":"f78e","sym-rif-s":"f78f","sym-rif":"f790","sym-ring-s":"f791","sym-ring":"f792","sym-rlc-s":"f793","sym-rlc":"f794","sym-rly-s":"f795","sym-rly":"f796","sym-rmrk-s":"f797","sym-rmrk":"f798","sym-rndr-s":"f799","sym-rndr":"f79a","sym-rntb-s":"f79b","sym-rntb":"f79c","sym-ron-s":"f79d","sym-ron":"f79e","sym-rook-s":"f79f","sym-rook":"f7a0","sym-rose-s":"f7a1","sym-rose":"f7a2","sym-rox-s":"f7a3","sym-rox":"f7a4","sym-rp-s":"f7a5","sym-rp":"f7a6","sym-rpx-s":"f7a7","sym-rpx":"f7a8","sym-rsr-s":"f7a9","sym-rsr":"f7aa","sym-rsv-s":"f7ab","sym-rsv":"f7ac","sym-rty-s":"f7ad","sym-rty":"f7ae","sym-rub-s":"f7af","sym-rub":"f7b0","sym-ruff-s":"f7b1","sym-ruff":"f7b2","sym-rune-s":"f7b3","sym-rune":"f7b4","sym-rvn-s":"f7b5","sym-rvn":"f7b6","sym-rvr-s":"f7b7","sym-rvr":"f7b8","sym-rvt-s":"f7b9","sym-rvt":"f7ba","sym-sai-s":"f7bb","sym-sai":"f7bc","sym-salt-s":"f7bd","sym-salt":"f7be","sym-samo-s":"f7bf","sym-samo":"f7c0","sym-san-s":"f7c1","sym-san":"f7c2","sym-sand-s":"f7c3","sym-sand":"f7c4","sym-sats-s":"f7c5","sym-sats":"f7c6","sym-sbd-s":"f7c7","sym-sbd":"f7c8","sym-sbr-s":"f7c9","sym-sbr":"f7ca","sym-sc-s":"f7cb","sym-sc":"f7cc","sym-scc-s":"f7cd","sym-scc":"f7ce","sym-scrt-s":"f7cf","sym-scrt":"f7d0","sym-sdc-s":"f7d1","sym-sdc":"f7d2","sym-sdn-s":"f7d3","sym-sdn":"f7d4","sym-seele-s":"f7d5","sym-seele":"f7d6","sym-sek-s":"f7d7","sym-sek":"f7d8","sym-sen-s":"f7d9","sym-sen":"f7da","sym-sent-s":"f7db","sym-sent":"f7dc","sym-sero-s":"f7dd","sym-sero":"f7de","sym-sexc-s":"f7df","sym-sexc":"f7e0","sym-sfp-s":"f7e1","sym-sfp":"f7e2","sym-sgb-s":"f7e3","sym-sgb":"f7e4","sym-sgc-s":"f7e5","sym-sgc":"f7e6","sym-sgd-s":"f7e7","sym-sgd":"f7e8","sym-sgn-s":"f7e9","sym-sgn":"f7ea","sym-sgu-s":"f7eb","sym-sgu":"f7ec","sym-shib-s":"f7ed","sym-shib":"f7ee","sym-shift-s":"f7ef","sym-shift":"f7f0","sym-ship-s":"f7f1","sym-ship":"f7f2","sym-si-s":"f7f3","sym-si":"f7f4","sym-sib-s":"f7f5","sym-sib":"f7f6","sym-sil-s":"f7f7","sym-sil":"f7f8","sym-six-s":"f7f9","sym-six":"f7fa","sym-sjcx-s":"f7fb","sym-sjcx":"f7fc","sym-skl-s":"f7fd","sym-skl":"f7fe","sym-skm-s":"f7ff","sym-skm":"f800","sym-sku-s":"f801","sym-sku":"f802","sym-sky-s":"f803","sym-sky":"f804","sym-slp-s":"f805","sym-slp":"f806","sym-slr-s":"f807","sym-slr":"f808","sym-sls-s":"f809","sym-sls":"f80a","sym-slt-s":"f80b","sym-slt":"f80c","sym-slv-s":"f80d","sym-slv":"f80e","sym-smart-s":"f80f","sym-smart":"f810","sym-smn-s":"f811","sym-smn":"f812","sym-smt-s":"f813","sym-smt":"f814","sym-snc-s":"f815","sym-snc":"f816","sym-snet-s":"f817","sym-snet":"f818","sym-sngls-s":"f819","sym-sngls":"f81a","sym-snm-s":"f81b","sym-snm":"f81c","sym-snt-s":"f81d","sym-snt":"f81e","sym-snx-s":"f81f","sym-snx":"f820","sym-soc-s":"f821","sym-soc":"f822","sym-socks-s":"f823","sym-socks":"f824","sym-sol-s":"f825","sym-sol":"f826","sym-solid-s":"f827","sym-solid":"f828","sym-solo-s":"f829","sym-solo":"f82a","sym-solve-s":"f82b","sym-solve":"f82c","sym-sos-s":"f82d","sym-sos":"f82e","sym-soul-s":"f82f","sym-soul":"f830","sym-sp-s":"f831","sym-sp":"f832","sym-sparta-s":"f833","sym-sparta":"f834","sym-spc-s":"f835","sym-spc":"f836","sym-spd-s":"f837","sym-spd":"f838","sym-spell-s":"f839","sym-spell":"f83a","sym-sphr-s":"f83b","sym-sphr":"f83c","sym-sphtx-s":"f83d","sym-sphtx":"f83e","sym-spnd-s":"f83f","sym-spnd":"f840","sym-spnk-s":"f841","sym-spnk":"f842","sym-srm-s":"f843","sym-srm":"f844","sym-srn-s":"f845","sym-srn":"f846","sym-ssp-s":"f847","sym-ssp":"f848","sym-stacs-s":"f849","sym-stacs":"f84a","sym-step-s":"f84b","sym-step":"f84c","sym-stg-s":"f84d","sym-stg":"f84e","sym-storm-s":"f84f","sym-storm":"f850","sym-stpt-s":"f851","sym-stpt":"f852","sym-stq-s":"f853","sym-stq":"f854","sym-str-s":"f855","sym-str":"f856","sym-strat-s":"f857","sym-strat":"f858","sym-strax-s":"f859","sym-strax":"f85a","sym-strk-s":"f85b","sym-strk":"f85c","sym-strong-s":"f85d","sym-strong":"f85e","sym-stx-s":"f85f","sym-stx":"f860","sym-sub-s":"f861","sym-sub":"f862","sym-sun-s":"f863","sym-sun":"f864","sym-super-s":"f865","sym-super":"f866","sym-susd-s":"f867","sym-susd":"f868","sym-sushi-s":"f869","sym-sushi":"f86a","sym-swftc-s":"f86b","sym-swftc":"f86c","sym-swm-s":"f86d","sym-swm":"f86e","sym-swrv-s":"f86f","sym-swrv":"f870","sym-swt-s":"f871","sym-swt":"f872","sym-swth-s":"f873","sym-swth":"f874","sym-sxp-s":"f875","sym-sxp":"f876","sym-syn-s":"f877","sym-syn":"f878","sym-sys-s":"f879","sym-sys":"f87a","sym-t-s":"f87b","sym-t":"f87c","sym-taas-s":"f87d","sym-taas":"f87e","sym-tau-s":"f87f","sym-tau":"f880","sym-tbtc-s":"f881","sym-tbtc":"f882","sym-tct-s":"f883","sym-tct":"f884","sym-teer-s":"f885","sym-teer":"f886","sym-tel-s":"f887","sym-temco-s":"f888","sym-temco":"f889","sym-tfuel-s":"f88a","sym-tfuel":"f88b","sym-thb-s":"f88c","sym-thb":"f88d","sym-thc-s":"f88e","sym-thc":"f88f","sym-theta-s":"f890","sym-theta":"f891","sym-thx-s":"f892","sym-thx":"f893","sym-time-s":"f894","sym-time":"f895","sym-tio-s":"f896","sym-tio":"f897","sym-tix-s":"f898","sym-tix":"f899","sym-tkn-s":"f89a","sym-tkn":"f89b","sym-tky-s":"f89c","sym-tky":"f89d","sym-tlm-s":"f89e","sym-tlm":"f89f","sym-tnb-s":"f8a0","sym-tnb":"f8a1","sym-tnc-s":"f8a2","sym-tnc":"f8a3","sym-tnt-s":"f8a4","sym-tnt":"f8a5","sym-toke-s":"f8a6","sym-toke":"f8a7","sym-tomb-s":"f8a8","sym-tomb":"f8a9","sym-tomo-s":"f8aa","sym-tomo":"f8ab","sym-top-s":"f8ac","sym-top":"f8ad","sym-torn-s":"f8ae","sym-torn":"f8af","sym-tpay-s":"f8b0","sym-tpay":"f8b1","sym-trac-s":"f8b2","sym-trac":"f8b3","sym-trb-s":"f8b4","sym-trb":"f8b5","sym-tribe-s":"f8b6","sym-tribe":"f8b7","sym-trig-s":"f8b8","sym-trig":"f8b9","sym-trio-s":"f8ba","sym-trio":"f8bb","sym-troy-s":"f8bc","sym-troy":"f8bd","sym-trst-s":"f8be","sym-trst":"f8bf","sym-tru-s":"f8c0","sym-tru":"f8c1","sym-true-s":"f8c2","sym-true":"f8c3","sym-trx-s":"f8c4","sym-trx":"f8c5","sym-try-s":"f8c6","sym-try":"f8c7","sym-tryb-s":"f8c8","sym-tryb":"f8c9","sym-tt-s":"f8ca","sym-tt":"f8cb","sym-ttc-s":"f8cc","sym-ttc":"f8cd","sym-ttt-s":"f8ce","sym-ttt":"f8cf","sym-ttu-s":"f8d0","sym-ttu":"f8d1","sym-tube-s":"f8d2","sym-tube":"f8d3","sym-tusd-s":"f8d4","sym-tusd":"f8d5","sym-tvk-s":"f8d6","sym-tvk":"f8d7","sym-twt-s":"f8d8","sym-twt":"f8d9","sym-uah-s":"f8da","sym-uah":"f8db","sym-ubq-s":"f8dc","sym-ubq":"f8dd","sym-ubt-s":"f8de","sym-ubt":"f8df","sym-uft-s":"f8e0","sym-uft":"f8e1","sym-ugas-s":"f8e2","sym-ugas":"f8e3","sym-uip-s":"f8e4","sym-uip":"f8e5","sym-ukg-s":"f8e6","sym-ukg":"f8e7","sym-uma-s":"f8e8","sym-uma":"f8e9","sym-unfi-s":"f8ea","sym-unfi":"f8eb","sym-uni-s":"f8ec","sym-uni":"f8ed","sym-unq-s":"f8ee","sym-unq":"f8ef","sym-up-s":"f8f0","sym-up":"f8f1","sym-upp-s":"f8f2","sym-upp":"f8f3","sym-usd-s":"f8f4","sym-usd":"f8f5","sym-usdc-s":"f8f6","sym-usdc":"f8f7","sym-usds-s":"f8f8","sym-usds":"f8f9","sym-usk-s":"f8fa","sym-usk":"f8fb","sym-ust-s":"f8fc","sym-ust":"f8fd","sym-utk-s":"f8fe","sym-utk":"f8ff","sym-utnp-s":"f900","sym-utnp":"f901","sym-utt-s":"f902","sym-utt":"f903","sym-uuu-s":"f904","sym-uuu":"f905","sym-ux-s":"f906","sym-ux":"f907","sym-vader-s":"f908","sym-vader":"f909","sym-vai-s":"f90a","sym-vai":"f90b","sym-vbk-s":"f90c","sym-vbk":"f90d","sym-vdx-s":"f90e","sym-vdx":"f90f","sym-vee-s":"f910","sym-vee":"f911","sym-ven-s":"f912","sym-ven":"f913","sym-veo-s":"f914","sym-veo":"f915","sym-veri-s":"f916","sym-veri":"f917","sym-vex-s":"f918","sym-vex":"f919","sym-vgx-s":"f91a","sym-vgx":"f91b","sym-via-s":"f91c","sym-via":"f91d","sym-vib-s":"f91e","sym-vib":"f91f","sym-vibe-s":"f920","sym-vibe":"f921","sym-vid-s":"f922","sym-vid":"f923","sym-vidt-s":"f924","sym-vidt":"f925","sym-vidy-s":"f926","sym-vidy":"f927","sym-vitae-s":"f928","sym-vitae":"f929","sym-vite-s":"f92a","sym-vite":"f92b","sym-vlx-s":"f92c","sym-vlx":"f92d","sym-vox-s":"f92e","sym-vox":"f92f","sym-vra-s":"f930","sym-vra":"f931","sym-vrc-s":"f932","sym-vrc":"f933","sym-vrm-s":"f934","sym-vrm":"f935","sym-vsys-s":"f936","sym-vsys":"f937","sym-vtc-s":"f938","sym-vtc":"f939","sym-vtho-s":"f93a","sym-vtho":"f93b","sym-wabi-s":"f93c","sym-wabi":"f93d","sym-wan-s":"f93e","sym-wan":"f93f","sym-waves-s":"f940","sym-waves":"f941","sym-wax-s":"f942","sym-wax":"f943","sym-wbtc-s":"f944","sym-wbtc":"f945","sym-wet-s":"f946","sym-wet":"f947","sym-weth-s":"f948","sym-weth":"f949","sym-wib-s":"f94a","sym-wib":"f94b","sym-wicc-s":"f94c","sym-wicc":"f94d","sym-win-s":"f94e","sym-win":"f94f","sym-wing-s":"f950","sym-wing":"f951","sym-wings-s":"f952","sym-wings":"f953","sym-wnxm-s":"f954","sym-wnxm":"f955","sym-woo-s":"f956","sym-woo":"f957","sym-wpr-s":"f958","sym-wpr":"f959","sym-wrx-s":"f95a","sym-wrx":"f95b","sym-wtc-s":"f95c","sym-wtc":"f95d","sym-wtt-s":"f95e","sym-wtt":"f95f","sym-wwb-s":"f960","sym-wwb":"f961","sym-wxt-s":"f962","sym-wxt":"f963","sym-xas-s":"f964","sym-xas":"f965","sym-xaur-s":"f966","sym-xaur":"f967","sym-xaut-s":"f968","sym-xaut":"f969","sym-xava-s":"f96a","sym-xava":"f96b","sym-xbc-s":"f96c","sym-xbc":"f96d","sym-xcon-s":"f96e","sym-xcon":"f96f","sym-xcp-s":"f970","sym-xcp":"f971","sym-xdn-s":"f972","sym-xdn":"f973","sym-xel-s":"f974","sym-xel":"f975","sym-xem-s":"f976","sym-xem":"f977","sym-xes-s":"f978","sym-xes":"f979","sym-xhv-s":"f97a","sym-xhv":"f97b","sym-xin-s":"f97c","sym-xin":"f97d","sym-xlm-s":"f97e","sym-xlm":"f97f","sym-xmc-s":"f980","sym-xmc":"f981","sym-xmr-s":"f982","sym-xmr":"f983","sym-xmx-s":"f984","sym-xmx":"f985","sym-xmy-s":"f986","sym-xmy":"f987","sym-xnk-s":"f988","sym-xnk":"f989","sym-xns-s":"f98a","sym-xns":"f98b","sym-xor-s":"f98c","sym-xor":"f98d","sym-xos-s":"f98e","sym-xos":"f98f","sym-xpm-s":"f990","sym-xpm":"f991","sym-xpr-s":"f992","sym-xpr":"f993","sym-xrc-s":"f994","sym-xrc":"f995","sym-xrp-s":"f996","sym-xrp":"f997","sym-xrpx-s":"f998","sym-xrpx":"f999","sym-xrt-s":"f99a","sym-xrt":"f99b","sym-xst-s":"f99c","sym-xst":"f99d","sym-xtp-s":"f99e","sym-xtp":"f99f","sym-xtz-s":"f9a0","sym-xtz":"f9a1","sym-xtzdown-s":"f9a2","sym-xtzdown":"f9a3","sym-xvc-s":"f9a4","sym-xvc":"f9a5","sym-xvg-s":"f9a6","sym-xvg":"f9a7","sym-xvs-s":"f9a8","sym-xvs":"f9a9","sym-xwc-s":"f9aa","sym-xwc":"f9ab","sym-xyo-s":"f9ac","sym-xyo":"f9ad","sym-xzc-s":"f9ae","sym-xzc":"f9af","sym-yam-s":"f9b0","sym-yam":"f9b1","sym-yee-s":"f9b2","sym-yee":"f9b3","sym-yeed-s":"f9b4","sym-yeed":"f9b5","sym-yfi-s":"f9b6","sym-yfi":"f9b7","sym-yfii-s":"f9b8","sym-yfii":"f9b9","sym-ygg-s":"f9ba","sym-ygg":"f9bb","sym-yoyow-s":"f9bc","sym-yoyow":"f9bd","sym-zar-s":"f9be","sym-zar":"f9bf","sym-zcl-s":"f9c0","sym-zcl":"f9c1","sym-zcn-s":"f9c2","sym-zcn":"f9c3","sym-zco-s":"f9c4","sym-zco":"f9c5","sym-zec-s":"f9c6","sym-zec":"f9c7","sym-zen-s":"f9c8","sym-zen":"f9c9","sym-zil-s":"f9ca","sym-zil":"f9cb","sym-zks-s":"f9cc","sym-zks":"f9cd","sym-zla-s":"f9ce","sym-zla":"f9cf","sym-zlk":"f9d0","sym-zondo-s":"f9d1","sym-zondo":"f9d2","sym-zpr-s":"f9d3","sym-zpr":"f9d4","sym-zpt-s":"f9d5","sym-zpt":"f9d6","sym-zrc-s":"f9d7","sym-zrc":"f9d8","sym-zrx-s":"f9d9","sym-zrx":"f9da","sym-zsc-s":"f9db","sym-zsc":"f9dc","sym-ztg-s":"f9dd","sym-ztg":"f9de","ustc-s":"f9df",ustc:"f9e0","cur-anct":"f1d0","cur-anct-s":"f1cf","cur-aud":"f1fe","cur-aud-s":"f1fd","cur-bnb":"f269","cur-bnb-s":"f268","sym-xbt":"f28f","cur-btc":"f28f","sym-xbt-s":"f28e","cur-btc-s":"f28e","cur-busd":"f2af","cur-busd-s":"f2ae","exc-bitz":"f2b3","cur-bz":"f2b3","exc-bitz-s":"f2b2","cur-bz-s":"f2b2","cur-cad":"f2bd","cur-cad-s":"f2bc","cur-chf":"f2dd","cur-chf-s":"f2dc","cur-cny":"f301","cur-cny-s":"f300","sym-cs":"f315","sym-cs-s":"f314","sym-crm":"f32d","sym-crm-s":"f32c","cur-dai":"f359","cur-dai-s":"f358","sym-xdg":"f397","sym-xdg-s":"f396","cur-eos":"f3e0","cur-eos-s":"f3df","sym-eth2":"f3f0","sym-eth2s":"f3f0","sym-eth2.s":"f3f0","cur-eth":"f3f0","sym-eth2-s":"f3ef","sym-eth2s-s":"f3ef","sym-eth2.s-s":"f3ef","cur-eth-s":"f3ef","cur-eur":"f3f8","cur-eur-s":"f3f7","cur-eurs":"f3fa","cur-eurs-s":"f3f9","sym-usdt":"f3fc","cur-usdt":"f3fc","sym-usdt-s":"f3fb","cur-usdt-s":"f3fb","exc-kraken":"f414","exc-kraken-futures":"f414","exc-kraken-s":"f413","exc-kraken-futures-s":"f413","cur-gbp":"f460","cur-gbp-s":"f45f","exc-gemini":"f4a6","cur-gusd":"f4a6","exc-gemini-s":"f4a5","cur-gusd-s":"f4a5","cur-hkd":"f4ca","cur-hkd-s":"f4c9","sym-husd":"f4e4","exc-huobi":"f4e4","cur-ht":"f4e4","sym-husd-s":"f4e3","exc-huobi-s":"f4e3","cur-ht-s":"f4e3","cur-idr":"f502","cur-idr-s":"f501","sym-iota":"f52a","sym-iota-s":"f529","cur-inr":"f51c","cur-inr-s":"f51b","cur-jpy":"f53e","cur-jpy-s":"f53d","cur-krw":"f56e","cur-krw-s":"f56d","sym-medx":"f5e0","sym-medx-s":"f5df","cur-mxn":"f636","cur-mxn-s":"f635","cur-myr":"f638","cur-myr-s":"f637","cur-ngn":"f662","cur-ngn-s":"f661","cur-pax":"f6d8","cur-pax-s":"f6d7","cur-php":"f6f0","cur-php-s":"f6ef","cur-pln":"f706","cur-pln-s":"f705","cur-qash":"f73c","cur-qash-s":"f73b","cur-rub":"f7b0","cur-rur":"f7b0","cur-rub-s":"f7af","cur-rur-s":"f7af","sym-steem":"f7c8","sym-steem-s":"f7c7","sym-xsc":"f7cc","sym-xsc-s":"f7cb","cur-sgd":"f7e8","cur-sgd-s":"f7e7","sym-storj":"f7fc","sym-storj-s":"f7fb","sym-tel":"f87e","cur-trx":"f8c5","cur-trx-s":"f8c4","cur-tusd":"f8d5","cur-tusd-s":"f8d4","cur-usd":"f8f5","cur-usd-s":"f8f4","cur-usdc":"f8f7","cur-usdc-s":"f8f6","sym-vet":"f913","sym-vet-s":"f912","sym-waxp":"f943","sym-waxp-s":"f942","cur-xlm":"f97f","cur-xlm-s":"f97e","cur-xmr":"f983","cur-xmr-s":"f982","cur-xrp":"f997","cur-xrp-s":"f996","cur-zar":"f9bf","cur-zar-s":"f9be","exc-binance-us":"f108","exc-binance-us-s":"f107","exc-mexbt":"f11e","exc-mexbt-s":"f11d","exc-coinbase-pro":"f12a","exc-gdax":"f12a","exc-coinbase-pro-s":"f129","exc-gdax-s":"f129","exc-quadriga":"f152","exc-quadriga-s":"f151","cur-crc":"f321","cur-crc-s":"f320","cur-lak":"f578","cur-lak-s":"f577","cur-sek":"f7d8","cur-sek-s":"f7d7","cur-thb":"f88d","cur-thb-s":"f88c","cur-try":"f8c7","cur-try-s":"f8c6","cur-uah":"f8db","cur-uah-s":"f8da","exc-ftx":"f444","exc-ftx-s":"f443","exc-ftx-us":"f444","exc-ftx-us-s":"f443","sym-cgld":"f2cd","sym-cgld-s":"f2cc","exc-uniswap-v2":"f8ed","exc-uniswap-v2-s":"f8ec","sym-kshib":"f7ee","sym-kshib-s":"f7ed","sym-easy-s":"f3b4","sym-srare":"f762","sym-srare-s":"f761","sym-ape.2":"f1d6","sym-ape.2-s":"f1d5"},es={_default:"",d:"",default:"",axieinfinity:"",bibox:"",binance:"Binance",bisq:"Bisq",bitbay:"",bitfinex:"Bitfinex",bitflyer:"bitFlyer",bithumb:"Bithumb",bitmex:"BitMEX",bitso:"",bitsquare:"",bitstamp:"Bitstamp",bittrex:"Bittrex",bitvc:"BitVC",btcchina:"",btce:"",cexio:"CEX.IO",cme:"CME (Beta)",coinbase:"",coinbasepro:"",coinone:"Coinone",comex:"COMEX (Beta)",cryptofacilities:"",deribit:"Deribit","dex-aggregated":"DEX (aggregated)",gateio:"Gate.io",hitbtc:"HitBTC",kucoin:"",liquid:"Liquid",luno:"Luno",mtgox:"Mt. Gox",mxc:"MXC",nbatopshop:"",nymex:"NYMEX (Beta)",okcoin:"OKCoin",okx:"OKX",opensea:"",poloniex:"Poloniex",qryptos:"",quadrigacx:"",quick:"QuickSwap",quoine:"Quoine",rarible:"",totle:"",upbit:"",vaultofsatoshi:"",wex:"WEX",zaif:"",zonda:"Zonda","1inch":"1inch","1st":"FirstBlood","6a":"Australian Dollar","6b":"British Pound","6c":"Canadian Dollar","6e":"Euro FX Futures","6j":"Japanese Yen","6l":"Brazilian Real","6m":"Mexican Peso","6n":"New Zealand Dollar","6s":"Swiss Franc",a38:"Aluminum A380 Alloy (Patts) Futures",aac:"Acute Angle Cloud",aave:"Aave",abbc:"ABBC Coin",abt:"Arcblock",abyss:"The Abyss",aca:"Acala Token",acat:"Alphacat",ach:"Alchemy Pay",act:"Achain",ad0:"",ada:"Cardano",adel:"",adh:"AdHive",adm:"ADAMANT Messenger",ado:"",adt:"adToken",adx:"Ambire Adex",ae:"Aeternity",aed:"",aeon:"Aeon",aep:"Aluminium European Premium Duty-Unpaid (Metal Bulletin) Futures",aergo:"Aergo",agi:"SingularityNET",agld:"Adventure Gold",aid:"AIDUS TOKEN",aion:"Aion",air:"Altair",akro:"Akropolis",akt:"Akash Network",alcx:"Alchemix",aleph:"Aleph.im",algo:"Algorand",ali:"Aluminum Futures",alice:"Alice",alpha:"Alpha Finance Lab",amb:"Ambrosus",amlt:"AMLT",amp:"Amp",ampl:"Ampleforth",anc:"Anchor Protocol",anct:"Anchor",ankr:"Ankr Network",ant:"Aragon",ape:"ApeCoin",api3:"API3",apis:"APIS",appc:"AppCoins",ar:"Arweave",ardr:"Ardor",ark:"Ark",arn:"Aeron",arpa:"ARPA Chain",art:"Maecenas",aspt:"",ast:"AirSwap",astr:"Astar Network",at:"Artfinity",atlas:"Star Atlas",atm:"Atletico Madrid Fan Token",atom:"Cosmos",atp:"Atlas Protocol",atri:"Atari Token",auction:"Bounce Token",aud:"Australian Dollar",audio:"Audius",aup:"Aluminum MW U.S. Transaction Premium Platts (25MT) Futures",aury:"Aurory",auto:"Cube",ava:"Travala.com",avax:"Avalanche",avt:"Aventus",axp:"aXpire",axs:"Axie Infinity Shards",b:"",b0:"",b2g:"Bitcoiin",bab:"",badger:"Badger DAO",bake:"BakeryToken",bal:"Balancer",banca:"Banca",band:"Band Protocol",bat:"Basic Attention Token",bay:"BitBay",bbc:"TraDove B2BCoin",bcc:"Bitcoin Core Chain Split Token",bcd:"Bitcoin Diamond",bch:"Bitcoin Cash",bci:"Bitcoin Interest",bcn:"Bytecoin",bcpt:"BlockMason Credit Protocol",bcu:"Bitcoin Unlimited Token",bcv:"BitCapitalVendor",bcy:"Bitcrystals",bdg:"BitDegree",beam:"Beam",beet:"Beetle Coin",bel:"Bella Protocol",bela:"Bela",berry:"Rentberry",betr:"BetterBetting",bez:"Bezop",bft:"BnkToTheFuture",bfx:"BFX",bhd:"BitcoinHD",bht:"BHEX Token",bico:"BICONOMY",bit:"BitDAO",bitb:"Bean Cash",bix:"Bibox Token",bk:"",bkx:"Bankex",blk:"BlackCoin",block:"Blocknet",blt:"Bloom",blz:"Bluzelle",bmc:"Blackmoon",bnb:"Binance Coin",bnc:"Bifrost",bnk:"Bankera",bnt:"Bancor",bo:"",bond:"BarnBridge",boo:"Spookyswap",bor:"BoringDAO",bora:"BORA",bos:"BOScoin",box:"BOX Token",brd:"Bread",brg:"Bridge Oracle",brick:"",bsd:"BitSend",bsv:"BitcoinSV",bsx:"Basilisk",bt1:"BT1",bt2:"BT2",btc:"Bitcoin",btcd:"BitcoinDark",btcfx:"Bitcoin Forex",btcp:"Bitcoin Private",btg:"Bitcoin Gold",btm:"Bitmark",btn:"BitNewChain",bto:"Bottos",btrst:"Braintrust",bts:"BitShares",btt:"BitTorrent",btu:"BTU Protocol",btx:"Bitcore",burger:"Burger Swap",burst:"Burst",bus:"U.S. Midwest Busheling Ferrous Scrap (AMM) Futures",busd:"Binance USD",bwx:"Blue Whale Token",bz:"Bit-Z Token",bzrx:"bZx Protocol",c:"",c20:"CRYPTO20",c98:"Coin98",cad:"Canadian Dollar",cake:"PancakeSwap",cas:"Cashaa",cat:"BitClave",cbc:"CashBet Coin",cbt:"CommerceBlock",cdt:"Blox",cel:"Celsius",celo:"Celo",celr:"Celer Network",cennz:"Centrality",cfg:"Centrifuge",cfi:"Cofound.it",cfx:"Conflux Network",cgt:"",chat:"ChatCoin",chf:"Swiss franc",chp:"CoinPoker",chr:"Chromia",chsb:"SwissBorg",chx:"Own",chz:"Chiliz",ckb:"Nervos Network",cl:"Crude Oil Futures",clam:"Clams",cln:"Colu Local Network",clo:"Callisto Network",cloak:"CloakCoin",clv:"Clover Finance",cmct:"Crowd Machine",cmt:"CyberMiles",cnd:"Cindicator",cnn:"Content Neutrality Network",cnx:"Cryptonex",cny:"Chinese yuan",cob:"Cobalt Metal (Fastmarkets) Futures",cocos:"Cocos-BCX",comp:"Compound",cope:"Cope",cos:"COS",cosm:"Cosmo Coin",coss:"COSS",coti:"COTI",cov:"Covesting",cova:"COVA",cpt:"Cryptaur",cpx:"Apex",cqt:"Covalent",cra:"",crab:"Crab Network",crc:"",cre:"Carry",cream:"Cream Finance",cring:"",cro:"Cronos",crpt:"Crypterium",cru:"Crust Network",crv:"Curve",crw:"Crown",csm:"Crust Shadow",csx:"",ctc:"Creditcoin",ctk:"CertiK",ctsi:"Cartesi",ctxc:"Cortex",cur:"",cvc:"Civic",cvcoin:"CVCoin",cvnt:"Content Value Network",cvp:"PowerPool",cvt:"CyberVein",cvx:"Convex Finance",cw:"",cyc:"Cyclone Protocol",dac:"Davinci Coin",dacs:"DACSEE",dadi:"DADI",dag:"Constellation",dai:"Multi Collateral DAI",dao:"Decentralized Autonomous Organization",dar:"Mines of Dalarnia",dash:"Dash",dat:"Data",data:"Data",datx:"DATx",dbc:"DeepBrain Chain",dbet:"DecentBet",dbix:"DubaiCoin",dcn:"Dentacoin",dcr:"decred",dct:"DECENT",ddd:"Scry.info",dego:"Dego Finance",dent:"Dent",dext:"DEXTools",dgb:"DigiByte",dgd:"DigixDAO",dgtx:"Digitex Futures",dgx:"Digix Gold Token",dhx:"",dia:"DIA",dice:"Etheroll",dim:"DIMCOIN",dlt:"Agrello",dmd:"Diamond",dmt:"DMarket",dnt:"district0x",dock:"Dock",dodo:"DODO",doge:"Dogecoin",dot:"Polkadot",dpy:"Delphy",dream:"DreamTeam Token",drep:"DREP",drg:"Dragon Coins",drgn:"Dragonchain",drt:"DomRaider",dta:"DATA",dtb:"Databits",dtr:"Dynamic Trading Rights",dusk:"Dusk Network",dx:"DxChain Token",dydx:"dYdX",dyn:"Dynamic",easy:"",ecom:"Omnitude",edc:"EDC Blockchain",edg:"Edgeless",edo:"Eidoo",edp:"Aluminium European Premium Duty-Paid (Metal Bulletin) Futures",edr:"Endor Protocol",efi:"Efinity",egld:"Elrond",egt:"Egretia",ehr:"North Euro Hot-Rolled Coil Steel (Argus) Futures",eko:"EchoLink",ekt:"EDUCare",ela:"Elastos",elec:"Electrify.Asia",elf:"aelf",em:"Eminer",emc:"Emercoin",emc2:"Einsteinium",eng:"Enigma",enj:"Enjin Coin",ens:"Ethereum Naming Service",eos:"EOS",eosdac:"eosDAC",eq:"",erd:"Elrond",ern:"Ethernity Chain",es:"E-mini S&P 500 Futures",esd:"Empty Set Dollar",etc:"Ethereum Classic",eth:"Ethereum",ethup:"Ethereum Up",etn:"Electroneum",etp:"Metaverse ETP",eur:"Euro",eurs:"STASIS EURS",eurt:"Tether Euro",evn:"Envion",evx:"Everex",ewt:"Energy Web Token",exp:"Expanse",exrd:"Radix",exy:"",ez:"EasyFi",fair:"FairCoin",farm:"Harvest Finance",fct:"Factom",fdz:"Friendz",fee:"",fet:"Fetch.ai",fida:"Bonfida",fil:"Filecoin",fio:"FIO Protocol",firo:"Firo",fis:"StaFi Protocol",fldc:"FoldingCoin",flo:"FlorinCoin",floki:"Floki Inu",flow:"Flow",flr:"",fluz:"Fluz Fluz",fnb:"FNB Protocol",foam:"FOAM",for:"Force Protocol",forth:"Ampleforth Governance Token",fota:"Fortuna",frax:"Frax",front:"Frontier",fsn:"Fusion",ftc:"Feathercoin",fti:"FansTime",ftm:"Fantom",ftt:"FTX Token",ftx:"FintruX Network",fuel:"Etherparty",fun:"FunFair",fx:"Function X",fxc:"Flexacoin",fxs:"Frax Share",fxt:"FuzeX",gala:"Gala",game:"GameCredits",gard:"Hashgard",gari:"Gari Network",gas:"Gas",gbc:"Gold Bits Coin",gbp:"British Pound",gbx:"GoByte",gbyte:"Obyte",gc:"Gold Futures",gcc:"Global Cryptocurrency",ge:"Eurodollar",geist:"Geist Finance",gen:"DAOstack",gens:"",get:"GET Protocol",ghst:"Aavegotchi",glc:"GoldCoin",gld:"GoldCoin",glm:"Golem",glmr:"Moonbeam",gmat:"GoWithMi",gmt:"STEPN",gmt2:"GoMining token",gno:"Gnosis",gnt:"Golem",gnx:"Genaro Network",go:"GoChain",gods:"Gods Unchained",got:"ParkinGo",grc:"GridCoin",grin:"GRIN",grs:"Groestlcoin",grt:"The Graph",gsc:"Global Social Chain",gst:"",gt:"Gatechain Token",gtc:"Gitcoin",gtc2:"",gto:"Gifto",gup:"Matchpool",gusd:"Gemini Dollar",gvt:"Genesis Vision",gxc:"GXChain",gxs:"GXChain",hard:"HARD Protocol",hbar:"Hedera",hc:"HyperCash",hdx:"",hedg:"HedgeTrade",hegic:"Hegic",hex:"HEX",hft:"Hashflow",hg:"Copper Futures",hgs:"Copper Financial Futures",hh:"Natural Gas (Henry Hub) Last-day Financial Futures",high:"Highstreet",hit:"HitChain",hive:"Hive",hkd:"Hong Kong Dollar",hmq:"Humaniq",hns:"Handshake",ho:"",hot:"Holochain",hp:"",hpb:"High Performance Blockchain",hpc:"Happycoin",hpt:"Huobi Pool Token",hrc:"U.S. Midwest Domestic Hot-Rolled Coil Steel (CRU) Index Futures",hsc:"HashCoin",hsr:"Hshare",hst:"Decision Token",ht:"Huobi Token",html:"HTMLCOIN",htt:"",huc:"HunterCoin",hvn:"Hive Project",hxro:"Hxro",hyc:"HYCON",hydra:"Hydro Protocol",hydro:"Hydro",icn:"Iconomi",icos:"ICOS",icp:"Internet Computer",icx:"ICON",idex:"IDEX",idh:"indaHash",idr:"Indonesian Rupiah",ift:"InvestFeed",ignis:"Ignis",ihf:"Invictus Hyperion Fund",iht:"IHT Real Estate Protocol",ilc:"ILCoin",ilv:"Illuvium",imx:"Immutable X",incnt:"Incent",ind:"Indorse Token",indi:"",inj:"Injective Protocol",ink:"Ink",inr:"Indian Rupee",ins:"INS Ecosystem",int:"Internet Node Token",intr:"Interlay",ioc:"I/O Coin",ion:"ION",iost:"IOST",iot:"",iotx:"IoTeX",iq:"Everipedia",iris:"IRISnet",itc:"IoT Chain",ivy:"Ivy",ixt:"iXledger",jasmy:"JasmyCoin",jnt:"Jibrel Network",joe:"Trader Joe",jpy:"Japanese Yen",jst:"JUST",juno:"",just:"",juv:"Juventus Fan Token",kan:"BitKan",kar:"Karura",kava:"Kava",kbc:"Karatgold Coin",kcash:"Kcash",kda:"Kadena",keep:"Keep Network",key:"Selfkey",kick:"Kick Token",kilt:"KILT Protocol",kin:"Kin",kint:"Kintsugi",klay:"Klaytn",kma:"",kmd:"Komodo",knc:"Kyber Network",kore:"Kore",kp3r:"Keep3R",krm:"Karma",krw:"South Korean Won",ksm:"Kusama",ksx:"",kyl:"Kylin",la:"LATOKEN",lak:"",lamb:"Lambda",latx:"LatiumX",layr:"Composable Finance",lba:"Cred",lbc:"LBRY Credits",lcc:"Litecoin Cash",lcx:"LCX",ldo:"Lido DAO Token",lend:"Aave",leo:"LEO Token",leoc:"LEOcoin",let:"LinkEye",life:"LIFE",lina:"Linear",link:"ChainLink",lit:"Litentry",lmc:"LoMoCoin",lml:"Lisk Machine Learning",lnc:"Linker Coin",lnd:"Lendingblock",loc:"LockTrip",looks:"LooksRare",loom:"Loom Network",lpt:"Livepeer",lrc:"Loopring",lrn:"Loopring [NEO]",lsk:"Lisk",ltc:"Litecoin",lto:"LTO Network",lun:"Lunyr",luna:"Terra Classic",luna2:"Terra 2.0",lxt:"Litex",lym:"Lympo",m2k:"Micro E-mini Russell 2000 Index",ma:"",maid:"MaidSafe",man:"Matrix AI Network",mana:"Decentraland",mask:"Mask Network",mass:"Massnet",math:"MATH",matic:"Polygon",mbl:"MovieBloc",mbt:"Micro Bitcoin",mc:"Merit Circle",mco:"Monaco",mda:"Moeda Loyalty Points",mds:"MediShares",mdt:"Measurable Data Token",mdx:"Mdex",med:"MediBloc [QRC20]",mer:"Mercury",mes:"Micro E-mini S&P 500 Index",met:"Metronome",meta:"Metadium",mft:"Mainframe",mgc:"E-micro Gold Futures",mgo:"MobileGo",mhc:"#MetaHash",mina:"Mina",mir:"Mirror Protocol",mith:"Mithril",mitx:"Morpheus Labs",mjp:"Aluminum Japan Premium (Platts) Futures",mkr:"Maker",mln:"waterMelon",mngo:"Mango Markets",mnx:"MinexCoin",moac:"MOAC",mob:"MobileCoin",mobi:"Mobius",moc:"Moss Coin",mod:"Modum",mona:"MonaCoin",moon:"10X Long Bitcoin Token",morph:"Morpheus Network",movr:"Moonriver",mpl:"Maple",mrk:"MARK.SPACE",msol:"Marinade staked SOL",msp:"Mothership",mta:"mStable Governance Token: Meta",mtc:"Docademic",mth:"Monetha",mtl:"Metal",mtn:"Medicalchain",mtx:"Matryx",mue:"MonetaryUnit",multi:"Multichain",mv:"",mx:"MX Token",mxm:"Maximine Coin",mxn:"Mexican Peso",myr:"Malaysian Ringgit",n9l:"",nanj:"NANJCOIN",nano:"Nano",nas:"Nebulas",naut:"NautilusCoin",nav:"NAV Coin",ncash:"Nucleus Vision",nct:"PolySwarm",near:"NEAR Protocol",nebl:"Neblio",nec:"Nectar",neo:"NEO",neos:"NeosCoin",nest:"NEST Protocol",neu:"Neumark",new:"Newton",nexo:"Nexo",nft:"APENFT",ng:"Natural Gas Futures",ngc:"NAGA",ngn:"Nigerian Naira",nim:"Nimiq",niy:"Nikkei/Yen",nkd:"Nikkei/USD",nkn:"NKN",nlc2:"NoLimitCoin",nlg:"Gulden",nmc:"Namecoin",nmr:"Numeraire",nn:"Henry Hub Natural Gas Last Day Financial Futures",noah:"Noah Coin",nodl:"Nodle",note:"DNotes",npg:"",nplc:"Plus-Coin",npxs:"Pundi X",nq:"E-mini Nasdaq-100",nrg:"Energi",ntk:"Neurotoken",nu:"NuCypher",nuls:"Nuls",nvc:"Novacoin",nxc:"Nexium",nxs:"Nexus",nxt:"NXT",nym:"",o:"",oax:"OAX",ocean:"Ocean Protocol",ocn:"Odyssey",ode:"ODEM",ogn:"Origin Protocol",ogo:"Origo",ok:"OKCash",okb:"Okex Token",om:"Mantra Dao",omg:"OMG Network",omni:"Omni",one:"Harmony",ong:"SoMee.Social",onot:"ONOToken",ont:"Ontology",orbs:"Orbs",orca:"Orca",orme:"Ormeus Coin",orn:"Orion Protocol",ors:"Origin Sport",osmo:"",ost:"OST",otn:"Open Trading Network",oxt:"Orchid",oxy:"Oxygen",pai:"PCHAIN",pal:"Pal Network",paper:"Dope Wars Paper",para:"Parallel Finance",part:"Particl",pasc:"Pascal Coin",pat:"Patron",pax:"Paxos Standard",paxg:"PAX Gold",pay:"TenX",pbt:"Primalbase Token",pcl:"Peculium",pcx:"ChainX",pdex:"Polkadex",people:"ConstitutionDAO",perl:"Perlin",perp:"Perpetual Protocol",pha:"Phala.Network",phb:"Phoenix Global",php:"Philippine Peso",phx:"Red Pulse Phoenix",pi:"PCHAIN",pica:"",pink:"PinkCoin",pivx:"PIVX",pkt:"Playkey",pl:"",pla:"PlayDapp",plbt:"Polybius",plm:"",pln:"Polish Złoty",plr:"Pillar",ply:"PlayCoin [ERC20]",pma:"PumaPay",png:"Pangolin",pnt:"pNetwork",poa:"POA Network",poe:"Po.et",polis:"Star Atlas DAO",pols:"Polkastarter",poly:"Polymath",pond:"Marlin",pot:"PotCoin",powr:"Power Ledger",ppc:"Peercoin",ppt:"Populous",pra:"ProChain",pre:"Presearch",prg:"Paragon",pro:"Propy",prq:"PARSIQ",pst:"Primas",pstake:"Pstake",pton:"PTON",pvt:"Pivot Token",pxg:"PlayGame",pyr:"Vulcan Forged PYR",qash:"QASH",qau:"Quantum",qc:"E-mini Copper Futures",qi:"Benqi",qi2:"E-mini Silver Futures",qkc:"QuarkChain",qlc:"QLINK",qnt:"Quant Network",qntu:"Quanta Utility Token",qo:"E-mini Gold Futures",qrl:"Quantum Resistant Ledger",qsp:"Quantstamp",qtum:"Qtum",qun:"QunQun",r:"Revain",rad:"Radicle",radar:"",rads:"Radium",rare:"SuperRare",rari:"Rarible",rating:"DPRating",ray:"Raydium",rb:"",rbc:"Rubic",rblx:"Rublix",rbtc:"Smart Bitcoin",rby:"Rubycoin",rcn:"Ripio Credit Network",rdd:"ReddCoin",rdn:"Raiden Network Token",real:"Realy",reef:"Reef",rem:"Remme",ren:"Republic Protocol",rep:"Augur",repv2:"Augur v2",req:"Request",rev:"Revain",rfox:"RedFOX Labs",rfr:"Refereum",ric:"Riecoin",rif:"RIF Token",ring:"Darwinia Network",rlc:"iExec RLC",rly:"Rally",rmrk:"RMRK",rndr:"Render Token",rntb:"BitRent",ron:"Ronin",rook:"KeeperDAO",rose:"Oasis Network",rox:"Robotina",rp:"Euro/British Pound Futures",rpx:"Red Pulse",rsr:"Reserve Rights",rsv:"",rty:"E-mini Russell 2000 Index",rub:"Russian Ruble",ruff:"Ruff",rune:"THORChain",rvn:"Ravencoin",rvr:"RevolutionVR",rvt:"Rivetz",sai:"Single Collateral DAI",salt:"SALT",samo:"Samoyedcoin",san:"Santinent Network Token",sand:"The Sandbox",sats:"",sbd:"Steem Dollars",sbr:"Saber",sc:"Siacoin",scc:"StockChain",scrt:"Secret Network",sdc:"ShadowCoin",sdn:"Shiden Network",seele:"Seele",sek:"",sen:"Consensus",sent:"Sentinel",sero:"Super Zero",sexc:"ShareX",sfp:"SafePal",sgb:"Songbird",sgc:"Shanghai Gold (CNH) Futures",sgd:"Singapore Dollar",sgn:"Signals Network",sgu:"Shanghai Gold (USD) Futures",shib:"SHIBA INU",shift:"Shift",ship:"ShipChain",si:"Silver Futures",sib:"SIBCoin",sil:"1,000-oz. Silver Futures",six:"SIX",sjcx:"Storjcoin X",skl:"Skale",skm:"Skrumble Network",sku:"",sky:"Skycoin",slp:"Smooth Love Potion",slr:"SolarCoin",sls:"SaluS",slt:"Smartlands",slv:"Silverway",smart:"SmartCash",smn:"",smt:"SmartMesh",snc:"SunContract",snet:"Snetwork",sngls:"SingularDTV",snm:"SONM",snt:"Status",snx:"Synthetix Network Token",soc:"All Sports",socks:"Unisocks",sol:"Solana",solid:"",solo:"Sologenic",solve:"SOLVE",sos:"OpenDAO",soul:"Phantasma",sp:"S&P 500",sparta:"Spartan Protocol",spc:"SpaceChain",spd:"SPINDLE",spell:"Spell Token",sphr:"Sphere",sphtx:"SophiaTX",spnd:"Spendcoin",spnk:"SpankChain",srm:"Serum",srn:"SIRIN LABS Token",ssp:"Smartshare",stacs:"STACS",step:"Step Finance",stg:"",storm:"Storm",stpt:"STPT",stq:"Storiqa",str:"Stellar",strat:"Stratis",strax:"Stratis",strk:"Strike",strong:"Strong",stx:"Stox",sub:"substratum",sun:"Sun Token",super:"SuperFarm",susd:"sUSD",sushi:"Sushi",swftc:"SwftCoin",swm:"Swarm",swrv:"Swerve",swt:"Swarm City",swth:"Switcheo",sxp:"Swipe",syn:"SynLev",sys:"Syscoin",t:"Threshold Network Token",taas:"TaaS",tau:"Lamden",tbtc:"tBTC",tct:"TokenClub",teer:"Integritee",tel:"Telcoin",temco:"TEMCO",tfuel:"Theta Fuel",thb:"",thc:"HempCoin",theta:"Theta Token",thx:"ThoreNext",time:"Chronobank",tio:"Iron Ore 62% FE- CFR China Futures",tix:"Blocktix",tkn:"TokenCard",tky:"THEKEY",tlm:"Alien Worlds",tnb:"Time New Bank",tnc:"Trinity Network Credit",tnt:"Tierion",toke:"Tokemak",tomb:"",tomo:"TomoChain",top:"TOP",torn:"Tornado Cash",tpay:"TokenPay",trac:"OriginTrail",trb:"Tellor",tribe:"Tribe",trig:"Triggers",trio:"Tripio",troy:"TROY",trst:"WeTrust",tru:"TrueFi",true:"True Chain",trx:"TRON",try:"Turkish Lira",tryb:"BiLira",tt:"Thunder Token",ttc:"TTC Protocol",ttt:"The Transfer Token",ttu:"TaTaTu",tube:"BitTube",tusd:"True USD",tvk:"Terra Virtua Kolect",twt:"Trust Wallet Token",uah:"Ukrainian hryvnia",ubq:"Ubiq",ubt:"Unibright",uft:"UniLend",ugas:"UGAS",uip:"UnlimitedIP",ukg:"Unikoin Gold",uma:"Universal Market Access",unfi:"Unifi Protocol DAO",uni:"Uniswap",unq:"Unique Network",up:"UpToken",upp:"Sentinel Protocol",usd:"United States Dollar",usdc:"USD//Coin",usds:"StableUSD",usk:"UpSkills",ust:"TerraClassicUSD",utk:"UTRUST",utnp:"Universa",utt:"United Traders Token",uuu:"U Network",ux:"UXC Uranium U3O8 Futures",vader:"Vader Protocol",vai:"Vai",vbk:"VeriBlock",vdx:"Vodi X",vee:"BLOCKv",ven:"VeChain",veo:"Amoveo",veri:"Veritaseum",vex:"Vexanium",vgx:"Voyager Token",via:"Viacoin",vib:"Viberate",vibe:"VIBE",vid:"VideoCoin",vidt:"VIDT Datalink",vidy:"VIDY",vitae:"Vitae",vite:"VITE",vlx:"Velas",vox:"Voxels",vra:"Verasity",vrc:"VeriCoin",vrm:"Verium",vsys:"V Systems",vtc:"Vertcoin",vtho:"VeThor Token",wabi:"WaBi",wan:"Wanchain",waves:"Waves",wax:"",wbtc:"Wrapped Bitcoin",wet:"WeShow Token",weth:"Wrapped Ether",wib:"Wibson",wicc:"WaykiChain",win:"WINk",wing:"Wing",wings:"Wings",wnxm:"Wrapped NXM",woo:"Woo Network",wpr:"WePower",wrx:"WazirX",wtc:"Waltonchain",wtt:"",wwb:"Wowbit",wxt:"Wirex Token",xas:"Asch",xaur:"Xaurum",xaut:"Tether Gold",xava:"Avalaunch",xbc:"Bitcoin Plus",xcon:"Connect Coin",xcp:"Counterparty",xdn:"DigitalNote",xel:"Elastic",xem:"NEM",xes:"",xhv:"Haven Protocol",xin:"Mixin",xlm:"Stellar",xmc:"Monero Classic",xmr:"Monero",xmx:"XMax",xmy:"Myriad",xnk:"",xns:"Insolar",xor:"Sora",xos:"",xpm:"Primecoin",xpr:"Proton",xrc:"Bitcoin Rhodium",xrp:"XRP",xrpx:"",xrt:"Robonomics",xst:"Stealth",xtp:"Tap",xtz:"Tezos",xtzdown:"Tezos Down",xvc:"Vcash",xvg:"Verge",xvs:"Venus",xwc:"WhiteCoin",xyo:"XYO",xzc:"ZCoin",yam:"YAM",yee:"YEE",yeed:"YGGDRASH",yfi:"yearn.finance",yfii:"DFI.Money",ygg:"Yield Guild Games",yoyow:"YOYOW",zar:"South African rand",zcl:"ZClassic",zcn:"0chain",zco:"Zebi",zec:"Zcash",zen:"Horizen",zil:"Zilliqa",zks:"ZKSwap",zla:"Zilla",zlk:"",zondo:"",zpr:"ZPER",zpt:"Zeepin",zrc:"ZrCoin",zrx:"0x",zsc:"Zeusshield",ztg:"","":"",xbt:"",bitz:"Bit-Z",cs:"Credits",crm:"",xdg:"",eth2:"Ethereum 2",eth2s:"","eth2.s":"",usdt:"Tether",kraken:"Kraken","kraken-futures":"Kraken Futures",gemini:"Gemini",husd:"HUSD",huobi:"Huobi",iota:"IOTA",medx:"MediBloc [ERC20]",rur:"",steem:"Steem",xsc:"",storj:"Storj",vet:"VeChain",waxp:"WAX","binance-us":"Binance.US",mexbt:"meXBT","coinbase-pro":"Coinbase Pro",gdax:"",quadriga:"QuadrigaCX","ftx-us":"FTX.US",cgld:"","uniswap-v2":"Uniswap V2",kshib:"Kaiken Shiba",srare:"","ape.2":""},ts={"sym-d":"sym-_default","sym-d-s":"sym-_default-s","sym-default":"sym-_default","sym-default-s":"sym-_default-s","exc-d":"exc-_default","exc-d-s":"exc-_default-s","exc-default":"exc-_default","exc-default-s":"exc-_default-s","cur-default":"sym-_default","cur-default-s":"sym-_default-s","cur-anct":"sym-anct","cur-anct-s":"sym-anct-s","cur-aud":"sym-aud","cur-aud-s":"sym-aud-s","cur-bnb":"sym-bnb","cur-bnb-s":"sym-bnb-s","sym-xbt":"sym-btc","cur-btc":"sym-btc","sym-xbt-s":"sym-btc-s","cur-btc-s":"sym-btc-s","cur-busd":"sym-busd","cur-busd-s":"sym-busd-s","exc-bitz":"sym-bz","cur-bz":"sym-bz","exc-bitz-s":"sym-bz-s","cur-bz-s":"sym-bz-s","cur-cad":"sym-cad","cur-cad-s":"sym-cad-s","cur-chf":"sym-chf","cur-chf-s":"sym-chf-s","cur-cny":"sym-cny","cur-cny-s":"sym-cny-s","sym-cs":"sym-cova","sym-cs-s":"sym-cova-s","sym-crm":"sym-cru","sym-crm-s":"sym-cru-s","cur-dai":"sym-dai","cur-dai-s":"sym-dai-s","sym-xdg":"sym-doge","sym-xdg-s":"sym-doge-s","cur-eos":"sym-eos","cur-eos-s":"sym-eos-s","sym-eth2":"sym-eth","sym-eth2s":"sym-eth","sym-eth2.s":"sym-eth","cur-eth":"sym-eth","sym-eth2-s":"sym-eth-s","sym-eth2s-s":"sym-eth-s","sym-eth2.s-s":"sym-eth-s","cur-eth-s":"sym-eth-s","cur-eur":"sym-eur","cur-eur-s":"sym-eur-s","cur-eurs":"sym-eurs","cur-eurs-s":"sym-eurs-s","sym-usdt":"sym-eurt","cur-usdt":"sym-eurt","sym-usdt-s":"sym-eurt-s","cur-usdt-s":"sym-eurt-s","exc-kraken":"sym-fee","exc-kraken-futures":"sym-fee","exc-kraken-s":"sym-fee-s","exc-kraken-futures-s":"sym-fee-s","cur-gbp":"sym-gbp","cur-gbp-s":"sym-gbp-s","exc-gemini":"sym-gusd","cur-gusd":"sym-gusd","exc-gemini-s":"sym-gusd-s","cur-gusd-s":"sym-gusd-s","cur-hkd":"sym-hkd","cur-hkd-s":"sym-hkd-s","sym-husd":"sym-ht","exc-huobi":"sym-ht","cur-ht":"sym-ht","sym-husd-s":"sym-ht-s","exc-huobi-s":"sym-ht-s","cur-ht-s":"sym-ht-s","cur-idr":"sym-idr","cur-idr-s":"sym-idr-s","sym-iota":"sym-iot","sym-iota-s":"sym-iot-s","cur-inr":"sym-inr","cur-inr-s":"sym-inr-s","cur-jpy":"sym-jpy","cur-jpy-s":"sym-jpy-s","cur-krw":"sym-krw","cur-krw-s":"sym-krw-s","sym-medx":"sym-med","sym-medx-s":"sym-med-s","cur-mxn":"sym-mxn","cur-mxn-s":"sym-mxn-s","cur-myr":"sym-myr","cur-myr-s":"sym-myr-s","cur-ngn":"sym-ngn","cur-ngn-s":"sym-ngn-s","cur-pax":"sym-pax","cur-pax-s":"sym-pax-s","cur-php":"sym-php","cur-php-s":"sym-php-s","cur-pln":"sym-pln","cur-pln-s":"sym-pln-s","cur-qash":"sym-qash","cur-qash-s":"sym-qash-s","cur-rub":"sym-rub","cur-rur":"sym-rub","cur-rub-s":"sym-rub-s","cur-rur-s":"sym-rub-s","sym-steem":"sym-sbd","sym-steem-s":"sym-sbd-s","sym-xsc":"sym-sc","sym-xsc-s":"sym-sc-s","cur-sgd":"sym-sgd","cur-sgd-s":"sym-sgd-s","sym-storj":"sym-sjcx","sym-storj-s":"sym-sjcx-s","sym-tel":"sym-taas","cur-trx":"sym-trx","cur-trx-s":"sym-trx-s","cur-tusd":"sym-tusd","cur-tusd-s":"sym-tusd-s","cur-usd":"sym-usd","cur-usd-s":"sym-usd-s","cur-usdc":"sym-usdc","cur-usdc-s":"sym-usdc-s","sym-vet":"sym-ven","sym-vet-s":"sym-ven-s","sym-waxp":"sym-wax","sym-waxp-s":"sym-wax-s","cur-xlm":"sym-xlm","cur-xlm-s":"sym-xlm-s","cur-xmr":"sym-xmr","cur-xmr-s":"sym-xmr-s","cur-xrp":"sym-xrp","cur-xrp-s":"sym-xrp-s","cur-zar":"sym-zar","cur-zar-s":"sym-zar-s","exc-binance-us":"exc-binance","exc-binance-us-s":"exc-binance-s","exc-mexbt":"exc-bitvc","exc-mexbt-s":"exc-bitvc-s","exc-coinbase-pro":"exc-coinbasepro","exc-gdax":"exc-coinbasepro","exc-coinbase-pro-s":"exc-coinbasepro-s","exc-gdax-s":"exc-coinbasepro-s","exc-quadriga":"exc-quadrigacx","exc-quadriga-s":"exc-quadrigacx-s","cur-crc":"sym-crc","cur-crc-s":"sym-crc-s","cur-lak":"sym-lak","cur-lak-s":"sym-lak-s","cur-sek":"sym-sek","cur-sek-s":"sym-sek-s","cur-thb":"sym-thb","cur-thb-s":"sym-thb-s","cur-try":"sym-try","cur-try-s":"sym-try-s","cur-uah":"sym-uah","cur-uah-s":"sym-uah-s","exc-ftx":"sym-ftt","exc-ftx-s":"sym-ftt-s","exc-ftx-us":"sym-ftt","exc-ftx-us-s":"sym-ftt-s","sym-cgld":"sym-celo","sym-cgld-s":"sym-celo-s","exc-uniswap-v2":"sym-uni","exc-uniswap-v2-s":"sym-uni-s","sym-kshib":"sym-shib","sym-kshib-s":"sym-shib-s","sym-easy-s":"sym-easy","sym-srare":"sym-rare","sym-srare-s":"sym-rare-s","sym-ape.2":"sym-ape","sym-ape.2-s":"sym-ape-s"};function cs(s,f,m){const y=s.slice();return y[18]=f[m],y}function as(s){let f,m,y;function e(s,f){return s[4]?rs:ns}let t=e(s),c=t(s);return{c(){f=h("div"),c.c(),w(f,"class","copy-msg svelte-fkock6")},m(s,m){x(s,f,m),c.m(f,null),y=!0},p(s,m){t!==(t=e(s))&&(c.d(1),c=t(s),c&&(c.c(),c.m(f,null)))},i(s){y||(s&&j((()=>{m||(m=J(f,ms,{duration:100},!0)),m.run(1)})),y=!0)},o(s){s&&(m||(m=J(f,ms,{duration:100},!1)),m.run(0)),y=!1},d(s){s&&p(f),c.d(),s&&m&&m.end()}}}function ns(s){let f;return{c(){f=g("SVG markup copied to clipboard")},m(s,m){x(s,f,m)},d(s){s&&p(f)}}}function rs(s){let f;return{c(){f=g("Error")},m(s,m){x(s,f,m)},d(s){s&&p(f)}}}function os(s){let f;return{c(){f=h("div"),f.textContent="No results."},m(s,m){x(s,f,m)},d(s){s&&p(f)}}}function is(s){let f,m,y,e,c,n,r,o,i,d,u=s[18].slice(0,4)+"",b=s[1][s[18]]+"";return{c(){f=h("i"),y=k(),e=h("div"),c=h("span"),n=g(u),r=h("span"),o=g(b),w(f,"class",m=a(`beacon ${s[18]}`)+" svelte-fkock6"),w(c,"class","prefix"),w(r,"class","main svelte-fkock6"),w(e,"class","text svelte-fkock6")},m(m,a){x(m,f,a),x(m,y,a),x(m,e,a),l(e,c),l(c,n),l(e,r),l(r,o),i||(d=v(f,"click",(function(){t(s[9](s[18]))&&s[9](s[18]).apply(this,arguments)})),i=!0)},p(y,e){s=y,128&e&&m!==(m=a(`beacon ${s[18]}`)+" svelte-fkock6")&&w(f,"class",m),128&e&&u!==(u=s[18].slice(0,4)+"")&&C(n,u),130&e&&b!==(b=s[1][s[18]]+"")&&C(o,b)},d(s){s&&p(f),s&&p(y),s&&p(e),i=!1,d()}}}function ds(s){let f,m,y,e,c,n,r,o,i,d,u,b=s[18].slice(0,4)+"",S=s[1][s[18]]+"";return{c(){f=h("i"),y=k(),e=h("div"),c=h("span"),n=g(b),r=h("span"),o=g(S),i=h("span"),i.textContent="-s",w(f,"class",m=a(`beacon ${s[18]}-s`)+" svelte-fkock6"),w(c,"class","prefix"),w(r,"class","main svelte-fkock6"),w(i,"class","postfix"),w(e,"class","text svelte-fkock6")},m(m,a){x(m,f,a),x(m,y,a),x(m,e,a),l(e,c),l(c,n),l(e,r),l(r,o),l(e,i),d||(u=v(f,"click",(function(){t(s[9](`${s[18]}-s`))&&s[9](`${s[18]}-s`).apply(this,arguments)})),d=!0)},p(y,e){s=y,128&e&&m!==(m=a(`beacon ${s[18]}-s`)+" svelte-fkock6")&&w(f,"class",m),128&e&&b!==(b=s[18].slice(0,4)+"")&&C(n,b),130&e&&S!==(S=s[1][s[18]]+"")&&C(o,S)},d(s){s&&p(f),s&&p(y),s&&p(e),d=!1,u()}}}function ls(s){let f,m,y,e,t,c,a,n,r=s[2][s[18]]+"",o=s[8].includes(s[18]),i=s[8].includes(`${s[18]}-s`),d=o&&is(s),u=i&&ds(s);return{c(){f=h("div"),m=h("div"),y=g(r),e=k(),t=h("div"),d&&d.c(),c=k(),a=h("div"),u&&u.c(),n=k(),w(m,"class","name svelte-fkock6"),w(t,"class","icon svelte-fkock6"),w(a,"class","icon svelte-fkock6"),w(f,"class","beacon-container svelte-fkock6")},m(s,r){x(s,f,r),l(f,m),l(m,y),l(f,e),l(f,t),d&&d.m(t,null),l(f,c),l(f,a),u&&u.m(a,null),l(f,n)},p(s,f){132&f&&r!==(r=s[2][s[18]]+"")&&C(y,r),128&f&&(o=s[8].includes(s[18])),o?d?d.p(s,f):(d=is(s),d.c(),d.m(t,null)):d&&(d.d(1),d=null),128&f&&(i=s[8].includes(`${s[18]}-s`)),i?u?u.p(s,f):(u=ds(s),u.c(),u.m(a,null)):u&&(u.d(1),u=null)},d(s){s&&p(f),d&&d.d(),u&&u.d()}}}function us(s){let f,m,y,t,c,a,n,r,o,i,d,u,b,g,C;j(s[10]);let A=s[3]&&as(s),B=s[7],N=[];for(let f=0;f<B.length;f+=1)N[f]=ls(cs(s,B,f));let z=null;return B.length||(z=os()),{c(){A&&A.c(),f=k(),m=h("div"),y=h("div"),t=h("h1"),t.textContent="Beacons",c=k(),a=h("p"),a.innerHTML='Crypto icon font by\n      <a href="https://cryptowat.ch" target="_blank" rel="noopener noreferrer">Cryptowatch</a>\n      (<a href="https://github.com/cryptowatch/beacons" target="_blank" rel="noopener noreferrer">GitHub</a>)',n=k(),r=h("p"),r.textContent="Click on an icon to copy its SVG markup to your clipboard",o=k(),i=h("input"),u=k(),b=h("div");for(let s=0;s<N.length;s+=1)N[s].c();z&&z.c(),w(t,"class","svelte-fkock6"),w(a,"class","svelte-fkock6"),w(r,"class","secondary svelte-fkock6"),w(i,"type","text"),w(i,"placeholder",`Search ${s[8].length} icons`),w(i,"spellcheck","false"),w(i,"class","svelte-fkock6"),j((()=>s[12].call(y))),w(b,"class","beacons-flex svelte-fkock6"),T(b,"max-height",s[5]-s[6]-16+"px"),w(m,"class","container svelte-fkock6")},m(e,k){A&&A.m(e,k),x(e,f,k),x(e,m,k),l(m,y),l(y,t),l(y,c),l(y,a),l(y,n),l(y,r),l(y,o),l(y,i),S(i,s[0]),d=function(s,f){"static"===getComputedStyle(s).position&&(s.style.position="relative");const m=h("iframe");m.setAttribute("style","display: block; position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; border: 0; opacity: 0; pointer-events: none; z-index: -1;"),m.setAttribute("aria-hidden","true"),m.tabIndex=-1;const y=P();let e;return y?(m.src="data:text/html,<script>onresize=function(){parent.postMessage(0,'*')}<\/script>",e=v(window,"message",(s=>{s.source===m.contentWindow&&f()}))):(m.src="about:blank",m.onload=()=>{e=v(m.contentWindow,"resize",f)}),l(s,m),()=>{(y||e&&m.contentWindow)&&e(),p(m)}}(y,s[12].bind(y)),l(m,u),l(m,b);for(let s=0;s<N.length;s+=1)N[s].m(b,null);z&&z.m(b,null),g||(C=[v(window,"resize",s[10]),v(i,"input",s[11])],g=!0)},p(s,[m]){if(s[3]?A?(A.p(s,m),8&m&&Y(A,1)):(A=as(s),A.c(),Y(A,1),A.m(f.parentNode,f)):A&&(W={r:0,c:[],p:W},Z(A,1,1,(()=>{A=null})),W.r||e(W.c),W=W.p),1&m&&i.value!==s[0]&&S(i,s[0]),902&m){let f;for(B=s[7],f=0;f<B.length;f+=1){const y=cs(s,B,f);N[f]?N[f].p(y,m):(N[f]=ls(y),N[f].c(),N[f].m(b,null))}for(;f<N.length;f+=1)N[f].d(1);N.length=B.length,B.length?z&&(z.d(1),z=null):z||(z=os(),z.c(),z.m(b,null))}96&m&&T(b,"max-height",s[5]-s[6]-16+"px")},i(s){Y(A)},o(s){Z(A)},d(s){A&&A.d(s),s&&p(f),s&&p(m),d(),function(s,f){for(let m=0;m<s.length;m+=1)s[m]&&s[m].d(f)}(N,s),z&&z.d(),g=!1,e(C)}}}function bs(s,f,m){let y;const e=s=>"-s"===s.slice(s.length-2),t=s=>{const f=s.slice(4);return e(s)?f.slice(0,-2):f},c=["b","d","default","_default"],a=Object.keys(ys).filter((s=>!c.includes(t(s))));let n="";const r=a.filter((s=>!e(s))),o={},i={};let d;a.forEach((s=>{const f=t(s),y=es[f]?es[f]:f;m(1,o[s]=f,o),m(2,i[s]=y,i)}));let l=!1,u=!1;let b,x;return D((()=>clearTimeout(d))),s.$$.update=()=>{3&s.$$.dirty&&m(7,y=r.filter((s=>{const f=n.toLowerCase(),m=o[s],y=es[m]?.toLowerCase();return m.includes(f)||y?.includes(f)})))},[n,o,i,l,u,b,x,y,a,async s=>{clearTimeout(d),m(3,l=!1),m(4,u=!1),s in ts&&(s=ts[s]);try{const f=await fetch(`https://raw.githubusercontent.com/cryptowatch/beacons/master/src/${s}.svg`);if(f.ok){const s=await f.text();navigator.clipboard.writeText(s)}else m(4,u=!0)}catch(s){m(4,u=!0)}m(3,l=!0),d=setTimeout((()=>m(3,l=!1)),1e3)},function(){m(5,b=window.innerHeight)},function(){n=this.value,m(0,n)},function(){x=this.clientHeight,m(6,x)}]}return new class extends class{$destroy(){!function(s,f){const m=s.$$;null!==m.fragment&&(e(m.on_destroy),m.fragment&&m.fragment.d(f),m.on_destroy=m.fragment=null,m.ctx=[])}(this,1),this.$destroy=s}$on(s,f){const m=this.$$.callbacks[s]||(this.$$.callbacks[s]=[]);return m.push(f),()=>{const s=m.indexOf(f);-1!==s&&m.splice(s,1)}}$set(s){var f;this.$$set&&(f=s,0!==Object.keys(f).length)&&(this.$$.skip_bound=!0,this.$$set(s),this.$$.skip_bound=!1)}}{constructor(s){super(),fs(this,s,bs,us,c,{})}}({target:document.body})}();
+
+(function(l, r) { if (!l || l.getElementById('livereloadscript')) return; r = l.createElement('script'); r.async = 1; r.src = '//' + (self.location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1'; r.id = 'livereloadscript'; l.getElementsByTagName('head')[0].appendChild(r) })(self.document);
+var app = (function () {
+    'use strict';
+
+    function noop() { }
+    const identity = x => x;
+    function add_location(element, file, line, column, char) {
+        element.__svelte_meta = {
+            loc: { file, line, column, char }
+        };
+    }
+    function run(fn) {
+        return fn();
+    }
+    function blank_object() {
+        return Object.create(null);
+    }
+    function run_all(fns) {
+        fns.forEach(run);
+    }
+    function is_function(thing) {
+        return typeof thing === 'function';
+    }
+    function safe_not_equal(a, b) {
+        return a != a ? b == b : a !== b || ((a && typeof a === 'object') || typeof a === 'function');
+    }
+    function is_empty(obj) {
+        return Object.keys(obj).length === 0;
+    }
+    function null_to_empty(value) {
+        return value == null ? '' : value;
+    }
+
+    const is_client = typeof window !== 'undefined';
+    let now = is_client
+        ? () => window.performance.now()
+        : () => Date.now();
+    let raf = is_client ? cb => requestAnimationFrame(cb) : noop;
+
+    const tasks = new Set();
+    function run_tasks(now) {
+        tasks.forEach(task => {
+            if (!task.c(now)) {
+                tasks.delete(task);
+                task.f();
+            }
+        });
+        if (tasks.size !== 0)
+            raf(run_tasks);
+    }
+    /**
+     * Creates a new task that runs on each raf frame
+     * until it returns a falsy value or is aborted
+     */
+    function loop(callback) {
+        let task;
+        if (tasks.size === 0)
+            raf(run_tasks);
+        return {
+            promise: new Promise(fulfill => {
+                tasks.add(task = { c: callback, f: fulfill });
+            }),
+            abort() {
+                tasks.delete(task);
+            }
+        };
+    }
+    function append(target, node) {
+        target.appendChild(node);
+    }
+    function get_root_for_style(node) {
+        if (!node)
+            return document;
+        const root = node.getRootNode ? node.getRootNode() : node.ownerDocument;
+        if (root && root.host) {
+            return root;
+        }
+        return node.ownerDocument;
+    }
+    function append_empty_stylesheet(node) {
+        const style_element = element('style');
+        append_stylesheet(get_root_for_style(node), style_element);
+        return style_element.sheet;
+    }
+    function append_stylesheet(node, style) {
+        append(node.head || node, style);
+    }
+    function insert(target, node, anchor) {
+        target.insertBefore(node, anchor || null);
+    }
+    function detach(node) {
+        node.parentNode.removeChild(node);
+    }
+    function destroy_each(iterations, detaching) {
+        for (let i = 0; i < iterations.length; i += 1) {
+            if (iterations[i])
+                iterations[i].d(detaching);
+        }
+    }
+    function element(name) {
+        return document.createElement(name);
+    }
+    function text(data) {
+        return document.createTextNode(data);
+    }
+    function space() {
+        return text(' ');
+    }
+    function listen(node, event, handler, options) {
+        node.addEventListener(event, handler, options);
+        return () => node.removeEventListener(event, handler, options);
+    }
+    function attr(node, attribute, value) {
+        if (value == null)
+            node.removeAttribute(attribute);
+        else if (node.getAttribute(attribute) !== value)
+            node.setAttribute(attribute, value);
+    }
+    function children(element) {
+        return Array.from(element.childNodes);
+    }
+    function set_input_value(input, value) {
+        input.value = value == null ? '' : value;
+    }
+    function set_style(node, key, value, important) {
+        if (value === null) {
+            node.style.removeProperty(key);
+        }
+        else {
+            node.style.setProperty(key, value, important ? 'important' : '');
+        }
+    }
+    // unfortunately this can't be a constant as that wouldn't be tree-shakeable
+    // so we cache the result instead
+    let crossorigin;
+    function is_crossorigin() {
+        if (crossorigin === undefined) {
+            crossorigin = false;
+            try {
+                if (typeof window !== 'undefined' && window.parent) {
+                    void window.parent.document;
+                }
+            }
+            catch (error) {
+                crossorigin = true;
+            }
+        }
+        return crossorigin;
+    }
+    function add_resize_listener(node, fn) {
+        const computed_style = getComputedStyle(node);
+        if (computed_style.position === 'static') {
+            node.style.position = 'relative';
+        }
+        const iframe = element('iframe');
+        iframe.setAttribute('style', 'display: block; position: absolute; top: 0; left: 0; width: 100%; height: 100%; ' +
+            'overflow: hidden; border: 0; opacity: 0; pointer-events: none; z-index: -1;');
+        iframe.setAttribute('aria-hidden', 'true');
+        iframe.tabIndex = -1;
+        const crossorigin = is_crossorigin();
+        let unsubscribe;
+        if (crossorigin) {
+            iframe.src = "data:text/html,<script>onresize=function(){parent.postMessage(0,'*')}</script>";
+            unsubscribe = listen(window, 'message', (event) => {
+                if (event.source === iframe.contentWindow)
+                    fn();
+            });
+        }
+        else {
+            iframe.src = 'about:blank';
+            iframe.onload = () => {
+                unsubscribe = listen(iframe.contentWindow, 'resize', fn);
+            };
+        }
+        append(node, iframe);
+        return () => {
+            if (crossorigin) {
+                unsubscribe();
+            }
+            else if (unsubscribe && iframe.contentWindow) {
+                unsubscribe();
+            }
+            detach(iframe);
+        };
+    }
+    function custom_event(type, detail, bubbles = false) {
+        const e = document.createEvent('CustomEvent');
+        e.initCustomEvent(type, bubbles, false, detail);
+        return e;
+    }
+
+    // we need to store the information for multiple documents because a Svelte application could also contain iframes
+    // https://github.com/sveltejs/svelte/issues/3624
+    const managed_styles = new Map();
+    let active = 0;
+    // https://github.com/darkskyapp/string-hash/blob/master/index.js
+    function hash(str) {
+        let hash = 5381;
+        let i = str.length;
+        while (i--)
+            hash = ((hash << 5) - hash) ^ str.charCodeAt(i);
+        return hash >>> 0;
+    }
+    function create_style_information(doc, node) {
+        const info = { stylesheet: append_empty_stylesheet(node), rules: {} };
+        managed_styles.set(doc, info);
+        return info;
+    }
+    function create_rule(node, a, b, duration, delay, ease, fn, uid = 0) {
+        const step = 16.666 / duration;
+        let keyframes = '{\n';
+        for (let p = 0; p <= 1; p += step) {
+            const t = a + (b - a) * ease(p);
+            keyframes += p * 100 + `%{${fn(t, 1 - t)}}\n`;
+        }
+        const rule = keyframes + `100% {${fn(b, 1 - b)}}\n}`;
+        const name = `__svelte_${hash(rule)}_${uid}`;
+        const doc = get_root_for_style(node);
+        const { stylesheet, rules } = managed_styles.get(doc) || create_style_information(doc, node);
+        if (!rules[name]) {
+            rules[name] = true;
+            stylesheet.insertRule(`@keyframes ${name} ${rule}`, stylesheet.cssRules.length);
+        }
+        const animation = node.style.animation || '';
+        node.style.animation = `${animation ? `${animation}, ` : ''}${name} ${duration}ms linear ${delay}ms 1 both`;
+        active += 1;
+        return name;
+    }
+    function delete_rule(node, name) {
+        const previous = (node.style.animation || '').split(', ');
+        const next = previous.filter(name
+            ? anim => anim.indexOf(name) < 0 // remove specific animation
+            : anim => anim.indexOf('__svelte') === -1 // remove all Svelte animations
+        );
+        const deleted = previous.length - next.length;
+        if (deleted) {
+            node.style.animation = next.join(', ');
+            active -= deleted;
+            if (!active)
+                clear_rules();
+        }
+    }
+    function clear_rules() {
+        raf(() => {
+            if (active)
+                return;
+            managed_styles.forEach(info => {
+                const { stylesheet } = info;
+                let i = stylesheet.cssRules.length;
+                while (i--)
+                    stylesheet.deleteRule(i);
+                info.rules = {};
+            });
+            managed_styles.clear();
+        });
+    }
+
+    let current_component;
+    function set_current_component(component) {
+        current_component = component;
+    }
+    function get_current_component() {
+        if (!current_component)
+            throw new Error('Function called outside component initialization');
+        return current_component;
+    }
+    function onDestroy(fn) {
+        get_current_component().$$.on_destroy.push(fn);
+    }
+
+    const dirty_components = [];
+    const binding_callbacks = [];
+    const render_callbacks = [];
+    const flush_callbacks = [];
+    const resolved_promise = Promise.resolve();
+    let update_scheduled = false;
+    function schedule_update() {
+        if (!update_scheduled) {
+            update_scheduled = true;
+            resolved_promise.then(flush);
+        }
+    }
+    function add_render_callback(fn) {
+        render_callbacks.push(fn);
+    }
+    // flush() calls callbacks in this order:
+    // 1. All beforeUpdate callbacks, in order: parents before children
+    // 2. All bind:this callbacks, in reverse order: children before parents.
+    // 3. All afterUpdate callbacks, in order: parents before children. EXCEPT
+    //    for afterUpdates called during the initial onMount, which are called in
+    //    reverse order: children before parents.
+    // Since callbacks might update component values, which could trigger another
+    // call to flush(), the following steps guard against this:
+    // 1. During beforeUpdate, any updated components will be added to the
+    //    dirty_components array and will cause a reentrant call to flush(). Because
+    //    the flush index is kept outside the function, the reentrant call will pick
+    //    up where the earlier call left off and go through all dirty components. The
+    //    current_component value is saved and restored so that the reentrant call will
+    //    not interfere with the "parent" flush() call.
+    // 2. bind:this callbacks cannot trigger new flush() calls.
+    // 3. During afterUpdate, any updated components will NOT have their afterUpdate
+    //    callback called a second time; the seen_callbacks set, outside the flush()
+    //    function, guarantees this behavior.
+    const seen_callbacks = new Set();
+    let flushidx = 0; // Do *not* move this inside the flush() function
+    function flush() {
+        const saved_component = current_component;
+        do {
+            // first, call beforeUpdate functions
+            // and update components
+            while (flushidx < dirty_components.length) {
+                const component = dirty_components[flushidx];
+                flushidx++;
+                set_current_component(component);
+                update(component.$$);
+            }
+            set_current_component(null);
+            dirty_components.length = 0;
+            flushidx = 0;
+            while (binding_callbacks.length)
+                binding_callbacks.pop()();
+            // then, once components are updated, call
+            // afterUpdate functions. This may cause
+            // subsequent updates...
+            for (let i = 0; i < render_callbacks.length; i += 1) {
+                const callback = render_callbacks[i];
+                if (!seen_callbacks.has(callback)) {
+                    // ...so guard against infinite loops
+                    seen_callbacks.add(callback);
+                    callback();
+                }
+            }
+            render_callbacks.length = 0;
+        } while (dirty_components.length);
+        while (flush_callbacks.length) {
+            flush_callbacks.pop()();
+        }
+        update_scheduled = false;
+        seen_callbacks.clear();
+        set_current_component(saved_component);
+    }
+    function update($$) {
+        if ($$.fragment !== null) {
+            $$.update();
+            run_all($$.before_update);
+            const dirty = $$.dirty;
+            $$.dirty = [-1];
+            $$.fragment && $$.fragment.p($$.ctx, dirty);
+            $$.after_update.forEach(add_render_callback);
+        }
+    }
+
+    let promise;
+    function wait() {
+        if (!promise) {
+            promise = Promise.resolve();
+            promise.then(() => {
+                promise = null;
+            });
+        }
+        return promise;
+    }
+    function dispatch(node, direction, kind) {
+        node.dispatchEvent(custom_event(`${direction ? 'intro' : 'outro'}${kind}`));
+    }
+    const outroing = new Set();
+    let outros;
+    function group_outros() {
+        outros = {
+            r: 0,
+            c: [],
+            p: outros // parent group
+        };
+    }
+    function check_outros() {
+        if (!outros.r) {
+            run_all(outros.c);
+        }
+        outros = outros.p;
+    }
+    function transition_in(block, local) {
+        if (block && block.i) {
+            outroing.delete(block);
+            block.i(local);
+        }
+    }
+    function transition_out(block, local, detach, callback) {
+        if (block && block.o) {
+            if (outroing.has(block))
+                return;
+            outroing.add(block);
+            outros.c.push(() => {
+                outroing.delete(block);
+                if (callback) {
+                    if (detach)
+                        block.d(1);
+                    callback();
+                }
+            });
+            block.o(local);
+        }
+    }
+    const null_transition = { duration: 0 };
+    function create_bidirectional_transition(node, fn, params, intro) {
+        let config = fn(node, params);
+        let t = intro ? 0 : 1;
+        let running_program = null;
+        let pending_program = null;
+        let animation_name = null;
+        function clear_animation() {
+            if (animation_name)
+                delete_rule(node, animation_name);
+        }
+        function init(program, duration) {
+            const d = (program.b - t);
+            duration *= Math.abs(d);
+            return {
+                a: t,
+                b: program.b,
+                d,
+                duration,
+                start: program.start,
+                end: program.start + duration,
+                group: program.group
+            };
+        }
+        function go(b) {
+            const { delay = 0, duration = 300, easing = identity, tick = noop, css } = config || null_transition;
+            const program = {
+                start: now() + delay,
+                b
+            };
+            if (!b) {
+                // @ts-ignore todo: improve typings
+                program.group = outros;
+                outros.r += 1;
+            }
+            if (running_program || pending_program) {
+                pending_program = program;
+            }
+            else {
+                // if this is an intro, and there's a delay, we need to do
+                // an initial tick and/or apply CSS animation immediately
+                if (css) {
+                    clear_animation();
+                    animation_name = create_rule(node, t, b, duration, delay, easing, css);
+                }
+                if (b)
+                    tick(0, 1);
+                running_program = init(program, duration);
+                add_render_callback(() => dispatch(node, b, 'start'));
+                loop(now => {
+                    if (pending_program && now > pending_program.start) {
+                        running_program = init(pending_program, duration);
+                        pending_program = null;
+                        dispatch(node, running_program.b, 'start');
+                        if (css) {
+                            clear_animation();
+                            animation_name = create_rule(node, t, running_program.b, running_program.duration, 0, easing, config.css);
+                        }
+                    }
+                    if (running_program) {
+                        if (now >= running_program.end) {
+                            tick(t = running_program.b, 1 - t);
+                            dispatch(node, running_program.b, 'end');
+                            if (!pending_program) {
+                                // we're done
+                                if (running_program.b) {
+                                    // intro — we can tidy up immediately
+                                    clear_animation();
+                                }
+                                else {
+                                    // outro — needs to be coordinated
+                                    if (!--running_program.group.r)
+                                        run_all(running_program.group.c);
+                                }
+                            }
+                            running_program = null;
+                        }
+                        else if (now >= running_program.start) {
+                            const p = now - running_program.start;
+                            t = running_program.a + running_program.d * easing(p / running_program.duration);
+                            tick(t, 1 - t);
+                        }
+                    }
+                    return !!(running_program || pending_program);
+                });
+            }
+        }
+        return {
+            run(b) {
+                if (is_function(config)) {
+                    wait().then(() => {
+                        // @ts-ignore
+                        config = config();
+                        go(b);
+                    });
+                }
+                else {
+                    go(b);
+                }
+            },
+            end() {
+                clear_animation();
+                running_program = pending_program = null;
+            }
+        };
+    }
+
+    const globals = (typeof window !== 'undefined'
+        ? window
+        : typeof globalThis !== 'undefined'
+            ? globalThis
+            : global);
+    function mount_component(component, target, anchor, customElement) {
+        const { fragment, on_mount, on_destroy, after_update } = component.$$;
+        fragment && fragment.m(target, anchor);
+        if (!customElement) {
+            // onMount happens before the initial afterUpdate
+            add_render_callback(() => {
+                const new_on_destroy = on_mount.map(run).filter(is_function);
+                if (on_destroy) {
+                    on_destroy.push(...new_on_destroy);
+                }
+                else {
+                    // Edge case - component was destroyed immediately,
+                    // most likely as a result of a binding initialising
+                    run_all(new_on_destroy);
+                }
+                component.$$.on_mount = [];
+            });
+        }
+        after_update.forEach(add_render_callback);
+    }
+    function destroy_component(component, detaching) {
+        const $$ = component.$$;
+        if ($$.fragment !== null) {
+            run_all($$.on_destroy);
+            $$.fragment && $$.fragment.d(detaching);
+            // TODO null out other refs, including component.$$ (but need to
+            // preserve final state?)
+            $$.on_destroy = $$.fragment = null;
+            $$.ctx = [];
+        }
+    }
+    function make_dirty(component, i) {
+        if (component.$$.dirty[0] === -1) {
+            dirty_components.push(component);
+            schedule_update();
+            component.$$.dirty.fill(0);
+        }
+        component.$$.dirty[(i / 31) | 0] |= (1 << (i % 31));
+    }
+    function init(component, options, instance, create_fragment, not_equal, props, append_styles, dirty = [-1]) {
+        const parent_component = current_component;
+        set_current_component(component);
+        const $$ = component.$$ = {
+            fragment: null,
+            ctx: null,
+            // state
+            props,
+            update: noop,
+            not_equal,
+            bound: blank_object(),
+            // lifecycle
+            on_mount: [],
+            on_destroy: [],
+            on_disconnect: [],
+            before_update: [],
+            after_update: [],
+            context: new Map(options.context || (parent_component ? parent_component.$$.context : [])),
+            // everything else
+            callbacks: blank_object(),
+            dirty,
+            skip_bound: false,
+            root: options.target || parent_component.$$.root
+        };
+        append_styles && append_styles($$.root);
+        let ready = false;
+        $$.ctx = instance
+            ? instance(component, options.props || {}, (i, ret, ...rest) => {
+                const value = rest.length ? rest[0] : ret;
+                if ($$.ctx && not_equal($$.ctx[i], $$.ctx[i] = value)) {
+                    if (!$$.skip_bound && $$.bound[i])
+                        $$.bound[i](value);
+                    if (ready)
+                        make_dirty(component, i);
+                }
+                return ret;
+            })
+            : [];
+        $$.update();
+        ready = true;
+        run_all($$.before_update);
+        // `false` as a special case of no DOM component
+        $$.fragment = create_fragment ? create_fragment($$.ctx) : false;
+        if (options.target) {
+            if (options.hydrate) {
+                const nodes = children(options.target);
+                // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+                $$.fragment && $$.fragment.l(nodes);
+                nodes.forEach(detach);
+            }
+            else {
+                // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+                $$.fragment && $$.fragment.c();
+            }
+            if (options.intro)
+                transition_in(component.$$.fragment);
+            mount_component(component, options.target, options.anchor, options.customElement);
+            flush();
+        }
+        set_current_component(parent_component);
+    }
+    /**
+     * Base class for Svelte components. Used when dev=false.
+     */
+    class SvelteComponent {
+        $destroy() {
+            destroy_component(this, 1);
+            this.$destroy = noop;
+        }
+        $on(type, callback) {
+            const callbacks = (this.$$.callbacks[type] || (this.$$.callbacks[type] = []));
+            callbacks.push(callback);
+            return () => {
+                const index = callbacks.indexOf(callback);
+                if (index !== -1)
+                    callbacks.splice(index, 1);
+            };
+        }
+        $set($$props) {
+            if (this.$$set && !is_empty($$props)) {
+                this.$$.skip_bound = true;
+                this.$$set($$props);
+                this.$$.skip_bound = false;
+            }
+        }
+    }
+
+    function dispatch_dev(type, detail) {
+        document.dispatchEvent(custom_event(type, Object.assign({ version: '3.46.4' }, detail), true));
+    }
+    function append_dev(target, node) {
+        dispatch_dev('SvelteDOMInsert', { target, node });
+        append(target, node);
+    }
+    function insert_dev(target, node, anchor) {
+        dispatch_dev('SvelteDOMInsert', { target, node, anchor });
+        insert(target, node, anchor);
+    }
+    function detach_dev(node) {
+        dispatch_dev('SvelteDOMRemove', { node });
+        detach(node);
+    }
+    function listen_dev(node, event, handler, options, has_prevent_default, has_stop_propagation) {
+        const modifiers = options === true ? ['capture'] : options ? Array.from(Object.keys(options)) : [];
+        if (has_prevent_default)
+            modifiers.push('preventDefault');
+        if (has_stop_propagation)
+            modifiers.push('stopPropagation');
+        dispatch_dev('SvelteDOMAddEventListener', { node, event, handler, modifiers });
+        const dispose = listen(node, event, handler, options);
+        return () => {
+            dispatch_dev('SvelteDOMRemoveEventListener', { node, event, handler, modifiers });
+            dispose();
+        };
+    }
+    function attr_dev(node, attribute, value) {
+        attr(node, attribute, value);
+        if (value == null)
+            dispatch_dev('SvelteDOMRemoveAttribute', { node, attribute });
+        else
+            dispatch_dev('SvelteDOMSetAttribute', { node, attribute, value });
+    }
+    function set_data_dev(text, data) {
+        data = '' + data;
+        if (text.wholeText === data)
+            return;
+        dispatch_dev('SvelteDOMSetData', { node: text, data });
+        text.data = data;
+    }
+    function validate_each_argument(arg) {
+        if (typeof arg !== 'string' && !(arg && typeof arg === 'object' && 'length' in arg)) {
+            let msg = '{#each} only iterates over array-like objects.';
+            if (typeof Symbol === 'function' && arg && Symbol.iterator in arg) {
+                msg += ' You can use a spread to convert this iterable into an array.';
+            }
+            throw new Error(msg);
+        }
+    }
+    function validate_slots(name, slot, keys) {
+        for (const slot_key of Object.keys(slot)) {
+            if (!~keys.indexOf(slot_key)) {
+                console.warn(`<${name}> received an unexpected slot "${slot_key}".`);
+            }
+        }
+    }
+    /**
+     * Base class for Svelte components with some minor dev-enhancements. Used when dev=true.
+     */
+    class SvelteComponentDev extends SvelteComponent {
+        constructor(options) {
+            if (!options || (!options.target && !options.$$inline)) {
+                throw new Error("'target' is a required option");
+            }
+            super();
+        }
+        $destroy() {
+            super.$destroy();
+            this.$destroy = () => {
+                console.warn('Component was already destroyed'); // eslint-disable-line no-console
+            };
+        }
+        $capture_state() { }
+        $inject_state() { }
+    }
+
+    function fade(node, { delay = 0, duration = 400, easing = identity } = {}) {
+        const o = +getComputedStyle(node).opacity;
+        return {
+            delay,
+            duration,
+            easing,
+            css: t => `opacity: ${t * o}`
+        };
+    }
+
+    var ustc = "fa20";
+    var beacons = {
+    	"exc-_default-s": "f101",
+    	"exc-_default": "f102",
+    	"sym-_default-s": "f167",
+    	"sym-_default": "f168",
+    	"sym-d": "f168",
+    	"sym-d-s": "f167",
+    	"sym-default": "f168",
+    	"sym-default-s": "f167",
+    	"exc-d": "f102",
+    	"exc-d-s": "f101",
+    	"exc-default": "f102",
+    	"exc-default-s": "f101",
+    	"cur-default": "f168",
+    	"cur-default-s": "f167",
+    	"exc-axieinfinity-s": "f103",
+    	"exc-axieinfinity": "f104",
+    	"exc-bibox-s": "f105",
+    	"exc-bibox": "f106",
+    	"exc-binance-s": "f107",
+    	"exc-binance": "f108",
+    	"exc-bisq-s": "f109",
+    	"exc-bisq": "f10a",
+    	"exc-bitbay-s": "f10b",
+    	"exc-bitbay": "f10c",
+    	"exc-bitfinex-s": "f10d",
+    	"exc-bitfinex": "f10e",
+    	"exc-bitflyer-s": "f10f",
+    	"exc-bitflyer": "f110",
+    	"exc-bithumb-s": "f111",
+    	"exc-bithumb": "f112",
+    	"exc-bitmex-s": "f113",
+    	"exc-bitmex": "f114",
+    	"exc-bitso-s": "f115",
+    	"exc-bitso": "f116",
+    	"exc-bitsquare-s": "f117",
+    	"exc-bitsquare": "f118",
+    	"exc-bitstamp-s": "f119",
+    	"exc-bitstamp": "f11a",
+    	"exc-bittrex-s": "f11b",
+    	"exc-bittrex": "f11c",
+    	"exc-bitvc-s": "f11d",
+    	"exc-bitvc": "f11e",
+    	"exc-btcchina-s": "f11f",
+    	"exc-btcchina": "f120",
+    	"exc-btce-s": "f121",
+    	"exc-btce": "f122",
+    	"exc-bybit-s": "f123",
+    	"exc-bybit": "f124",
+    	"exc-cexio-s": "f125",
+    	"exc-cexio": "f126",
+    	"exc-cme-s": "f127",
+    	"exc-cme": "f128",
+    	"exc-coinbase-s": "f129",
+    	"exc-coinbase": "f12a",
+    	"exc-coinbasepro-s": "f12b",
+    	"exc-coinbasepro": "f12c",
+    	"exc-coinone-s": "f12d",
+    	"exc-coinone": "f12e",
+    	"exc-comex-s": "f12f",
+    	"exc-comex": "f130",
+    	"exc-cryptofacilities-s": "f131",
+    	"exc-cryptofacilities": "f132",
+    	"exc-deribit-s": "f133",
+    	"exc-deribit": "f134",
+    	"exc-dex-aggregated-s": "f135",
+    	"exc-dex-aggregated": "f136",
+    	"exc-gateio-s": "f137",
+    	"exc-gateio": "f138",
+    	"exc-hitbtc-s": "f139",
+    	"exc-hitbtc": "f13a",
+    	"exc-kucoin-s": "f13b",
+    	"exc-kucoin": "f13c",
+    	"exc-liquid-s": "f13d",
+    	"exc-liquid": "f13e",
+    	"exc-luno-s": "f13f",
+    	"exc-luno": "f140",
+    	"exc-mtgox-s": "f141",
+    	"exc-mtgox": "f142",
+    	"exc-mxc-s": "f143",
+    	"exc-mxc": "f144",
+    	"exc-nbatopshop-s": "f145",
+    	"exc-nbatopshop": "f146",
+    	"exc-nymex-s": "f147",
+    	"exc-nymex": "f148",
+    	"exc-okcoin-s": "f149",
+    	"exc-okcoin": "f14a",
+    	"exc-okx-s": "f14b",
+    	"exc-okx": "f14c",
+    	"exc-opensea-s": "f14d",
+    	"exc-opensea": "f14e",
+    	"exc-poloniex-s": "f14f",
+    	"exc-poloniex": "f150",
+    	"exc-qryptos-s": "f151",
+    	"exc-qryptos": "f152",
+    	"exc-quadrigacx-s": "f153",
+    	"exc-quadrigacx": "f154",
+    	"exc-quick-s": "f155",
+    	"exc-quick": "f156",
+    	"exc-quoine-s": "f157",
+    	"exc-quoine": "f158",
+    	"exc-rarible-s": "f159",
+    	"exc-rarible": "f15a",
+    	"exc-totle-s": "f15b",
+    	"exc-totle": "f15c",
+    	"exc-upbit-s": "f15d",
+    	"exc-upbit": "f15e",
+    	"exc-vaultofsatoshi-s": "f15f",
+    	"exc-vaultofsatoshi": "f160",
+    	"exc-wex-s": "f161",
+    	"exc-wex": "f162",
+    	"exc-zaif-s": "f163",
+    	"exc-zaif": "f164",
+    	"exc-zonda-s": "f165",
+    	"exc-zonda": "f166",
+    	"sym-1inch-s": "f169",
+    	"sym-1inch": "f16a",
+    	"sym-1st-s": "f16b",
+    	"sym-1st": "f16c",
+    	"sym-6a-s": "f16d",
+    	"sym-6a": "f16e",
+    	"sym-6b-s": "f16f",
+    	"sym-6b": "f170",
+    	"sym-6c-s": "f171",
+    	"sym-6c": "f172",
+    	"sym-6e-s": "f173",
+    	"sym-6e": "f174",
+    	"sym-6j-s": "f175",
+    	"sym-6j": "f176",
+    	"sym-6l-s": "f177",
+    	"sym-6l": "f178",
+    	"sym-6m-s": "f179",
+    	"sym-6m": "f17a",
+    	"sym-6n-s": "f17b",
+    	"sym-6n": "f17c",
+    	"sym-6s-s": "f17d",
+    	"sym-6s": "f17e",
+    	"sym-a38-s": "f17f",
+    	"sym-a38": "f180",
+    	"sym-aac-s": "f181",
+    	"sym-aac": "f182",
+    	"sym-aave-s": "f183",
+    	"sym-aave": "f184",
+    	"sym-abbc-s": "f185",
+    	"sym-abbc": "f186",
+    	"sym-abt-s": "f187",
+    	"sym-abt": "f188",
+    	"sym-abyss-s": "f189",
+    	"sym-abyss": "f18a",
+    	"sym-aca-s": "f18b",
+    	"sym-aca": "f18c",
+    	"sym-acat-s": "f18d",
+    	"sym-acat": "f18e",
+    	"sym-ach-s": "f18f",
+    	"sym-ach": "f190",
+    	"sym-act-s": "f191",
+    	"sym-act": "f192",
+    	"sym-ad0-s": "f193",
+    	"sym-ad0": "f194",
+    	"sym-ada-s": "f195",
+    	"sym-ada": "f196",
+    	"sym-adel-s": "f197",
+    	"sym-adel": "f198",
+    	"sym-adh-s": "f199",
+    	"sym-adh": "f19a",
+    	"sym-adm-s": "f19b",
+    	"sym-adm": "f19c",
+    	"sym-ado-s": "f19d",
+    	"sym-ado": "f19e",
+    	"sym-adt-s": "f19f",
+    	"sym-adt": "f1a0",
+    	"sym-adx-s": "f1a1",
+    	"sym-adx": "f1a2",
+    	"sym-ae-s": "f1a3",
+    	"sym-ae": "f1a4",
+    	"sym-aed-s": "f1a5",
+    	"sym-aed": "f1a6",
+    	"sym-aeon-s": "f1a7",
+    	"sym-aeon": "f1a8",
+    	"sym-aep-s": "f1a9",
+    	"sym-aep": "f1aa",
+    	"sym-aergo-s": "f1ab",
+    	"sym-aergo": "f1ac",
+    	"sym-agi-s": "f1ad",
+    	"sym-agi": "f1ae",
+    	"sym-agld-s": "f1af",
+    	"sym-agld": "f1b0",
+    	"sym-aid-s": "f1b1",
+    	"sym-aid": "f1b2",
+    	"sym-aion-s": "f1b3",
+    	"sym-aion": "f1b4",
+    	"sym-air-s": "f1b5",
+    	"sym-air": "f1b6",
+    	"sym-akro-s": "f1b7",
+    	"sym-akro": "f1b8",
+    	"sym-akt-s": "f1b9",
+    	"sym-akt": "f1ba",
+    	"sym-alcx-s": "f1bb",
+    	"sym-alcx": "f1bc",
+    	"sym-aleph-s": "f1bd",
+    	"sym-aleph": "f1be",
+    	"sym-algo-s": "f1bf",
+    	"sym-algo": "f1c0",
+    	"sym-ali-s": "f1c1",
+    	"sym-ali": "f1c2",
+    	"sym-alice-s": "f1c3",
+    	"sym-alice": "f1c4",
+    	"sym-alpha-s": "f1c5",
+    	"sym-alpha": "f1c6",
+    	"sym-amb-s": "f1c7",
+    	"sym-amb": "f1c8",
+    	"sym-amlt-s": "f1c9",
+    	"sym-amlt": "f1ca",
+    	"sym-amp-s": "f1cb",
+    	"sym-amp": "f1cc",
+    	"sym-ampl-s": "f1cd",
+    	"sym-ampl": "f1ce",
+    	"sym-anc-s": "f1cf",
+    	"sym-anc": "f1d0",
+    	"sym-anct-s": "f1d1",
+    	"sym-anct": "f1d2",
+    	"sym-ankr-s": "f1d3",
+    	"sym-ankr": "f1d4",
+    	"sym-ant-s": "f1d5",
+    	"sym-ant": "f1d6",
+    	"sym-ape-s": "f1d7",
+    	"sym-ape": "f1d8",
+    	"sym-api3-s": "f1d9",
+    	"sym-api3": "f1da",
+    	"sym-apis-s": "f1db",
+    	"sym-apis": "f1dc",
+    	"sym-appc-s": "f1dd",
+    	"sym-appc": "f1de",
+    	"sym-ar-s": "f1df",
+    	"sym-ar": "f1e0",
+    	"sym-ardr-s": "f1e1",
+    	"sym-ardr": "f1e2",
+    	"sym-ark-s": "f1e3",
+    	"sym-ark": "f1e4",
+    	"sym-arn-s": "f1e5",
+    	"sym-arn": "f1e6",
+    	"sym-arpa-s": "f1e7",
+    	"sym-arpa": "f1e8",
+    	"sym-art-s": "f1e9",
+    	"sym-art": "f1ea",
+    	"sym-aspt-s": "f1eb",
+    	"sym-aspt": "f1ec",
+    	"sym-ast-s": "f1ed",
+    	"sym-ast": "f1ee",
+    	"sym-astr-s": "f1ef",
+    	"sym-astr": "f1f0",
+    	"sym-at-s": "f1f1",
+    	"sym-at": "f1f2",
+    	"sym-atlas-s": "f1f3",
+    	"sym-atlas": "f1f4",
+    	"sym-atm-s": "f1f5",
+    	"sym-atm": "f1f6",
+    	"sym-atom-s": "f1f7",
+    	"sym-atom": "f1f8",
+    	"sym-atp-s": "f1f9",
+    	"sym-atp": "f1fa",
+    	"sym-atri-s": "f1fb",
+    	"sym-atri": "f1fc",
+    	"sym-auction-s": "f1fd",
+    	"sym-auction": "f1fe",
+    	"sym-aud-s": "f1ff",
+    	"sym-aud": "f200",
+    	"sym-audio-s": "f201",
+    	"sym-audio": "f202",
+    	"sym-aup-s": "f203",
+    	"sym-aup": "f204",
+    	"sym-aury-s": "f205",
+    	"sym-aury": "f206",
+    	"sym-ausd-s": "f207",
+    	"sym-ausd": "f208",
+    	"sym-auto-s": "f209",
+    	"sym-auto": "f20a",
+    	"sym-ava-s": "f20b",
+    	"sym-ava": "f20c",
+    	"sym-avax-s": "f20d",
+    	"sym-avax": "f20e",
+    	"sym-avt-s": "f20f",
+    	"sym-avt": "f210",
+    	"sym-axp-s": "f211",
+    	"sym-axp": "f212",
+    	"sym-axs-s": "f213",
+    	"sym-axs": "f214",
+    	"sym-b": "f215",
+    	"sym-b0-s": "f216",
+    	"sym-b0": "f217",
+    	"sym-b2g-s": "f218",
+    	"sym-b2g": "f219",
+    	"sym-bab-s": "f21a",
+    	"sym-bab": "f21b",
+    	"sym-badger-s": "f21c",
+    	"sym-badger": "f21d",
+    	"sym-bake-s": "f21e",
+    	"sym-bake": "f21f",
+    	"sym-bal-s": "f220",
+    	"sym-bal": "f221",
+    	"sym-banca-s": "f222",
+    	"sym-banca": "f223",
+    	"sym-band-s": "f224",
+    	"sym-band": "f225",
+    	"sym-bat-s": "f226",
+    	"sym-bat": "f227",
+    	"sym-bay-s": "f228",
+    	"sym-bay": "f229",
+    	"sym-bbc-s": "f22a",
+    	"sym-bbc": "f22b",
+    	"sym-bcc-s": "f22c",
+    	"sym-bcc": "f22d",
+    	"sym-bcd-s": "f22e",
+    	"sym-bcd": "f22f",
+    	"sym-bch-s": "f230",
+    	"sym-bch": "f231",
+    	"sym-bci-s": "f232",
+    	"sym-bci": "f233",
+    	"sym-bcn-s": "f234",
+    	"sym-bcn": "f235",
+    	"sym-bcpt-s": "f236",
+    	"sym-bcpt": "f237",
+    	"sym-bcu-s": "f238",
+    	"sym-bcu": "f239",
+    	"sym-bcv-s": "f23a",
+    	"sym-bcv": "f23b",
+    	"sym-bcy-s": "f23c",
+    	"sym-bcy": "f23d",
+    	"sym-bdg-s": "f23e",
+    	"sym-bdg": "f23f",
+    	"sym-beam-s": "f240",
+    	"sym-beam": "f241",
+    	"sym-beet-s": "f242",
+    	"sym-beet": "f243",
+    	"sym-bel-s": "f244",
+    	"sym-bel": "f245",
+    	"sym-bela-s": "f246",
+    	"sym-bela": "f247",
+    	"sym-berry-s": "f248",
+    	"sym-berry": "f249",
+    	"sym-beta-s": "f24a",
+    	"sym-beta": "f24b",
+    	"sym-betr-s": "f24c",
+    	"sym-betr": "f24d",
+    	"sym-bez-s": "f24e",
+    	"sym-bez": "f24f",
+    	"sym-bft-s": "f250",
+    	"sym-bft": "f251",
+    	"sym-bfx-s": "f252",
+    	"sym-bfx": "f253",
+    	"sym-bhd-s": "f254",
+    	"sym-bhd": "f255",
+    	"sym-bht-s": "f256",
+    	"sym-bht": "f257",
+    	"sym-bico-s": "f258",
+    	"sym-bico": "f259",
+    	"sym-bit-s": "f25a",
+    	"sym-bit": "f25b",
+    	"sym-bitb-s": "f25c",
+    	"sym-bitb": "f25d",
+    	"sym-bix-s": "f25e",
+    	"sym-bix": "f25f",
+    	"sym-bk-s": "f260",
+    	"sym-bk": "f261",
+    	"sym-bkx-s": "f262",
+    	"sym-bkx": "f263",
+    	"sym-blk-s": "f264",
+    	"sym-blk": "f265",
+    	"sym-block-s": "f266",
+    	"sym-block": "f267",
+    	"sym-blok-s": "f268",
+    	"sym-blok": "f269",
+    	"sym-blt-s": "f26a",
+    	"sym-blt": "f26b",
+    	"sym-blz-s": "f26c",
+    	"sym-blz": "f26d",
+    	"sym-bmc-s": "f26e",
+    	"sym-bmc": "f26f",
+    	"sym-bnb-s": "f270",
+    	"sym-bnb": "f271",
+    	"sym-bnc-s": "f272",
+    	"sym-bnc": "f273",
+    	"sym-bnk-s": "f274",
+    	"sym-bnk": "f275",
+    	"sym-bnt-s": "f276",
+    	"sym-bnt": "f277",
+    	"sym-bo-s": "f278",
+    	"sym-bo": "f279",
+    	"sym-bond-s": "f27a",
+    	"sym-bond": "f27b",
+    	"sym-boo-s": "f27c",
+    	"sym-boo": "f27d",
+    	"sym-bor-s": "f27e",
+    	"sym-bor": "f27f",
+    	"sym-bora-s": "f280",
+    	"sym-bora": "f281",
+    	"sym-bos-s": "f282",
+    	"sym-bos": "f283",
+    	"sym-box-s": "f284",
+    	"sym-box": "f285",
+    	"sym-brd-s": "f286",
+    	"sym-brd": "f287",
+    	"sym-breed-s": "f288",
+    	"sym-breed": "f289",
+    	"sym-brg-s": "f28a",
+    	"sym-brg": "f28b",
+    	"sym-brick-s": "f28c",
+    	"sym-brick": "f28d",
+    	"sym-bsd-s": "f28e",
+    	"sym-bsd": "f28f",
+    	"sym-bsv-s": "f290",
+    	"sym-bsv": "f291",
+    	"sym-bsx-s": "f292",
+    	"sym-bsx": "f293",
+    	"sym-bt1-s": "f294",
+    	"sym-bt1": "f295",
+    	"sym-bt2-s": "f296",
+    	"sym-bt2": "f297",
+    	"sym-btc-s": "f298",
+    	"sym-btc": "f299",
+    	"sym-btcd-s": "f29a",
+    	"sym-btcd": "f29b",
+    	"sym-btcfx-s": "f29c",
+    	"sym-btcfx": "f29d",
+    	"sym-btcp-s": "f29e",
+    	"sym-btcp": "f29f",
+    	"sym-btg-s": "f2a0",
+    	"sym-btg": "f2a1",
+    	"sym-btm-s": "f2a2",
+    	"sym-btm": "f2a3",
+    	"sym-btn-s": "f2a4",
+    	"sym-btn": "f2a5",
+    	"sym-bto-s": "f2a6",
+    	"sym-bto": "f2a7",
+    	"sym-btrst-s": "f2a8",
+    	"sym-btrst": "f2a9",
+    	"sym-bts-s": "f2aa",
+    	"sym-bts": "f2ab",
+    	"sym-btt-s": "f2ac",
+    	"sym-btt": "f2ad",
+    	"sym-btu-s": "f2ae",
+    	"sym-btu": "f2af",
+    	"sym-btx-s": "f2b0",
+    	"sym-btx": "f2b1",
+    	"sym-burger-s": "f2b2",
+    	"sym-burger": "f2b3",
+    	"sym-burst-s": "f2b4",
+    	"sym-burst": "f2b5",
+    	"sym-bus-s": "f2b6",
+    	"sym-bus": "f2b7",
+    	"sym-busd-s": "f2b8",
+    	"sym-busd": "f2b9",
+    	"sym-bwx-s": "f2ba",
+    	"sym-bwx": "f2bb",
+    	"sym-bz-s": "f2bc",
+    	"sym-bz": "f2bd",
+    	"sym-bzrx-s": "f2be",
+    	"sym-bzrx": "f2bf",
+    	"sym-c-s": "f2c0",
+    	"sym-c": "f2c1",
+    	"sym-c20-s": "f2c2",
+    	"sym-c20": "f2c3",
+    	"sym-c98-s": "f2c4",
+    	"sym-c98": "f2c5",
+    	"sym-cad-s": "f2c6",
+    	"sym-cad": "f2c7",
+    	"sym-cake-s": "f2c8",
+    	"sym-cake": "f2c9",
+    	"sym-cas-s": "f2ca",
+    	"sym-cas": "f2cb",
+    	"sym-cat-s": "f2cc",
+    	"sym-cat": "f2cd",
+    	"sym-cbc-s": "f2ce",
+    	"sym-cbc": "f2cf",
+    	"sym-cbt-s": "f2d0",
+    	"sym-cbt": "f2d1",
+    	"sym-cdt-s": "f2d2",
+    	"sym-cdt": "f2d3",
+    	"sym-cel-s": "f2d4",
+    	"sym-cel": "f2d5",
+    	"sym-celo-s": "f2d6",
+    	"sym-celo": "f2d7",
+    	"sym-celr-s": "f2d8",
+    	"sym-celr": "f2d9",
+    	"sym-cennz-s": "f2da",
+    	"sym-cennz": "f2db",
+    	"sym-cfg-s": "f2dc",
+    	"sym-cfg": "f2dd",
+    	"sym-cfi-s": "f2de",
+    	"sym-cfi": "f2df",
+    	"sym-cfx-s": "f2e0",
+    	"sym-cfx": "f2e1",
+    	"sym-cgt-s": "f2e2",
+    	"sym-cgt": "f2e3",
+    	"sym-chat-s": "f2e4",
+    	"sym-chat": "f2e5",
+    	"sym-chf-s": "f2e6",
+    	"sym-chf": "f2e7",
+    	"sym-chp-s": "f2e8",
+    	"sym-chp": "f2e9",
+    	"sym-chr-s": "f2ea",
+    	"sym-chr": "f2eb",
+    	"sym-chsb-s": "f2ec",
+    	"sym-chsb": "f2ed",
+    	"sym-chx-s": "f2ee",
+    	"sym-chx": "f2ef",
+    	"sym-chz-s": "f2f0",
+    	"sym-chz": "f2f1",
+    	"sym-ckb-s": "f2f2",
+    	"sym-ckb": "f2f3",
+    	"sym-cl-s": "f2f4",
+    	"sym-cl": "f2f5",
+    	"sym-clam-s": "f2f6",
+    	"sym-clam": "f2f7",
+    	"sym-cln-s": "f2f8",
+    	"sym-cln": "f2f9",
+    	"sym-clo-s": "f2fa",
+    	"sym-clo": "f2fb",
+    	"sym-cloak-s": "f2fc",
+    	"sym-cloak": "f2fd",
+    	"sym-clv-s": "f2fe",
+    	"sym-clv": "f2ff",
+    	"sym-cmct-s": "f300",
+    	"sym-cmct": "f301",
+    	"sym-cmt-s": "f302",
+    	"sym-cmt": "f303",
+    	"sym-cnd-s": "f304",
+    	"sym-cnd": "f305",
+    	"sym-cnn-s": "f306",
+    	"sym-cnn": "f307",
+    	"sym-cnx-s": "f308",
+    	"sym-cnx": "f309",
+    	"sym-cny-s": "f30a",
+    	"sym-cny": "f30b",
+    	"sym-cob-s": "f30c",
+    	"sym-cob": "f30d",
+    	"sym-cocos-s": "f30e",
+    	"sym-cocos": "f30f",
+    	"sym-comp-s": "f310",
+    	"sym-comp": "f311",
+    	"sym-cope-s": "f312",
+    	"sym-cope": "f313",
+    	"sym-cos-s": "f314",
+    	"sym-cos": "f315",
+    	"sym-cosm-s": "f316",
+    	"sym-cosm": "f317",
+    	"sym-coss-s": "f318",
+    	"sym-coss": "f319",
+    	"sym-coti-s": "f31a",
+    	"sym-coti": "f31b",
+    	"sym-cov-s": "f31c",
+    	"sym-cov": "f31d",
+    	"sym-cova-s": "f31e",
+    	"sym-cova": "f31f",
+    	"sym-cpt-s": "f320",
+    	"sym-cpt": "f321",
+    	"sym-cpx-s": "f322",
+    	"sym-cpx": "f323",
+    	"sym-cqt-s": "f324",
+    	"sym-cqt": "f325",
+    	"sym-cra-s": "f326",
+    	"sym-cra": "f327",
+    	"sym-crab-s": "f328",
+    	"sym-crab": "f329",
+    	"sym-crc-s": "f32a",
+    	"sym-crc": "f32b",
+    	"sym-cre-s": "f32c",
+    	"sym-cre": "f32d",
+    	"sym-cream-s": "f32e",
+    	"sym-cream": "f32f",
+    	"sym-cring-s": "f330",
+    	"sym-cring": "f331",
+    	"sym-cro-s": "f332",
+    	"sym-cro": "f333",
+    	"sym-crpt-s": "f334",
+    	"sym-crpt": "f335",
+    	"sym-cru-s": "f336",
+    	"sym-cru": "f337",
+    	"sym-crv-s": "f338",
+    	"sym-crv": "f339",
+    	"sym-crw-s": "f33a",
+    	"sym-crw": "f33b",
+    	"sym-csm-s": "f33c",
+    	"sym-csm": "f33d",
+    	"sym-csx-s": "f33e",
+    	"sym-csx": "f33f",
+    	"sym-ctc-s": "f340",
+    	"sym-ctc": "f341",
+    	"sym-ctk-s": "f342",
+    	"sym-ctk": "f343",
+    	"sym-ctsi-s": "f344",
+    	"sym-ctsi": "f345",
+    	"sym-ctxc-s": "f346",
+    	"sym-ctxc": "f347",
+    	"sym-cult-s": "f348",
+    	"sym-cult": "f349",
+    	"sym-cur-s": "f34a",
+    	"sym-cur": "f34b",
+    	"sym-cvc-s": "f34c",
+    	"sym-cvc": "f34d",
+    	"sym-cvcoin-s": "f34e",
+    	"sym-cvcoin": "f34f",
+    	"sym-cvnt-s": "f350",
+    	"sym-cvnt": "f351",
+    	"sym-cvp-s": "f352",
+    	"sym-cvp": "f353",
+    	"sym-cvt-s": "f354",
+    	"sym-cvt": "f355",
+    	"sym-cvx-s": "f356",
+    	"sym-cvx": "f357",
+    	"sym-cw-s": "f358",
+    	"sym-cw": "f359",
+    	"sym-cyc-s": "f35a",
+    	"sym-cyc": "f35b",
+    	"sym-dac-s": "f35c",
+    	"sym-dac": "f35d",
+    	"sym-dacs-s": "f35e",
+    	"sym-dacs": "f35f",
+    	"sym-dadi-s": "f360",
+    	"sym-dadi": "f361",
+    	"sym-dag-s": "f362",
+    	"sym-dag": "f363",
+    	"sym-dai-s": "f364",
+    	"sym-dai": "f365",
+    	"sym-dao-s": "f366",
+    	"sym-dao": "f367",
+    	"sym-dar-s": "f368",
+    	"sym-dar": "f369",
+    	"sym-dash-s": "f36a",
+    	"sym-dash": "f36b",
+    	"sym-dat-s": "f36c",
+    	"sym-dat": "f36d",
+    	"sym-data-s": "f36e",
+    	"sym-data": "f36f",
+    	"sym-datx-s": "f370",
+    	"sym-datx": "f371",
+    	"sym-dbc-s": "f372",
+    	"sym-dbc": "f373",
+    	"sym-dbet-s": "f374",
+    	"sym-dbet": "f375",
+    	"sym-dbix-s": "f376",
+    	"sym-dbix": "f377",
+    	"sym-dcn-s": "f378",
+    	"sym-dcn": "f379",
+    	"sym-dcr-s": "f37a",
+    	"sym-dcr": "f37b",
+    	"sym-dct-s": "f37c",
+    	"sym-dct": "f37d",
+    	"sym-ddd-s": "f37e",
+    	"sym-ddd": "f37f",
+    	"sym-dego-s": "f380",
+    	"sym-dego": "f381",
+    	"sym-dent-s": "f382",
+    	"sym-dent": "f383",
+    	"sym-dext-s": "f384",
+    	"sym-dext": "f385",
+    	"sym-dgb-s": "f386",
+    	"sym-dgb": "f387",
+    	"sym-dgd-s": "f388",
+    	"sym-dgd": "f389",
+    	"sym-dgtx-s": "f38a",
+    	"sym-dgtx": "f38b",
+    	"sym-dgx-s": "f38c",
+    	"sym-dgx": "f38d",
+    	"sym-dhx-s": "f38e",
+    	"sym-dhx": "f38f",
+    	"sym-dia-s": "f390",
+    	"sym-dia": "f391",
+    	"sym-dice-s": "f392",
+    	"sym-dice": "f393",
+    	"sym-dim-s": "f394",
+    	"sym-dim": "f395",
+    	"sym-dlt-s": "f396",
+    	"sym-dlt": "f397",
+    	"sym-dmd-s": "f398",
+    	"sym-dmd": "f399",
+    	"sym-dmt-s": "f39a",
+    	"sym-dmt": "f39b",
+    	"sym-dnt-s": "f39c",
+    	"sym-dnt": "f39d",
+    	"sym-dock-s": "f39e",
+    	"sym-dock": "f39f",
+    	"sym-dodo-s": "f3a0",
+    	"sym-dodo": "f3a1",
+    	"sym-doge-s": "f3a2",
+    	"sym-doge": "f3a3",
+    	"sym-dose-s": "f3a4",
+    	"sym-dose": "f3a5",
+    	"sym-dot-s": "f3a6",
+    	"sym-dot": "f3a7",
+    	"sym-dpx-s": "f3a8",
+    	"sym-dpx": "f3a9",
+    	"sym-dpy-s": "f3aa",
+    	"sym-dpy": "f3ab",
+    	"sym-dream-s": "f3ac",
+    	"sym-dream": "f3ad",
+    	"sym-drep-s": "f3ae",
+    	"sym-drep": "f3af",
+    	"sym-drg-s": "f3b0",
+    	"sym-drg": "f3b1",
+    	"sym-drgn-s": "f3b2",
+    	"sym-drgn": "f3b3",
+    	"sym-drt-s": "f3b4",
+    	"sym-drt": "f3b5",
+    	"sym-dta-s": "f3b6",
+    	"sym-dta": "f3b7",
+    	"sym-dtb-s": "f3b8",
+    	"sym-dtb": "f3b9",
+    	"sym-dtr-s": "f3ba",
+    	"sym-dtr": "f3bb",
+    	"sym-dusk-s": "f3bc",
+    	"sym-dusk": "f3bd",
+    	"sym-dx-s": "f3be",
+    	"sym-dx": "f3bf",
+    	"sym-dydx-s": "f3c0",
+    	"sym-dydx": "f3c1",
+    	"sym-dyn-s": "f3c2",
+    	"sym-dyn": "f3c3",
+    	"sym-easy": "f3c4",
+    	"sym-ecom-s": "f3c5",
+    	"sym-ecom": "f3c6",
+    	"sym-edc-s": "f3c7",
+    	"sym-edc": "f3c8",
+    	"sym-edg-s": "f3c9",
+    	"sym-edg": "f3ca",
+    	"sym-edo-s": "f3cb",
+    	"sym-edo": "f3cc",
+    	"sym-edp-s": "f3cd",
+    	"sym-edp": "f3ce",
+    	"sym-edr-s": "f3cf",
+    	"sym-edr": "f3d0",
+    	"sym-efi-s": "f3d1",
+    	"sym-efi": "f3d2",
+    	"sym-egld-s": "f3d3",
+    	"sym-egld": "f3d4",
+    	"sym-egt-s": "f3d5",
+    	"sym-egt": "f3d6",
+    	"sym-ehr-s": "f3d7",
+    	"sym-ehr": "f3d8",
+    	"sym-eko-s": "f3d9",
+    	"sym-eko": "f3da",
+    	"sym-ekt-s": "f3db",
+    	"sym-ekt": "f3dc",
+    	"sym-ela-s": "f3dd",
+    	"sym-ela": "f3de",
+    	"sym-elec-s": "f3df",
+    	"sym-elec": "f3e0",
+    	"sym-elf-s": "f3e1",
+    	"sym-elf": "f3e2",
+    	"sym-em-s": "f3e3",
+    	"sym-em": "f3e4",
+    	"sym-emc-s": "f3e5",
+    	"sym-emc": "f3e6",
+    	"sym-emc2-s": "f3e7",
+    	"sym-emc2": "f3e8",
+    	"sym-eng-s": "f3e9",
+    	"sym-eng": "f3ea",
+    	"sym-enj-s": "f3eb",
+    	"sym-enj": "f3ec",
+    	"sym-ens-s": "f3ed",
+    	"sym-ens": "f3ee",
+    	"sym-eos-s": "f3ef",
+    	"sym-eos": "f3f0",
+    	"sym-eosdac-s": "f3f1",
+    	"sym-eosdac": "f3f2",
+    	"sym-eq-s": "f3f3",
+    	"sym-eq": "f3f4",
+    	"sym-erd-s": "f3f5",
+    	"sym-erd": "f3f6",
+    	"sym-ern-s": "f3f7",
+    	"sym-ern": "f3f8",
+    	"sym-es": "f3f9",
+    	"sym-es-s": "f3fa",
+    	"sym-esd-s": "f3fb",
+    	"sym-esd": "f3fc",
+    	"sym-etc-s": "f3fd",
+    	"sym-etc": "f3fe",
+    	"sym-eth-s": "f3ff",
+    	"sym-eth": "f400",
+    	"sym-ethup-s": "f401",
+    	"sym-ethup": "f402",
+    	"sym-etn-s": "f403",
+    	"sym-etn": "f404",
+    	"sym-etp-s": "f405",
+    	"sym-etp": "f406",
+    	"sym-eur-s": "f407",
+    	"sym-eur": "f408",
+    	"sym-eurs-s": "f409",
+    	"sym-eurs": "f40a",
+    	"sym-eurt-s": "f40b",
+    	"sym-eurt": "f40c",
+    	"sym-evn-s": "f40d",
+    	"sym-evn": "f40e",
+    	"sym-evx-s": "f40f",
+    	"sym-evx": "f410",
+    	"sym-ewt-s": "f411",
+    	"sym-ewt": "f412",
+    	"sym-exp-s": "f413",
+    	"sym-exp": "f414",
+    	"sym-exrd-s": "f415",
+    	"sym-exrd": "f416",
+    	"sym-exy-s": "f417",
+    	"sym-exy": "f418",
+    	"sym-ez-s": "f419",
+    	"sym-ez": "f41a",
+    	"sym-fair-s": "f41b",
+    	"sym-fair": "f41c",
+    	"sym-farm-s": "f41d",
+    	"sym-farm": "f41e",
+    	"sym-fct-s": "f41f",
+    	"sym-fct": "f420",
+    	"sym-fdz-s": "f421",
+    	"sym-fdz": "f422",
+    	"sym-fee-s": "f423",
+    	"sym-fee": "f424",
+    	"sym-fet-s": "f425",
+    	"sym-fet": "f426",
+    	"sym-fida-s": "f427",
+    	"sym-fida": "f428",
+    	"sym-fil-s": "f429",
+    	"sym-fil": "f42a",
+    	"sym-fio-s": "f42b",
+    	"sym-fio": "f42c",
+    	"sym-firo-s": "f42d",
+    	"sym-firo": "f42e",
+    	"sym-fis-s": "f42f",
+    	"sym-fis": "f430",
+    	"sym-fldc-s": "f431",
+    	"sym-fldc": "f432",
+    	"sym-flo-s": "f433",
+    	"sym-flo": "f434",
+    	"sym-floki-s": "f435",
+    	"sym-floki": "f436",
+    	"sym-flow-s": "f437",
+    	"sym-flow": "f438",
+    	"sym-flr-s": "f439",
+    	"sym-flr": "f43a",
+    	"sym-fluz-s": "f43b",
+    	"sym-fluz": "f43c",
+    	"sym-fnb-s": "f43d",
+    	"sym-fnb": "f43e",
+    	"sym-foam-s": "f43f",
+    	"sym-foam": "f440",
+    	"sym-for-s": "f441",
+    	"sym-for": "f442",
+    	"sym-forth-s": "f443",
+    	"sym-forth": "f444",
+    	"sym-fota-s": "f445",
+    	"sym-fota": "f446",
+    	"sym-fox-s": "f447",
+    	"sym-fox": "f448",
+    	"sym-fpis-s": "f449",
+    	"sym-fpis": "f44a",
+    	"sym-frax-s": "f44b",
+    	"sym-frax": "f44c",
+    	"sym-front-s": "f44d",
+    	"sym-front": "f44e",
+    	"sym-fsn-s": "f44f",
+    	"sym-fsn": "f450",
+    	"sym-ftc-s": "f451",
+    	"sym-ftc": "f452",
+    	"sym-fti-s": "f453",
+    	"sym-fti": "f454",
+    	"sym-ftm-s": "f455",
+    	"sym-ftm": "f456",
+    	"sym-ftt-s": "f457",
+    	"sym-ftt": "f458",
+    	"sym-ftx-s": "f459",
+    	"sym-ftx": "f45a",
+    	"sym-fuel-s": "f45b",
+    	"sym-fuel": "f45c",
+    	"sym-fun-s": "f45d",
+    	"sym-fun": "f45e",
+    	"sym-fx-s": "f45f",
+    	"sym-fx": "f460",
+    	"sym-fxc-s": "f461",
+    	"sym-fxc": "f462",
+    	"sym-fxs-s": "f463",
+    	"sym-fxs": "f464",
+    	"sym-fxt-s": "f465",
+    	"sym-fxt": "f466",
+    	"sym-gal-s": "f467",
+    	"sym-gal": "f468",
+    	"sym-gala-s": "f469",
+    	"sym-gala": "f46a",
+    	"sym-game-s": "f46b",
+    	"sym-game": "f46c",
+    	"sym-gamee-s": "f46d",
+    	"sym-gamee": "f46e",
+    	"sym-gard-s": "f46f",
+    	"sym-gard": "f470",
+    	"sym-gari-s": "f471",
+    	"sym-gari": "f472",
+    	"sym-gas-s": "f473",
+    	"sym-gas": "f474",
+    	"sym-gbc-s": "f475",
+    	"sym-gbc": "f476",
+    	"sym-gbp-s": "f477",
+    	"sym-gbp": "f478",
+    	"sym-gbx-s": "f479",
+    	"sym-gbx": "f47a",
+    	"sym-gbyte-s": "f47b",
+    	"sym-gbyte": "f47c",
+    	"sym-gc-s": "f47d",
+    	"sym-gc": "f47e",
+    	"sym-gcc-s": "f47f",
+    	"sym-gcc": "f480",
+    	"sym-ge-s": "f481",
+    	"sym-ge": "f482",
+    	"sym-geist-s": "f483",
+    	"sym-geist": "f484",
+    	"sym-gen-s": "f485",
+    	"sym-gen": "f486",
+    	"sym-gene-s": "f487",
+    	"sym-gene": "f488",
+    	"sym-gens-s": "f489",
+    	"sym-gens": "f48a",
+    	"sym-get-s": "f48b",
+    	"sym-get": "f48c",
+    	"sym-ghst-s": "f48d",
+    	"sym-ghst": "f48e",
+    	"sym-glc-s": "f48f",
+    	"sym-glc": "f490",
+    	"sym-gld-s": "f491",
+    	"sym-gld": "f492",
+    	"sym-glm-s": "f493",
+    	"sym-glm": "f494",
+    	"sym-glmr-s": "f495",
+    	"sym-glmr": "f496",
+    	"sym-gmat-s": "f497",
+    	"sym-gmat": "f498",
+    	"sym-gmt-s": "f499",
+    	"sym-gmt": "f49a",
+    	"sym-gmt2-s": "f49b",
+    	"sym-gmt2": "f49c",
+    	"sym-gno-s": "f49d",
+    	"sym-gno": "f49e",
+    	"sym-gnt-s": "f49f",
+    	"sym-gnt": "f4a0",
+    	"sym-gnx-s": "f4a1",
+    	"sym-gnx": "f4a2",
+    	"sym-go-s": "f4a3",
+    	"sym-go": "f4a4",
+    	"sym-gods-s": "f4a5",
+    	"sym-gods": "f4a6",
+    	"sym-got-s": "f4a7",
+    	"sym-got": "f4a8",
+    	"sym-grc-s": "f4a9",
+    	"sym-grc": "f4aa",
+    	"sym-grin-s": "f4ab",
+    	"sym-grin": "f4ac",
+    	"sym-grs-s": "f4ad",
+    	"sym-grs": "f4ae",
+    	"sym-grt-s": "f4af",
+    	"sym-grt": "f4b0",
+    	"sym-gsc-s": "f4b1",
+    	"sym-gsc": "f4b2",
+    	"sym-gst-s": "f4b3",
+    	"sym-gst": "f4b4",
+    	"sym-gt-s": "f4b5",
+    	"sym-gt": "f4b6",
+    	"sym-gtc-s": "f4b7",
+    	"sym-gtc": "f4b8",
+    	"sym-gtc2-s": "f4b9",
+    	"sym-gtc2": "f4ba",
+    	"sym-gto-s": "f4bb",
+    	"sym-gto": "f4bc",
+    	"sym-gup-s": "f4bd",
+    	"sym-gup": "f4be",
+    	"sym-gusd-s": "f4bf",
+    	"sym-gusd": "f4c0",
+    	"sym-gvt-s": "f4c1",
+    	"sym-gvt": "f4c2",
+    	"sym-gxc-s": "f4c3",
+    	"sym-gxc": "f4c4",
+    	"sym-gxs-s": "f4c5",
+    	"sym-gxs": "f4c6",
+    	"sym-hard-s": "f4c7",
+    	"sym-hard": "f4c8",
+    	"sym-hbar-s": "f4c9",
+    	"sym-hbar": "f4ca",
+    	"sym-hc-s": "f4cb",
+    	"sym-hc": "f4cc",
+    	"sym-hdx-s": "f4cd",
+    	"sym-hdx": "f4ce",
+    	"sym-hedg-s": "f4cf",
+    	"sym-hedg": "f4d0",
+    	"sym-hegic-s": "f4d1",
+    	"sym-hegic": "f4d2",
+    	"sym-hex-s": "f4d3",
+    	"sym-hex": "f4d4",
+    	"sym-hft-s": "f4d5",
+    	"sym-hft": "f4d6",
+    	"sym-hg-s": "f4d7",
+    	"sym-hg": "f4d8",
+    	"sym-hgs-s": "f4d9",
+    	"sym-hgs": "f4da",
+    	"sym-hh-s": "f4db",
+    	"sym-hh": "f4dc",
+    	"sym-high-s": "f4dd",
+    	"sym-high": "f4de",
+    	"sym-hit-s": "f4df",
+    	"sym-hit": "f4e0",
+    	"sym-hive-s": "f4e1",
+    	"sym-hive": "f4e2",
+    	"sym-hkd-s": "f4e3",
+    	"sym-hkd": "f4e4",
+    	"sym-hmq-s": "f4e5",
+    	"sym-hmq": "f4e6",
+    	"sym-hns-s": "f4e7",
+    	"sym-hns": "f4e8",
+    	"sym-ho-s": "f4e9",
+    	"sym-ho": "f4ea",
+    	"sym-hopr-s": "f4eb",
+    	"sym-hopr": "f4ec",
+    	"sym-hot-s": "f4ed",
+    	"sym-hot": "f4ee",
+    	"sym-hp-s": "f4ef",
+    	"sym-hp": "f4f0",
+    	"sym-hpb-s": "f4f1",
+    	"sym-hpb": "f4f2",
+    	"sym-hpc-s": "f4f3",
+    	"sym-hpc": "f4f4",
+    	"sym-hpt-s": "f4f5",
+    	"sym-hpt": "f4f6",
+    	"sym-hrc-s": "f4f7",
+    	"sym-hrc": "f4f8",
+    	"sym-hsc-s": "f4f9",
+    	"sym-hsc": "f4fa",
+    	"sym-hsr-s": "f4fb",
+    	"sym-hsr": "f4fc",
+    	"sym-hst-s": "f4fd",
+    	"sym-hst": "f4fe",
+    	"sym-ht-s": "f4ff",
+    	"sym-ht": "f500",
+    	"sym-html-s": "f501",
+    	"sym-html": "f502",
+    	"sym-htt-s": "f503",
+    	"sym-htt": "f504",
+    	"sym-huc-s": "f505",
+    	"sym-huc": "f506",
+    	"sym-hunt-s": "f507",
+    	"sym-hunt": "f508",
+    	"sym-hvn-s": "f509",
+    	"sym-hvn": "f50a",
+    	"sym-hxro-s": "f50b",
+    	"sym-hxro": "f50c",
+    	"sym-hyc-s": "f50d",
+    	"sym-hyc": "f50e",
+    	"sym-hydra-s": "f50f",
+    	"sym-hydra": "f510",
+    	"sym-hydro-s": "f511",
+    	"sym-hydro": "f512",
+    	"sym-icn-s": "f513",
+    	"sym-icn": "f514",
+    	"sym-icos-s": "f515",
+    	"sym-icos": "f516",
+    	"sym-icp-s": "f517",
+    	"sym-icp": "f518",
+    	"sym-icx-s": "f519",
+    	"sym-icx": "f51a",
+    	"sym-idex-s": "f51b",
+    	"sym-idex": "f51c",
+    	"sym-idh-s": "f51d",
+    	"sym-idh": "f51e",
+    	"sym-idr-s": "f51f",
+    	"sym-idr": "f520",
+    	"sym-ift-s": "f521",
+    	"sym-ift": "f522",
+    	"sym-ignis-s": "f523",
+    	"sym-ignis": "f524",
+    	"sym-ihf-s": "f525",
+    	"sym-ihf": "f526",
+    	"sym-iht-s": "f527",
+    	"sym-iht": "f528",
+    	"sym-ilc-s": "f529",
+    	"sym-ilc": "f52a",
+    	"sym-ilv-s": "f52b",
+    	"sym-ilv": "f52c",
+    	"sym-imx-s": "f52d",
+    	"sym-imx": "f52e",
+    	"sym-incnt-s": "f52f",
+    	"sym-incnt": "f530",
+    	"sym-ind-s": "f531",
+    	"sym-ind": "f532",
+    	"sym-indi-s": "f533",
+    	"sym-indi": "f534",
+    	"sym-inj-s": "f535",
+    	"sym-inj": "f536",
+    	"sym-ink-s": "f537",
+    	"sym-ink": "f538",
+    	"sym-inr-s": "f539",
+    	"sym-inr": "f53a",
+    	"sym-ins-s": "f53b",
+    	"sym-ins": "f53c",
+    	"sym-int-s": "f53d",
+    	"sym-int": "f53e",
+    	"sym-intr-s": "f53f",
+    	"sym-intr": "f540",
+    	"sym-ioc-s": "f541",
+    	"sym-ioc": "f542",
+    	"sym-ion-s": "f543",
+    	"sym-ion": "f544",
+    	"sym-iost-s": "f545",
+    	"sym-iost": "f546",
+    	"sym-iot-s": "f547",
+    	"sym-iot": "f548",
+    	"sym-iotx-s": "f549",
+    	"sym-iotx": "f54a",
+    	"sym-iq-s": "f54b",
+    	"sym-iq": "f54c",
+    	"sym-iris-s": "f54d",
+    	"sym-iris": "f54e",
+    	"sym-itc-s": "f54f",
+    	"sym-itc": "f550",
+    	"sym-ivy-s": "f551",
+    	"sym-ivy": "f552",
+    	"sym-ixt-s": "f553",
+    	"sym-ixt": "f554",
+    	"sym-jasmy-s": "f555",
+    	"sym-jasmy": "f556",
+    	"sym-jnt-s": "f557",
+    	"sym-jnt": "f558",
+    	"sym-joe-s": "f559",
+    	"sym-joe": "f55a",
+    	"sym-jpeg-s": "f55b",
+    	"sym-jpeg": "f55c",
+    	"sym-jpy-s": "f55d",
+    	"sym-jpy": "f55e",
+    	"sym-jst-s": "f55f",
+    	"sym-jst": "f560",
+    	"sym-juno-s": "f561",
+    	"sym-juno": "f562",
+    	"sym-just-s": "f563",
+    	"sym-just": "f564",
+    	"sym-juv-s": "f565",
+    	"sym-juv": "f566",
+    	"sym-kan-s": "f567",
+    	"sym-kan": "f568",
+    	"sym-kar-s": "f569",
+    	"sym-kar": "f56a",
+    	"sym-kava-s": "f56b",
+    	"sym-kava": "f56c",
+    	"sym-kbc-s": "f56d",
+    	"sym-kbc": "f56e",
+    	"sym-kcash-s": "f56f",
+    	"sym-kcash": "f570",
+    	"sym-kda-s": "f571",
+    	"sym-kda": "f572",
+    	"sym-keep-s": "f573",
+    	"sym-keep": "f574",
+    	"sym-key-s": "f575",
+    	"sym-key": "f576",
+    	"sym-kick-s": "f577",
+    	"sym-kick": "f578",
+    	"sym-kilt-s": "f579",
+    	"sym-kilt": "f57a",
+    	"sym-kin-s": "f57b",
+    	"sym-kin": "f57c",
+    	"sym-kint-s": "f57d",
+    	"sym-kint": "f57e",
+    	"sym-klay-s": "f57f",
+    	"sym-klay": "f580",
+    	"sym-kma-s": "f581",
+    	"sym-kma": "f582",
+    	"sym-kmd-s": "f583",
+    	"sym-kmd": "f584",
+    	"sym-knc-s": "f585",
+    	"sym-knc": "f586",
+    	"sym-kore-s": "f587",
+    	"sym-kore": "f588",
+    	"sym-kp3r-s": "f589",
+    	"sym-kp3r": "f58a",
+    	"sym-krm-s": "f58b",
+    	"sym-krm": "f58c",
+    	"sym-krw-s": "f58d",
+    	"sym-krw": "f58e",
+    	"sym-ksm-s": "f58f",
+    	"sym-ksm": "f590",
+    	"sym-ksx-s": "f591",
+    	"sym-ksx": "f592",
+    	"sym-kyl-s": "f593",
+    	"sym-kyl": "f594",
+    	"sym-la-s": "f595",
+    	"sym-la": "f596",
+    	"sym-lak-s": "f597",
+    	"sym-lak": "f598",
+    	"sym-lamb-s": "f599",
+    	"sym-lamb": "f59a",
+    	"sym-latx-s": "f59b",
+    	"sym-latx": "f59c",
+    	"sym-layr-s": "f59d",
+    	"sym-layr": "f59e",
+    	"sym-lba-s": "f59f",
+    	"sym-lba": "f5a0",
+    	"sym-lbc-s": "f5a1",
+    	"sym-lbc": "f5a2",
+    	"sym-lcc-s": "f5a3",
+    	"sym-lcc": "f5a4",
+    	"sym-lcx-s": "f5a5",
+    	"sym-lcx": "f5a6",
+    	"sym-ldo-s": "f5a7",
+    	"sym-ldo": "f5a8",
+    	"sym-lend-s": "f5a9",
+    	"sym-lend": "f5aa",
+    	"sym-leo-s": "f5ab",
+    	"sym-leo": "f5ac",
+    	"sym-leoc-s": "f5ad",
+    	"sym-leoc": "f5ae",
+    	"sym-let-s": "f5af",
+    	"sym-let": "f5b0",
+    	"sym-life-s": "f5b1",
+    	"sym-life": "f5b2",
+    	"sym-lina-s": "f5b3",
+    	"sym-lina": "f5b4",
+    	"sym-link-s": "f5b5",
+    	"sym-link": "f5b6",
+    	"sym-lit-s": "f5b7",
+    	"sym-lit": "f5b8",
+    	"sym-lmc-s": "f5b9",
+    	"sym-lmc": "f5ba",
+    	"sym-lml-s": "f5bb",
+    	"sym-lml": "f5bc",
+    	"sym-lnc-s": "f5bd",
+    	"sym-lnc": "f5be",
+    	"sym-lnd-s": "f5bf",
+    	"sym-lnd": "f5c0",
+    	"sym-loc-s": "f5c1",
+    	"sym-loc": "f5c2",
+    	"sym-loka-s": "f5c3",
+    	"sym-loka": "f5c4",
+    	"sym-looks-s": "f5c5",
+    	"sym-looks": "f5c6",
+    	"sym-loom-s": "f5c7",
+    	"sym-loom": "f5c8",
+    	"sym-lpt-s": "f5c9",
+    	"sym-lpt": "f5ca",
+    	"sym-lqty-s": "f5cb",
+    	"sym-lqty": "f5cc",
+    	"sym-lrc-s": "f5cd",
+    	"sym-lrc": "f5ce",
+    	"sym-lrn-s": "f5cf",
+    	"sym-lrn": "f5d0",
+    	"sym-lsk-s": "f5d1",
+    	"sym-lsk": "f5d2",
+    	"sym-ltc-s": "f5d3",
+    	"sym-ltc": "f5d4",
+    	"sym-lto-s": "f5d5",
+    	"sym-lto": "f5d6",
+    	"sym-lun-s": "f5d7",
+    	"sym-lun": "f5d8",
+    	"sym-luna-s": "f5d9",
+    	"sym-luna": "f5da",
+    	"sym-luna2-s": "f5db",
+    	"sym-luna2": "f5dc",
+    	"sym-lxt-s": "f5dd",
+    	"sym-lxt": "f5de",
+    	"sym-lym-s": "f5df",
+    	"sym-lym": "f5e0",
+    	"sym-m2k-s": "f5e1",
+    	"sym-m2k": "f5e2",
+    	"sym-ma-s": "f5e3",
+    	"sym-ma": "f5e4",
+    	"sym-magic-s": "f5e5",
+    	"sym-magic": "f5e6",
+    	"sym-maid-s": "f5e7",
+    	"sym-maid": "f5e8",
+    	"sym-man-s": "f5e9",
+    	"sym-man": "f5ea",
+    	"sym-mana-s": "f5eb",
+    	"sym-mana": "f5ec",
+    	"sym-maps-s": "f5ed",
+    	"sym-maps": "f5ee",
+    	"sym-mask-s": "f5ef",
+    	"sym-mask": "f5f0",
+    	"sym-mass-s": "f5f1",
+    	"sym-mass": "f5f2",
+    	"sym-math-s": "f5f3",
+    	"sym-math": "f5f4",
+    	"sym-matic-s": "f5f5",
+    	"sym-matic": "f5f6",
+    	"sym-mbl-s": "f5f7",
+    	"sym-mbl": "f5f8",
+    	"sym-mbt-s": "f5f9",
+    	"sym-mbt": "f5fa",
+    	"sym-mc-s": "f5fb",
+    	"sym-mc": "f5fc",
+    	"sym-mco-s": "f5fd",
+    	"sym-mco": "f5fe",
+    	"sym-mda-s": "f5ff",
+    	"sym-mda": "f600",
+    	"sym-mds-s": "f601",
+    	"sym-mds": "f602",
+    	"sym-mdt-s": "f603",
+    	"sym-mdt": "f604",
+    	"sym-mdx-s": "f605",
+    	"sym-mdx": "f606",
+    	"sym-med-s": "f607",
+    	"sym-med": "f608",
+    	"sym-mer-s": "f609",
+    	"sym-mer": "f60a",
+    	"sym-mes-s": "f60b",
+    	"sym-mes": "f60c",
+    	"sym-met-s": "f60d",
+    	"sym-met": "f60e",
+    	"sym-meta-s": "f60f",
+    	"sym-meta": "f610",
+    	"sym-mft-s": "f611",
+    	"sym-mft": "f612",
+    	"sym-mgc-s": "f613",
+    	"sym-mgc": "f614",
+    	"sym-mgo-s": "f615",
+    	"sym-mgo": "f616",
+    	"sym-mhc-s": "f617",
+    	"sym-mhc": "f618",
+    	"sym-mina-s": "f619",
+    	"sym-mina": "f61a",
+    	"sym-mir-s": "f61b",
+    	"sym-mir": "f61c",
+    	"sym-mith-s": "f61d",
+    	"sym-mith": "f61e",
+    	"sym-mitx-s": "f61f",
+    	"sym-mitx": "f620",
+    	"sym-mjp-s": "f621",
+    	"sym-mjp": "f622",
+    	"sym-mkr-s": "f623",
+    	"sym-mkr": "f624",
+    	"sym-mln-s": "f625",
+    	"sym-mln": "f626",
+    	"sym-mngo-s": "f627",
+    	"sym-mngo": "f628",
+    	"sym-mnx-s": "f629",
+    	"sym-mnx": "f62a",
+    	"sym-moac-s": "f62b",
+    	"sym-moac": "f62c",
+    	"sym-mob-s": "f62d",
+    	"sym-mob": "f62e",
+    	"sym-mobi-s": "f62f",
+    	"sym-mobi": "f630",
+    	"sym-moc-s": "f631",
+    	"sym-moc": "f632",
+    	"sym-mod-s": "f633",
+    	"sym-mod": "f634",
+    	"sym-mona-s": "f635",
+    	"sym-mona": "f636",
+    	"sym-moon-s": "f637",
+    	"sym-moon": "f638",
+    	"sym-morph-s": "f639",
+    	"sym-morph": "f63a",
+    	"sym-movr-s": "f63b",
+    	"sym-movr": "f63c",
+    	"sym-mpl-s": "f63d",
+    	"sym-mpl": "f63e",
+    	"sym-mrk-s": "f63f",
+    	"sym-mrk": "f640",
+    	"sym-msol-s": "f641",
+    	"sym-msol": "f642",
+    	"sym-msp-s": "f643",
+    	"sym-msp": "f644",
+    	"sym-mta-s": "f645",
+    	"sym-mta": "f646",
+    	"sym-mtc-s": "f647",
+    	"sym-mtc": "f648",
+    	"sym-mth-s": "f649",
+    	"sym-mth": "f64a",
+    	"sym-mtl-s": "f64b",
+    	"sym-mtl": "f64c",
+    	"sym-mtn-s": "f64d",
+    	"sym-mtn": "f64e",
+    	"sym-mtx-s": "f64f",
+    	"sym-mtx": "f650",
+    	"sym-mue-s": "f651",
+    	"sym-mue": "f652",
+    	"sym-multi-s": "f653",
+    	"sym-multi": "f654",
+    	"sym-mv-s": "f655",
+    	"sym-mv": "f656",
+    	"sym-mx-s": "f657",
+    	"sym-mx": "f658",
+    	"sym-mxc-s": "f659",
+    	"sym-mxc": "f65a",
+    	"sym-mxm-s": "f65b",
+    	"sym-mxm": "f65c",
+    	"sym-mxn-s": "f65d",
+    	"sym-mxn": "f65e",
+    	"sym-myr-s": "f65f",
+    	"sym-myr": "f660",
+    	"sym-n9l-s": "f661",
+    	"sym-n9l": "f662",
+    	"sym-nanj-s": "f663",
+    	"sym-nanj": "f664",
+    	"sym-nano-s": "f665",
+    	"sym-nano": "f666",
+    	"sym-nas-s": "f667",
+    	"sym-nas": "f668",
+    	"sym-naut-s": "f669",
+    	"sym-naut": "f66a",
+    	"sym-nav-s": "f66b",
+    	"sym-nav": "f66c",
+    	"sym-ncash-s": "f66d",
+    	"sym-ncash": "f66e",
+    	"sym-nct-s": "f66f",
+    	"sym-nct": "f670",
+    	"sym-near-s": "f671",
+    	"sym-near": "f672",
+    	"sym-nebl-s": "f673",
+    	"sym-nebl": "f674",
+    	"sym-nec-s": "f675",
+    	"sym-nec": "f676",
+    	"sym-neo-s": "f677",
+    	"sym-neo": "f678",
+    	"sym-neos-s": "f679",
+    	"sym-neos": "f67a",
+    	"sym-nest-s": "f67b",
+    	"sym-nest": "f67c",
+    	"sym-neu-s": "f67d",
+    	"sym-neu": "f67e",
+    	"sym-new-s": "f67f",
+    	"sym-new": "f680",
+    	"sym-nexo-s": "f681",
+    	"sym-nexo": "f682",
+    	"sym-nft-s": "f683",
+    	"sym-nft": "f684",
+    	"sym-ng-s": "f685",
+    	"sym-ng": "f686",
+    	"sym-ngc-s": "f687",
+    	"sym-ngc": "f688",
+    	"sym-ngn-s": "f689",
+    	"sym-ngn": "f68a",
+    	"sym-nim-s": "f68b",
+    	"sym-nim": "f68c",
+    	"sym-niy-s": "f68d",
+    	"sym-niy": "f68e",
+    	"sym-nkd-s": "f68f",
+    	"sym-nkd": "f690",
+    	"sym-nkn-s": "f691",
+    	"sym-nkn": "f692",
+    	"sym-nlc2-s": "f693",
+    	"sym-nlc2": "f694",
+    	"sym-nlg-s": "f695",
+    	"sym-nlg": "f696",
+    	"sym-nmc-s": "f697",
+    	"sym-nmc": "f698",
+    	"sym-nmr-s": "f699",
+    	"sym-nmr": "f69a",
+    	"sym-nn-s": "f69b",
+    	"sym-nn": "f69c",
+    	"sym-noah-s": "f69d",
+    	"sym-noah": "f69e",
+    	"sym-nodl-s": "f69f",
+    	"sym-nodl": "f6a0",
+    	"sym-note-s": "f6a1",
+    	"sym-note": "f6a2",
+    	"sym-npg-s": "f6a3",
+    	"sym-npg": "f6a4",
+    	"sym-nplc-s": "f6a5",
+    	"sym-nplc": "f6a6",
+    	"sym-npxs-s": "f6a7",
+    	"sym-npxs": "f6a8",
+    	"sym-nq-s": "f6a9",
+    	"sym-nq": "f6aa",
+    	"sym-nrg-s": "f6ab",
+    	"sym-nrg": "f6ac",
+    	"sym-ntk-s": "f6ad",
+    	"sym-ntk": "f6ae",
+    	"sym-nu-s": "f6af",
+    	"sym-nu": "f6b0",
+    	"sym-nuls-s": "f6b1",
+    	"sym-nuls": "f6b2",
+    	"sym-nvc-s": "f6b3",
+    	"sym-nvc": "f6b4",
+    	"sym-nxc-s": "f6b5",
+    	"sym-nxc": "f6b6",
+    	"sym-nxs-s": "f6b7",
+    	"sym-nxs": "f6b8",
+    	"sym-nxt-s": "f6b9",
+    	"sym-nxt": "f6ba",
+    	"sym-nym-s": "f6bb",
+    	"sym-nym": "f6bc",
+    	"sym-o-s": "f6bd",
+    	"sym-o": "f6be",
+    	"sym-oax-s": "f6bf",
+    	"sym-oax": "f6c0",
+    	"sym-ocean-s": "f6c1",
+    	"sym-ocean": "f6c2",
+    	"sym-ocn-s": "f6c3",
+    	"sym-ocn": "f6c4",
+    	"sym-ode-s": "f6c5",
+    	"sym-ode": "f6c6",
+    	"sym-ogn-s": "f6c7",
+    	"sym-ogn": "f6c8",
+    	"sym-ogo-s": "f6c9",
+    	"sym-ogo": "f6ca",
+    	"sym-ok-s": "f6cb",
+    	"sym-ok": "f6cc",
+    	"sym-okb-s": "f6cd",
+    	"sym-okb": "f6ce",
+    	"sym-om-s": "f6cf",
+    	"sym-om": "f6d0",
+    	"sym-omg-s": "f6d1",
+    	"sym-omg": "f6d2",
+    	"sym-omni-s": "f6d3",
+    	"sym-omni": "f6d4",
+    	"sym-one-s": "f6d5",
+    	"sym-one": "f6d6",
+    	"sym-ong-s": "f6d7",
+    	"sym-ong": "f6d8",
+    	"sym-onot-s": "f6d9",
+    	"sym-onot": "f6da",
+    	"sym-ont-s": "f6db",
+    	"sym-ont": "f6dc",
+    	"sym-ooki-s": "f6dd",
+    	"sym-ooki": "f6de",
+    	"sym-orbs-s": "f6df",
+    	"sym-orbs": "f6e0",
+    	"sym-orca-s": "f6e1",
+    	"sym-orca": "f6e2",
+    	"sym-orme-s": "f6e3",
+    	"sym-orme": "f6e4",
+    	"sym-orn-s": "f6e5",
+    	"sym-orn": "f6e6",
+    	"sym-ors-s": "f6e7",
+    	"sym-ors": "f6e8",
+    	"sym-osmo-s": "f6e9",
+    	"sym-osmo": "f6ea",
+    	"sym-ost-s": "f6eb",
+    	"sym-ost": "f6ec",
+    	"sym-otn-s": "f6ed",
+    	"sym-otn": "f6ee",
+    	"sym-oxt-s": "f6ef",
+    	"sym-oxt": "f6f0",
+    	"sym-oxy-s": "f6f1",
+    	"sym-oxy": "f6f2",
+    	"sym-pai-s": "f6f3",
+    	"sym-pai": "f6f4",
+    	"sym-pal-s": "f6f5",
+    	"sym-pal": "f6f6",
+    	"sym-paper-s": "f6f7",
+    	"sym-paper": "f6f8",
+    	"sym-para-s": "f6f9",
+    	"sym-para": "f6fa",
+    	"sym-part-s": "f6fb",
+    	"sym-part": "f6fc",
+    	"sym-pasc-s": "f6fd",
+    	"sym-pasc": "f6fe",
+    	"sym-pat-s": "f6ff",
+    	"sym-pat": "f700",
+    	"sym-pax-s": "f701",
+    	"sym-pax": "f702",
+    	"sym-paxg-s": "f703",
+    	"sym-paxg": "f704",
+    	"sym-pay-s": "f705",
+    	"sym-pay": "f706",
+    	"sym-pbt-s": "f707",
+    	"sym-pbt": "f708",
+    	"sym-pcl-s": "f709",
+    	"sym-pcl": "f70a",
+    	"sym-pcx-s": "f70b",
+    	"sym-pcx": "f70c",
+    	"sym-pdex-s": "f70d",
+    	"sym-pdex": "f70e",
+    	"sym-people-s": "f70f",
+    	"sym-people": "f710",
+    	"sym-perl-s": "f711",
+    	"sym-perl": "f712",
+    	"sym-perp-s": "f713",
+    	"sym-perp": "f714",
+    	"sym-pha-s": "f715",
+    	"sym-pha": "f716",
+    	"sym-phb-s": "f717",
+    	"sym-phb": "f718",
+    	"sym-php-s": "f719",
+    	"sym-php": "f71a",
+    	"sym-phx-s": "f71b",
+    	"sym-phx": "f71c",
+    	"sym-pi-s": "f71d",
+    	"sym-pi": "f71e",
+    	"sym-pica-s": "f71f",
+    	"sym-pica": "f720",
+    	"sym-pink-s": "f721",
+    	"sym-pink": "f722",
+    	"sym-pivx-s": "f723",
+    	"sym-pivx": "f724",
+    	"sym-pkt-s": "f725",
+    	"sym-pkt": "f726",
+    	"sym-pl-s": "f727",
+    	"sym-pl": "f728",
+    	"sym-pla-s": "f729",
+    	"sym-pla": "f72a",
+    	"sym-plbt-s": "f72b",
+    	"sym-plbt": "f72c",
+    	"sym-plm-s": "f72d",
+    	"sym-plm": "f72e",
+    	"sym-pln-s": "f72f",
+    	"sym-pln": "f730",
+    	"sym-plr-s": "f731",
+    	"sym-plr": "f732",
+    	"sym-ply-s": "f733",
+    	"sym-ply": "f734",
+    	"sym-pma-s": "f735",
+    	"sym-pma": "f736",
+    	"sym-png-s": "f737",
+    	"sym-png": "f738",
+    	"sym-pnt-s": "f739",
+    	"sym-pnt": "f73a",
+    	"sym-poa-s": "f73b",
+    	"sym-poa": "f73c",
+    	"sym-poe-s": "f73d",
+    	"sym-poe": "f73e",
+    	"sym-polis-s": "f73f",
+    	"sym-polis": "f740",
+    	"sym-pols-s": "f741",
+    	"sym-pols": "f742",
+    	"sym-poly-s": "f743",
+    	"sym-poly": "f744",
+    	"sym-pond-s": "f745",
+    	"sym-pond": "f746",
+    	"sym-pot-s": "f747",
+    	"sym-pot": "f748",
+    	"sym-powr-s": "f749",
+    	"sym-powr": "f74a",
+    	"sym-ppc-s": "f74b",
+    	"sym-ppc": "f74c",
+    	"sym-ppt-s": "f74d",
+    	"sym-ppt": "f74e",
+    	"sym-pra-s": "f74f",
+    	"sym-pra": "f750",
+    	"sym-pre-s": "f751",
+    	"sym-pre": "f752",
+    	"sym-prg-s": "f753",
+    	"sym-prg": "f754",
+    	"sym-pro-s": "f755",
+    	"sym-pro": "f756",
+    	"sym-prq-s": "f757",
+    	"sym-prq": "f758",
+    	"sym-pst-s": "f759",
+    	"sym-pst": "f75a",
+    	"sym-pstake-s": "f75b",
+    	"sym-pstake": "f75c",
+    	"sym-pton-s": "f75d",
+    	"sym-pton": "f75e",
+    	"sym-pundix-s": "f75f",
+    	"sym-pundix": "f760",
+    	"sym-pvt-s": "f761",
+    	"sym-pvt": "f762",
+    	"sym-pxg-s": "f763",
+    	"sym-pxg": "f764",
+    	"sym-pyr-s": "f765",
+    	"sym-pyr": "f766",
+    	"sym-qash-s": "f767",
+    	"sym-qash": "f768",
+    	"sym-qau-s": "f769",
+    	"sym-qau": "f76a",
+    	"sym-qc-s": "f76b",
+    	"sym-qc": "f76c",
+    	"sym-qi-s": "f76d",
+    	"sym-qi": "f76e",
+    	"sym-qi2-s": "f76f",
+    	"sym-qi2": "f770",
+    	"sym-qkc-s": "f771",
+    	"sym-qkc": "f772",
+    	"sym-qlc-s": "f773",
+    	"sym-qlc": "f774",
+    	"sym-qnt-s": "f775",
+    	"sym-qnt": "f776",
+    	"sym-qntu-s": "f777",
+    	"sym-qntu": "f778",
+    	"sym-qo-s": "f779",
+    	"sym-qo": "f77a",
+    	"sym-qrdo-s": "f77b",
+    	"sym-qrdo": "f77c",
+    	"sym-qrl-s": "f77d",
+    	"sym-qrl": "f77e",
+    	"sym-qsp-s": "f77f",
+    	"sym-qsp": "f780",
+    	"sym-qtum-s": "f781",
+    	"sym-qtum": "f782",
+    	"sym-quick-s": "f783",
+    	"sym-quick": "f784",
+    	"sym-qun-s": "f785",
+    	"sym-qun": "f786",
+    	"sym-r-s": "f787",
+    	"sym-r": "f788",
+    	"sym-rad-s": "f789",
+    	"sym-rad": "f78a",
+    	"sym-radar-s": "f78b",
+    	"sym-radar": "f78c",
+    	"sym-rads-s": "f78d",
+    	"sym-rads": "f78e",
+    	"sym-ramp-s": "f78f",
+    	"sym-ramp": "f790",
+    	"sym-rare-s": "f791",
+    	"sym-rare": "f792",
+    	"sym-rari-s": "f793",
+    	"sym-rari": "f794",
+    	"sym-rating-s": "f795",
+    	"sym-rating": "f796",
+    	"sym-ray-s": "f797",
+    	"sym-ray": "f798",
+    	"sym-rb-s": "f799",
+    	"sym-rb": "f79a",
+    	"sym-rbc-s": "f79b",
+    	"sym-rbc": "f79c",
+    	"sym-rblx-s": "f79d",
+    	"sym-rblx": "f79e",
+    	"sym-rbn-s": "f79f",
+    	"sym-rbn": "f7a0",
+    	"sym-rbtc-s": "f7a1",
+    	"sym-rbtc": "f7a2",
+    	"sym-rby-s": "f7a3",
+    	"sym-rby": "f7a4",
+    	"sym-rcn-s": "f7a5",
+    	"sym-rcn": "f7a6",
+    	"sym-rdd-s": "f7a7",
+    	"sym-rdd": "f7a8",
+    	"sym-rdn-s": "f7a9",
+    	"sym-rdn": "f7aa",
+    	"sym-real-s": "f7ab",
+    	"sym-real": "f7ac",
+    	"sym-reef-s": "f7ad",
+    	"sym-reef": "f7ae",
+    	"sym-rem-s": "f7af",
+    	"sym-rem": "f7b0",
+    	"sym-ren-s": "f7b1",
+    	"sym-ren": "f7b2",
+    	"sym-rep-s": "f7b3",
+    	"sym-rep": "f7b4",
+    	"sym-repv2-s": "f7b5",
+    	"sym-repv2": "f7b6",
+    	"sym-req-s": "f7b7",
+    	"sym-req": "f7b8",
+    	"sym-rev-s": "f7b9",
+    	"sym-rev": "f7ba",
+    	"sym-revv-s": "f7bb",
+    	"sym-revv": "f7bc",
+    	"sym-rfox-s": "f7bd",
+    	"sym-rfox": "f7be",
+    	"sym-rfr-s": "f7bf",
+    	"sym-rfr": "f7c0",
+    	"sym-ric-s": "f7c1",
+    	"sym-ric": "f7c2",
+    	"sym-rif-s": "f7c3",
+    	"sym-rif": "f7c4",
+    	"sym-ring-s": "f7c5",
+    	"sym-ring": "f7c6",
+    	"sym-rlc-s": "f7c7",
+    	"sym-rlc": "f7c8",
+    	"sym-rly-s": "f7c9",
+    	"sym-rly": "f7ca",
+    	"sym-rmrk-s": "f7cb",
+    	"sym-rmrk": "f7cc",
+    	"sym-rndr-s": "f7cd",
+    	"sym-rndr": "f7ce",
+    	"sym-rntb-s": "f7cf",
+    	"sym-rntb": "f7d0",
+    	"sym-ron-s": "f7d1",
+    	"sym-ron": "f7d2",
+    	"sym-rook-s": "f7d3",
+    	"sym-rook": "f7d4",
+    	"sym-rose-s": "f7d5",
+    	"sym-rose": "f7d6",
+    	"sym-rox-s": "f7d7",
+    	"sym-rox": "f7d8",
+    	"sym-rp-s": "f7d9",
+    	"sym-rp": "f7da",
+    	"sym-rpx-s": "f7db",
+    	"sym-rpx": "f7dc",
+    	"sym-rsr-s": "f7dd",
+    	"sym-rsr": "f7de",
+    	"sym-rsv-s": "f7df",
+    	"sym-rsv": "f7e0",
+    	"sym-rty-s": "f7e1",
+    	"sym-rty": "f7e2",
+    	"sym-rub-s": "f7e3",
+    	"sym-rub": "f7e4",
+    	"sym-ruff-s": "f7e5",
+    	"sym-ruff": "f7e6",
+    	"sym-rune-s": "f7e7",
+    	"sym-rune": "f7e8",
+    	"sym-rvn-s": "f7e9",
+    	"sym-rvn": "f7ea",
+    	"sym-rvr-s": "f7eb",
+    	"sym-rvr": "f7ec",
+    	"sym-rvt-s": "f7ed",
+    	"sym-rvt": "f7ee",
+    	"sym-sai-s": "f7ef",
+    	"sym-sai": "f7f0",
+    	"sym-salt-s": "f7f1",
+    	"sym-salt": "f7f2",
+    	"sym-samo-s": "f7f3",
+    	"sym-samo": "f7f4",
+    	"sym-san-s": "f7f5",
+    	"sym-san": "f7f6",
+    	"sym-sand-s": "f7f7",
+    	"sym-sand": "f7f8",
+    	"sym-sats-s": "f7f9",
+    	"sym-sats": "f7fa",
+    	"sym-sbd-s": "f7fb",
+    	"sym-sbd": "f7fc",
+    	"sym-sbr-s": "f7fd",
+    	"sym-sbr": "f7fe",
+    	"sym-sc-s": "f7ff",
+    	"sym-sc": "f800",
+    	"sym-scc-s": "f801",
+    	"sym-scc": "f802",
+    	"sym-scrt-s": "f803",
+    	"sym-scrt": "f804",
+    	"sym-sdc-s": "f805",
+    	"sym-sdc": "f806",
+    	"sym-sdn-s": "f807",
+    	"sym-sdn": "f808",
+    	"sym-seele-s": "f809",
+    	"sym-seele": "f80a",
+    	"sym-sek-s": "f80b",
+    	"sym-sek": "f80c",
+    	"sym-sen-s": "f80d",
+    	"sym-sen": "f80e",
+    	"sym-sent-s": "f80f",
+    	"sym-sent": "f810",
+    	"sym-sero-s": "f811",
+    	"sym-sero": "f812",
+    	"sym-sexc-s": "f813",
+    	"sym-sexc": "f814",
+    	"sym-sfp-s": "f815",
+    	"sym-sfp": "f816",
+    	"sym-sgb-s": "f817",
+    	"sym-sgb": "f818",
+    	"sym-sgc-s": "f819",
+    	"sym-sgc": "f81a",
+    	"sym-sgd-s": "f81b",
+    	"sym-sgd": "f81c",
+    	"sym-sgn-s": "f81d",
+    	"sym-sgn": "f81e",
+    	"sym-sgu-s": "f81f",
+    	"sym-sgu": "f820",
+    	"sym-shib-s": "f821",
+    	"sym-shib": "f822",
+    	"sym-shift-s": "f823",
+    	"sym-shift": "f824",
+    	"sym-ship-s": "f825",
+    	"sym-ship": "f826",
+    	"sym-shping-s": "f827",
+    	"sym-shping": "f828",
+    	"sym-si-s": "f829",
+    	"sym-si": "f82a",
+    	"sym-sib-s": "f82b",
+    	"sym-sib": "f82c",
+    	"sym-sil-s": "f82d",
+    	"sym-sil": "f82e",
+    	"sym-six-s": "f82f",
+    	"sym-six": "f830",
+    	"sym-sjcx-s": "f831",
+    	"sym-sjcx": "f832",
+    	"sym-skl-s": "f833",
+    	"sym-skl": "f834",
+    	"sym-skm-s": "f835",
+    	"sym-skm": "f836",
+    	"sym-sku-s": "f837",
+    	"sym-sku": "f838",
+    	"sym-sky-s": "f839",
+    	"sym-sky": "f83a",
+    	"sym-slp-s": "f83b",
+    	"sym-slp": "f83c",
+    	"sym-slr-s": "f83d",
+    	"sym-slr": "f83e",
+    	"sym-sls-s": "f83f",
+    	"sym-sls": "f840",
+    	"sym-slt-s": "f841",
+    	"sym-slt": "f842",
+    	"sym-slv-s": "f843",
+    	"sym-slv": "f844",
+    	"sym-smart-s": "f845",
+    	"sym-smart": "f846",
+    	"sym-smn-s": "f847",
+    	"sym-smn": "f848",
+    	"sym-smt-s": "f849",
+    	"sym-smt": "f84a",
+    	"sym-snc-s": "f84b",
+    	"sym-snc": "f84c",
+    	"sym-snet-s": "f84d",
+    	"sym-snet": "f84e",
+    	"sym-sngls-s": "f84f",
+    	"sym-sngls": "f850",
+    	"sym-snm-s": "f851",
+    	"sym-snm": "f852",
+    	"sym-snt-s": "f853",
+    	"sym-snt": "f854",
+    	"sym-snx-s": "f855",
+    	"sym-snx": "f856",
+    	"sym-soc-s": "f857",
+    	"sym-soc": "f858",
+    	"sym-socks-s": "f859",
+    	"sym-socks": "f85a",
+    	"sym-sol-s": "f85b",
+    	"sym-sol": "f85c",
+    	"sym-solid-s": "f85d",
+    	"sym-solid": "f85e",
+    	"sym-solo-s": "f85f",
+    	"sym-solo": "f860",
+    	"sym-solve-s": "f861",
+    	"sym-solve": "f862",
+    	"sym-sos-s": "f863",
+    	"sym-sos": "f864",
+    	"sym-soul-s": "f865",
+    	"sym-soul": "f866",
+    	"sym-sp-s": "f867",
+    	"sym-sp": "f868",
+    	"sym-sparta-s": "f869",
+    	"sym-sparta": "f86a",
+    	"sym-spc-s": "f86b",
+    	"sym-spc": "f86c",
+    	"sym-spd-s": "f86d",
+    	"sym-spd": "f86e",
+    	"sym-spell-s": "f86f",
+    	"sym-spell": "f870",
+    	"sym-sphr-s": "f871",
+    	"sym-sphr": "f872",
+    	"sym-sphtx-s": "f873",
+    	"sym-sphtx": "f874",
+    	"sym-spnd-s": "f875",
+    	"sym-spnd": "f876",
+    	"sym-spnk-s": "f877",
+    	"sym-spnk": "f878",
+    	"sym-srm-s": "f879",
+    	"sym-srm": "f87a",
+    	"sym-srn-s": "f87b",
+    	"sym-srn": "f87c",
+    	"sym-ssp-s": "f87d",
+    	"sym-ssp": "f87e",
+    	"sym-stacs-s": "f87f",
+    	"sym-stacs": "f880",
+    	"sym-step-s": "f881",
+    	"sym-step": "f882",
+    	"sym-stg-s": "f883",
+    	"sym-stg": "f884",
+    	"sym-stmx-s": "f885",
+    	"sym-stmx": "f886",
+    	"sym-storm-s": "f887",
+    	"sym-storm": "f888",
+    	"sym-stpt-s": "f889",
+    	"sym-stpt": "f88a",
+    	"sym-stq-s": "f88b",
+    	"sym-stq": "f88c",
+    	"sym-str-s": "f88d",
+    	"sym-str": "f88e",
+    	"sym-strat-s": "f88f",
+    	"sym-strat": "f890",
+    	"sym-strax-s": "f891",
+    	"sym-strax": "f892",
+    	"sym-strk-s": "f893",
+    	"sym-strk": "f894",
+    	"sym-strong-s": "f895",
+    	"sym-strong": "f896",
+    	"sym-stx-s": "f897",
+    	"sym-stx": "f898",
+    	"sym-sub-s": "f899",
+    	"sym-sub": "f89a",
+    	"sym-sun-s": "f89b",
+    	"sym-sun": "f89c",
+    	"sym-super-s": "f89d",
+    	"sym-super": "f89e",
+    	"sym-susd-s": "f89f",
+    	"sym-susd": "f8a0",
+    	"sym-sushi-s": "f8a1",
+    	"sym-sushi": "f8a2",
+    	"sym-swftc-s": "f8a3",
+    	"sym-swftc": "f8a4",
+    	"sym-swm-s": "f8a5",
+    	"sym-swm": "f8a6",
+    	"sym-swrv-s": "f8a7",
+    	"sym-swrv": "f8a8",
+    	"sym-swt-s": "f8a9",
+    	"sym-swt": "f8aa",
+    	"sym-swth-s": "f8ab",
+    	"sym-swth": "f8ac",
+    	"sym-sxp-s": "f8ad",
+    	"sym-sxp": "f8ae",
+    	"sym-syn-s": "f8af",
+    	"sym-syn": "f8b0",
+    	"sym-sys-s": "f8b1",
+    	"sym-sys": "f8b2",
+    	"sym-t-s": "f8b3",
+    	"sym-t": "f8b4",
+    	"sym-taas-s": "f8b5",
+    	"sym-taas": "f8b6",
+    	"sym-tau-s": "f8b7",
+    	"sym-tau": "f8b8",
+    	"sym-tbtc-s": "f8b9",
+    	"sym-tbtc": "f8ba",
+    	"sym-tct-s": "f8bb",
+    	"sym-tct": "f8bc",
+    	"sym-teer-s": "f8bd",
+    	"sym-teer": "f8be",
+    	"sym-tel-s": "f8bf",
+    	"sym-temco-s": "f8c0",
+    	"sym-temco": "f8c1",
+    	"sym-tfuel-s": "f8c2",
+    	"sym-tfuel": "f8c3",
+    	"sym-thb-s": "f8c4",
+    	"sym-thb": "f8c5",
+    	"sym-thc-s": "f8c6",
+    	"sym-thc": "f8c7",
+    	"sym-theta-s": "f8c8",
+    	"sym-theta": "f8c9",
+    	"sym-thx-s": "f8ca",
+    	"sym-thx": "f8cb",
+    	"sym-time-s": "f8cc",
+    	"sym-time": "f8cd",
+    	"sym-tio-s": "f8ce",
+    	"sym-tio": "f8cf",
+    	"sym-tix-s": "f8d0",
+    	"sym-tix": "f8d1",
+    	"sym-tkn-s": "f8d2",
+    	"sym-tkn": "f8d3",
+    	"sym-tky-s": "f8d4",
+    	"sym-tky": "f8d5",
+    	"sym-tlm-s": "f8d6",
+    	"sym-tlm": "f8d7",
+    	"sym-tnb-s": "f8d8",
+    	"sym-tnb": "f8d9",
+    	"sym-tnc-s": "f8da",
+    	"sym-tnc": "f8db",
+    	"sym-tnt-s": "f8dc",
+    	"sym-tnt": "f8dd",
+    	"sym-toke-s": "f8de",
+    	"sym-toke": "f8df",
+    	"sym-tomb-s": "f8e0",
+    	"sym-tomb": "f8e1",
+    	"sym-tomo-s": "f8e2",
+    	"sym-tomo": "f8e3",
+    	"sym-top-s": "f8e4",
+    	"sym-top": "f8e5",
+    	"sym-torn-s": "f8e6",
+    	"sym-torn": "f8e7",
+    	"sym-tower-s": "f8e8",
+    	"sym-tower": "f8e9",
+    	"sym-tpay-s": "f8ea",
+    	"sym-tpay": "f8eb",
+    	"sym-trac-s": "f8ec",
+    	"sym-trac": "f8ed",
+    	"sym-trb-s": "f8ee",
+    	"sym-trb": "f8ef",
+    	"sym-tribe-s": "f8f0",
+    	"sym-tribe": "f8f1",
+    	"sym-trig-s": "f8f2",
+    	"sym-trig": "f8f3",
+    	"sym-trio-s": "f8f4",
+    	"sym-trio": "f8f5",
+    	"sym-troy-s": "f8f6",
+    	"sym-troy": "f8f7",
+    	"sym-trst-s": "f8f8",
+    	"sym-trst": "f8f9",
+    	"sym-tru-s": "f8fa",
+    	"sym-tru": "f8fb",
+    	"sym-true-s": "f8fc",
+    	"sym-true": "f8fd",
+    	"sym-trx-s": "f8fe",
+    	"sym-trx": "f8ff",
+    	"sym-try-s": "f900",
+    	"sym-try": "f901",
+    	"sym-tryb-s": "f902",
+    	"sym-tryb": "f903",
+    	"sym-tt-s": "f904",
+    	"sym-tt": "f905",
+    	"sym-ttc-s": "f906",
+    	"sym-ttc": "f907",
+    	"sym-ttt-s": "f908",
+    	"sym-ttt": "f909",
+    	"sym-ttu-s": "f90a",
+    	"sym-ttu": "f90b",
+    	"sym-tube-s": "f90c",
+    	"sym-tube": "f90d",
+    	"sym-tusd-s": "f90e",
+    	"sym-tusd": "f90f",
+    	"sym-tvk-s": "f910",
+    	"sym-tvk": "f911",
+    	"sym-twt-s": "f912",
+    	"sym-twt": "f913",
+    	"sym-uah-s": "f914",
+    	"sym-uah": "f915",
+    	"sym-ubq-s": "f916",
+    	"sym-ubq": "f917",
+    	"sym-ubt-s": "f918",
+    	"sym-ubt": "f919",
+    	"sym-uft-s": "f91a",
+    	"sym-uft": "f91b",
+    	"sym-ugas-s": "f91c",
+    	"sym-ugas": "f91d",
+    	"sym-uip-s": "f91e",
+    	"sym-uip": "f91f",
+    	"sym-ukg-s": "f920",
+    	"sym-ukg": "f921",
+    	"sym-uma-s": "f922",
+    	"sym-uma": "f923",
+    	"sym-unfi-s": "f924",
+    	"sym-unfi": "f925",
+    	"sym-uni-s": "f926",
+    	"sym-uni": "f927",
+    	"sym-unq-s": "f928",
+    	"sym-unq": "f929",
+    	"sym-up-s": "f92a",
+    	"sym-up": "f92b",
+    	"sym-upp-s": "f92c",
+    	"sym-upp": "f92d",
+    	"sym-usd-s": "f92e",
+    	"sym-usd": "f92f",
+    	"sym-usdc-s": "f930",
+    	"sym-usdc": "f931",
+    	"sym-usds-s": "f932",
+    	"sym-usds": "f933",
+    	"sym-usk-s": "f934",
+    	"sym-usk": "f935",
+    	"sym-ust-s": "f936",
+    	"sym-ust": "f937",
+    	"sym-utk-s": "f938",
+    	"sym-utk": "f939",
+    	"sym-utnp-s": "f93a",
+    	"sym-utnp": "f93b",
+    	"sym-utt-s": "f93c",
+    	"sym-utt": "f93d",
+    	"sym-uuu-s": "f93e",
+    	"sym-uuu": "f93f",
+    	"sym-ux-s": "f940",
+    	"sym-ux": "f941",
+    	"sym-vader-s": "f942",
+    	"sym-vader": "f943",
+    	"sym-vai-s": "f944",
+    	"sym-vai": "f945",
+    	"sym-vbk-s": "f946",
+    	"sym-vbk": "f947",
+    	"sym-vdx-s": "f948",
+    	"sym-vdx": "f949",
+    	"sym-vee-s": "f94a",
+    	"sym-vee": "f94b",
+    	"sym-vemp-s": "f94c",
+    	"sym-vemp": "f94d",
+    	"sym-ven-s": "f94e",
+    	"sym-ven": "f94f",
+    	"sym-veo-s": "f950",
+    	"sym-veo": "f951",
+    	"sym-veri-s": "f952",
+    	"sym-veri": "f953",
+    	"sym-vex-s": "f954",
+    	"sym-vex": "f955",
+    	"sym-vgx-s": "f956",
+    	"sym-vgx": "f957",
+    	"sym-via-s": "f958",
+    	"sym-via": "f959",
+    	"sym-vib-s": "f95a",
+    	"sym-vib": "f95b",
+    	"sym-vibe-s": "f95c",
+    	"sym-vibe": "f95d",
+    	"sym-vid-s": "f95e",
+    	"sym-vid": "f95f",
+    	"sym-vidt-s": "f960",
+    	"sym-vidt": "f961",
+    	"sym-vidy-s": "f962",
+    	"sym-vidy": "f963",
+    	"sym-vitae-s": "f964",
+    	"sym-vitae": "f965",
+    	"sym-vite-s": "f966",
+    	"sym-vite": "f967",
+    	"sym-vlx-s": "f968",
+    	"sym-vlx": "f969",
+    	"sym-vox-s": "f96a",
+    	"sym-vox": "f96b",
+    	"sym-voxel-s": "f96c",
+    	"sym-voxel": "f96d",
+    	"sym-vra-s": "f96e",
+    	"sym-vra": "f96f",
+    	"sym-vrc-s": "f970",
+    	"sym-vrc": "f971",
+    	"sym-vrm-s": "f972",
+    	"sym-vrm": "f973",
+    	"sym-vsys-s": "f974",
+    	"sym-vsys": "f975",
+    	"sym-vtc-s": "f976",
+    	"sym-vtc": "f977",
+    	"sym-vtho-s": "f978",
+    	"sym-vtho": "f979",
+    	"sym-wabi-s": "f97a",
+    	"sym-wabi": "f97b",
+    	"sym-wan-s": "f97c",
+    	"sym-wan": "f97d",
+    	"sym-waves-s": "f97e",
+    	"sym-waves": "f97f",
+    	"sym-wax-s": "f980",
+    	"sym-wax": "f981",
+    	"sym-wbtc-s": "f982",
+    	"sym-wbtc": "f983",
+    	"sym-wet-s": "f984",
+    	"sym-wet": "f985",
+    	"sym-weth-s": "f986",
+    	"sym-weth": "f987",
+    	"sym-wib-s": "f988",
+    	"sym-wib": "f989",
+    	"sym-wicc-s": "f98a",
+    	"sym-wicc": "f98b",
+    	"sym-win-s": "f98c",
+    	"sym-win": "f98d",
+    	"sym-wing-s": "f98e",
+    	"sym-wing": "f98f",
+    	"sym-wings-s": "f990",
+    	"sym-wings": "f991",
+    	"sym-wnxm-s": "f992",
+    	"sym-wnxm": "f993",
+    	"sym-woo-s": "f994",
+    	"sym-woo": "f995",
+    	"sym-wpr-s": "f996",
+    	"sym-wpr": "f997",
+    	"sym-wrx-s": "f998",
+    	"sym-wrx": "f999",
+    	"sym-wtc-s": "f99a",
+    	"sym-wtc": "f99b",
+    	"sym-wtt-s": "f99c",
+    	"sym-wtt": "f99d",
+    	"sym-wwb-s": "f99e",
+    	"sym-wwb": "f99f",
+    	"sym-wxt-s": "f9a0",
+    	"sym-wxt": "f9a1",
+    	"sym-xas-s": "f9a2",
+    	"sym-xas": "f9a3",
+    	"sym-xaur-s": "f9a4",
+    	"sym-xaur": "f9a5",
+    	"sym-xaut-s": "f9a6",
+    	"sym-xaut": "f9a7",
+    	"sym-xava-s": "f9a8",
+    	"sym-xava": "f9a9",
+    	"sym-xbc-s": "f9aa",
+    	"sym-xbc": "f9ab",
+    	"sym-xcon-s": "f9ac",
+    	"sym-xcon": "f9ad",
+    	"sym-xcp-s": "f9ae",
+    	"sym-xcp": "f9af",
+    	"sym-xdefi-s": "f9b0",
+    	"sym-xdefi": "f9b1",
+    	"sym-xdn-s": "f9b2",
+    	"sym-xdn": "f9b3",
+    	"sym-xel-s": "f9b4",
+    	"sym-xel": "f9b5",
+    	"sym-xem-s": "f9b6",
+    	"sym-xem": "f9b7",
+    	"sym-xes-s": "f9b8",
+    	"sym-xes": "f9b9",
+    	"sym-xhv-s": "f9ba",
+    	"sym-xhv": "f9bb",
+    	"sym-xin-s": "f9bc",
+    	"sym-xin": "f9bd",
+    	"sym-xlm-s": "f9be",
+    	"sym-xlm": "f9bf",
+    	"sym-xmc-s": "f9c0",
+    	"sym-xmc": "f9c1",
+    	"sym-xmr-s": "f9c2",
+    	"sym-xmr": "f9c3",
+    	"sym-xmx-s": "f9c4",
+    	"sym-xmx": "f9c5",
+    	"sym-xmy-s": "f9c6",
+    	"sym-xmy": "f9c7",
+    	"sym-xnk-s": "f9c8",
+    	"sym-xnk": "f9c9",
+    	"sym-xns-s": "f9ca",
+    	"sym-xns": "f9cb",
+    	"sym-xor-s": "f9cc",
+    	"sym-xor": "f9cd",
+    	"sym-xos-s": "f9ce",
+    	"sym-xos": "f9cf",
+    	"sym-xpm-s": "f9d0",
+    	"sym-xpm": "f9d1",
+    	"sym-xpr-s": "f9d2",
+    	"sym-xpr": "f9d3",
+    	"sym-xrc-s": "f9d4",
+    	"sym-xrc": "f9d5",
+    	"sym-xrp-s": "f9d6",
+    	"sym-xrp": "f9d7",
+    	"sym-xrpx-s": "f9d8",
+    	"sym-xrpx": "f9d9",
+    	"sym-xrt-s": "f9da",
+    	"sym-xrt": "f9db",
+    	"sym-xst-s": "f9dc",
+    	"sym-xst": "f9dd",
+    	"sym-xtp-s": "f9de",
+    	"sym-xtp": "f9df",
+    	"sym-xtz-s": "f9e0",
+    	"sym-xtz": "f9e1",
+    	"sym-xtzdown-s": "f9e2",
+    	"sym-xtzdown": "f9e3",
+    	"sym-xvc-s": "f9e4",
+    	"sym-xvc": "f9e5",
+    	"sym-xvg-s": "f9e6",
+    	"sym-xvg": "f9e7",
+    	"sym-xvs-s": "f9e8",
+    	"sym-xvs": "f9e9",
+    	"sym-xwc-s": "f9ea",
+    	"sym-xwc": "f9eb",
+    	"sym-xyo-s": "f9ec",
+    	"sym-xyo": "f9ed",
+    	"sym-xzc-s": "f9ee",
+    	"sym-xzc": "f9ef",
+    	"sym-yam-s": "f9f0",
+    	"sym-yam": "f9f1",
+    	"sym-yee-s": "f9f2",
+    	"sym-yee": "f9f3",
+    	"sym-yeed-s": "f9f4",
+    	"sym-yeed": "f9f5",
+    	"sym-yfi-s": "f9f6",
+    	"sym-yfi": "f9f7",
+    	"sym-yfii-s": "f9f8",
+    	"sym-yfii": "f9f9",
+    	"sym-ygg-s": "f9fa",
+    	"sym-ygg": "f9fb",
+    	"sym-yoyow-s": "f9fc",
+    	"sym-yoyow": "f9fd",
+    	"sym-zar-s": "f9fe",
+    	"sym-zar": "f9ff",
+    	"sym-zcl-s": "fa00",
+    	"sym-zcl": "fa01",
+    	"sym-zcn-s": "fa02",
+    	"sym-zcn": "fa03",
+    	"sym-zco-s": "fa04",
+    	"sym-zco": "fa05",
+    	"sym-zec-s": "fa06",
+    	"sym-zec": "fa07",
+    	"sym-zen-s": "fa08",
+    	"sym-zen": "fa09",
+    	"sym-zil-s": "fa0a",
+    	"sym-zil": "fa0b",
+    	"sym-zks-s": "fa0c",
+    	"sym-zks": "fa0d",
+    	"sym-zla-s": "fa0e",
+    	"sym-zla": "fa0f",
+    	"sym-zlk": "fa10",
+    	"sym-zondo-s": "fa11",
+    	"sym-zondo": "fa12",
+    	"sym-zpr-s": "fa13",
+    	"sym-zpr": "fa14",
+    	"sym-zpt-s": "fa15",
+    	"sym-zpt": "fa16",
+    	"sym-zrc-s": "fa17",
+    	"sym-zrc": "fa18",
+    	"sym-zrx-s": "fa19",
+    	"sym-zrx": "fa1a",
+    	"sym-zsc-s": "fa1b",
+    	"sym-zsc": "fa1c",
+    	"sym-ztg-s": "fa1d",
+    	"sym-ztg": "fa1e",
+    	"ustc-s": "fa1f",
+    	ustc: ustc,
+    	"cur-anct": "f1d2",
+    	"cur-anct-s": "f1d1",
+    	"cur-aud": "f200",
+    	"cur-aud-s": "f1ff",
+    	"cur-bnb": "f271",
+    	"cur-bnb-s": "f270",
+    	"sym-xbt": "f299",
+    	"cur-btc": "f299",
+    	"sym-xbt-s": "f298",
+    	"cur-btc-s": "f298",
+    	"cur-busd": "f2b9",
+    	"cur-busd-s": "f2b8",
+    	"exc-bitz": "f2bd",
+    	"cur-bz": "f2bd",
+    	"exc-bitz-s": "f2bc",
+    	"cur-bz-s": "f2bc",
+    	"cur-cad": "f2c7",
+    	"cur-cad-s": "f2c6",
+    	"cur-chf": "f2e7",
+    	"cur-chf-s": "f2e6",
+    	"cur-cny": "f30b",
+    	"cur-cny-s": "f30a",
+    	"sym-cs": "f31f",
+    	"sym-cs-s": "f31e",
+    	"sym-crm": "f337",
+    	"sym-crm-s": "f336",
+    	"cur-dai": "f365",
+    	"cur-dai-s": "f364",
+    	"sym-xdg": "f3a3",
+    	"sym-xdg-s": "f3a2",
+    	"cur-eos": "f3f0",
+    	"cur-eos-s": "f3ef",
+    	"sym-eth2": "f400",
+    	"sym-eth2s": "f400",
+    	"sym-eth2.s": "f400",
+    	"cur-eth": "f400",
+    	"sym-eth2-s": "f3ff",
+    	"sym-eth2s-s": "f3ff",
+    	"sym-eth2.s-s": "f3ff",
+    	"cur-eth-s": "f3ff",
+    	"cur-eur": "f408",
+    	"cur-eur-s": "f407",
+    	"cur-eurs": "f40a",
+    	"cur-eurs-s": "f409",
+    	"sym-usdt": "f40c",
+    	"cur-usdt": "f40c",
+    	"sym-usdt-s": "f40b",
+    	"cur-usdt-s": "f40b",
+    	"exc-kraken": "f424",
+    	"exc-kraken-futures": "f424",
+    	"exc-kraken-s": "f423",
+    	"exc-kraken-futures-s": "f423",
+    	"cur-gbp": "f478",
+    	"cur-gbp-s": "f477",
+    	"exc-gemini": "f4c0",
+    	"cur-gusd": "f4c0",
+    	"exc-gemini-s": "f4bf",
+    	"cur-gusd-s": "f4bf",
+    	"cur-hkd": "f4e4",
+    	"cur-hkd-s": "f4e3",
+    	"sym-husd": "f500",
+    	"exc-huobi": "f500",
+    	"cur-ht": "f500",
+    	"sym-husd-s": "f4ff",
+    	"exc-huobi-s": "f4ff",
+    	"cur-ht-s": "f4ff",
+    	"cur-idr": "f520",
+    	"cur-idr-s": "f51f",
+    	"sym-iota": "f548",
+    	"sym-iota-s": "f547",
+    	"cur-inr": "f53a",
+    	"cur-inr-s": "f539",
+    	"cur-jpy": "f55e",
+    	"cur-jpy-s": "f55d",
+    	"cur-krw": "f58e",
+    	"cur-krw-s": "f58d",
+    	"sym-medx": "f608",
+    	"sym-medx-s": "f607",
+    	"cur-mxn": "f65e",
+    	"cur-mxn-s": "f65d",
+    	"cur-myr": "f660",
+    	"cur-myr-s": "f65f",
+    	"cur-ngn": "f68a",
+    	"cur-ngn-s": "f689",
+    	"cur-pax": "f702",
+    	"cur-pax-s": "f701",
+    	"cur-php": "f71a",
+    	"cur-php-s": "f719",
+    	"cur-pln": "f730",
+    	"cur-pln-s": "f72f",
+    	"cur-qash": "f768",
+    	"cur-qash-s": "f767",
+    	"cur-rub": "f7e4",
+    	"cur-rur": "f7e4",
+    	"cur-rub-s": "f7e3",
+    	"cur-rur-s": "f7e3",
+    	"sym-steem": "f7fc",
+    	"sym-steem-s": "f7fb",
+    	"sym-xsc": "f800",
+    	"sym-xsc-s": "f7ff",
+    	"cur-sgd": "f81c",
+    	"cur-sgd-s": "f81b",
+    	"sym-storj": "f832",
+    	"sym-storj-s": "f831",
+    	"sym-tel": "f8b6",
+    	"cur-trx": "f8ff",
+    	"cur-trx-s": "f8fe",
+    	"cur-tusd": "f90f",
+    	"cur-tusd-s": "f90e",
+    	"cur-usd": "f92f",
+    	"cur-usd-s": "f92e",
+    	"cur-usdc": "f931",
+    	"cur-usdc-s": "f930",
+    	"sym-vet": "f94f",
+    	"sym-vet-s": "f94e",
+    	"sym-waxp": "f981",
+    	"sym-waxp-s": "f980",
+    	"cur-xlm": "f9bf",
+    	"cur-xlm-s": "f9be",
+    	"cur-xmr": "f9c3",
+    	"cur-xmr-s": "f9c2",
+    	"cur-xrp": "f9d7",
+    	"cur-xrp-s": "f9d6",
+    	"cur-zar": "f9ff",
+    	"cur-zar-s": "f9fe",
+    	"exc-binance-us": "f108",
+    	"exc-binance-us-s": "f107",
+    	"exc-mexbt": "f11e",
+    	"exc-mexbt-s": "f11d",
+    	"exc-coinbase-pro": "f12c",
+    	"exc-gdax": "f12c",
+    	"exc-coinbase-pro-s": "f12b",
+    	"exc-gdax-s": "f12b",
+    	"exc-quadriga": "f154",
+    	"exc-quadriga-s": "f153",
+    	"cur-crc": "f32b",
+    	"cur-crc-s": "f32a",
+    	"cur-lak": "f598",
+    	"cur-lak-s": "f597",
+    	"cur-sek": "f80c",
+    	"cur-sek-s": "f80b",
+    	"cur-thb": "f8c5",
+    	"cur-thb-s": "f8c4",
+    	"cur-try": "f901",
+    	"cur-try-s": "f900",
+    	"cur-uah": "f915",
+    	"cur-uah-s": "f914",
+    	"exc-ftx": "f458",
+    	"exc-ftx-s": "f457",
+    	"exc-ftx-us": "f458",
+    	"exc-ftx-us-s": "f457",
+    	"sym-cgld": "f2d7",
+    	"sym-cgld-s": "f2d6",
+    	"exc-uniswap-v2": "f927",
+    	"exc-uniswap-v2-s": "f926",
+    	"sym-kshib": "f822",
+    	"sym-kshib-s": "f821",
+    	"sym-easy-s": "f3c4",
+    	"sym-srare": "f792",
+    	"sym-srare-s": "f791",
+    	"sym-ape.2": "f1d8",
+    	"sym-ape.2-s": "f1d7"
+    };
+
+    var _default = "";
+    var d = "";
+    var axieinfinity = "";
+    var bibox = "";
+    var binance = "Binance";
+    var bisq = "Bisq";
+    var bitbay = "";
+    var bitfinex = "Bitfinex";
+    var bitflyer = "bitFlyer";
+    var bithumb = "Bithumb";
+    var bitmex = "BitMEX";
+    var bitso = "";
+    var bitsquare = "";
+    var bitstamp = "Bitstamp";
+    var bittrex = "Bittrex";
+    var bitvc = "BitVC";
+    var btcchina = "";
+    var btce = "";
+    var bybit = "";
+    var cexio = "CEX.IO";
+    var cme = "CME (Beta)";
+    var coinbase = "";
+    var coinbasepro = "";
+    var coinone = "Coinone";
+    var comex = "COMEX (Beta)";
+    var cryptofacilities = "";
+    var deribit = "Deribit";
+    var gateio = "Gate.io";
+    var hitbtc = "HitBTC";
+    var kucoin = "";
+    var liquid = "Liquid";
+    var luno = "Luno";
+    var mtgox = "Mt. Gox";
+    var mxc = "MXC";
+    var nbatopshop = "";
+    var nymex = "NYMEX (Beta)";
+    var okcoin = "OKCoin";
+    var okx = "OKX";
+    var opensea = "";
+    var poloniex = "Poloniex";
+    var qryptos = "";
+    var quadrigacx = "";
+    var quick = "QuickSwap";
+    var quoine = "Quoine";
+    var rarible = "";
+    var totle = "";
+    var upbit = "";
+    var vaultofsatoshi = "";
+    var wex = "WEX";
+    var zaif = "";
+    var zonda = "Zonda";
+    var a38 = "Aluminum A380 Alloy (Patts) Futures";
+    var aac = "Acute Angle Cloud";
+    var aave = "Aave";
+    var abbc = "ABBC Coin";
+    var abt = "Arcblock";
+    var abyss = "The Abyss";
+    var aca = "Acala Token";
+    var acat = "Alphacat";
+    var ach = "Alchemy Pay";
+    var act = "Achain";
+    var ad0 = "";
+    var ada = "Cardano";
+    var adel = "";
+    var adh = "AdHive";
+    var adm = "ADAMANT Messenger";
+    var ado = "";
+    var adt = "adToken";
+    var adx = "Ambire Adex";
+    var ae = "Aeternity";
+    var aed = "";
+    var aeon = "Aeon";
+    var aep = "Aluminium European Premium Duty-Unpaid (Metal Bulletin) Futures";
+    var aergo = "Aergo";
+    var agi = "SingularityNET";
+    var agld = "Adventure Gold";
+    var aid = "AIDUS TOKEN";
+    var aion = "Aion";
+    var air = "Altair";
+    var akro = "Akropolis";
+    var akt = "Akash Network";
+    var alcx = "Alchemix";
+    var aleph = "Aleph.im";
+    var algo = "Algorand";
+    var ali = "Aluminum Futures";
+    var alice = "Alice";
+    var alpha = "Alpha Finance Lab";
+    var amb = "Ambrosus";
+    var amlt = "AMLT";
+    var amp = "Amp";
+    var ampl = "Ampleforth";
+    var anc = "Anchor Protocol";
+    var anct = "Anchor";
+    var ankr = "Ankr Network";
+    var ant = "Aragon";
+    var ape = "ApeCoin";
+    var api3 = "API3";
+    var apis = "APIS";
+    var appc = "AppCoins";
+    var ar = "Arweave";
+    var ardr = "Ardor";
+    var ark = "Ark";
+    var arn = "Aeron";
+    var arpa = "ARPA Chain";
+    var art = "Maecenas";
+    var aspt = "";
+    var ast = "AirSwap";
+    var astr = "Astar Network";
+    var at = "Artfinity";
+    var atlas = "Star Atlas";
+    var atm = "Atletico Madrid Fan Token";
+    var atom = "Cosmos";
+    var atp = "Atlas Protocol";
+    var atri = "Atari Token";
+    var auction = "Bounce Token";
+    var aud = "Australian Dollar";
+    var audio = "Audius";
+    var aup = "Aluminum MW U.S. Transaction Premium Platts (25MT) Futures";
+    var aury = "Aurory";
+    var ausd = "Acala Dollar";
+    var auto = "Cube";
+    var ava = "Travala.com";
+    var avax = "Avalanche";
+    var avt = "Aventus";
+    var axp = "aXpire";
+    var axs = "Axie Infinity Shards";
+    var b = "";
+    var b0 = "";
+    var b2g = "Bitcoiin";
+    var bab = "";
+    var badger = "Badger DAO";
+    var bake = "BakeryToken";
+    var bal = "Balancer";
+    var banca = "Banca";
+    var band = "Band Protocol";
+    var bat = "Basic Attention Token";
+    var bay = "BitBay";
+    var bbc = "TraDove B2BCoin";
+    var bcc = "Bitcoin Core Chain Split Token";
+    var bcd = "Bitcoin Diamond";
+    var bch = "Bitcoin Cash";
+    var bci = "Bitcoin Interest";
+    var bcn = "Bytecoin";
+    var bcpt = "BlockMason Credit Protocol";
+    var bcu = "Bitcoin Unlimited Token";
+    var bcv = "BitCapitalVendor";
+    var bcy = "Bitcrystals";
+    var bdg = "BitDegree";
+    var beam = "Beam";
+    var beet = "Beetle Coin";
+    var bel = "Bella Protocol";
+    var bela = "Bela";
+    var berry = "Rentberry";
+    var beta = "Beta Finance";
+    var betr = "BetterBetting";
+    var bez = "Bezop";
+    var bft = "BnkToTheFuture";
+    var bfx = "BFX";
+    var bhd = "BitcoinHD";
+    var bht = "BHEX Token";
+    var bico = "BICONOMY";
+    var bit = "BitDAO";
+    var bitb = "Bean Cash";
+    var bix = "Bibox Token";
+    var bk = "";
+    var bkx = "Bankex";
+    var blk = "BlackCoin";
+    var block = "Blocknet";
+    var blok = "Bloktopia";
+    var blt = "Bloom";
+    var blz = "Bluzelle";
+    var bmc = "Blackmoon";
+    var bnb = "Binance Coin";
+    var bnc = "Bifrost";
+    var bnk = "Bankera";
+    var bnt = "Bancor";
+    var bo = "";
+    var bond = "BarnBridge";
+    var boo = "Spookyswap";
+    var bor = "BoringDAO";
+    var bora = "BORA";
+    var bos = "BOScoin";
+    var box = "BOX Token";
+    var brd = "Bread";
+    var breed = "BreederDAO";
+    var brg = "Bridge Oracle";
+    var brick = "";
+    var bsd = "BitSend";
+    var bsv = "BitcoinSV";
+    var bsx = "Basilisk";
+    var bt1 = "BT1";
+    var bt2 = "BT2";
+    var btc = "Bitcoin";
+    var btcd = "BitcoinDark";
+    var btcfx = "Bitcoin Forex";
+    var btcp = "Bitcoin Private";
+    var btg = "Bitcoin Gold";
+    var btm = "Bitmark";
+    var btn = "BitNewChain";
+    var bto = "Bottos";
+    var btrst = "Braintrust";
+    var bts = "BitShares";
+    var btt = "BitTorrent";
+    var btu = "BTU Protocol";
+    var btx = "Bitcore";
+    var burger = "Burger Swap";
+    var burst = "Burst";
+    var bus = "U.S. Midwest Busheling Ferrous Scrap (AMM) Futures";
+    var busd = "Binance USD";
+    var bwx = "Blue Whale Token";
+    var bz = "Bit-Z Token";
+    var bzrx = "bZx Protocol";
+    var c = "";
+    var c20 = "CRYPTO20";
+    var c98 = "Coin98";
+    var cad = "Canadian Dollar";
+    var cake = "PancakeSwap";
+    var cas = "Cashaa";
+    var cat = "BitClave";
+    var cbc = "CashBet Coin";
+    var cbt = "CommerceBlock";
+    var cdt = "Blox";
+    var cel = "Celsius";
+    var celo = "Celo";
+    var celr = "Celer Network";
+    var cennz = "Centrality";
+    var cfg = "Centrifuge";
+    var cfi = "Cofound.it";
+    var cfx = "Conflux Network";
+    var cgt = "";
+    var chat = "ChatCoin";
+    var chf = "Swiss franc";
+    var chp = "CoinPoker";
+    var chr = "Chromia";
+    var chsb = "SwissBorg";
+    var chx = "Own";
+    var chz = "Chiliz";
+    var ckb = "Nervos Network";
+    var cl = "Crude Oil Futures";
+    var clam = "Clams";
+    var cln = "Colu Local Network";
+    var clo = "Callisto Network";
+    var cloak = "CloakCoin";
+    var clv = "Clover Finance";
+    var cmct = "Crowd Machine";
+    var cmt = "CyberMiles";
+    var cnd = "Cindicator";
+    var cnn = "Content Neutrality Network";
+    var cnx = "Cryptonex";
+    var cny = "Chinese yuan";
+    var cob = "Cobalt Metal (Fastmarkets) Futures";
+    var cocos = "Cocos-BCX";
+    var comp = "Compound";
+    var cope = "Cope";
+    var cos = "COS";
+    var cosm = "Cosmo Coin";
+    var coss = "COSS";
+    var coti = "COTI";
+    var cov = "Covesting";
+    var cova = "COVA";
+    var cpt = "Cryptaur";
+    var cpx = "Apex";
+    var cqt = "Covalent";
+    var cra = "";
+    var crab = "Crab Network";
+    var crc = "";
+    var cre = "Carry";
+    var cream = "Cream Finance";
+    var cring = "";
+    var cro = "Cronos";
+    var crpt = "Crypterium";
+    var cru = "Crust Network";
+    var crv = "Curve";
+    var crw = "Crown";
+    var csm = "Crust Shadow";
+    var csx = "";
+    var ctc = "Creditcoin";
+    var ctk = "CertiK";
+    var ctsi = "Cartesi";
+    var ctxc = "Cortex";
+    var cult = "Cult DAO";
+    var cur = "";
+    var cvc = "Civic";
+    var cvcoin = "CVCoin";
+    var cvnt = "Content Value Network";
+    var cvp = "PowerPool";
+    var cvt = "CyberVein";
+    var cvx = "Convex Finance";
+    var cw = "";
+    var cyc = "Cyclone Protocol";
+    var dac = "Davinci Coin";
+    var dacs = "DACSEE";
+    var dadi = "DADI";
+    var dag = "Constellation";
+    var dai = "Multi Collateral DAI";
+    var dao = "Decentralized Autonomous Organization";
+    var dar = "Mines of Dalarnia";
+    var dash = "Dash";
+    var dat = "Data";
+    var data = "Data";
+    var datx = "DATx";
+    var dbc = "DeepBrain Chain";
+    var dbet = "DecentBet";
+    var dbix = "DubaiCoin";
+    var dcn = "Dentacoin";
+    var dcr = "decred";
+    var dct = "DECENT";
+    var ddd = "Scry.info";
+    var dego = "Dego Finance";
+    var dent = "Dent";
+    var dext = "DEXTools";
+    var dgb = "DigiByte";
+    var dgd = "DigixDAO";
+    var dgtx = "Digitex Futures";
+    var dgx = "Digix Gold Token";
+    var dhx = "";
+    var dia = "DIA";
+    var dice = "Etheroll";
+    var dim = "DIMCOIN";
+    var dlt = "Agrello";
+    var dmd = "Diamond";
+    var dmt = "DMarket";
+    var dnt = "district0x";
+    var dock = "Dock";
+    var dodo = "DODO";
+    var doge = "Dogecoin";
+    var dose = "DOSE";
+    var dot = "Polkadot";
+    var dpx = "Dopex";
+    var dpy = "Delphy";
+    var dream = "DreamTeam Token";
+    var drep = "DREP";
+    var drg = "Dragon Coins";
+    var drgn = "Dragonchain";
+    var drt = "DomRaider";
+    var dta = "DATA";
+    var dtb = "Databits";
+    var dtr = "Dynamic Trading Rights";
+    var dusk = "Dusk Network";
+    var dx = "DxChain Token";
+    var dydx = "dYdX";
+    var dyn = "Dynamic";
+    var easy = "";
+    var ecom = "Omnitude";
+    var edc = "EDC Blockchain";
+    var edg = "Edgeless";
+    var edo = "Eidoo";
+    var edp = "Aluminium European Premium Duty-Paid (Metal Bulletin) Futures";
+    var edr = "Endor Protocol";
+    var efi = "Efinity";
+    var egld = "Elrond";
+    var egt = "Egretia";
+    var ehr = "North Euro Hot-Rolled Coil Steel (Argus) Futures";
+    var eko = "EchoLink";
+    var ekt = "EDUCare";
+    var ela = "Elastos";
+    var elec = "Electrify.Asia";
+    var elf = "aelf";
+    var em = "Eminer";
+    var emc = "Emercoin";
+    var emc2 = "Einsteinium";
+    var eng = "Enigma";
+    var enj = "Enjin Coin";
+    var ens = "Ethereum Naming Service";
+    var eos = "EOS";
+    var eosdac = "eosDAC";
+    var eq = "";
+    var erd = "Elrond";
+    var ern = "Ethernity Chain";
+    var es = "E-mini S&P 500 Futures";
+    var esd = "Empty Set Dollar";
+    var etc = "Ethereum Classic";
+    var eth = "Ethereum";
+    var ethup = "Ethereum Up";
+    var etn = "Electroneum";
+    var etp = "Metaverse ETP";
+    var eur = "Euro";
+    var eurs = "STASIS EURS";
+    var eurt = "Tether Euro";
+    var evn = "Envion";
+    var evx = "Everex";
+    var ewt = "Energy Web Token";
+    var exp = "Expanse";
+    var exrd = "Radix";
+    var exy = "";
+    var ez = "EasyFi";
+    var fair = "FairCoin";
+    var farm = "Harvest Finance";
+    var fct = "Factom";
+    var fdz = "Friendz";
+    var fee = "";
+    var fet = "Fetch.ai";
+    var fida = "Bonfida";
+    var fil = "Filecoin";
+    var fio = "FIO Protocol";
+    var firo = "Firo";
+    var fis = "StaFi Protocol";
+    var fldc = "FoldingCoin";
+    var flo = "FlorinCoin";
+    var floki = "Floki Inu";
+    var flow = "Flow";
+    var flr = "";
+    var fluz = "Fluz Fluz";
+    var fnb = "FNB Protocol";
+    var foam = "FOAM";
+    var forth = "Ampleforth Governance Token";
+    var fota = "Fortuna";
+    var fox = "Fox Token";
+    var fpis = "";
+    var frax = "Frax";
+    var front = "Frontier";
+    var fsn = "Fusion";
+    var ftc = "Feathercoin";
+    var fti = "FansTime";
+    var ftm = "Fantom";
+    var ftt = "FTX Token";
+    var ftx = "FintruX Network";
+    var fuel = "Etherparty";
+    var fun = "FunFair";
+    var fx = "Function X";
+    var fxc = "Flexacoin";
+    var fxs = "Frax Share";
+    var fxt = "FuzeX";
+    var gal = "Galatasaray Fan Token";
+    var gala = "Gala";
+    var game = "GameCredits";
+    var gamee = "";
+    var gard = "Hashgard";
+    var gari = "Gari Network";
+    var gas = "Gas";
+    var gbc = "Gold Bits Coin";
+    var gbp = "British Pound";
+    var gbx = "GoByte";
+    var gbyte = "Obyte";
+    var gc = "Gold Futures";
+    var gcc = "Global Cryptocurrency";
+    var ge = "Eurodollar";
+    var geist = "Geist Finance";
+    var gen = "DAOstack";
+    var gene = "Parkgene";
+    var gens = "";
+    var get = "GET Protocol";
+    var ghst = "Aavegotchi";
+    var glc = "GoldCoin";
+    var gld = "GoldCoin";
+    var glm = "Golem";
+    var glmr = "Moonbeam";
+    var gmat = "GoWithMi";
+    var gmt = "STEPN";
+    var gmt2 = "GoMining token";
+    var gno = "Gnosis";
+    var gnt = "Golem";
+    var gnx = "Genaro Network";
+    var go = "GoChain";
+    var gods = "Gods Unchained";
+    var got = "ParkinGo";
+    var grc = "GridCoin";
+    var grin = "GRIN";
+    var grs = "Groestlcoin";
+    var grt = "The Graph";
+    var gsc = "Global Social Chain";
+    var gst = "";
+    var gt = "Gatechain Token";
+    var gtc = "Gitcoin";
+    var gtc2 = "";
+    var gto = "Gifto";
+    var gup = "Matchpool";
+    var gusd = "Gemini Dollar";
+    var gvt = "Genesis Vision";
+    var gxc = "GXChain";
+    var gxs = "GXChain";
+    var hard = "Kava Lend";
+    var hbar = "Hedera";
+    var hc = "HyperCash";
+    var hdx = "";
+    var hedg = "HedgeTrade";
+    var hegic = "Hegic";
+    var hex = "HEX";
+    var hft = "Hashflow";
+    var hg = "Copper Futures";
+    var hgs = "Copper Financial Futures";
+    var hh = "Natural Gas (Henry Hub) Last-day Financial Futures";
+    var high = "Highstreet";
+    var hit = "HitChain";
+    var hive = "Hive";
+    var hkd = "Hong Kong Dollar";
+    var hmq = "Humaniq";
+    var hns = "Handshake";
+    var ho = "";
+    var hopr = "HOPR Token";
+    var hot = "Holochain";
+    var hp = "";
+    var hpb = "High Performance Blockchain";
+    var hpc = "Happycoin";
+    var hpt = "Huobi Pool Token";
+    var hrc = "U.S. Midwest Domestic Hot-Rolled Coil Steel (CRU) Index Futures";
+    var hsc = "HashCoin";
+    var hsr = "Hshare";
+    var hst = "Decision Token";
+    var ht = "Huobi Token";
+    var html = "HTMLCOIN";
+    var htt = "";
+    var huc = "HunterCoin";
+    var hunt = "HUNT";
+    var hvn = "Hive Project";
+    var hxro = "Hxro";
+    var hyc = "HYCON";
+    var hydra = "Hydro Protocol";
+    var hydro = "Hydro";
+    var icn = "Iconomi";
+    var icos = "ICOS";
+    var icp = "Internet Computer";
+    var icx = "ICON";
+    var idex = "IDEX";
+    var idh = "indaHash";
+    var idr = "Indonesian Rupiah";
+    var ift = "InvestFeed";
+    var ignis = "Ignis";
+    var ihf = "Invictus Hyperion Fund";
+    var iht = "IHT Real Estate Protocol";
+    var ilc = "ILCoin";
+    var ilv = "Illuvium";
+    var imx = "Immutable X";
+    var incnt = "Incent";
+    var ind = "Indorse Token";
+    var indi = "";
+    var inj = "Injective Protocol";
+    var ink = "Ink";
+    var inr = "Indian Rupee";
+    var ins = "INS Ecosystem";
+    var int = "Internet Node Token";
+    var intr = "Interlay";
+    var ioc = "I/O Coin";
+    var ion = "ION";
+    var iost = "IOST";
+    var iot = "";
+    var iotx = "IoTeX";
+    var iq = "Everipedia";
+    var iris = "IRISnet";
+    var itc = "IoT Chain";
+    var ivy = "Ivy";
+    var ixt = "iXledger";
+    var jasmy = "JasmyCoin";
+    var jnt = "Jibrel Network";
+    var joe = "Trader Joe";
+    var jpeg = "";
+    var jpy = "Japanese Yen";
+    var jst = "JUST";
+    var juno = "";
+    var just = "";
+    var juv = "Juventus Fan Token";
+    var kan = "BitKan";
+    var kar = "Karura";
+    var kava = "Kava";
+    var kbc = "Karatgold Coin";
+    var kcash = "Kcash";
+    var kda = "Kadena";
+    var keep = "Keep Network";
+    var key = "Selfkey";
+    var kick = "Kick Token";
+    var kilt = "KILT Protocol";
+    var kin = "Kin";
+    var kint = "Kintsugi";
+    var klay = "Klaytn";
+    var kma = "";
+    var kmd = "Komodo";
+    var knc = "Kyber Network";
+    var kore = "Kore";
+    var kp3r = "Keep3R";
+    var krm = "Karma";
+    var krw = "South Korean Won";
+    var ksm = "Kusama";
+    var ksx = "";
+    var kyl = "Kylin";
+    var la = "LATOKEN";
+    var lak = "";
+    var lamb = "Lambda";
+    var latx = "LatiumX";
+    var layr = "Composable Finance";
+    var lba = "Cred";
+    var lbc = "LBRY Credits";
+    var lcc = "Litecoin Cash";
+    var lcx = "LCX";
+    var ldo = "Lido DAO Token";
+    var lend = "Aave";
+    var leo = "LEO Token";
+    var leoc = "LEOcoin";
+    var life = "LIFE";
+    var lina = "Linear";
+    var link = "ChainLink";
+    var lit = "Litentry";
+    var lmc = "LoMoCoin";
+    var lml = "Lisk Machine Learning";
+    var lnc = "Linker Coin";
+    var lnd = "Lendingblock";
+    var loc = "LockTrip";
+    var loka = "League of Kingdoms Arena";
+    var looks = "LooksRare";
+    var loom = "Loom Network";
+    var lpt = "Livepeer";
+    var lqty = "Liquity";
+    var lrc = "Loopring";
+    var lrn = "Loopring [NEO]";
+    var lsk = "Lisk";
+    var ltc = "Litecoin";
+    var lto = "LTO Network";
+    var lun = "Lunyr";
+    var luna = "Terra Classic";
+    var luna2 = "Terra 2.0";
+    var lxt = "Litex";
+    var lym = "Lympo";
+    var m2k = "Micro E-mini Russell 2000 Index";
+    var ma = "";
+    var magic = "";
+    var maid = "MaidSafe";
+    var man = "Matrix AI Network";
+    var mana = "Decentraland";
+    var maps = "MAPS";
+    var mask = "Mask Network";
+    var mass = "Massnet";
+    var math = "MATH";
+    var matic = "Polygon";
+    var mbl = "MovieBloc";
+    var mbt = "Micro Bitcoin";
+    var mc = "Merit Circle";
+    var mco = "Monaco";
+    var mda = "Moeda Loyalty Points";
+    var mds = "MediShares";
+    var mdt = "Measurable Data Token";
+    var mdx = "Mdex";
+    var med = "MediBloc [QRC20]";
+    var mer = "Mercury";
+    var mes = "Micro E-mini S&P 500 Index";
+    var met = "Metronome";
+    var meta = "Metadium";
+    var mft = "Mainframe";
+    var mgc = "E-micro Gold Futures";
+    var mgo = "MobileGo";
+    var mhc = "#MetaHash";
+    var mina = "Mina";
+    var mir = "Mirror Protocol";
+    var mith = "Mithril";
+    var mitx = "Morpheus Labs";
+    var mjp = "Aluminum Japan Premium (Platts) Futures";
+    var mkr = "Maker";
+    var mln = "waterMelon";
+    var mngo = "Mango Markets";
+    var mnx = "MinexCoin";
+    var moac = "MOAC";
+    var mob = "MobileCoin";
+    var mobi = "Mobius";
+    var moc = "Moss Coin";
+    var mod = "Modum";
+    var mona = "MonaCoin";
+    var moon = "10X Long Bitcoin Token";
+    var morph = "Morpheus Network";
+    var movr = "Moonriver";
+    var mpl = "Maple";
+    var mrk = "MARK.SPACE";
+    var msol = "Marinade staked SOL";
+    var msp = "Mothership";
+    var mta = "mStable Governance Token: Meta";
+    var mtc = "Docademic";
+    var mth = "Monetha";
+    var mtl = "Metal";
+    var mtn = "Medicalchain";
+    var mtx = "Matryx";
+    var mue = "MonetaryUnit";
+    var multi = "Multichain";
+    var mv = "";
+    var mx = "MX Token";
+    var mxm = "Maximine Coin";
+    var mxn = "Mexican Peso";
+    var myr = "Malaysian Ringgit";
+    var n9l = "";
+    var nanj = "NANJCOIN";
+    var nano = "Nano";
+    var nas = "Nebulas";
+    var naut = "NautilusCoin";
+    var nav = "NAV Coin";
+    var ncash = "Nucleus Vision";
+    var nct = "PolySwarm";
+    var near = "NEAR Protocol";
+    var nebl = "Neblio";
+    var nec = "Nectar";
+    var neo = "NEO";
+    var neos = "NeosCoin";
+    var nest = "NEST Protocol";
+    var neu = "Neumark";
+    var nexo = "Nexo";
+    var nft = "APENFT";
+    var ng = "Natural Gas Futures";
+    var ngc = "NAGA";
+    var ngn = "Nigerian Naira";
+    var nim = "Nimiq";
+    var niy = "Nikkei/Yen";
+    var nkd = "Nikkei/USD";
+    var nkn = "NKN";
+    var nlc2 = "NoLimitCoin";
+    var nlg = "Gulden";
+    var nmc = "Namecoin";
+    var nmr = "Numeraire";
+    var nn = "Henry Hub Natural Gas Last Day Financial Futures";
+    var noah = "Noah Coin";
+    var nodl = "Nodle";
+    var note = "DNotes";
+    var npg = "";
+    var nplc = "Plus-Coin";
+    var npxs = "Pundi X";
+    var nq = "E-mini Nasdaq-100";
+    var nrg = "Energi";
+    var ntk = "Neurotoken";
+    var nu = "NuCypher";
+    var nuls = "Nuls";
+    var nvc = "Novacoin";
+    var nxc = "Nexium";
+    var nxs = "Nexus";
+    var nxt = "NXT";
+    var nym = "";
+    var o = "";
+    var oax = "OAX";
+    var ocean = "Ocean Protocol";
+    var ocn = "Odyssey";
+    var ode = "ODEM";
+    var ogn = "Origin Protocol";
+    var ogo = "Origo";
+    var ok = "OKCash";
+    var okb = "Okex Token";
+    var om = "Mantra Dao";
+    var omg = "OMG Network";
+    var omni = "Omni";
+    var one = "Harmony";
+    var ong = "SoMee.Social";
+    var onot = "ONOToken";
+    var ont = "Ontology";
+    var ooki = "Ooki Protocol";
+    var orbs = "Orbs";
+    var orca = "Orca";
+    var orme = "Ormeus Coin";
+    var orn = "Orion Protocol";
+    var ors = "Origin Sport";
+    var osmo = "";
+    var ost = "OST";
+    var otn = "Open Trading Network";
+    var oxt = "Orchid";
+    var oxy = "Oxygen";
+    var pai = "PCHAIN";
+    var pal = "Pal Network";
+    var paper = "Dope Wars Paper";
+    var para = "Parallel Finance";
+    var part = "Particl";
+    var pasc = "Pascal Coin";
+    var pat = "Patron";
+    var pax = "Paxos Standard";
+    var paxg = "PAX Gold";
+    var pay = "TenX";
+    var pbt = "Primalbase Token";
+    var pcl = "Peculium";
+    var pcx = "ChainX";
+    var pdex = "Polkadex";
+    var people = "ConstitutionDAO";
+    var perl = "Perlin";
+    var perp = "Perpetual Protocol";
+    var pha = "Phala.Network";
+    var phb = "Phoenix Global";
+    var php = "Philippine Peso";
+    var phx = "Red Pulse Phoenix";
+    var pi = "PCHAIN";
+    var pica = "";
+    var pink = "PinkCoin";
+    var pivx = "PIVX";
+    var pkt = "Playkey";
+    var pl = "";
+    var pla = "PlayDapp";
+    var plbt = "Polybius";
+    var plm = "";
+    var pln = "Polish Złoty";
+    var plr = "Pillar";
+    var ply = "PlayCoin [ERC20]";
+    var pma = "PumaPay";
+    var png = "Pangolin";
+    var pnt = "pNetwork";
+    var poa = "POA Network";
+    var poe = "Po.et";
+    var polis = "Star Atlas DAO";
+    var pols = "Polkastarter";
+    var poly = "Polymath";
+    var pond = "Marlin";
+    var pot = "PotCoin";
+    var powr = "Power Ledger";
+    var ppc = "Peercoin";
+    var ppt = "Populous";
+    var pra = "ProChain";
+    var pre = "Presearch";
+    var prg = "Paragon";
+    var pro = "Propy";
+    var prq = "PARSIQ";
+    var pst = "Primas";
+    var pstake = "Pstake";
+    var pton = "PTON";
+    var pundix = "Pundi X[new]";
+    var pvt = "Pivot Token";
+    var pxg = "PlayGame";
+    var pyr = "Vulcan Forged PYR";
+    var qash = "QASH";
+    var qau = "Quantum";
+    var qc = "E-mini Copper Futures";
+    var qi = "Benqi";
+    var qi2 = "E-mini Silver Futures";
+    var qkc = "QuarkChain";
+    var qlc = "QLINK";
+    var qnt = "Quant Network";
+    var qntu = "Quanta Utility Token";
+    var qo = "E-mini Gold Futures";
+    var qrdo = "Qredo";
+    var qrl = "Quantum Resistant Ledger";
+    var qsp = "Quantstamp";
+    var qtum = "Qtum";
+    var qun = "QunQun";
+    var r = "Revain";
+    var rad = "Radicle";
+    var radar = "";
+    var rads = "Radium";
+    var ramp = "RAMP";
+    var rare = "SuperRare";
+    var rari = "Rarible";
+    var rating = "DPRating";
+    var ray = "Raydium";
+    var rb = "";
+    var rbc = "Rubic";
+    var rblx = "Rublix";
+    var rbn = "Ribbon Finance";
+    var rbtc = "Smart Bitcoin";
+    var rby = "Rubycoin";
+    var rcn = "Ripio Credit Network";
+    var rdd = "ReddCoin";
+    var rdn = "Raiden Network Token";
+    var real = "Realy";
+    var reef = "Reef";
+    var rem = "Remme";
+    var ren = "Republic Protocol";
+    var rep = "Augur";
+    var repv2 = "Augur v2";
+    var req = "Request";
+    var rev = "Revain";
+    var revv = "REVV";
+    var rfox = "RedFOX Labs";
+    var rfr = "Refereum";
+    var ric = "Riecoin";
+    var rif = "RIF Token";
+    var ring = "Darwinia Network";
+    var rlc = "iExec RLC";
+    var rly = "Rally";
+    var rmrk = "RMRK";
+    var rndr = "Render Token";
+    var rntb = "BitRent";
+    var ron = "Ronin";
+    var rook = "KeeperDAO";
+    var rose = "Oasis Network";
+    var rox = "Robotina";
+    var rp = "Euro/British Pound Futures";
+    var rpx = "Red Pulse";
+    var rsr = "Reserve Rights";
+    var rsv = "";
+    var rty = "E-mini Russell 2000 Index";
+    var rub = "Russian Ruble";
+    var ruff = "Ruff";
+    var rune = "THORChain";
+    var rvn = "Ravencoin";
+    var rvr = "RevolutionVR";
+    var rvt = "Rivetz";
+    var sai = "Single Collateral DAI";
+    var salt = "SALT";
+    var samo = "Samoyedcoin";
+    var san = "Santinent Network Token";
+    var sand = "The Sandbox";
+    var sats = "";
+    var sbd = "Steem Dollars";
+    var sbr = "Saber";
+    var sc = "Siacoin";
+    var scc = "StockChain";
+    var scrt = "Secret Network";
+    var sdc = "ShadowCoin";
+    var sdn = "Shiden Network";
+    var seele = "Seele";
+    var sek = "";
+    var sen = "Consensus";
+    var sent = "Sentinel";
+    var sero = "Super Zero";
+    var sexc = "ShareX";
+    var sfp = "SafePal";
+    var sgb = "Songbird";
+    var sgc = "Shanghai Gold (CNH) Futures";
+    var sgd = "Singapore Dollar";
+    var sgn = "Signals Network";
+    var sgu = "Shanghai Gold (USD) Futures";
+    var shib = "SHIBA INU";
+    var shift = "Shift";
+    var ship = "ShipChain";
+    var shping = "SHPING";
+    var si = "Silver Futures";
+    var sib = "SIBCoin";
+    var sil = "1,000-oz. Silver Futures";
+    var six = "SIX";
+    var sjcx = "Storjcoin X";
+    var skl = "Skale";
+    var skm = "Skrumble Network";
+    var sku = "";
+    var sky = "Skycoin";
+    var slp = "Smooth Love Potion";
+    var slr = "SolarCoin";
+    var sls = "SaluS";
+    var slt = "Smartlands";
+    var slv = "Silverway";
+    var smart = "SmartCash";
+    var smn = "";
+    var smt = "SmartMesh";
+    var snc = "SunContract";
+    var snet = "Snetwork";
+    var sngls = "SingularDTV";
+    var snm = "SONM";
+    var snt = "Status";
+    var snx = "Synthetix Network Token";
+    var soc = "All Sports";
+    var socks = "Unisocks";
+    var sol = "Solana";
+    var solid = "";
+    var solo = "Sologenic";
+    var solve = "SOLVE";
+    var sos = "OpenDAO";
+    var soul = "Phantasma";
+    var sp = "S&P 500";
+    var sparta = "Spartan Protocol";
+    var spc = "SpaceChain";
+    var spd = "SPINDLE";
+    var spell = "Spell Token";
+    var sphr = "Sphere";
+    var sphtx = "SophiaTX";
+    var spnd = "Spendcoin";
+    var spnk = "SpankChain";
+    var srm = "Serum";
+    var srn = "SIRIN LABS Token";
+    var ssp = "Smartshare";
+    var stacs = "STACS";
+    var step = "Step Finance";
+    var stg = "";
+    var stmx = "StormX";
+    var storm = "Storm";
+    var stpt = "STPT";
+    var stq = "Storiqa";
+    var str = "Stellar";
+    var strat = "Stratis";
+    var strax = "Stratis";
+    var strk = "Strike";
+    var strong = "Strong";
+    var stx = "Stox";
+    var sub = "substratum";
+    var sun = "Sun Token";
+    var susd = "sUSD";
+    var sushi = "Sushi";
+    var swftc = "SwftCoin";
+    var swm = "Swarm";
+    var swrv = "Swerve";
+    var swt = "Swarm City";
+    var swth = "Switcheo";
+    var sxp = "Swipe";
+    var syn = "SynLev";
+    var sys = "Syscoin";
+    var t = "Threshold Network Token";
+    var taas = "TaaS";
+    var tau = "Lamden";
+    var tbtc = "tBTC";
+    var tct = "TokenClub";
+    var teer = "Integritee";
+    var tel = "Telcoin";
+    var temco = "TEMCO";
+    var tfuel = "Theta Fuel";
+    var thb = "";
+    var thc = "HempCoin";
+    var theta = "Theta Token";
+    var thx = "ThoreNext";
+    var time = "Chronobank";
+    var tio = "Iron Ore 62% FE- CFR China Futures";
+    var tix = "Blocktix";
+    var tkn = "TokenCard";
+    var tky = "THEKEY";
+    var tlm = "Alien Worlds";
+    var tnb = "Time New Bank";
+    var tnc = "Trinity Network Credit";
+    var tnt = "Tierion";
+    var toke = "Tokemak";
+    var tomb = "";
+    var tomo = "TomoChain";
+    var top = "TOP";
+    var torn = "Tornado Cash";
+    var tower = "Tower";
+    var tpay = "TokenPay";
+    var trac = "OriginTrail";
+    var trb = "Tellor";
+    var tribe = "Tribe";
+    var trig = "Triggers";
+    var trio = "Tripio";
+    var troy = "TROY";
+    var trst = "WeTrust";
+    var tru = "TrueFi";
+    var trx = "TRON";
+    var tryb = "BiLira";
+    var tt = "Thunder Token";
+    var ttc = "TTC Protocol";
+    var ttt = "The Transfer Token";
+    var ttu = "TaTaTu";
+    var tube = "BitTube";
+    var tusd = "True USD";
+    var tvk = "Terra Virtua Kolect";
+    var twt = "Trust Wallet Token";
+    var uah = "Ukrainian hryvnia";
+    var ubq = "Ubiq";
+    var ubt = "Unibright";
+    var uft = "UniLend";
+    var ugas = "UGAS";
+    var uip = "UnlimitedIP";
+    var ukg = "Unikoin Gold";
+    var uma = "Universal Market Access";
+    var unfi = "Unifi Protocol DAO";
+    var uni = "Uniswap";
+    var unq = "Unique Network";
+    var up = "UpToken";
+    var upp = "Sentinel Protocol";
+    var usd = "United States Dollar";
+    var usdc = "USD//Coin";
+    var usds = "StableUSD";
+    var usk = "UpSkills";
+    var ust = "TerraClassicUSD";
+    var utk = "UTRUST";
+    var utnp = "Universa";
+    var utt = "United Traders Token";
+    var uuu = "U Network";
+    var ux = "UXC Uranium U3O8 Futures";
+    var vader = "Vader Protocol";
+    var vai = "Vai";
+    var vbk = "VeriBlock";
+    var vdx = "Vodi X";
+    var vee = "BLOCKv";
+    var vemp = "vEmpire DDAO";
+    var ven = "VeChain";
+    var veo = "Amoveo";
+    var veri = "Veritaseum";
+    var vex = "Vexanium";
+    var vgx = "Voyager Token";
+    var via = "Viacoin";
+    var vib = "Viberate";
+    var vibe = "VIBE";
+    var vid = "VideoCoin";
+    var vidt = "VIDT Datalink";
+    var vidy = "VIDY";
+    var vitae = "Vitae";
+    var vite = "VITE";
+    var vlx = "Velas";
+    var vox = "Voxels";
+    var voxel = "Voxies";
+    var vra = "Verasity";
+    var vrc = "VeriCoin";
+    var vrm = "Verium";
+    var vsys = "V Systems";
+    var vtc = "Vertcoin";
+    var vtho = "VeThor Token";
+    var wabi = "WaBi";
+    var wan = "Wanchain";
+    var waves = "Waves";
+    var wax = "";
+    var wbtc = "Wrapped Bitcoin";
+    var wet = "WeShow Token";
+    var weth = "Wrapped Ether";
+    var wib = "Wibson";
+    var wicc = "WaykiChain";
+    var win = "WINk";
+    var wing = "Wing";
+    var wings = "Wings";
+    var wnxm = "Wrapped NXM";
+    var woo = "Woo Network";
+    var wpr = "WePower";
+    var wrx = "WazirX";
+    var wtc = "Waltonchain";
+    var wtt = "";
+    var wwb = "Wowbit";
+    var wxt = "Wirex Token";
+    var xas = "Asch";
+    var xaur = "Xaurum";
+    var xaut = "Tether Gold";
+    var xava = "Avalaunch";
+    var xbc = "Bitcoin Plus";
+    var xcon = "Connect Coin";
+    var xcp = "Counterparty";
+    var xdefi = "XDEFI Wallet";
+    var xdn = "DigitalNote";
+    var xel = "Elastic";
+    var xem = "NEM";
+    var xes = "";
+    var xhv = "Haven Protocol";
+    var xin = "Mixin";
+    var xlm = "Stellar";
+    var xmc = "Monero Classic";
+    var xmr = "Monero";
+    var xmx = "XMax";
+    var xmy = "Myriad";
+    var xnk = "";
+    var xns = "Insolar";
+    var xor = "Sora";
+    var xos = "";
+    var xpm = "Primecoin";
+    var xpr = "Proton";
+    var xrc = "Bitcoin Rhodium";
+    var xrp = "XRP";
+    var xrpx = "";
+    var xrt = "Robonomics";
+    var xst = "Stealth";
+    var xtp = "Tap";
+    var xtz = "Tezos";
+    var xtzdown = "Tezos Down";
+    var xvc = "Vcash";
+    var xvg = "Verge";
+    var xvs = "Venus";
+    var xwc = "WhiteCoin";
+    var xyo = "XYO";
+    var xzc = "ZCoin";
+    var yam = "YAM";
+    var yee = "YEE";
+    var yeed = "YGGDRASH";
+    var yfi = "yearn.finance";
+    var yfii = "DFI.Money";
+    var ygg = "Yield Guild Games";
+    var yoyow = "YOYOW";
+    var zar = "South African rand";
+    var zcl = "ZClassic";
+    var zcn = "0chain";
+    var zco = "Zebi";
+    var zec = "Zcash";
+    var zen = "Horizen";
+    var zil = "Zilliqa";
+    var zks = "ZKSwap";
+    var zla = "Zilla";
+    var zlk = "";
+    var zondo = "";
+    var zpr = "ZPER";
+    var zpt = "Zeepin";
+    var zrc = "ZrCoin";
+    var zrx = "0x";
+    var zsc = "Zeusshield";
+    var ztg = "";
+    var xbt = "";
+    var bitz = "Bit-Z";
+    var cs = "Credits";
+    var crm = "";
+    var xdg = "";
+    var eth2 = "Ethereum 2";
+    var eth2s = "";
+    var usdt = "Tether";
+    var kraken = "Kraken";
+    var gemini = "Gemini";
+    var husd = "HUSD";
+    var huobi = "Huobi";
+    var iota = "IOTA";
+    var medx = "MediBloc [ERC20]";
+    var rur = "";
+    var steem = "Steem";
+    var xsc = "";
+    var storj = "Storj";
+    var vet = "VeChain";
+    var waxp = "WAX";
+    var mexbt = "meXBT";
+    var gdax = "";
+    var quadriga = "QuadrigaCX";
+    var cgld = "";
+    var kshib = "Kaiken Shiba";
+    var srare = "";
+    var beaconNames = {
+    	_default: _default,
+    	d: d,
+    	"default": "",
+    	axieinfinity: axieinfinity,
+    	bibox: bibox,
+    	binance: binance,
+    	bisq: bisq,
+    	bitbay: bitbay,
+    	bitfinex: bitfinex,
+    	bitflyer: bitflyer,
+    	bithumb: bithumb,
+    	bitmex: bitmex,
+    	bitso: bitso,
+    	bitsquare: bitsquare,
+    	bitstamp: bitstamp,
+    	bittrex: bittrex,
+    	bitvc: bitvc,
+    	btcchina: btcchina,
+    	btce: btce,
+    	bybit: bybit,
+    	cexio: cexio,
+    	cme: cme,
+    	coinbase: coinbase,
+    	coinbasepro: coinbasepro,
+    	coinone: coinone,
+    	comex: comex,
+    	cryptofacilities: cryptofacilities,
+    	deribit: deribit,
+    	"dex-aggregated": "DEX (aggregated)",
+    	gateio: gateio,
+    	hitbtc: hitbtc,
+    	kucoin: kucoin,
+    	liquid: liquid,
+    	luno: luno,
+    	mtgox: mtgox,
+    	mxc: mxc,
+    	nbatopshop: nbatopshop,
+    	nymex: nymex,
+    	okcoin: okcoin,
+    	okx: okx,
+    	opensea: opensea,
+    	poloniex: poloniex,
+    	qryptos: qryptos,
+    	quadrigacx: quadrigacx,
+    	quick: quick,
+    	quoine: quoine,
+    	rarible: rarible,
+    	totle: totle,
+    	upbit: upbit,
+    	vaultofsatoshi: vaultofsatoshi,
+    	wex: wex,
+    	zaif: zaif,
+    	zonda: zonda,
+    	"1inch": "1inch",
+    	"1st": "FirstBlood",
+    	"6a": "Australian Dollar",
+    	"6b": "British Pound",
+    	"6c": "Canadian Dollar",
+    	"6e": "Euro FX Futures",
+    	"6j": "Japanese Yen",
+    	"6l": "Brazilian Real",
+    	"6m": "Mexican Peso",
+    	"6n": "New Zealand Dollar",
+    	"6s": "Swiss Franc",
+    	a38: a38,
+    	aac: aac,
+    	aave: aave,
+    	abbc: abbc,
+    	abt: abt,
+    	abyss: abyss,
+    	aca: aca,
+    	acat: acat,
+    	ach: ach,
+    	act: act,
+    	ad0: ad0,
+    	ada: ada,
+    	adel: adel,
+    	adh: adh,
+    	adm: adm,
+    	ado: ado,
+    	adt: adt,
+    	adx: adx,
+    	ae: ae,
+    	aed: aed,
+    	aeon: aeon,
+    	aep: aep,
+    	aergo: aergo,
+    	agi: agi,
+    	agld: agld,
+    	aid: aid,
+    	aion: aion,
+    	air: air,
+    	akro: akro,
+    	akt: akt,
+    	alcx: alcx,
+    	aleph: aleph,
+    	algo: algo,
+    	ali: ali,
+    	alice: alice,
+    	alpha: alpha,
+    	amb: amb,
+    	amlt: amlt,
+    	amp: amp,
+    	ampl: ampl,
+    	anc: anc,
+    	anct: anct,
+    	ankr: ankr,
+    	ant: ant,
+    	ape: ape,
+    	api3: api3,
+    	apis: apis,
+    	appc: appc,
+    	ar: ar,
+    	ardr: ardr,
+    	ark: ark,
+    	arn: arn,
+    	arpa: arpa,
+    	art: art,
+    	aspt: aspt,
+    	ast: ast,
+    	astr: astr,
+    	at: at,
+    	atlas: atlas,
+    	atm: atm,
+    	atom: atom,
+    	atp: atp,
+    	atri: atri,
+    	auction: auction,
+    	aud: aud,
+    	audio: audio,
+    	aup: aup,
+    	aury: aury,
+    	ausd: ausd,
+    	auto: auto,
+    	ava: ava,
+    	avax: avax,
+    	avt: avt,
+    	axp: axp,
+    	axs: axs,
+    	b: b,
+    	b0: b0,
+    	b2g: b2g,
+    	bab: bab,
+    	badger: badger,
+    	bake: bake,
+    	bal: bal,
+    	banca: banca,
+    	band: band,
+    	bat: bat,
+    	bay: bay,
+    	bbc: bbc,
+    	bcc: bcc,
+    	bcd: bcd,
+    	bch: bch,
+    	bci: bci,
+    	bcn: bcn,
+    	bcpt: bcpt,
+    	bcu: bcu,
+    	bcv: bcv,
+    	bcy: bcy,
+    	bdg: bdg,
+    	beam: beam,
+    	beet: beet,
+    	bel: bel,
+    	bela: bela,
+    	berry: berry,
+    	beta: beta,
+    	betr: betr,
+    	bez: bez,
+    	bft: bft,
+    	bfx: bfx,
+    	bhd: bhd,
+    	bht: bht,
+    	bico: bico,
+    	bit: bit,
+    	bitb: bitb,
+    	bix: bix,
+    	bk: bk,
+    	bkx: bkx,
+    	blk: blk,
+    	block: block,
+    	blok: blok,
+    	blt: blt,
+    	blz: blz,
+    	bmc: bmc,
+    	bnb: bnb,
+    	bnc: bnc,
+    	bnk: bnk,
+    	bnt: bnt,
+    	bo: bo,
+    	bond: bond,
+    	boo: boo,
+    	bor: bor,
+    	bora: bora,
+    	bos: bos,
+    	box: box,
+    	brd: brd,
+    	breed: breed,
+    	brg: brg,
+    	brick: brick,
+    	bsd: bsd,
+    	bsv: bsv,
+    	bsx: bsx,
+    	bt1: bt1,
+    	bt2: bt2,
+    	btc: btc,
+    	btcd: btcd,
+    	btcfx: btcfx,
+    	btcp: btcp,
+    	btg: btg,
+    	btm: btm,
+    	btn: btn,
+    	bto: bto,
+    	btrst: btrst,
+    	bts: bts,
+    	btt: btt,
+    	btu: btu,
+    	btx: btx,
+    	burger: burger,
+    	burst: burst,
+    	bus: bus,
+    	busd: busd,
+    	bwx: bwx,
+    	bz: bz,
+    	bzrx: bzrx,
+    	c: c,
+    	c20: c20,
+    	c98: c98,
+    	cad: cad,
+    	cake: cake,
+    	cas: cas,
+    	cat: cat,
+    	cbc: cbc,
+    	cbt: cbt,
+    	cdt: cdt,
+    	cel: cel,
+    	celo: celo,
+    	celr: celr,
+    	cennz: cennz,
+    	cfg: cfg,
+    	cfi: cfi,
+    	cfx: cfx,
+    	cgt: cgt,
+    	chat: chat,
+    	chf: chf,
+    	chp: chp,
+    	chr: chr,
+    	chsb: chsb,
+    	chx: chx,
+    	chz: chz,
+    	ckb: ckb,
+    	cl: cl,
+    	clam: clam,
+    	cln: cln,
+    	clo: clo,
+    	cloak: cloak,
+    	clv: clv,
+    	cmct: cmct,
+    	cmt: cmt,
+    	cnd: cnd,
+    	cnn: cnn,
+    	cnx: cnx,
+    	cny: cny,
+    	cob: cob,
+    	cocos: cocos,
+    	comp: comp,
+    	cope: cope,
+    	cos: cos,
+    	cosm: cosm,
+    	coss: coss,
+    	coti: coti,
+    	cov: cov,
+    	cova: cova,
+    	cpt: cpt,
+    	cpx: cpx,
+    	cqt: cqt,
+    	cra: cra,
+    	crab: crab,
+    	crc: crc,
+    	cre: cre,
+    	cream: cream,
+    	cring: cring,
+    	cro: cro,
+    	crpt: crpt,
+    	cru: cru,
+    	crv: crv,
+    	crw: crw,
+    	csm: csm,
+    	csx: csx,
+    	ctc: ctc,
+    	ctk: ctk,
+    	ctsi: ctsi,
+    	ctxc: ctxc,
+    	cult: cult,
+    	cur: cur,
+    	cvc: cvc,
+    	cvcoin: cvcoin,
+    	cvnt: cvnt,
+    	cvp: cvp,
+    	cvt: cvt,
+    	cvx: cvx,
+    	cw: cw,
+    	cyc: cyc,
+    	dac: dac,
+    	dacs: dacs,
+    	dadi: dadi,
+    	dag: dag,
+    	dai: dai,
+    	dao: dao,
+    	dar: dar,
+    	dash: dash,
+    	dat: dat,
+    	data: data,
+    	datx: datx,
+    	dbc: dbc,
+    	dbet: dbet,
+    	dbix: dbix,
+    	dcn: dcn,
+    	dcr: dcr,
+    	dct: dct,
+    	ddd: ddd,
+    	dego: dego,
+    	dent: dent,
+    	dext: dext,
+    	dgb: dgb,
+    	dgd: dgd,
+    	dgtx: dgtx,
+    	dgx: dgx,
+    	dhx: dhx,
+    	dia: dia,
+    	dice: dice,
+    	dim: dim,
+    	dlt: dlt,
+    	dmd: dmd,
+    	dmt: dmt,
+    	dnt: dnt,
+    	dock: dock,
+    	dodo: dodo,
+    	doge: doge,
+    	dose: dose,
+    	dot: dot,
+    	dpx: dpx,
+    	dpy: dpy,
+    	dream: dream,
+    	drep: drep,
+    	drg: drg,
+    	drgn: drgn,
+    	drt: drt,
+    	dta: dta,
+    	dtb: dtb,
+    	dtr: dtr,
+    	dusk: dusk,
+    	dx: dx,
+    	dydx: dydx,
+    	dyn: dyn,
+    	easy: easy,
+    	ecom: ecom,
+    	edc: edc,
+    	edg: edg,
+    	edo: edo,
+    	edp: edp,
+    	edr: edr,
+    	efi: efi,
+    	egld: egld,
+    	egt: egt,
+    	ehr: ehr,
+    	eko: eko,
+    	ekt: ekt,
+    	ela: ela,
+    	elec: elec,
+    	elf: elf,
+    	em: em,
+    	emc: emc,
+    	emc2: emc2,
+    	eng: eng,
+    	enj: enj,
+    	ens: ens,
+    	eos: eos,
+    	eosdac: eosdac,
+    	eq: eq,
+    	erd: erd,
+    	ern: ern,
+    	es: es,
+    	esd: esd,
+    	etc: etc,
+    	eth: eth,
+    	ethup: ethup,
+    	etn: etn,
+    	etp: etp,
+    	eur: eur,
+    	eurs: eurs,
+    	eurt: eurt,
+    	evn: evn,
+    	evx: evx,
+    	ewt: ewt,
+    	exp: exp,
+    	exrd: exrd,
+    	exy: exy,
+    	ez: ez,
+    	fair: fair,
+    	farm: farm,
+    	fct: fct,
+    	fdz: fdz,
+    	fee: fee,
+    	fet: fet,
+    	fida: fida,
+    	fil: fil,
+    	fio: fio,
+    	firo: firo,
+    	fis: fis,
+    	fldc: fldc,
+    	flo: flo,
+    	floki: floki,
+    	flow: flow,
+    	flr: flr,
+    	fluz: fluz,
+    	fnb: fnb,
+    	foam: foam,
+    	"for": "Force Protocol",
+    	forth: forth,
+    	fota: fota,
+    	fox: fox,
+    	fpis: fpis,
+    	frax: frax,
+    	front: front,
+    	fsn: fsn,
+    	ftc: ftc,
+    	fti: fti,
+    	ftm: ftm,
+    	ftt: ftt,
+    	ftx: ftx,
+    	fuel: fuel,
+    	fun: fun,
+    	fx: fx,
+    	fxc: fxc,
+    	fxs: fxs,
+    	fxt: fxt,
+    	gal: gal,
+    	gala: gala,
+    	game: game,
+    	gamee: gamee,
+    	gard: gard,
+    	gari: gari,
+    	gas: gas,
+    	gbc: gbc,
+    	gbp: gbp,
+    	gbx: gbx,
+    	gbyte: gbyte,
+    	gc: gc,
+    	gcc: gcc,
+    	ge: ge,
+    	geist: geist,
+    	gen: gen,
+    	gene: gene,
+    	gens: gens,
+    	get: get,
+    	ghst: ghst,
+    	glc: glc,
+    	gld: gld,
+    	glm: glm,
+    	glmr: glmr,
+    	gmat: gmat,
+    	gmt: gmt,
+    	gmt2: gmt2,
+    	gno: gno,
+    	gnt: gnt,
+    	gnx: gnx,
+    	go: go,
+    	gods: gods,
+    	got: got,
+    	grc: grc,
+    	grin: grin,
+    	grs: grs,
+    	grt: grt,
+    	gsc: gsc,
+    	gst: gst,
+    	gt: gt,
+    	gtc: gtc,
+    	gtc2: gtc2,
+    	gto: gto,
+    	gup: gup,
+    	gusd: gusd,
+    	gvt: gvt,
+    	gxc: gxc,
+    	gxs: gxs,
+    	hard: hard,
+    	hbar: hbar,
+    	hc: hc,
+    	hdx: hdx,
+    	hedg: hedg,
+    	hegic: hegic,
+    	hex: hex,
+    	hft: hft,
+    	hg: hg,
+    	hgs: hgs,
+    	hh: hh,
+    	high: high,
+    	hit: hit,
+    	hive: hive,
+    	hkd: hkd,
+    	hmq: hmq,
+    	hns: hns,
+    	ho: ho,
+    	hopr: hopr,
+    	hot: hot,
+    	hp: hp,
+    	hpb: hpb,
+    	hpc: hpc,
+    	hpt: hpt,
+    	hrc: hrc,
+    	hsc: hsc,
+    	hsr: hsr,
+    	hst: hst,
+    	ht: ht,
+    	html: html,
+    	htt: htt,
+    	huc: huc,
+    	hunt: hunt,
+    	hvn: hvn,
+    	hxro: hxro,
+    	hyc: hyc,
+    	hydra: hydra,
+    	hydro: hydro,
+    	icn: icn,
+    	icos: icos,
+    	icp: icp,
+    	icx: icx,
+    	idex: idex,
+    	idh: idh,
+    	idr: idr,
+    	ift: ift,
+    	ignis: ignis,
+    	ihf: ihf,
+    	iht: iht,
+    	ilc: ilc,
+    	ilv: ilv,
+    	imx: imx,
+    	incnt: incnt,
+    	ind: ind,
+    	indi: indi,
+    	inj: inj,
+    	ink: ink,
+    	inr: inr,
+    	ins: ins,
+    	int: int,
+    	intr: intr,
+    	ioc: ioc,
+    	ion: ion,
+    	iost: iost,
+    	iot: iot,
+    	iotx: iotx,
+    	iq: iq,
+    	iris: iris,
+    	itc: itc,
+    	ivy: ivy,
+    	ixt: ixt,
+    	jasmy: jasmy,
+    	jnt: jnt,
+    	joe: joe,
+    	jpeg: jpeg,
+    	jpy: jpy,
+    	jst: jst,
+    	juno: juno,
+    	just: just,
+    	juv: juv,
+    	kan: kan,
+    	kar: kar,
+    	kava: kava,
+    	kbc: kbc,
+    	kcash: kcash,
+    	kda: kda,
+    	keep: keep,
+    	key: key,
+    	kick: kick,
+    	kilt: kilt,
+    	kin: kin,
+    	kint: kint,
+    	klay: klay,
+    	kma: kma,
+    	kmd: kmd,
+    	knc: knc,
+    	kore: kore,
+    	kp3r: kp3r,
+    	krm: krm,
+    	krw: krw,
+    	ksm: ksm,
+    	ksx: ksx,
+    	kyl: kyl,
+    	la: la,
+    	lak: lak,
+    	lamb: lamb,
+    	latx: latx,
+    	layr: layr,
+    	lba: lba,
+    	lbc: lbc,
+    	lcc: lcc,
+    	lcx: lcx,
+    	ldo: ldo,
+    	lend: lend,
+    	leo: leo,
+    	leoc: leoc,
+    	"let": "LinkEye",
+    	life: life,
+    	lina: lina,
+    	link: link,
+    	lit: lit,
+    	lmc: lmc,
+    	lml: lml,
+    	lnc: lnc,
+    	lnd: lnd,
+    	loc: loc,
+    	loka: loka,
+    	looks: looks,
+    	loom: loom,
+    	lpt: lpt,
+    	lqty: lqty,
+    	lrc: lrc,
+    	lrn: lrn,
+    	lsk: lsk,
+    	ltc: ltc,
+    	lto: lto,
+    	lun: lun,
+    	luna: luna,
+    	luna2: luna2,
+    	lxt: lxt,
+    	lym: lym,
+    	m2k: m2k,
+    	ma: ma,
+    	magic: magic,
+    	maid: maid,
+    	man: man,
+    	mana: mana,
+    	maps: maps,
+    	mask: mask,
+    	mass: mass,
+    	math: math,
+    	matic: matic,
+    	mbl: mbl,
+    	mbt: mbt,
+    	mc: mc,
+    	mco: mco,
+    	mda: mda,
+    	mds: mds,
+    	mdt: mdt,
+    	mdx: mdx,
+    	med: med,
+    	mer: mer,
+    	mes: mes,
+    	met: met,
+    	meta: meta,
+    	mft: mft,
+    	mgc: mgc,
+    	mgo: mgo,
+    	mhc: mhc,
+    	mina: mina,
+    	mir: mir,
+    	mith: mith,
+    	mitx: mitx,
+    	mjp: mjp,
+    	mkr: mkr,
+    	mln: mln,
+    	mngo: mngo,
+    	mnx: mnx,
+    	moac: moac,
+    	mob: mob,
+    	mobi: mobi,
+    	moc: moc,
+    	mod: mod,
+    	mona: mona,
+    	moon: moon,
+    	morph: morph,
+    	movr: movr,
+    	mpl: mpl,
+    	mrk: mrk,
+    	msol: msol,
+    	msp: msp,
+    	mta: mta,
+    	mtc: mtc,
+    	mth: mth,
+    	mtl: mtl,
+    	mtn: mtn,
+    	mtx: mtx,
+    	mue: mue,
+    	multi: multi,
+    	mv: mv,
+    	mx: mx,
+    	mxm: mxm,
+    	mxn: mxn,
+    	myr: myr,
+    	n9l: n9l,
+    	nanj: nanj,
+    	nano: nano,
+    	nas: nas,
+    	naut: naut,
+    	nav: nav,
+    	ncash: ncash,
+    	nct: nct,
+    	near: near,
+    	nebl: nebl,
+    	nec: nec,
+    	neo: neo,
+    	neos: neos,
+    	nest: nest,
+    	neu: neu,
+    	"new": "Newton",
+    	nexo: nexo,
+    	nft: nft,
+    	ng: ng,
+    	ngc: ngc,
+    	ngn: ngn,
+    	nim: nim,
+    	niy: niy,
+    	nkd: nkd,
+    	nkn: nkn,
+    	nlc2: nlc2,
+    	nlg: nlg,
+    	nmc: nmc,
+    	nmr: nmr,
+    	nn: nn,
+    	noah: noah,
+    	nodl: nodl,
+    	note: note,
+    	npg: npg,
+    	nplc: nplc,
+    	npxs: npxs,
+    	nq: nq,
+    	nrg: nrg,
+    	ntk: ntk,
+    	nu: nu,
+    	nuls: nuls,
+    	nvc: nvc,
+    	nxc: nxc,
+    	nxs: nxs,
+    	nxt: nxt,
+    	nym: nym,
+    	o: o,
+    	oax: oax,
+    	ocean: ocean,
+    	ocn: ocn,
+    	ode: ode,
+    	ogn: ogn,
+    	ogo: ogo,
+    	ok: ok,
+    	okb: okb,
+    	om: om,
+    	omg: omg,
+    	omni: omni,
+    	one: one,
+    	ong: ong,
+    	onot: onot,
+    	ont: ont,
+    	ooki: ooki,
+    	orbs: orbs,
+    	orca: orca,
+    	orme: orme,
+    	orn: orn,
+    	ors: ors,
+    	osmo: osmo,
+    	ost: ost,
+    	otn: otn,
+    	oxt: oxt,
+    	oxy: oxy,
+    	pai: pai,
+    	pal: pal,
+    	paper: paper,
+    	para: para,
+    	part: part,
+    	pasc: pasc,
+    	pat: pat,
+    	pax: pax,
+    	paxg: paxg,
+    	pay: pay,
+    	pbt: pbt,
+    	pcl: pcl,
+    	pcx: pcx,
+    	pdex: pdex,
+    	people: people,
+    	perl: perl,
+    	perp: perp,
+    	pha: pha,
+    	phb: phb,
+    	php: php,
+    	phx: phx,
+    	pi: pi,
+    	pica: pica,
+    	pink: pink,
+    	pivx: pivx,
+    	pkt: pkt,
+    	pl: pl,
+    	pla: pla,
+    	plbt: plbt,
+    	plm: plm,
+    	pln: pln,
+    	plr: plr,
+    	ply: ply,
+    	pma: pma,
+    	png: png,
+    	pnt: pnt,
+    	poa: poa,
+    	poe: poe,
+    	polis: polis,
+    	pols: pols,
+    	poly: poly,
+    	pond: pond,
+    	pot: pot,
+    	powr: powr,
+    	ppc: ppc,
+    	ppt: ppt,
+    	pra: pra,
+    	pre: pre,
+    	prg: prg,
+    	pro: pro,
+    	prq: prq,
+    	pst: pst,
+    	pstake: pstake,
+    	pton: pton,
+    	pundix: pundix,
+    	pvt: pvt,
+    	pxg: pxg,
+    	pyr: pyr,
+    	qash: qash,
+    	qau: qau,
+    	qc: qc,
+    	qi: qi,
+    	qi2: qi2,
+    	qkc: qkc,
+    	qlc: qlc,
+    	qnt: qnt,
+    	qntu: qntu,
+    	qo: qo,
+    	qrdo: qrdo,
+    	qrl: qrl,
+    	qsp: qsp,
+    	qtum: qtum,
+    	qun: qun,
+    	r: r,
+    	rad: rad,
+    	radar: radar,
+    	rads: rads,
+    	ramp: ramp,
+    	rare: rare,
+    	rari: rari,
+    	rating: rating,
+    	ray: ray,
+    	rb: rb,
+    	rbc: rbc,
+    	rblx: rblx,
+    	rbn: rbn,
+    	rbtc: rbtc,
+    	rby: rby,
+    	rcn: rcn,
+    	rdd: rdd,
+    	rdn: rdn,
+    	real: real,
+    	reef: reef,
+    	rem: rem,
+    	ren: ren,
+    	rep: rep,
+    	repv2: repv2,
+    	req: req,
+    	rev: rev,
+    	revv: revv,
+    	rfox: rfox,
+    	rfr: rfr,
+    	ric: ric,
+    	rif: rif,
+    	ring: ring,
+    	rlc: rlc,
+    	rly: rly,
+    	rmrk: rmrk,
+    	rndr: rndr,
+    	rntb: rntb,
+    	ron: ron,
+    	rook: rook,
+    	rose: rose,
+    	rox: rox,
+    	rp: rp,
+    	rpx: rpx,
+    	rsr: rsr,
+    	rsv: rsv,
+    	rty: rty,
+    	rub: rub,
+    	ruff: ruff,
+    	rune: rune,
+    	rvn: rvn,
+    	rvr: rvr,
+    	rvt: rvt,
+    	sai: sai,
+    	salt: salt,
+    	samo: samo,
+    	san: san,
+    	sand: sand,
+    	sats: sats,
+    	sbd: sbd,
+    	sbr: sbr,
+    	sc: sc,
+    	scc: scc,
+    	scrt: scrt,
+    	sdc: sdc,
+    	sdn: sdn,
+    	seele: seele,
+    	sek: sek,
+    	sen: sen,
+    	sent: sent,
+    	sero: sero,
+    	sexc: sexc,
+    	sfp: sfp,
+    	sgb: sgb,
+    	sgc: sgc,
+    	sgd: sgd,
+    	sgn: sgn,
+    	sgu: sgu,
+    	shib: shib,
+    	shift: shift,
+    	ship: ship,
+    	shping: shping,
+    	si: si,
+    	sib: sib,
+    	sil: sil,
+    	six: six,
+    	sjcx: sjcx,
+    	skl: skl,
+    	skm: skm,
+    	sku: sku,
+    	sky: sky,
+    	slp: slp,
+    	slr: slr,
+    	sls: sls,
+    	slt: slt,
+    	slv: slv,
+    	smart: smart,
+    	smn: smn,
+    	smt: smt,
+    	snc: snc,
+    	snet: snet,
+    	sngls: sngls,
+    	snm: snm,
+    	snt: snt,
+    	snx: snx,
+    	soc: soc,
+    	socks: socks,
+    	sol: sol,
+    	solid: solid,
+    	solo: solo,
+    	solve: solve,
+    	sos: sos,
+    	soul: soul,
+    	sp: sp,
+    	sparta: sparta,
+    	spc: spc,
+    	spd: spd,
+    	spell: spell,
+    	sphr: sphr,
+    	sphtx: sphtx,
+    	spnd: spnd,
+    	spnk: spnk,
+    	srm: srm,
+    	srn: srn,
+    	ssp: ssp,
+    	stacs: stacs,
+    	step: step,
+    	stg: stg,
+    	stmx: stmx,
+    	storm: storm,
+    	stpt: stpt,
+    	stq: stq,
+    	str: str,
+    	strat: strat,
+    	strax: strax,
+    	strk: strk,
+    	strong: strong,
+    	stx: stx,
+    	sub: sub,
+    	sun: sun,
+    	"super": "SuperFarm",
+    	susd: susd,
+    	sushi: sushi,
+    	swftc: swftc,
+    	swm: swm,
+    	swrv: swrv,
+    	swt: swt,
+    	swth: swth,
+    	sxp: sxp,
+    	syn: syn,
+    	sys: sys,
+    	t: t,
+    	taas: taas,
+    	tau: tau,
+    	tbtc: tbtc,
+    	tct: tct,
+    	teer: teer,
+    	tel: tel,
+    	temco: temco,
+    	tfuel: tfuel,
+    	thb: thb,
+    	thc: thc,
+    	theta: theta,
+    	thx: thx,
+    	time: time,
+    	tio: tio,
+    	tix: tix,
+    	tkn: tkn,
+    	tky: tky,
+    	tlm: tlm,
+    	tnb: tnb,
+    	tnc: tnc,
+    	tnt: tnt,
+    	toke: toke,
+    	tomb: tomb,
+    	tomo: tomo,
+    	top: top,
+    	torn: torn,
+    	tower: tower,
+    	tpay: tpay,
+    	trac: trac,
+    	trb: trb,
+    	tribe: tribe,
+    	trig: trig,
+    	trio: trio,
+    	troy: troy,
+    	trst: trst,
+    	tru: tru,
+    	"true": "True Chain",
+    	trx: trx,
+    	"try": "Turkish Lira",
+    	tryb: tryb,
+    	tt: tt,
+    	ttc: ttc,
+    	ttt: ttt,
+    	ttu: ttu,
+    	tube: tube,
+    	tusd: tusd,
+    	tvk: tvk,
+    	twt: twt,
+    	uah: uah,
+    	ubq: ubq,
+    	ubt: ubt,
+    	uft: uft,
+    	ugas: ugas,
+    	uip: uip,
+    	ukg: ukg,
+    	uma: uma,
+    	unfi: unfi,
+    	uni: uni,
+    	unq: unq,
+    	up: up,
+    	upp: upp,
+    	usd: usd,
+    	usdc: usdc,
+    	usds: usds,
+    	usk: usk,
+    	ust: ust,
+    	utk: utk,
+    	utnp: utnp,
+    	utt: utt,
+    	uuu: uuu,
+    	ux: ux,
+    	vader: vader,
+    	vai: vai,
+    	vbk: vbk,
+    	vdx: vdx,
+    	vee: vee,
+    	vemp: vemp,
+    	ven: ven,
+    	veo: veo,
+    	veri: veri,
+    	vex: vex,
+    	vgx: vgx,
+    	via: via,
+    	vib: vib,
+    	vibe: vibe,
+    	vid: vid,
+    	vidt: vidt,
+    	vidy: vidy,
+    	vitae: vitae,
+    	vite: vite,
+    	vlx: vlx,
+    	vox: vox,
+    	voxel: voxel,
+    	vra: vra,
+    	vrc: vrc,
+    	vrm: vrm,
+    	vsys: vsys,
+    	vtc: vtc,
+    	vtho: vtho,
+    	wabi: wabi,
+    	wan: wan,
+    	waves: waves,
+    	wax: wax,
+    	wbtc: wbtc,
+    	wet: wet,
+    	weth: weth,
+    	wib: wib,
+    	wicc: wicc,
+    	win: win,
+    	wing: wing,
+    	wings: wings,
+    	wnxm: wnxm,
+    	woo: woo,
+    	wpr: wpr,
+    	wrx: wrx,
+    	wtc: wtc,
+    	wtt: wtt,
+    	wwb: wwb,
+    	wxt: wxt,
+    	xas: xas,
+    	xaur: xaur,
+    	xaut: xaut,
+    	xava: xava,
+    	xbc: xbc,
+    	xcon: xcon,
+    	xcp: xcp,
+    	xdefi: xdefi,
+    	xdn: xdn,
+    	xel: xel,
+    	xem: xem,
+    	xes: xes,
+    	xhv: xhv,
+    	xin: xin,
+    	xlm: xlm,
+    	xmc: xmc,
+    	xmr: xmr,
+    	xmx: xmx,
+    	xmy: xmy,
+    	xnk: xnk,
+    	xns: xns,
+    	xor: xor,
+    	xos: xos,
+    	xpm: xpm,
+    	xpr: xpr,
+    	xrc: xrc,
+    	xrp: xrp,
+    	xrpx: xrpx,
+    	xrt: xrt,
+    	xst: xst,
+    	xtp: xtp,
+    	xtz: xtz,
+    	xtzdown: xtzdown,
+    	xvc: xvc,
+    	xvg: xvg,
+    	xvs: xvs,
+    	xwc: xwc,
+    	xyo: xyo,
+    	xzc: xzc,
+    	yam: yam,
+    	yee: yee,
+    	yeed: yeed,
+    	yfi: yfi,
+    	yfii: yfii,
+    	ygg: ygg,
+    	yoyow: yoyow,
+    	zar: zar,
+    	zcl: zcl,
+    	zcn: zcn,
+    	zco: zco,
+    	zec: zec,
+    	zen: zen,
+    	zil: zil,
+    	zks: zks,
+    	zla: zla,
+    	zlk: zlk,
+    	zondo: zondo,
+    	zpr: zpr,
+    	zpt: zpt,
+    	zrc: zrc,
+    	zrx: zrx,
+    	zsc: zsc,
+    	ztg: ztg,
+    	"": "",
+    	xbt: xbt,
+    	bitz: bitz,
+    	cs: cs,
+    	crm: crm,
+    	xdg: xdg,
+    	eth2: eth2,
+    	eth2s: eth2s,
+    	"eth2.s": "",
+    	usdt: usdt,
+    	kraken: kraken,
+    	"kraken-futures": "Kraken Futures",
+    	gemini: gemini,
+    	husd: husd,
+    	huobi: huobi,
+    	iota: iota,
+    	medx: medx,
+    	rur: rur,
+    	steem: steem,
+    	xsc: xsc,
+    	storj: storj,
+    	vet: vet,
+    	waxp: waxp,
+    	"binance-us": "Binance.US",
+    	mexbt: mexbt,
+    	"coinbase-pro": "Coinbase Pro",
+    	gdax: gdax,
+    	quadriga: quadriga,
+    	"ftx-us": "FTX.US",
+    	cgld: cgld,
+    	"uniswap-v2": "Uniswap V2",
+    	kshib: kshib,
+    	srare: srare,
+    	"ape.2": ""
+    };
+
+    var map = {
+    	"sym-d": "sym-_default",
+    	"sym-d-s": "sym-_default-s",
+    	"sym-default": "sym-_default",
+    	"sym-default-s": "sym-_default-s",
+    	"exc-d": "exc-_default",
+    	"exc-d-s": "exc-_default-s",
+    	"exc-default": "exc-_default",
+    	"exc-default-s": "exc-_default-s",
+    	"cur-default": "sym-_default",
+    	"cur-default-s": "sym-_default-s",
+    	"cur-anct": "sym-anct",
+    	"cur-anct-s": "sym-anct-s",
+    	"cur-aud": "sym-aud",
+    	"cur-aud-s": "sym-aud-s",
+    	"cur-bnb": "sym-bnb",
+    	"cur-bnb-s": "sym-bnb-s",
+    	"sym-xbt": "sym-btc",
+    	"cur-btc": "sym-btc",
+    	"sym-xbt-s": "sym-btc-s",
+    	"cur-btc-s": "sym-btc-s",
+    	"cur-busd": "sym-busd",
+    	"cur-busd-s": "sym-busd-s",
+    	"exc-bitz": "sym-bz",
+    	"cur-bz": "sym-bz",
+    	"exc-bitz-s": "sym-bz-s",
+    	"cur-bz-s": "sym-bz-s",
+    	"cur-cad": "sym-cad",
+    	"cur-cad-s": "sym-cad-s",
+    	"cur-chf": "sym-chf",
+    	"cur-chf-s": "sym-chf-s",
+    	"cur-cny": "sym-cny",
+    	"cur-cny-s": "sym-cny-s",
+    	"sym-cs": "sym-cova",
+    	"sym-cs-s": "sym-cova-s",
+    	"sym-crm": "sym-cru",
+    	"sym-crm-s": "sym-cru-s",
+    	"cur-dai": "sym-dai",
+    	"cur-dai-s": "sym-dai-s",
+    	"sym-xdg": "sym-doge",
+    	"sym-xdg-s": "sym-doge-s",
+    	"cur-eos": "sym-eos",
+    	"cur-eos-s": "sym-eos-s",
+    	"sym-eth2": "sym-eth",
+    	"sym-eth2s": "sym-eth",
+    	"sym-eth2.s": "sym-eth",
+    	"cur-eth": "sym-eth",
+    	"sym-eth2-s": "sym-eth-s",
+    	"sym-eth2s-s": "sym-eth-s",
+    	"sym-eth2.s-s": "sym-eth-s",
+    	"cur-eth-s": "sym-eth-s",
+    	"cur-eur": "sym-eur",
+    	"cur-eur-s": "sym-eur-s",
+    	"cur-eurs": "sym-eurs",
+    	"cur-eurs-s": "sym-eurs-s",
+    	"sym-usdt": "sym-eurt",
+    	"cur-usdt": "sym-eurt",
+    	"sym-usdt-s": "sym-eurt-s",
+    	"cur-usdt-s": "sym-eurt-s",
+    	"exc-kraken": "sym-fee",
+    	"exc-kraken-futures": "sym-fee",
+    	"exc-kraken-s": "sym-fee-s",
+    	"exc-kraken-futures-s": "sym-fee-s",
+    	"cur-gbp": "sym-gbp",
+    	"cur-gbp-s": "sym-gbp-s",
+    	"exc-gemini": "sym-gusd",
+    	"cur-gusd": "sym-gusd",
+    	"exc-gemini-s": "sym-gusd-s",
+    	"cur-gusd-s": "sym-gusd-s",
+    	"cur-hkd": "sym-hkd",
+    	"cur-hkd-s": "sym-hkd-s",
+    	"sym-husd": "sym-ht",
+    	"exc-huobi": "sym-ht",
+    	"cur-ht": "sym-ht",
+    	"sym-husd-s": "sym-ht-s",
+    	"exc-huobi-s": "sym-ht-s",
+    	"cur-ht-s": "sym-ht-s",
+    	"cur-idr": "sym-idr",
+    	"cur-idr-s": "sym-idr-s",
+    	"sym-iota": "sym-iot",
+    	"sym-iota-s": "sym-iot-s",
+    	"cur-inr": "sym-inr",
+    	"cur-inr-s": "sym-inr-s",
+    	"cur-jpy": "sym-jpy",
+    	"cur-jpy-s": "sym-jpy-s",
+    	"cur-krw": "sym-krw",
+    	"cur-krw-s": "sym-krw-s",
+    	"sym-medx": "sym-med",
+    	"sym-medx-s": "sym-med-s",
+    	"cur-mxn": "sym-mxn",
+    	"cur-mxn-s": "sym-mxn-s",
+    	"cur-myr": "sym-myr",
+    	"cur-myr-s": "sym-myr-s",
+    	"cur-ngn": "sym-ngn",
+    	"cur-ngn-s": "sym-ngn-s",
+    	"cur-pax": "sym-pax",
+    	"cur-pax-s": "sym-pax-s",
+    	"cur-php": "sym-php",
+    	"cur-php-s": "sym-php-s",
+    	"cur-pln": "sym-pln",
+    	"cur-pln-s": "sym-pln-s",
+    	"cur-qash": "sym-qash",
+    	"cur-qash-s": "sym-qash-s",
+    	"cur-rub": "sym-rub",
+    	"cur-rur": "sym-rub",
+    	"cur-rub-s": "sym-rub-s",
+    	"cur-rur-s": "sym-rub-s",
+    	"sym-steem": "sym-sbd",
+    	"sym-steem-s": "sym-sbd-s",
+    	"sym-xsc": "sym-sc",
+    	"sym-xsc-s": "sym-sc-s",
+    	"cur-sgd": "sym-sgd",
+    	"cur-sgd-s": "sym-sgd-s",
+    	"sym-storj": "sym-sjcx",
+    	"sym-storj-s": "sym-sjcx-s",
+    	"sym-tel": "sym-taas",
+    	"cur-trx": "sym-trx",
+    	"cur-trx-s": "sym-trx-s",
+    	"cur-tusd": "sym-tusd",
+    	"cur-tusd-s": "sym-tusd-s",
+    	"cur-usd": "sym-usd",
+    	"cur-usd-s": "sym-usd-s",
+    	"cur-usdc": "sym-usdc",
+    	"cur-usdc-s": "sym-usdc-s",
+    	"sym-vet": "sym-ven",
+    	"sym-vet-s": "sym-ven-s",
+    	"sym-waxp": "sym-wax",
+    	"sym-waxp-s": "sym-wax-s",
+    	"cur-xlm": "sym-xlm",
+    	"cur-xlm-s": "sym-xlm-s",
+    	"cur-xmr": "sym-xmr",
+    	"cur-xmr-s": "sym-xmr-s",
+    	"cur-xrp": "sym-xrp",
+    	"cur-xrp-s": "sym-xrp-s",
+    	"cur-zar": "sym-zar",
+    	"cur-zar-s": "sym-zar-s",
+    	"exc-binance-us": "exc-binance",
+    	"exc-binance-us-s": "exc-binance-s",
+    	"exc-mexbt": "exc-bitvc",
+    	"exc-mexbt-s": "exc-bitvc-s",
+    	"exc-coinbase-pro": "exc-coinbasepro",
+    	"exc-gdax": "exc-coinbasepro",
+    	"exc-coinbase-pro-s": "exc-coinbasepro-s",
+    	"exc-gdax-s": "exc-coinbasepro-s",
+    	"exc-quadriga": "exc-quadrigacx",
+    	"exc-quadriga-s": "exc-quadrigacx-s",
+    	"cur-crc": "sym-crc",
+    	"cur-crc-s": "sym-crc-s",
+    	"cur-lak": "sym-lak",
+    	"cur-lak-s": "sym-lak-s",
+    	"cur-sek": "sym-sek",
+    	"cur-sek-s": "sym-sek-s",
+    	"cur-thb": "sym-thb",
+    	"cur-thb-s": "sym-thb-s",
+    	"cur-try": "sym-try",
+    	"cur-try-s": "sym-try-s",
+    	"cur-uah": "sym-uah",
+    	"cur-uah-s": "sym-uah-s",
+    	"exc-ftx": "sym-ftt",
+    	"exc-ftx-s": "sym-ftt-s",
+    	"exc-ftx-us": "sym-ftt",
+    	"exc-ftx-us-s": "sym-ftt-s",
+    	"sym-cgld": "sym-celo",
+    	"sym-cgld-s": "sym-celo-s",
+    	"exc-uniswap-v2": "sym-uni",
+    	"exc-uniswap-v2-s": "sym-uni-s",
+    	"sym-kshib": "sym-shib",
+    	"sym-kshib-s": "sym-shib-s",
+    	"sym-easy-s": "sym-easy",
+    	"sym-srare": "sym-rare",
+    	"sym-srare-s": "sym-rare-s",
+    	"sym-ape.2": "sym-ape",
+    	"sym-ape.2-s": "sym-ape-s"
+    };
+
+    /* src/App.svelte generated by Svelte v3.46.4 */
+
+    const { Object: Object_1 } = globals;
+    const file = "src/App.svelte";
+
+    function get_each_context(ctx, list, i) {
+    	const child_ctx = ctx.slice();
+    	child_ctx[18] = list[i];
+    	return child_ctx;
+    }
+
+    // (72:0) {#if showCopiedMsg}
+    function create_if_block_2(ctx) {
+    	let div;
+    	let div_transition;
+    	let current;
+
+    	function select_block_type(ctx, dirty) {
+    		if (/*copyErr*/ ctx[4]) return create_if_block_3;
+    		return create_else_block_1;
+    	}
+
+    	let current_block_type = select_block_type(ctx);
+    	let if_block = current_block_type(ctx);
+
+    	const block = {
+    		c: function create() {
+    			div = element("div");
+    			if_block.c();
+    			attr_dev(div, "class", "copy-msg svelte-fkock6");
+    			add_location(div, file, 72, 2, 1913);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+    			if_block.m(div, null);
+    			current = true;
+    		},
+    		p: function update(ctx, dirty) {
+    			if (current_block_type !== (current_block_type = select_block_type(ctx))) {
+    				if_block.d(1);
+    				if_block = current_block_type(ctx);
+
+    				if (if_block) {
+    					if_block.c();
+    					if_block.m(div, null);
+    				}
+    			}
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+
+    			if (local) {
+    				add_render_callback(() => {
+    					if (!div_transition) div_transition = create_bidirectional_transition(div, fade, { duration: 100 }, true);
+    					div_transition.run(1);
+    				});
+    			}
+
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			if (local) {
+    				if (!div_transition) div_transition = create_bidirectional_transition(div, fade, { duration: 100 }, false);
+    				div_transition.run(0);
+    			}
+
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div);
+    			if_block.d();
+    			if (detaching && div_transition) div_transition.end();
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_2.name,
+    		type: "if",
+    		source: "(72:0) {#if showCopiedMsg}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (76:4) {:else}
+    function create_else_block_1(ctx) {
+    	let t;
+
+    	const block = {
+    		c: function create() {
+    			t = text("SVG markup copied to clipboard");
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, t, anchor);
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(t);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_else_block_1.name,
+    		type: "else",
+    		source: "(76:4) {:else}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (74:4) {#if copyErr}
+    function create_if_block_3(ctx) {
+    	let t;
+
+    	const block = {
+    		c: function create() {
+    			t = text("Error");
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, t, anchor);
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(t);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_3.name,
+    		type: "if",
+    		source: "(74:4) {#if copyErr}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (136:4) {:else}
+    function create_else_block(ctx) {
+    	let div;
+
+    	const block = {
+    		c: function create() {
+    			div = element("div");
+    			div.textContent = "No results.";
+    			add_location(div, file, 136, 6, 3749);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_else_block.name,
+    		type: "else",
+    		source: "(136:4) {:else}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (116:10) {#if beaconKeys.includes(beacon)}
+    function create_if_block_1(ctx) {
+    	let i;
+    	let i_class_value;
+    	let t0;
+    	let div;
+    	let span0;
+    	let t1_value = /*beacon*/ ctx[18].slice(0, 4) + "";
+    	let t1;
+    	let span1;
+    	let t2_value = /*syms*/ ctx[1][/*beacon*/ ctx[18]] + "";
+    	let t2;
+    	let mounted;
+    	let dispose;
+
+    	const block = {
+    		c: function create() {
+    			i = element("i");
+    			t0 = space();
+    			div = element("div");
+    			span0 = element("span");
+    			t1 = text(t1_value);
+    			span1 = element("span");
+    			t2 = text(t2_value);
+    			attr_dev(i, "class", i_class_value = "" + (null_to_empty(`beacon ${/*beacon*/ ctx[18]}`) + " svelte-fkock6"));
+    			add_location(i, file, 116, 12, 3038);
+    			attr_dev(span0, "class", "prefix");
+    			add_location(span0, file, 118, 14, 3142);
+    			attr_dev(span1, "class", "main svelte-fkock6");
+    			add_location(span1, file, 118, 62, 3190);
+    			attr_dev(div, "class", "text svelte-fkock6");
+    			add_location(div, file, 117, 12, 3109);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, i, anchor);
+    			insert_dev(target, t0, anchor);
+    			insert_dev(target, div, anchor);
+    			append_dev(div, span0);
+    			append_dev(span0, t1);
+    			append_dev(div, span1);
+    			append_dev(span1, t2);
+
+    			if (!mounted) {
+    				dispose = listen_dev(
+    					i,
+    					"click",
+    					function () {
+    						if (is_function(/*getSVG*/ ctx[9](/*beacon*/ ctx[18]))) /*getSVG*/ ctx[9](/*beacon*/ ctx[18]).apply(this, arguments);
+    					},
+    					false,
+    					false,
+    					false
+    				);
+
+    				mounted = true;
+    			}
+    		},
+    		p: function update(new_ctx, dirty) {
+    			ctx = new_ctx;
+
+    			if (dirty & /*filteredBeacons*/ 128 && i_class_value !== (i_class_value = "" + (null_to_empty(`beacon ${/*beacon*/ ctx[18]}`) + " svelte-fkock6"))) {
+    				attr_dev(i, "class", i_class_value);
+    			}
+
+    			if (dirty & /*filteredBeacons*/ 128 && t1_value !== (t1_value = /*beacon*/ ctx[18].slice(0, 4) + "")) set_data_dev(t1, t1_value);
+    			if (dirty & /*syms, filteredBeacons*/ 130 && t2_value !== (t2_value = /*syms*/ ctx[1][/*beacon*/ ctx[18]] + "")) set_data_dev(t2, t2_value);
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(i);
+    			if (detaching) detach_dev(t0);
+    			if (detaching) detach_dev(div);
+    			mounted = false;
+    			dispose();
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_1.name,
+    		type: "if",
+    		source: "(116:10) {#if beaconKeys.includes(beacon)}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (126:10) {#if beaconKeys.includes(`${beacon}-s`)}
+    function create_if_block(ctx) {
+    	let i;
+    	let i_class_value;
+    	let t0;
+    	let div;
+    	let span0;
+    	let t1_value = /*beacon*/ ctx[18].slice(0, 4) + "";
+    	let t1;
+    	let span1;
+    	let t2_value = /*syms*/ ctx[1][/*beacon*/ ctx[18]] + "";
+    	let t2;
+    	let span2;
+    	let mounted;
+    	let dispose;
+
+    	const block = {
+    		c: function create() {
+    			i = element("i");
+    			t0 = space();
+    			div = element("div");
+    			span0 = element("span");
+    			t1 = text(t1_value);
+    			span1 = element("span");
+    			t2 = text(t2_value);
+    			span2 = element("span");
+    			span2.textContent = "-s";
+    			attr_dev(i, "class", i_class_value = "" + (null_to_empty(`beacon ${/*beacon*/ ctx[18]}-s`) + " svelte-fkock6"));
+    			add_location(i, file, 126, 12, 3403);
+    			attr_dev(span0, "class", "prefix");
+    			add_location(span0, file, 128, 14, 3516);
+    			attr_dev(span1, "class", "main svelte-fkock6");
+    			add_location(span1, file, 128, 62, 3564);
+    			attr_dev(span2, "class", "postfix");
+    			add_location(span2, file, 130, 15, 3636);
+    			attr_dev(div, "class", "text svelte-fkock6");
+    			add_location(div, file, 127, 12, 3483);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, i, anchor);
+    			insert_dev(target, t0, anchor);
+    			insert_dev(target, div, anchor);
+    			append_dev(div, span0);
+    			append_dev(span0, t1);
+    			append_dev(div, span1);
+    			append_dev(span1, t2);
+    			append_dev(div, span2);
+
+    			if (!mounted) {
+    				dispose = listen_dev(
+    					i,
+    					"click",
+    					function () {
+    						if (is_function(/*getSVG*/ ctx[9](`${/*beacon*/ ctx[18]}-s`))) /*getSVG*/ ctx[9](`${/*beacon*/ ctx[18]}-s`).apply(this, arguments);
+    					},
+    					false,
+    					false,
+    					false
+    				);
+
+    				mounted = true;
+    			}
+    		},
+    		p: function update(new_ctx, dirty) {
+    			ctx = new_ctx;
+
+    			if (dirty & /*filteredBeacons*/ 128 && i_class_value !== (i_class_value = "" + (null_to_empty(`beacon ${/*beacon*/ ctx[18]}-s`) + " svelte-fkock6"))) {
+    				attr_dev(i, "class", i_class_value);
+    			}
+
+    			if (dirty & /*filteredBeacons*/ 128 && t1_value !== (t1_value = /*beacon*/ ctx[18].slice(0, 4) + "")) set_data_dev(t1, t1_value);
+    			if (dirty & /*syms, filteredBeacons*/ 130 && t2_value !== (t2_value = /*syms*/ ctx[1][/*beacon*/ ctx[18]] + "")) set_data_dev(t2, t2_value);
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(i);
+    			if (detaching) detach_dev(t0);
+    			if (detaching) detach_dev(div);
+    			mounted = false;
+    			dispose();
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block.name,
+    		type: "if",
+    		source: "(126:10) {#if beaconKeys.includes(`${beacon}-s`)}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (112:4) {#each filteredBeacons as beacon}
+    function create_each_block(ctx) {
+    	let div3;
+    	let div0;
+    	let t0_value = /*names*/ ctx[2][/*beacon*/ ctx[18]] + "";
+    	let t0;
+    	let t1;
+    	let div1;
+    	let show_if_1 = /*beaconKeys*/ ctx[8].includes(/*beacon*/ ctx[18]);
+    	let t2;
+    	let div2;
+    	let show_if = /*beaconKeys*/ ctx[8].includes(`${/*beacon*/ ctx[18]}-s`);
+    	let t3;
+    	let if_block0 = show_if_1 && create_if_block_1(ctx);
+    	let if_block1 = show_if && create_if_block(ctx);
+
+    	const block = {
+    		c: function create() {
+    			div3 = element("div");
+    			div0 = element("div");
+    			t0 = text(t0_value);
+    			t1 = space();
+    			div1 = element("div");
+    			if (if_block0) if_block0.c();
+    			t2 = space();
+    			div2 = element("div");
+    			if (if_block1) if_block1.c();
+    			t3 = space();
+    			attr_dev(div0, "class", "name svelte-fkock6");
+    			add_location(div0, file, 113, 8, 2915);
+    			attr_dev(div1, "class", "icon svelte-fkock6");
+    			add_location(div1, file, 114, 8, 2963);
+    			attr_dev(div2, "class", "icon svelte-fkock6");
+    			add_location(div2, file, 124, 8, 3321);
+    			attr_dev(div3, "class", "beacon-container svelte-fkock6");
+    			add_location(div3, file, 112, 6, 2876);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div3, anchor);
+    			append_dev(div3, div0);
+    			append_dev(div0, t0);
+    			append_dev(div3, t1);
+    			append_dev(div3, div1);
+    			if (if_block0) if_block0.m(div1, null);
+    			append_dev(div3, t2);
+    			append_dev(div3, div2);
+    			if (if_block1) if_block1.m(div2, null);
+    			append_dev(div3, t3);
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*names, filteredBeacons*/ 132 && t0_value !== (t0_value = /*names*/ ctx[2][/*beacon*/ ctx[18]] + "")) set_data_dev(t0, t0_value);
+    			if (dirty & /*filteredBeacons*/ 128) show_if_1 = /*beaconKeys*/ ctx[8].includes(/*beacon*/ ctx[18]);
+
+    			if (show_if_1) {
+    				if (if_block0) {
+    					if_block0.p(ctx, dirty);
+    				} else {
+    					if_block0 = create_if_block_1(ctx);
+    					if_block0.c();
+    					if_block0.m(div1, null);
+    				}
+    			} else if (if_block0) {
+    				if_block0.d(1);
+    				if_block0 = null;
+    			}
+
+    			if (dirty & /*filteredBeacons*/ 128) show_if = /*beaconKeys*/ ctx[8].includes(`${/*beacon*/ ctx[18]}-s`);
+
+    			if (show_if) {
+    				if (if_block1) {
+    					if_block1.p(ctx, dirty);
+    				} else {
+    					if_block1 = create_if_block(ctx);
+    					if_block1.c();
+    					if_block1.m(div2, null);
+    				}
+    			} else if (if_block1) {
+    				if_block1.d(1);
+    				if_block1 = null;
+    			}
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div3);
+    			if (if_block0) if_block0.d();
+    			if (if_block1) if_block1.d();
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_each_block.name,
+    		type: "each",
+    		source: "(112:4) {#each filteredBeacons as beacon}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function create_fragment(ctx) {
+    	let t0;
+    	let div2;
+    	let div0;
+    	let h1;
+    	let t2;
+    	let p0;
+    	let t3;
+    	let a0;
+    	let t5;
+    	let a1;
+    	let t7;
+    	let t8;
+    	let p1;
+    	let t10;
+    	let input;
+    	let div0_resize_listener;
+    	let t11;
+    	let div1;
+    	let mounted;
+    	let dispose;
+    	add_render_callback(/*onwindowresize*/ ctx[10]);
+    	let if_block = /*showCopiedMsg*/ ctx[3] && create_if_block_2(ctx);
+    	let each_value = /*filteredBeacons*/ ctx[7];
+    	validate_each_argument(each_value);
+    	let each_blocks = [];
+
+    	for (let i = 0; i < each_value.length; i += 1) {
+    		each_blocks[i] = create_each_block(get_each_context(ctx, each_value, i));
+    	}
+
+    	let each_1_else = null;
+
+    	if (!each_value.length) {
+    		each_1_else = create_else_block(ctx);
+    	}
+
+    	const block = {
+    		c: function create() {
+    			if (if_block) if_block.c();
+    			t0 = space();
+    			div2 = element("div");
+    			div0 = element("div");
+    			h1 = element("h1");
+    			h1.textContent = "Beacons";
+    			t2 = space();
+    			p0 = element("p");
+    			t3 = text("Crypto icon font by\n      ");
+    			a0 = element("a");
+    			a0.textContent = "Cryptowatch";
+    			t5 = text("\n      (");
+    			a1 = element("a");
+    			a1.textContent = "GitHub";
+    			t7 = text(")");
+    			t8 = space();
+    			p1 = element("p");
+    			p1.textContent = "Click on an icon to copy its SVG markup to your clipboard";
+    			t10 = space();
+    			input = element("input");
+    			t11 = space();
+    			div1 = element("div");
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].c();
+    			}
+
+    			if (each_1_else) {
+    				each_1_else.c();
+    			}
+
+    			attr_dev(h1, "class", "svelte-fkock6");
+    			add_location(h1, file, 85, 4, 2173);
+    			attr_dev(a0, "href", "https://cryptowat.ch");
+    			attr_dev(a0, "target", "_blank");
+    			attr_dev(a0, "rel", "noopener noreferrer");
+    			add_location(a0, file, 88, 6, 2230);
+    			attr_dev(a1, "href", "https://github.com/cryptowatch/beacons");
+    			attr_dev(a1, "target", "_blank");
+    			attr_dev(a1, "rel", "noopener noreferrer");
+    			add_location(a1, file, 91, 7, 2342);
+    			attr_dev(p0, "class", "svelte-fkock6");
+    			add_location(p0, file, 86, 4, 2194);
+    			attr_dev(p1, "class", "secondary svelte-fkock6");
+    			add_location(p1, file, 97, 4, 2489);
+    			attr_dev(input, "type", "text");
+    			attr_dev(input, "placeholder", `Search ${/*beaconKeys*/ ctx[8].length} icons`);
+    			attr_dev(input, "spellcheck", "false");
+    			attr_dev(input, "class", "svelte-fkock6");
+    			add_location(input, file, 100, 4, 2588);
+    			add_render_callback(() => /*div0_elementresize_handler*/ ctx[12].call(div0));
+    			add_location(div0, file, 84, 2, 2145);
+    			attr_dev(div1, "class", "beacons-flex svelte-fkock6");
+    			set_style(div1, "max-height", /*innerHeight*/ ctx[5] - /*clientHeight*/ ctx[6] - 16 + "px");
+    			add_location(div1, file, 107, 2, 2737);
+    			attr_dev(div2, "class", "container svelte-fkock6");
+    			add_location(div2, file, 83, 0, 2119);
+    		},
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+    		m: function mount(target, anchor) {
+    			if (if_block) if_block.m(target, anchor);
+    			insert_dev(target, t0, anchor);
+    			insert_dev(target, div2, anchor);
+    			append_dev(div2, div0);
+    			append_dev(div0, h1);
+    			append_dev(div0, t2);
+    			append_dev(div0, p0);
+    			append_dev(p0, t3);
+    			append_dev(p0, a0);
+    			append_dev(p0, t5);
+    			append_dev(p0, a1);
+    			append_dev(p0, t7);
+    			append_dev(div0, t8);
+    			append_dev(div0, p1);
+    			append_dev(div0, t10);
+    			append_dev(div0, input);
+    			set_input_value(input, /*query*/ ctx[0]);
+    			div0_resize_listener = add_resize_listener(div0, /*div0_elementresize_handler*/ ctx[12].bind(div0));
+    			append_dev(div2, t11);
+    			append_dev(div2, div1);
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].m(div1, null);
+    			}
+
+    			if (each_1_else) {
+    				each_1_else.m(div1, null);
+    			}
+
+    			if (!mounted) {
+    				dispose = [
+    					listen_dev(window, "resize", /*onwindowresize*/ ctx[10]),
+    					listen_dev(input, "input", /*input_input_handler*/ ctx[11])
+    				];
+
+    				mounted = true;
+    			}
+    		},
+    		p: function update(ctx, [dirty]) {
+    			if (/*showCopiedMsg*/ ctx[3]) {
+    				if (if_block) {
+    					if_block.p(ctx, dirty);
+
+    					if (dirty & /*showCopiedMsg*/ 8) {
+    						transition_in(if_block, 1);
+    					}
+    				} else {
+    					if_block = create_if_block_2(ctx);
+    					if_block.c();
+    					transition_in(if_block, 1);
+    					if_block.m(t0.parentNode, t0);
+    				}
+    			} else if (if_block) {
+    				group_outros();
+
+    				transition_out(if_block, 1, 1, () => {
+    					if_block = null;
+    				});
+
+    				check_outros();
+    			}
+
+    			if (dirty & /*query*/ 1 && input.value !== /*query*/ ctx[0]) {
+    				set_input_value(input, /*query*/ ctx[0]);
+    			}
+
+    			if (dirty & /*syms, filteredBeacons, getSVG, beaconKeys, names*/ 902) {
+    				each_value = /*filteredBeacons*/ ctx[7];
+    				validate_each_argument(each_value);
+    				let i;
+
+    				for (i = 0; i < each_value.length; i += 1) {
+    					const child_ctx = get_each_context(ctx, each_value, i);
+
+    					if (each_blocks[i]) {
+    						each_blocks[i].p(child_ctx, dirty);
+    					} else {
+    						each_blocks[i] = create_each_block(child_ctx);
+    						each_blocks[i].c();
+    						each_blocks[i].m(div1, null);
+    					}
+    				}
+
+    				for (; i < each_blocks.length; i += 1) {
+    					each_blocks[i].d(1);
+    				}
+
+    				each_blocks.length = each_value.length;
+
+    				if (each_value.length) {
+    					if (each_1_else) {
+    						each_1_else.d(1);
+    						each_1_else = null;
+    					}
+    				} else if (!each_1_else) {
+    					each_1_else = create_else_block(ctx);
+    					each_1_else.c();
+    					each_1_else.m(div1, null);
+    				}
+    			}
+
+    			if (dirty & /*innerHeight, clientHeight*/ 96) {
+    				set_style(div1, "max-height", /*innerHeight*/ ctx[5] - /*clientHeight*/ ctx[6] - 16 + "px");
+    			}
+    		},
+    		i: function intro(local) {
+    			transition_in(if_block);
+    		},
+    		o: function outro(local) {
+    			transition_out(if_block);
+    		},
+    		d: function destroy(detaching) {
+    			if (if_block) if_block.d(detaching);
+    			if (detaching) detach_dev(t0);
+    			if (detaching) detach_dev(div2);
+    			div0_resize_listener();
+    			destroy_each(each_blocks, detaching);
+    			if (each_1_else) each_1_else.d();
+    			mounted = false;
+    			run_all(dispose);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_fragment.name,
+    		type: "component",
+    		source: "",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function instance($$self, $$props, $$invalidate) {
+    	let filteredBeacons;
+    	let { $$slots: slots = {}, $$scope } = $$props;
+    	validate_slots('App', slots, []);
+    	const hasPostfix = beacon => beacon.slice(beacon.length - 2) === "-s";
+
+    	const getMiddlePart = beacon => {
+    		const middle = beacon.slice(4);
+    		return hasPostfix(beacon) ? middle.slice(0, -2) : middle;
+    	};
+
+    	const exclude = ["b", "d", "default", "_default"];
+    	const beaconKeys = Object.keys(beacons).filter(beacon => !exclude.includes(getMiddlePart(beacon)));
+    	let query = "";
+    	const filtered = beaconKeys.filter(beacon => !hasPostfix(beacon));
+    	const syms = {};
+    	const names = {};
+
+    	beaconKeys.forEach(beacon => {
+    		const sym = getMiddlePart(beacon);
+    		const name = beaconNames[sym] ? beaconNames[sym] : sym;
+    		$$invalidate(1, syms[beacon] = sym, syms);
+    		$$invalidate(2, names[beacon] = name, names);
+    	});
+
+    	let to;
+    	let showCopiedMsg = false;
+    	let copyErr = false;
+
+    	const getSVG = async beacon => {
+    		clearTimeout(to);
+    		$$invalidate(3, showCopiedMsg = false);
+    		$$invalidate(4, copyErr = false);
+    		if (beacon in map) beacon = map[beacon];
+
+    		try {
+    			const res = await fetch(`https://raw.githubusercontent.com/cryptowatch/beacons/master/src/${beacon}.svg`);
+
+    			if (res.ok) {
+    				const text = await res.text();
+    				navigator.clipboard.writeText(text);
+    			} else {
+    				$$invalidate(4, copyErr = true);
+    			}
+    		} catch(e) {
+    			$$invalidate(4, copyErr = true);
+    		}
+
+    		$$invalidate(3, showCopiedMsg = true);
+    		to = setTimeout(() => $$invalidate(3, showCopiedMsg = false), 1000);
+    	};
+
+    	onDestroy(() => clearTimeout(to));
+    	let innerHeight, clientHeight;
+    	const writable_props = [];
+
+    	Object_1.keys($$props).forEach(key => {
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<App> was created with unknown prop '${key}'`);
+    	});
+
+    	function onwindowresize() {
+    		$$invalidate(5, innerHeight = window.innerHeight);
+    	}
+
+    	function input_input_handler() {
+    		query = this.value;
+    		$$invalidate(0, query);
+    	}
+
+    	function div0_elementresize_handler() {
+    		clientHeight = this.clientHeight;
+    		$$invalidate(6, clientHeight);
+    	}
+
+    	$$self.$capture_state = () => ({
+    		onDestroy,
+    		fade,
+    		beacons,
+    		beaconNames,
+    		map,
+    		hasPostfix,
+    		getMiddlePart,
+    		exclude,
+    		beaconKeys,
+    		query,
+    		filtered,
+    		syms,
+    		names,
+    		to,
+    		showCopiedMsg,
+    		copyErr,
+    		getSVG,
+    		innerHeight,
+    		clientHeight,
+    		filteredBeacons
+    	});
+
+    	$$self.$inject_state = $$props => {
+    		if ('query' in $$props) $$invalidate(0, query = $$props.query);
+    		if ('to' in $$props) to = $$props.to;
+    		if ('showCopiedMsg' in $$props) $$invalidate(3, showCopiedMsg = $$props.showCopiedMsg);
+    		if ('copyErr' in $$props) $$invalidate(4, copyErr = $$props.copyErr);
+    		if ('innerHeight' in $$props) $$invalidate(5, innerHeight = $$props.innerHeight);
+    		if ('clientHeight' in $$props) $$invalidate(6, clientHeight = $$props.clientHeight);
+    		if ('filteredBeacons' in $$props) $$invalidate(7, filteredBeacons = $$props.filteredBeacons);
+    	};
+
+    	if ($$props && "$$inject" in $$props) {
+    		$$self.$inject_state($$props.$$inject);
+    	}
+
+    	$$self.$$.update = () => {
+    		if ($$self.$$.dirty & /*query, syms*/ 3) {
+    			$$invalidate(7, filteredBeacons = filtered.filter(key => {
+    				const q = query.toLowerCase();
+    				const sym = syms[key];
+    				const name = beaconNames[sym]?.toLowerCase();
+    				return sym.includes(q) || name?.includes(q);
+    			}));
+    		}
+    	};
+
+    	return [
+    		query,
+    		syms,
+    		names,
+    		showCopiedMsg,
+    		copyErr,
+    		innerHeight,
+    		clientHeight,
+    		filteredBeacons,
+    		beaconKeys,
+    		getSVG,
+    		onwindowresize,
+    		input_input_handler,
+    		div0_elementresize_handler
+    	];
+    }
+
+    class App extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init(this, options, instance, create_fragment, safe_not_equal, {});
+
+    		dispatch_dev("SvelteRegisterComponent", {
+    			component: this,
+    			tagName: "App",
+    			options,
+    			id: create_fragment.name
+    		});
+    	}
+    }
+
+    const app = new App({
+      target: document.body,
+    });
+
+    return app;
+
+})();
