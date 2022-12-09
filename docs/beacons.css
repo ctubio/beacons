@@ -5512,10 +5512,10 @@
 .sym-sand:before {
     content: "\f81e"
 }
-.sym-sats-s:before {
+.sym-sat-s:before {
     content: "\f81f"
 }
-.sym-sats:before {
+.sym-sat:before {
     content: "\f820"
 }
 .sym-sbd-s:before {
@@ -7677,4 +7677,10 @@
 }
 .sym-ape\.2-s:before {
     content: "\f1d9"
+}
+.cur-sat:before {
+    content: "\f820"
+}
+.cur-sat-s:before {
+    content: "\f81f"
 }

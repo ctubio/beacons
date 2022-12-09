@@ -1831,8 +1831,8 @@
   "sym-san": "f81c",
   "sym-sand-s": "f81d",
   "sym-sand": "f81e",
-  "sym-sats-s": "f81f",
-  "sym-sats": "f820",
+  "sym-sat-s": "f81f",
+  "sym-sat": "f820",
   "sym-sbd-s": "f821",
   "sym-sbd": "f822",
   "sym-sbr-s": "f823",
@@ -2552,5 +2552,7 @@
   "sym-srare": "f7b6",
   "sym-srare-s": "f7b5",
   "sym-ape.2": "f1da",
-  "sym-ape.2-s": "f1d9"
+  "sym-ape.2-s": "f1d9",
+  "cur-sat": "f820",
+  "cur-sat-s": "f81f"
 }

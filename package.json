@@ -5,6 +5,7 @@
   "scripts": {
     "build": "node -r esm ./scripts/build.js && node -r esm ./scripts/css.js",
     "css": "node -r esm ./scripts/css.js",
+    "export": "node -r esm ./scripts/createStaticSvgExport.js",
     "sym": "node -r esm ./scripts/sym.js"
   },
   "dependencies": {},

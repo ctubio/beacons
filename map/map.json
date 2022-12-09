@@ -170,5 +170,7 @@
   "sym-srare": "sym-rare",
   "sym-srare-s": "sym-rare-s",
   "sym-ape.2": "sym-ape",
-  "sym-ape.2-s": "sym-ape-s"
+  "sym-ape.2-s": "sym-ape-s",
+  "cur-sat": "sym-sat",
+  "cur-sat-s": "sym-sat-s"
 }
