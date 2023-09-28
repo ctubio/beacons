@@ -1,3 +1,6 @@
+# DEPRECATED 
+This repository is no longer maintained
+
 # Cryptowatch Beacons
 
 Cryptowatch Beacons is a crypto icon font that contains over 2000 icons of cryptocurrencies, crypto exchanges, fiat currencies and equities.
